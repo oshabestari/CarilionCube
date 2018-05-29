@@ -1,0 +1,315 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="ec801b14-f0a8-4396-bfaf-305c174b3d83" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Procedure Dim</ID>
+  <Name>Procedure</Name>
+  <CreatedTimestamp>2017-05-10T15:31:10.69Z</CreatedTimestamp>
+  <LastSchemaUpdate>2017-05-12T21:38:17.066667Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="18" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-4254" scrolltop="-3258" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="11557" y="15600" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="ProcedureTypeDim" left="-1719" top="586" logicalid="8" controlid="1" masterid="0" hint1="0" hint2="0" width="3096" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000180c000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="ProcedureTypeDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="ProcedureCategoryDim" left="2380" top="4499" logicalid="9" controlid="2" masterid="0" hint1="0" hint2="0" width="3545" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000d90d000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="ProcedureCategoryDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="ProcedureRevenueCodeDim" left="-1671" top="12265" logicalid="10" controlid="3" masterid="0" hint1="0" hint2="0" width="3000" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000b80b000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="ProcedureRevenueCodeDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="ProcedureDim" left="-2142" top="4865" logicalid="11" controlid="4" masterid="0" hint1="0" hint2="0" width="3942" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000660f000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="ProcedureDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="-570" top="9565" logicalid="14" controlid="7" masterid="0" hint1="0" hint2="0" width="799" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[ProcedureDim-ProcedureRevenueCodeDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="3" destid="4" sourceattachpoint="4" destattachpoint="7" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="-171" y="12265" />
+              <point x="-171" y="9865" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="1500" top="4865" logicalid="16" controlid="9" masterid="0" hint1="0" hint2="0" width="1180" height="973" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[ProcedureDim-ProcedureCategoryDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="2" destid="4" sourceattachpoint="16" destattachpoint="15" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="2380" y="5438" />
+              <point x="1980" y="5438" />
+              <point x="1980" y="5301" />
+              <point x="2200" y="5301" />
+              <point x="2200" y="5165" />
+              <point x="1800" y="5165" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="-1670" top="1966" logicalid="17" controlid="10" masterid="0" hint1="0" hint2="0" width="799" height="3199" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[ProcedureDim-ProcedureTypeDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="1" destid="4" sourceattachpoint="1" destattachpoint="2" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="-1271" y="2465" />
+              <point x="-1271" y="4865" />
+            </connector>
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-4254</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-3258</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-2142</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>586</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ARDiagramLayout</Name>
+      <Value>
+        <DiagramLayout ZoomPercent="100" ViewPortX="0" ViewPortY="0" xmlns="">
+          <Shapes NodeWidth="221">
+            <Shape Id="PRCDR CD SK" Expanded="true">
+              <Attributes>
+                <Attribute Id="PRCDR CD SK" />
+                <Attribute Id="PRCDR CGY ID" />
+                <Attribute Id="ORDR CLSS CD" />
+                <Attribute Id="ORDR MODE CD" />
+                <Attribute Id="ORDR PRTY CD" />
+                <Attribute Id="ORDR SET CD" />
+                <Attribute Id="ORDR SRC CD" />
+                <Attribute Id="STNDNG STS CD" />
+                <Attribute Id="ORDR STS CD" />
+                <Attribute Id="ORDR TYP CD" />
+                <Attribute Id="REV CD" />
+                <Attribute Id="CD TYPE" />
+              </Attributes>
+              <Position x="20" y="20" />
+            </Shape>
+          </Shapes>
+        </DiagramLayout>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>2017-05-12T21:34:22.136667Z</LastProcessed>
+  <State>Processed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="4a9873be-e936-46d4-a9df-402f92ca0d87">
+    <DataSourceViewID>Carilion</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="c355bda5-1c15-437b-bdb4-75f72ac8d815">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Language>1033</Language>
+  <Collation>Latin1_General_CI_AS</Collation>
+  <UnknownMemberName>Unknown</UnknownMemberName>
+  <Attributes>
+    <Attribute dwd:design-time-name="050226f9-84b5-49bd-ad08-914c913c8787">
+      <ID>PRCDR CD SK</ID>
+      <Name>Procedure</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="fae6127c-abfb-47c8-a3e0-5883bdd1a802">
+          <DataType>BigInt</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5813a761-ce2d-4e60-ac5b-ccac9cbe3a07">
+            <TableID>ProcedureDim</TableID>
+            <ColumnID>PRCDR_CD_SK</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="e9dc83a6-dadc-4ca3-a5b7-8e6d6f761452">
+        <DataType>WChar</DataType>
+        <DataSize>566</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="07b0df42-94d0-4fea-8b9a-bd64c5a07028">
+          <TableID>ProcedureDim</TableID>
+          <ColumnID>PRCDR_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="ce0d36ea-92a3-4dbc-adc1-6166c5fbeab1">
+          <AttributeID>PRCDR CGY ID</AttributeID>
+          <Name>Procedure - Category</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="0076ad51-787a-4467-9597-5bbcab826ee8">
+          <AttributeID>REV CD</AttributeID>
+          <Name>Procedure - Revenue</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="6cba73fb-6132-4d9f-abdd-c056c018ab42">
+          <AttributeID>CD TYPE NM</AttributeID>
+          <Name>Procedure - Classification</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="507b151a-42bb-4b09-9ce5-3dd07519804f">
+      <ID>PRCDR CGY ID</ID>
+      <Name>Procedure - Category</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5aca127a-3e02-4784-acb4-b2ab05cd7244">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="09da1b30-cf93-40da-9ba1-00c52dda93f6">
+            <TableID>ProcedureDim</TableID>
+            <ColumnID>PRCDR_CGY_ID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="6fade535-f504-4c39-b714-31030a6918ca">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="69b73d47-027b-4021-885d-ed89bc3f071f">
+          <TableID>ProcedureCategoryDim</TableID>
+          <ColumnID>PRCDR_CGY_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e168178f-153c-438b-bf8e-f345a0a87ce6">
+      <ID>REV CD</ID>
+      <Name>Procedure - Revenue</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="cb6dcdc2-a9f0-4181-88f4-ae85aff476b2">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="15b655b3-9980-411c-a22b-5264c2ba5687">
+            <TableID>ProcedureDim</TableID>
+            <ColumnID>REV_CD</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="3e6b4da7-bb93-4865-8535-a5139762d093">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="fbc7c71e-e387-44af-84cb-c4ea233b0fc4">
+          <TableID>ProcedureRevenueCodeDim</TableID>
+          <ColumnID>REV_CD_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="9e1e21ca-2f8d-4ff9-bf81-498b7833ad98">
+      <ID>CD TYPE NM</ID>
+      <Name>Procedure - Classification</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5eadf45c-d2c4-40a8-b1f2-b0da2b174ae5">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1a6318ff-f3bb-47d3-a298-eaedf0db6a7c">
+            <TableID>ProcedureDim</TableID>
+            <ColumnID>CD_TYPE_NM</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ProactiveCaching dwd:design-time-name="f13aec3a-1a4d-43d5-83c1-b3e44becb1b7">
+    <SilenceInterval>-PT1S</SilenceInterval>
+    <Latency>-PT1S</Latency>
+    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+    <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="09fcd725-01af-4bb3-832e-883f75810fb5" />
+  </ProactiveCaching>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

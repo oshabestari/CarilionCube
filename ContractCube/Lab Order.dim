@@ -1,0 +1,641 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="21f6f8b0-949d-44eb-adca-d4112004cce5" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Lab Test Dim</ID>
+  <Name>Lab Order</Name>
+  <CreatedTimestamp>2017-07-27T20:46:10.54Z</CreatedTimestamp>
+  <LastSchemaUpdate>2017-08-11T21:34:40.933333Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="28" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="4330" scrolltop="3863" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="9292" y="15600" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="LabTestDim" left="6713" top="4279" logicalid="14" controlid="1" masterid="0" hint1="0" hint2="0" width="4445" height="8175" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00005d110000ef1f0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="LabTestDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="LabTestCancellationReasonDim" left="13558" top="5287" logicalid="15" controlid="2" masterid="0" hint1="0" hint2="0" width="3440" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000700d000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="LabTestCancellationReasonDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="10858" top="5827" logicalid="16" controlid="3" masterid="0" hint1="0" hint2="0" width="3000" height="1739" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[LabTestDim-LabTestCancellationReasonDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="2" destid="1" sourceattachpoint="12" destattachpoint="25" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="13558" y="6226" />
+              <point x="12358" y="6226" />
+              <point x="12358" y="7266" />
+              <point x="11158" y="7266" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="LabTestNameDim" left="4370" top="14854" logicalid="17" controlid="4" masterid="0" hint1="0" hint2="0" width="3000" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000b80b000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="LabTestNameDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="5471" top="12154" logicalid="18" controlid="5" masterid="0" hint1="0" hint2="0" width="2664" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[LabTestDim-LabTestNameDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="4" destid="1" sourceattachpoint="4" destattachpoint="3" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="5870" y="14854" />
+              <point x="5870" y="13654" />
+              <point x="7835" y="13654" />
+              <point x="7835" y="12454" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="LabTestOrderPriorityDim" left="7110" top="0" logicalid="19" controlid="6" masterid="0" hint1="0" hint2="0" width="3651" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000430e000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="LabTestOrderPriorityDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="8536" top="1380" logicalid="20" controlid="7" masterid="0" hint1="0" hint2="0" width="799" height="3199" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[LabTestDim-LabTestOrderPriorityDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="6" destid="1" sourceattachpoint="7" destattachpoint="6" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="8935" y="1879" />
+              <point x="8935" y="4279" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="LabTestOrderSourceTypeDim" left="0" top="7427" logicalid="21" controlid="8" masterid="0" hint1="0" hint2="0" width="4313" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000d910000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="LabTestOrderSourceTypeDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="4013" top="7967" logicalid="22" controlid="9" masterid="0" hint1="0" hint2="0" width="3000" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[LabTestDim-LabTestOrderSourceTypeDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="8" destid="1" sourceattachpoint="17" destattachpoint="28" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="4313" y="8366" />
+              <point x="6713" y="8366" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="LabTestSpecimenTypeDim" left="13558" top="9566" logicalid="23" controlid="10" masterid="0" hint1="0" hint2="0" width="3757" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000ad0e000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="LabTestSpecimenTypeDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="10858" top="8616" logicalid="24" controlid="11" masterid="0" hint1="0" hint2="0" width="3000" height="2289" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[LabTestDim-LabTestSpecimenTypeDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="10" destid="1" sourceattachpoint="16" destattachpoint="31" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="13558" y="10505" />
+              <point x="12358" y="10505" />
+              <point x="12358" y="8916" />
+              <point x="11158" y="8916" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="LabTestVerificationStatusDim" left="9770" top="14854" logicalid="25" controlid="12" masterid="0" hint1="0" hint2="0" width="3731" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000930e000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="LabTestVerificationStatusDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="9185" top="12154" logicalid="26" controlid="13" masterid="0" hint1="0" hint2="0" width="2850" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[LabTestDim-LabTestVerificationStatusDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="12" destid="1" sourceattachpoint="6" destattachpoint="9" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="11635" y="14854" />
+              <point x="11635" y="13654" />
+              <point x="9485" y="13654" />
+              <point x="9485" y="12454" />
+            </connector>
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>4330</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>3863</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>2017-08-11T21:35:00.776667Z</LastProcessed>
+  <State>Processed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="e39cfea3-975b-456f-806a-ef807498c297">
+    <DataSourceViewID>Carilion</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="3e18b301-c21d-43a2-99f2-a66a13eef1af">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Language>1033</Language>
+  <Collation>Latin1_General_CI_AS</Collation>
+  <UnknownMemberName>Unknown</UnknownMemberName>
+  <Attributes>
+    <Attribute dwd:design-time-name="74e67585-93c0-49b9-ac57-2688de53a8bb">
+      <ID>LAB TST SK</ID>
+      <Name>Lab Order</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c67c1fa9-bd3b-4f8f-9d2c-993dd1a3e95e">
+          <DataType>BigInt</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="902633b0-2e0a-48f0-8090-1afab3a4d970">
+            <TableID>LabTestDim</TableID>
+            <ColumnID>LAB_TST_SK</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="e796c988-77f4-40a5-9bd4-280c47ad83d3">
+          <AttributeID>ORDR PRTY CDS</AttributeID>
+          <Name>Lab - Test - Order Priority</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="0b96b569-e63d-40f8-a486-65718ac7c169">
+          <AttributeID>ORDR SRC TYPE CDS</AttributeID>
+          <Name>Lab - Test - Order Source Type</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="cc186597-fd72-4d1c-ade4-ad994fd2e02d">
+          <AttributeID>CNCL RSN CDS</AttributeID>
+          <Name>Lab - Test - Cancellation Reason</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="9b14d612-e645-42fa-838f-3c4e7cd8c49e">
+          <AttributeID>ABNRML IND</AttributeID>
+          <Name>Lab Test - Indicator - Abnormal</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="46a2c67c-59c1-452c-b6c0-854716158bbd">
+          <AttributeID>CRTCL IND</AttributeID>
+          <Name>Lab Test - Indicator - Critical</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="5d6fd9d7-44ba-4963-9cb7-b78fb5b57887">
+          <AttributeID>CORR IND</AttributeID>
+          <Name>Lab Test - Indicator - Correlation</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4420bf96-69b7-4185-89b0-072e58850a3e">
+          <AttributeID>HI PRTY IND</AttributeID>
+          <Name>Lab Test - Indicator - High Priority</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="8f10c890-17a7-45f9-8e36-49692354e222">
+          <AttributeID>SPCMN SRC CDS</AttributeID>
+          <Name>Lab Test - Specimen Source</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a06f5f02-8e51-45a5-9d76-b8b6c36b9c3d">
+          <AttributeID>SPCMN TYPE CDS</AttributeID>
+          <Name>Lab Test - Specimen Type</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a66e7108-f692-4773-b077-4bbe9a8a49d6">
+          <AttributeID>VRFCTN STS CDS</AttributeID>
+          <Name>Lab Test - Verification Status</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="e3caf8af-24a2-4b08-b48b-da843b834d1b">
+          <AttributeID>TST CDS</AttributeID>
+          <Name>Lab Order - Name</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="fda42ffa-c97e-43a6-8a59-75d26497eaf1">
+          <AttributeID>ORDR TYPE CDS</AttributeID>
+          <Name>Lab Order - Order Type</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="4ef6f2a4-4d0f-4155-9b54-465202e386ee">
+      <ID>ORDR PRTY CDS</ID>
+      <Name>Lab Order - Order Priority</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0d13a6c5-5850-4ceb-aff8-a776516413b5">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="130f7209-f156-4865-b309-388225eecb70">
+            <TableID>LabTestDim</TableID>
+            <ColumnID>ORDR_PRTY_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="f2233240-b226-4a0d-8c5b-5403af5d8363">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="0550dec1-4e27-4df8-b9fa-3407f82fcab7">
+          <TableID>LabTestOrderPriorityDim</TableID>
+          <ColumnID>ORDR_PRTY_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="cf846a2b-c2ed-4865-ad8d-77103e6eef19">
+      <ID>ORDR SRC TYPE CDS</ID>
+      <Name>Lab Order - Source Type</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="1bf36717-26d2-45b9-9279-0f9902a1b725">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="45fb602d-bc8c-4c93-8248-b3465617ac83">
+            <TableID>LabTestDim</TableID>
+            <ColumnID>ORDR_SRC_TYPE_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="606a0978-ef35-4e6f-84d9-92360c37a7ba">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="e78bd9e9-edae-4b09-b894-33ded619117a">
+          <TableID>LabTestOrderSourceTypeDim</TableID>
+          <ColumnID>ORDR_SRC_TYPE_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="74a67d43-6dd5-486b-91f1-b095dc65aff9">
+      <ID>CNCL RSN CDS</ID>
+      <Name>Lab Order - Cancellation Reason</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ffedba74-adb8-4131-95f5-e6e649fb066b">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="94030e1e-c935-4ac5-bb25-282498be335a">
+            <TableID>LabTestDim</TableID>
+            <ColumnID>CNCL_RSN_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="8a9a6526-0c0f-4eea-86af-870e529b79cd">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="f895655f-a08c-4700-8e8b-e010a32e1c52">
+          <TableID>LabTestCancellationReasonDim</TableID>
+          <ColumnID>CNCL_RSN_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="5684e789-833c-4d70-80c4-bd5b2ac94f7b">
+      <ID>ABNRML IND</ID>
+      <Name>Lab Order - Indicator - Abnormal</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="2b5901bc-987c-40fc-8cde-2dd5dd332f03">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d7f22125-b463-4fd8-8554-399509ad9b70">
+            <TableID>LabTestDim</TableID>
+            <ColumnID>ABNRML_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="da985706-7d0b-4e44-bf2d-4749a4be40a3">
+        <DataType>WChar</DataType>
+        <DataSize>3</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="e3921486-89f6-45f3-ae44-871d0a14504e">
+          <TableID>LabTestDim</TableID>
+          <ColumnID>ABNRML_IND</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="59dac96c-9fdc-464d-8453-0e3e18cd6d65">
+      <ID>CRTCL IND</ID>
+      <Name>Lab Order - Indicator - Critical</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0654621e-5486-48ff-aa87-8c920b42478e">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a4889523-6beb-42b3-9275-63a1236dad57">
+            <TableID>LabTestDim</TableID>
+            <ColumnID>CRTCL_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="2e5070aa-76db-4c17-9340-a2258bef08d0">
+        <DataType>WChar</DataType>
+        <DataSize>3</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="593ea81e-e7c5-4982-a77e-2747b573a872">
+          <TableID>LabTestDim</TableID>
+          <ColumnID>CRTCL_IND</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e055b396-4ca2-42d1-91c4-2b12438d674d">
+      <ID>CORR IND</ID>
+      <Name>Lab Order - Indicator - Correction</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b6442541-14ca-4d0e-97e9-251ac56897a0">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="14ffa529-b5df-4c21-be6d-2aebf27c0871">
+            <TableID>LabTestDim</TableID>
+            <ColumnID>CORR_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="07e9cfb8-5a42-4f92-ae3f-c05051bc2604">
+        <DataType>WChar</DataType>
+        <DataSize>3</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="e9f35cc8-b607-4e94-91b6-e9cf78016a38">
+          <TableID>LabTestDim</TableID>
+          <ColumnID>CORR_IND</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e06752bb-6e15-4f5d-8376-e662bbb2ef7f">
+      <ID>HI PRTY IND</ID>
+      <Name>Lab Order - Indicator - High Priority</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="4534ddef-a448-416c-b6ef-7b6a12509ee0">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1963fa5f-2af2-465b-8c4c-87800ae4c046">
+            <TableID>LabTestDim</TableID>
+            <ColumnID>HI_PRTY_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="d3dff366-1f37-4c9b-937e-e3a2500d0d84">
+        <DataType>WChar</DataType>
+        <DataSize>3</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="9e920c1a-cd75-4f6b-9243-8e7d55a7fdaa">
+          <TableID>LabTestDim</TableID>
+          <ColumnID>HI_PRTY_IND</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="1177fd47-1ab3-48d4-9c0b-64790a8956c5">
+      <ID>SPCMN SRC CDS</ID>
+      <Name>Lab Order - Specimen Source</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ed228440-3e43-44f3-b0c9-ef4d533f1944">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="707057c6-3861-4378-8413-c32e24a56f02">
+            <TableID>LabTestDim</TableID>
+            <ColumnID>SPCMN_SRC_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="aec5d9ac-ecf8-40b4-b9df-395f700b3734">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="30316950-cda2-48bc-aeb3-ef5654fa3484">
+          <TableID>LabTestSpecimenSourceDim</TableID>
+          <ColumnID>SPCMN_SRC_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="28a03e3a-3c60-4d4e-b764-4653c585a65c">
+      <ID>SPCMN TYPE CDS</ID>
+      <Name>Lab Order - Specimen Type</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="15534575-a172-4206-b2e4-b0da0d61d0df">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7b70e4ba-cc58-434b-972e-0b7b5a02b88a">
+            <TableID>LabTestDim</TableID>
+            <ColumnID>SPCMN_TYPE_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="0758ff2b-5259-49a8-91f8-746b7292f71a">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="7e53e511-8772-4b9a-8c4d-16c1025deb58">
+          <TableID>LabTestSpecimenTypeDim</TableID>
+          <ColumnID>SPCMN_TYPE_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f95b3197-44cf-489b-b17c-271bf1617135">
+      <ID>VRFCTN STS CDS</ID>
+      <Name>Lab Order - Verification Status</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="caf19168-79aa-46a8-adf3-8515e38220e9">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="3a99a23a-373b-4a5a-9a62-15e8a3e4f787">
+            <TableID>LabTestDim</TableID>
+            <ColumnID>VRFCTN_STS_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="acb6b1ba-cf9c-4bd5-b7ce-23914f7e1598">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="50a92da3-ddc0-4adc-b19d-e0097f129ed2">
+          <TableID>LabTestVerificationStatusDim</TableID>
+          <ColumnID>VRFCTN_STS_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="606c1d2a-bd3c-42c8-89d3-10181154807d">
+      <ID>TST CDS</ID>
+      <Name>Lab Order - Name</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="156cef46-9708-4715-b19f-e77dc425face">
+          <DataType>BigInt</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ed582425-f8fc-4187-95c5-9e0668f4d4d1">
+            <TableID>LabTestDim</TableID>
+            <ColumnID>TST_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="f71283ca-d79f-4781-adc8-d16166ae2600">
+        <DataType>WChar</DataType>
+        <DataSize>280</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="84978d51-aebc-4a46-80a8-fd30bba34664">
+          <TableID>LabTestNameDim</TableID>
+          <ColumnID>TEST_NAME</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="6c3be351-6689-4a0c-af9d-f754701f0646">
+      <ID>ORDR TYPE CDS</ID>
+      <Name>Lab Order - Order Type</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="348752a5-4e30-4fc0-9a39-b49b92d35888">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b3ba3696-a56f-4828-bd25-cd558da82fc3">
+            <TableID>LabTestDim</TableID>
+            <ColumnID>ORDR_TYPE_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="1f025538-46db-48f9-95f4-3876b4f5d8c9">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="b4fc97e8-e44c-4e4d-aa4a-db82ee8db91c">
+          <TableID>LabTestOrderType</TableID>
+          <ColumnID>ORDR_TYPE_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ProactiveCaching dwd:design-time-name="8895bb1c-dcc0-40b9-8a67-ccac5737f553">
+    <SilenceInterval>-PT1S</SilenceInterval>
+    <Latency>-PT1S</Latency>
+    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+    <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="627b8988-8861-494e-8c84-fa8851d1fa4e" />
+  </ProactiveCaching>
+  <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

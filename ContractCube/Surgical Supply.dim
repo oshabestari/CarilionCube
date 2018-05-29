@@ -1,0 +1,285 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="8c8319be-b1df-44fd-8d65-1c8e5af7b3c4" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Surgical Supply Dim</ID>
+  <Name>Surgical Supply</Name>
+  <CreatedTimestamp>2017-09-26T15:49:00.49Z</CreatedTimestamp>
+  <LastSchemaUpdate>2017-09-26T16:23:47.953333Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="12" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2390" scrolltop="-9353" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="11557" y="15600" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="SurgicalSupplyManufacturerDim" left="6020" top="0" logicalid="6" controlid="1" masterid="0" hint1="0" hint2="0" width="3334" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000060d000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="SurgicalSupplyManufacturerDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="SurgicalSupplyVendorDim" left="-827" top="-6509" logicalid="7" controlid="2" masterid="0" hint1="0" hint2="0" width="3000" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000b80b000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="SurgicalSupplyVendorDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="SurgicalSupplyDim" left="0" top="0" logicalid="8" controlid="3" masterid="0" hint1="0" hint2="0" width="3810" height="4419" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000e20e000043110000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="SurgicalSupplyDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="3510" top="-10" logicalid="9" controlid="4" masterid="0" hint1="0" hint2="0" width="2810" height="869" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[SurgicalSupplyDim-SurgicalSupplyManufacturerDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="1" destid="3" sourceattachpoint="10" destattachpoint="15" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="6020" y="389" />
+              <point x="4915" y="389" />
+              <point x="4915" y="559" />
+              <point x="3810" y="559" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="-276" top="-5129" logicalid="10" controlid="5" masterid="0" hint1="0" hint2="0" width="831" height="5429" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[SurgicalSupplyDim-SurgicalSupplyVendorDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="2" destid="3" sourceattachpoint="3" destattachpoint="0" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="123" y="-4630" />
+              <point x="123" y="-2315" />
+              <point x="255" y="-2315" />
+              <point x="255" y="0" />
+            </connector>
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-2390</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-9353</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-827</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>-6509</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>2017-10-10T14:30:43.666667Z</LastProcessed>
+  <State>Processed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="4db4a474-ccfd-4133-ae6c-ed462479d293">
+    <DataSourceViewID>Carilion</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="db156a04-0413-4798-8369-bd48254b650e">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Language>1033</Language>
+  <Collation>Latin1_General_CI_AS</Collation>
+  <UnknownMemberName>Unknown</UnknownMemberName>
+  <Attributes>
+    <Attribute dwd:design-time-name="c85a16f4-05c5-46bc-95be-a0d6fedae231">
+      <ID>SPPLY SK</ID>
+      <Name>Surgical Supply - Name</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="8ae75cdf-307c-4e67-9032-0915262c4910">
+          <DataType>BigInt</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="3612ef12-4125-4712-855f-22575eeb1afe">
+            <TableID>SurgicalSupplyDim</TableID>
+            <ColumnID>SPPLY_SK</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="b7bcd4e5-07a7-4a5d-8ede-9e762a8c8e06">
+        <DataType>WChar</DataType>
+        <DataSize>513</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="dcce1e22-4c5e-4efe-8c23-bf805b09ec1f">
+          <TableID>SurgicalSupplyDim</TableID>
+          <ColumnID>SPPLY_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="36705b7b-ade6-42d9-9e6b-522770b6d0ac">
+          <AttributeID>MNFCTR CDS</AttributeID>
+          <Name>Surgical Supply - Manufacturer</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="bef5cbfc-9e1a-40d1-95c4-4e8c343079be">
+          <AttributeID>VND CDS</AttributeID>
+          <Name>Surgical Supply - Vendor</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="401d0250-23fb-4298-b4ee-e61625db2ac5">
+          <AttributeID>VND CTLG NBR</AttributeID>
+          <Name>Surgical Supply - Vendor Catalog Number</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b83fd6ed-7a94-40db-952f-9ce05cece5eb">
+          <AttributeID>IMPLNT IND</AttributeID>
+          <Name>Surgical Supply - Implant Indicator</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="abaa8502-3346-4c70-a356-ba24bf3a8d2b">
+      <ID>MNFCTR CDS</ID>
+      <Name>Surgical Supply - Manufacturer</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="771fd548-c8a8-4b82-8ec8-4838de3e4328">
+          <DataType>WChar</DataType>
+          <DataSize>20</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d5d83e6c-d168-4e95-8ec3-ac0b8eb620e0">
+            <TableID>SurgicalSupplyDim</TableID>
+            <ColumnID>MNFCTR_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="c55dab89-67ab-4782-88eb-9a3d063f2ec1">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="a22c7186-eac8-4644-bef3-1254c9c6ab7e">
+          <TableID>SurgicalSupplyManufacturerDim</TableID>
+          <ColumnID>MNFCTR_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="1a202304-0ba1-4a22-beb6-11cd85288150">
+      <ID>VND CDS</ID>
+      <Name>Surgical Supply - Vendor</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e5fce458-d89a-4450-b286-39d7426c8052">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="04db0d7d-c759-4b1e-ad85-a0e69bee1df6">
+            <TableID>SurgicalSupplyDim</TableID>
+            <ColumnID>VND_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="a70c47b1-7922-4f18-94a9-f1607858084d">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="3eb99512-0a3d-4b16-bcd0-314c054b45a2">
+          <TableID>SurgicalSupplyVendorDim</TableID>
+          <ColumnID>VND_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="ac9a61ce-0d34-4191-a146-0c4a272b970c">
+      <ID>VND CTLG NBR</ID>
+      <Name>Surgical Supply - Vendor Catalog Number</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="eca05431-9d60-4a77-8dfd-61f6f8854558">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="596f6e66-70b1-4faa-b4b9-edfe84afa11c">
+            <TableID>SurgicalSupplyDim</TableID>
+            <ColumnID>VND_CTLG_NBR</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f0bcb7b6-afa3-4a57-beb5-0c86aea30334">
+      <ID>IMPLNT IND</ID>
+      <Name>Surgical Supply - Implant Indicator</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="8c72ae33-f811-4e9d-bb10-ecbcc68b37ae">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6d8f4e69-7f64-4fbc-9204-ea506df02196">
+            <TableID>SurgicalSupplyDim</TableID>
+            <ColumnID>IMPLNT_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ProactiveCaching dwd:design-time-name="81515dd7-717a-460c-8720-3a85f0729b19">
+    <SilenceInterval>-PT1S</SilenceInterval>
+    <Latency>-PT1S</Latency>
+    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+    <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="855bbe91-65a5-42ba-a5e0-0bd847e99fb4" />
+  </ProactiveCaching>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

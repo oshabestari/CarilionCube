@@ -1,0 +1,410 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="309ed0ac-0332-4570-b82a-cff5444d50ab" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Date</ID>
+  <Name>Date</Name>
+  <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-3552" scrolltop="-5728" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="11165" y="21034" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="DateDim" left="20" top="0" logicalid="2" controlid="1" masterid="0" hint1="0" hint2="0" width="4657" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00003112000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="DW_CLNDR_DIM" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-3552</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-5728</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>20</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ARDiagramLayout</Name>
+      <Value>
+        <DiagramLayout ZoomPercent="100" ViewPortX="0" ViewPortY="0" xmlns="">
+          <Shapes NodeWidth="154">
+            <Shape Id="CLNDR DT" Expanded="true">
+              <Attributes>
+                <Attribute Id="CLNDR DT" />
+                <Attribute Id="CLNDR DT FL NM" />
+              </Attributes>
+              <Position x="20" y="20" />
+            </Shape>
+            <Shape Id="YR AND MTH NUM" Expanded="false">
+              <Attributes>
+                <Attribute Id="YR AND MTH NUM" />
+              </Attributes>
+              <Position x="217" y="20" />
+            </Shape>
+            <Shape Id="YR AND QTR NUM" Expanded="false">
+              <Attributes>
+                <Attribute Id="YR AND QTR NUM" />
+              </Attributes>
+              <Position x="415" y="20" />
+            </Shape>
+            <Shape Id="YR NUM" Expanded="false">
+              <Attributes>
+                <Attribute Id="YR NUM" />
+              </Attributes>
+              <Position x="612" y="20" />
+            </Shape>
+            <Shape Id="FSCL MTH NUM" Expanded="false">
+              <Attributes>
+                <Attribute Id="FSCL MTH NUM" />
+              </Attributes>
+              <Position x="217" y="68" />
+            </Shape>
+            <Shape Id="FSCL QTR NUM" Expanded="false">
+              <Attributes>
+                <Attribute Id="FSCL QTR NUM" />
+              </Attributes>
+              <Position x="415" y="68" />
+            </Shape>
+            <Shape Id="FSCL YR NUM" Expanded="false">
+              <Attributes>
+                <Attribute Id="FSCL YR NUM" />
+              </Attributes>
+              <Position x="612" y="68" />
+            </Shape>
+          </Shapes>
+        </DiagramLayout>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="673c9a67-8aa8-4059-ae24-2f0f922b0d7a">
+    <DataSourceViewID>Carilion</DataSourceViewID>
+  </Source>
+  <Type>Time</Type>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="dda6a9d2-dbf5-42de-979e-29ac85124e84">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <UnknownMemberName></UnknownMemberName>
+  <Attributes>
+    <Attribute dwd:design-time-name="340b3103-c0a2-43fa-a5f8-65012da8a29b">
+      <ID>CLNDR DT</ID>
+      <Name>Date</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d915ba2d-ca61-4cfe-b06a-25ce636d17e0">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="484bc225-0621-448a-a7b4-8ec2f71f4139">
+            <TableID>DW_CLNDR_DIM</TableID>
+            <ColumnID>CLNDR_DT</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="1bd45329-5e26-4d84-a582-87c9e6fccb45">
+          <AttributeID>FSCL MTH NUM</AttributeID>
+          <Name>Fiscal Month</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="1b5d2341-d723-43d7-bd67-644a05c52a48">
+          <AttributeID>YR AND MTH NUM</AttributeID>
+          <Name>Month</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="d7143146-7a5c-4f5e-b7a6-b8cd15159b6b">
+          <AttributeID>DY OF WK NUM</AttributeID>
+          <Name>Date - Day of Week</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="96aea9b1-f2d2-45e1-bc5f-2d131305bac4">
+      <ID>YR NUM</ID>
+      <Name>Date - Year</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="eff164ba-f37a-42c3-bad4-511129d2ee8e">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="affe5e55-adb1-4448-86fd-453ffe0783be">
+            <TableID>DW_CLNDR_DIM</TableID>
+            <ColumnID>YR_NUM</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="94f21033-f9f8-4259-8fca-9e65d7d1af9d">
+      <ID>YR AND MTH NUM</ID>
+      <Name>Date - Month</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d6635d47-e65d-47ac-8c6a-42a30f92311d">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="62eabf15-fecb-4f59-b168-ca5064a1d4cc">
+            <TableID>DW_CLNDR_DIM</TableID>
+            <ColumnID>YR_AND_MTH_NUM</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="8ebcb25d-c36d-4b67-b4e4-52b676637a4b">
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="9d3f0378-9b2c-481f-a462-b1866c6484a9">
+          <TableID>DW_CLNDR_DIM</TableID>
+          <ColumnID>YR_AND_MTH_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="19eceae1-41f4-4096-b343-439e99909f22">
+          <AttributeID>YR AND QTR NUM</AttributeID>
+          <Name>Quarter</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="b05501d3-7700-4006-b5f6-9b55372fada5">
+      <ID>YR AND QTR NUM</ID>
+      <Name>Date - Quarter</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="beee6f19-7fc3-469c-ba80-d4ca3f6e2c97">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="82e7de6c-d351-457a-90a4-6b354ecc58d1">
+            <TableID>DW_CLNDR_DIM</TableID>
+            <ColumnID>YR_AND_QTR_NUM</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="422bc386-c6cc-463a-a2f8-8d9281c2ae96">
+        <DataType>WChar</DataType>
+        <DataSize>150</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="2016f12f-43dc-4ce5-9d2e-a7c9245788da">
+          <TableID>DW_CLNDR_DIM</TableID>
+          <ColumnID>YR_AND_QTR_ABBR</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="e8ec0a18-759d-44f5-86fb-95067ff851ed">
+          <AttributeID>YR NUM</AttributeID>
+          <Name>Year</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="07ac688c-9c9d-45e7-bb54-396610e021a7">
+      <ID>FSCL YR NUM</ID>
+      <Name>Date - Fiscal Year</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d3f89b7b-a78d-45d4-b041-338b85ea01a4">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8370a7da-8705-4d47-986d-5a844cb62722">
+            <TableID>DW_CLNDR_DIM</TableID>
+            <ColumnID>FSCL_YR_NUM</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="99dd86c3-3f68-4ae8-9cdc-59e333b08eb4">
+      <ID>FSCL QTR NUM</ID>
+      <Name>Date - Fiscal Quarter</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="a12a6e66-8f0a-48d9-8d3c-83f6d6cc8ff4">
+          <DataType>SmallInt</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="30a946d1-c69a-4b07-953b-6a189556926b">
+            <TableID>DW_CLNDR_DIM</TableID>
+            <ColumnID>FSCL_QTR_NUM</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="ad834a73-6557-4c74-8e9f-0199d8cba783">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="eec729ea-fb53-4941-affc-5373c1dd42db">
+            <TableID>DW_CLNDR_DIM</TableID>
+            <ColumnID>FSCL_YR_NUM</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="d884423f-917a-4482-9986-f3a352b12a01">
+        <DataType>WChar</DataType>
+        <DataSize>150</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="3f7d1479-4f4a-4a77-bdce-1b66f41dfad8">
+          <TableID>DW_CLNDR_DIM</TableID>
+          <ColumnID>FSCL_QTR_ABBR</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="ea976f9f-101e-4aeb-a447-f0c8a535b34d">
+          <AttributeID>FSCL YR NUM</AttributeID>
+          <Name>Fiscal Year</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="35770afd-698a-4c67-b1f7-aab68a11d5bf">
+      <ID>FSCL MTH NUM</ID>
+      <Name>Date - Fiscal Month</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c98c99f3-4f1d-4adb-9473-7d02f1c2e9c5">
+          <DataType>SmallInt</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="07a0c78f-67d6-41ef-9121-1ed24134dffb">
+            <TableID>DW_CLNDR_DIM</TableID>
+            <ColumnID>FSCL_MTH_NUM</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="0627e566-e78b-407b-ba94-dc5bbafb243d">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="912f8afe-1f7b-4750-b9ef-4a3d92fa27a1">
+            <TableID>DW_CLNDR_DIM</TableID>
+            <ColumnID>FSCL_YR_NUM</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="5b75cef0-15a9-40cd-95b0-64a71c2f9f40">
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="296995a0-0618-42f3-a35a-ff32c0b1233d">
+          <TableID>DW_CLNDR_DIM</TableID>
+          <ColumnID>MTH_OF_YR_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="76171505-72ce-45ed-83d0-808b3c871080">
+          <AttributeID>FSCL QTR NUM</AttributeID>
+          <Name>Fiscal Quarter</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="614c7fc9-20f1-404f-8436-1f11a3d95c5b">
+      <ID>DY OF WK NUM</ID>
+      <Name>Date - Day of Week</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ec63eb10-9ccf-4221-9023-896ebdde0522">
+          <DataType>SmallInt</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="219fab52-0916-4166-8d8a-366f1dae0f60">
+            <TableID>DW_CLNDR_DIM</TableID>
+            <ColumnID>DY_OF_WK_NUM</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="6cfc31db-2f51-4c38-9540-90fd0364ce6c">
+        <DataType>WChar</DataType>
+        <DataSize>30</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="eb66bb7c-5eaa-46ef-bfe2-cfe303a39481">
+          <TableID>DW_CLNDR_DIM</TableID>
+          <ColumnID>DY_OF_WK_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <Hierarchies>
+    <Hierarchy dwd:design-time-name="8a0276f0-ce05-4003-bb53-90422ddc65da">
+      <ID>Hierarchy</ID>
+      <Name>Year -  Quarter -  Month -   Date</Name>
+      <Levels>
+        <Level dwd:design-time-name="b069fe67-6299-414a-8052-f48347b6824b">
+          <ID>Year</ID>
+          <Name>Year</Name>
+          <SourceAttributeID>YR NUM</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="fb42d857-2a02-4391-8294-8992f52c270a">
+          <ID>Quarter</ID>
+          <Name>Quarter</Name>
+          <SourceAttributeID>YR AND QTR NUM</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="244f5133-2a5d-41bb-8ed6-a6d5b793c075">
+          <ID>Month - Year</ID>
+          <Name>Month</Name>
+          <SourceAttributeID>YR AND MTH NUM</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="b59d19f1-7524-4836-860d-665ab1d2a799">
+          <ID>Date</ID>
+          <Name>Date</Name>
+          <SourceAttributeID>CLNDR DT</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+    <Hierarchy dwd:design-time-name="7921b929-f8aa-40d7-b7df-183c5a943a29">
+      <ID>Hierarchy 1</ID>
+      <Name>Fiscal Year - Quarter - Month - Date</Name>
+      <Levels>
+        <Level dwd:design-time-name="3445b6b2-84de-4c15-9e81-62220dec7d8a">
+          <ID>Fiscal Year</ID>
+          <Name>Fiscal Year</Name>
+          <SourceAttributeID>FSCL YR NUM</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="2084ae86-6efc-4318-96e1-88e02e74fe2d">
+          <ID>Fiscal Quarter</ID>
+          <Name>Fiscal Quarter</Name>
+          <SourceAttributeID>FSCL QTR NUM</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="e0048dd9-98e8-4bdb-a0cc-c01b27b6a190">
+          <ID>Fiscal Month</ID>
+          <Name>Fiscal Month</Name>
+          <SourceAttributeID>FSCL MTH NUM</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="baaa5d7e-2503-48fd-af33-ee3c1ecc9b0b">
+          <ID>Date</ID>
+          <Name>Date</Name>
+          <SourceAttributeID>CLNDR DT</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+  </Hierarchies>
+  <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

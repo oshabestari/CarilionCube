@@ -1,0 +1,3401 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="7149b429-fb36-4f5e-8c85-f98752a8e8a0" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>ED Visit</ID>
+  <Name>ED Visit</Name>
+  <CreatedTimestamp>2017-04-07T18:49:54.726667Z</CreatedTimestamp>
+  <LastSchemaUpdate>2017-04-07T21:14:09.946667Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="16" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1123" scrolltop="-12779" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="7662" y="15600" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="EDVisitDim" left="934" top="-4622" logicalid="8" controlid="1" masterid="0" hint1="0" hint2="0" width="4630" height="4047" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c000016120000cf0f0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="EDVisitDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="EDVisitDispositionDim" left="3762" top="-7779" logicalid="9" controlid="2" masterid="0" hint1="0" hint2="0" width="3545" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000d90d000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="EDVisitDispositionDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="EDVisitFinancialClass" left="-3493" top="-88" logicalid="10" controlid="3" masterid="0" hint1="0" hint2="0" width="4313" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000d910000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="EDVisitFinancialClass" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="-86" top="-875" logicalid="11" controlid="4" masterid="0" hint1="0" hint2="0" width="1435" height="1287" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[EDVisitDim-EDVisitFinancialClass]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="3" destid="1" sourceattachpoint="12" destattachpoint="1" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="313" y="-88" />
+              <point x="313" y="-488" />
+              <point x="681" y="-488" />
+              <point x="681" y="-175" />
+              <point x="1049" y="-175" />
+              <point x="1049" y="-575" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="EDVisitMeansOfArrivalDim" left="6775" top="7604" logicalid="12" controlid="5" masterid="0" hint1="0" hint2="0" width="3942" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000660f000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="EDVisitMeansOfArrivalDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="3499" top="-875" logicalid="13" controlid="6" masterid="0" hint1="0" hint2="0" width="5647" height="8979" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[EDVisitDim-EDVisitMeansOfArrivalDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="5" destid="1" sourceattachpoint="6" destattachpoint="11" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="8746" y="7604" />
+              <point x="8746" y="6404" />
+              <point x="3799" y="6404" />
+              <point x="3799" y="-575" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="3485" top="-6399" logicalid="14" controlid="7" masterid="0" hint1="0" hint2="0" width="799" height="2077" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[EDVisitDim-EDVisitDispositionDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="2" destid="1" sourceattachpoint="1" destattachpoint="10" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="3884" y="-5900" />
+              <point x="3884" y="-5022" />
+              <point x="3799" y="-5022" />
+              <point x="3799" y="-4622" />
+            </connector>
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-1123</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-12779</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-3493</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>-7779</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ARDiagramLayout</Name>
+      <Value>
+        <DiagramLayout ZoomPercent="100" ViewPortX="0" ViewPortY="0" xmlns="">
+          <Shapes NodeWidth="170">
+            <Shape Id="EDPTNT VST SK" Expanded="true">
+              <Attributes>
+                <Attribute Id="EDPTNT VST SK" />
+                <Attribute Id="ACTY LVL CDS" />
+                <Attribute Id="AGE DYS AT ENCNT" />
+                <Attribute Id="AGE MNTHS AT ENCNT" />
+                <Attribute Id="AGE YRS AT ENCNT" />
+                <Attribute Id="ED DSPSTN CDS" />
+                <Attribute Id="VST FNNCL CLSS CDS" />
+                <Attribute Id="LEVL OF CARE CDS" />
+                <Attribute Id="MEANS ARRVL CDS" />
+              </Attributes>
+              <Position x="20" y="20" />
+            </Shape>
+          </Shapes>
+        </DiagramLayout>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>2017-04-07T21:14:17.333333Z</LastProcessed>
+  <State>Processed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="ca3f590b-a3f5-4250-86cc-ff50a5a9e50c">
+    <DataSourceViewID>Carilion</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="88afc3c2-d5ad-4009-b24c-de5379d001c6">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Language>1033</Language>
+  <Collation>Latin1_General_CI_AS</Collation>
+  <UnknownMemberName>Unknown</UnknownMemberName>
+  <Attributes>
+    <Attribute dwd:design-time-name="da3f4aaf-6b49-4605-a157-271cce326287">
+      <ID>EDPTNT VST SK</ID>
+      <Name>ED Visit</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="8b573791-6e84-4a75-8452-9a343665d749">
+          <DataType>BigInt</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7d72c268-fa7a-49de-a7fc-c117c001e79f">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>EDPTNT_VST_SK</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="bf82551d-5d2b-446d-9e69-b11f9f3a2e5b">
+        <DataType>WChar</DataType>
+        <NullProcessing>ZeroOrBlank</NullProcessing>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="8ba6a03e-7965-4b17-966a-cec0e9457eb7">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>EDPTNT_VST_SK</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="820041b7-d931-4972-82e3-52f61c2b38e6">
+          <AttributeID>MEANS ARRVL CDS</AttributeID>
+          <Name>Means of Arrival</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="9caf18f4-fda6-4cab-80a3-47f3f8781b17">
+          <AttributeID>ACTY LVL CDS</AttributeID>
+          <Name>Activity Level</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="cee1a612-82cd-4505-ae47-6918c09fab61">
+          <AttributeID>VST FNNCL CLSS CDS</AttributeID>
+          <Name>ED Visit Financial Class</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4564baab-8f8a-4699-8f6c-cd0fb9ae34db">
+          <AttributeID>ED DSPSTN CDS</AttributeID>
+          <Name>ED Disposition</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4e95bb8b-eec2-433d-a93c-e26f2c5ef471">
+          <AttributeID>ER ANALYSIS A2 CDS</AttributeID>
+          <Name>ED Visit - ER - Insurance - Privacy</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="c556b5b7-5269-46d9-9eab-17284d66f337">
+          <AttributeID>ER ANALYSIS A28 CDS</AttributeID>
+          <Name>ED Visit - ER - Insurance - Courtesy of Staff</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="037357e7-1d85-4cb2-b70e-e0cc9df0091e">
+          <AttributeID>ER ANALYSIS A3 CDS</AttributeID>
+          <Name>ED Visit - ER - Insurance - Ease of Completion</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="f1903882-b028-4163-8e01-683d2b50dc98">
+          <AttributeID>ER ANALYSIS A4 CDS</AttributeID>
+          <Name>ED Visit - ER - Arrival - Waiting Time Before Brought to the Treatment Area</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="16370046-a59c-4f2d-88ff-f8aa68c8bf79">
+          <AttributeID>ER ANALYSIS A5 CDS</AttributeID>
+          <Name>ED Visit - ER - Arrival - Comfort of the Waiting Area</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a9f4eaa4-8ebe-4ac8-abf4-3108253b9f4b">
+          <AttributeID>ER ANALYSIS A86 CDS</AttributeID>
+          <Name>ED Visit - ER - Arrival - Wait Time After Arrival</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b9302677-6539-4566-9fa8-cf4bad1b4fe9">
+          <AttributeID>ER ANALYSIS A87 CDS</AttributeID>
+          <Name>ED Visit - ER - Arrival - Helpfulness of Staff</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="e18e594e-dc09-40d9-ba30-4fce3cd1418f">
+          <AttributeID>ER ANALYSIS B1 CDS</AttributeID>
+          <Name>ED Visit - ER - Nurse - Courtesy</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="3db6b376-f3d6-4545-b0c8-a90ca1ae8eb6">
+          <AttributeID>ER ANALYSIS B3 CDS</AttributeID>
+          <Name>ED Visit - ER - Nurse - Attention to Needs</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="7843506e-24a5-46a8-8a85-44ad97725e9d">
+          <AttributeID>ER ANALYSIS B4 CDS</AttributeID>
+          <Name>ED Visit - ER - Nurse - Informing Treatment Information</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="7d80c6c2-0205-4599-b8c4-f032fa8407f7">
+          <AttributeID>ER ANALYSIS B5 CDS</AttributeID>
+          <Name>ED Visit - ER - Nurse - Privacy</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="e2e69825-1795-43e4-b71d-f8a51021fbb0">
+          <AttributeID>ER ANALYSIS B76 CDS</AttributeID>
+          <Name>ED Visit - ER - Nurse- Listening Carefully</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="6ecbcc83-f7ee-4706-8198-784b6c90a644">
+          <AttributeID>ER ANALYSIS C1 CDS</AttributeID>
+          <Name>ED Visit - ER - Arrival - Wait Time in Treatment Area</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="6433de30-18b4-4d20-96b9-e8d2f20a0603">
+          <AttributeID>ER ANALYSIS C2 CDS</AttributeID>
+          <Name>ED Visit - ER - Doctor - Courtesy</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="d43d14d5-71b8-4d54-a35f-bd5c83fd35bd">
+          <AttributeID>ER ANALYSIS C4 CDS</AttributeID>
+          <Name>ED Visit - ER - Doctor - Concern for Comfort</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="f0282549-f6fa-4708-a41c-2d60c224d347">
+          <AttributeID>ER ANALYSIS C5 CDS</AttributeID>
+          <Name>ED Visit - ER - Doctor - Informing Treatment Information</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="e0bd7010-b716-4b5c-938c-aa49ae238a7c">
+          <AttributeID>ER ANALYSIS C7 CDS</AttributeID>
+          <Name>ED Visit - ER - Personal Issues - Given Take Home Information</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="30ddfeec-96c1-4704-aa29-e3ae93595376">
+          <AttributeID>ER ANALYSIS C75 CDS</AttributeID>
+          <Name>ED Visit - ER - Doctor - Listening Carefully</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a9956b4b-ab50-493c-b300-81fd14025598">
+          <AttributeID>ER ANALYSIS D2 CDS</AttributeID>
+          <Name>ED Visit - ER - Test - Courtesy of Person Drawing Blood</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="27a8be3e-9ee6-4294-bcd1-5b827754b024">
+          <AttributeID>ER ANALYSIS D3 CDS</AttributeID>
+          <Name>ED Visit - ER - Test - Radiology Waiting Time</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="94593158-82c3-4d09-ad59-30fa39910c69">
+          <AttributeID>ER ANALYSIS D4 CDS</AttributeID>
+          <Name>ED Visit - ER - Test - Courtesy of Radiology staff</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="352b8a07-51c0-470b-a55a-96feb6cfd7af">
+          <AttributeID>ER ANALYSIS D52 CDS</AttributeID>
+          <Name>ED Visit - ER - Test - Concern for Comfort When Drawing Blood</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="11d34395-df70-4c8f-bd5f-265ba9f1de6f">
+          <AttributeID>ER ANALYSIS D65 CDS</AttributeID>
+          <Name>ED Visit - ER - Test - Concern for Comfort by Radiology Staff</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="91d858e1-0f96-4586-818c-2a1f255c7cd2">
+          <AttributeID>ER ANALYSIS E1 CDS</AttributeID>
+          <Name>ED Visit - ER - Family-Friends - Treatment</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a033b3fb-647f-420a-ad5c-0b46dfa5dd7c">
+          <AttributeID>ER ANALYSIS E2 CDS</AttributeID>
+          <Name>ED Visit - ER - Family-Friends - Staff Concern for Informing Family</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="0619ce21-9e18-458c-ad26-ea7fa57b3ec6">
+          <AttributeID>ER ANALYSIS E3 CDS</AttributeID>
+          <Name>ED Visit - ER - Family-Friends - Staff Concern for letting Family be present</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="1e6e9b0e-23a7-4a26-be9c-f95d0b9186ca">
+          <AttributeID>ER DEMOGRAPHICS EDCP1 CDS</AttributeID>
+          <Name>ED Visit - ER - Going to ER - Primary Reasoning for Visit</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="41f06362-5dde-497c-97e7-815b7860884a">
+          <AttributeID>ER DEMOGRAPHICS EDCP10 CDS</AttributeID>
+          <Name>ED Visit - ER - During Visit - Given New Medicine</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="f45c8733-8315-487e-82e5-1c662bd7e45c">
+          <AttributeID>ER DEMOGRAPHICS EDCP11 CDS</AttributeID>
+          <Name>ED Visit - ER - During Visit - Explanation of New Medicine</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="1f8916b1-471e-4f3d-ae4a-4c6332e05e59">
+          <AttributeID>ER DEMOGRAPHICS EDCP12 CDS</AttributeID>
+          <Name>ED Visit - ER - During Visit - Understandable Explanation of New Medication Side-Effects</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="0958a629-a36c-4647-84ec-ad11b6e4d137">
+          <AttributeID>ER DEMOGRAPHICS EDCP13 CDS</AttributeID>
+          <Name>ED Visit - ER - During Visit - Have Pain</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="710d02b4-97a4-4015-a904-1a089fae6e8e">
+          <AttributeID>ER DEMOGRAPHICS EDCP16 CDS</AttributeID>
+          <Name>ED Visit - ER - During Visit - Blood Test X-Ray or any Other Tests</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="14ebee02-322b-4288-bfa6-fcdbf83f0859">
+          <AttributeID>ER DEMOGRAPHICS EDCP17 CDS</AttributeID>
+          <Name>ED Visit - ER - During Visit - Results of Tests</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="f1f16727-1cb2-403e-a12d-26c2c51feaac">
+          <AttributeID>ER DEMOGRAPHICS EDCP2 CDS</AttributeID>
+          <Name>ED Visit - ER - Going to ER - Transportation by Ambulance</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="67429286-0f9d-4984-ac6c-5bb94b1bf172">
+          <AttributeID>ER DEMOGRAPHICS EDCP22 CDS</AttributeID>
+          <Name>ED Visit - ER - Staff Care - Courtesy of Nurses</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="ffc21c0e-a83a-4fa8-9764-d0e50a812ed3">
+          <AttributeID>ER DEMOGRAPHICS EDCP23 CDS</AttributeID>
+          <Name>ED Visit - ER - Staff Care - Nurses Listening Carefully</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="84cb62d7-936a-4443-9ce8-160ee6d2f611">
+          <AttributeID>ER DEMOGRAPHICS EDCP24 CDS</AttributeID>
+          <Name>ED Visit - ER - Staff Care - Understandable Explanation by Nurse</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="97874212-b7ff-4982-b42f-6b0b5d0d3855">
+          <AttributeID>ER DEMOGRAPHICS EDCP25 CDS</AttributeID>
+          <Name>ED Visit - ER - Staff Care - Time Spent with Nurse</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="51e1fb8a-8691-4853-9b09-8810ac5749fd">
+          <AttributeID>ER DEMOGRAPHICS EDCP26 CDS</AttributeID>
+          <Name>ED Visit - ER - Staff Care - Courtesy of Doctors</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="94ea3d1a-2399-419c-8f24-074d07b90cce">
+          <AttributeID>ER DEMOGRAPHICS EDCP27 CDS</AttributeID>
+          <Name>ED Visit - ER - Staff Care - Doctors Listening Carefully</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="8a8a336f-fdf8-46f0-aced-2eb5ae315154">
+          <AttributeID>ER DEMOGRAPHICS EDCP28 CDS</AttributeID>
+          <Name>ED Visit - ER - Staff Care - Understandable Explanation by Doctor</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="8ea6209d-0aae-4c7b-a5c2-5784c7baa5ab">
+          <AttributeID>ER DEMOGRAPHICS EDCP29 CDS</AttributeID>
+          <Name>ED Visit - ER - Staff Care - Time Spent with Doctor</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="cb2464d5-2973-4c41-9933-6149e97e64ee">
+          <AttributeID>ER DEMOGRAPHICS EDCP3 CDS</AttributeID>
+          <Name>ED Visit - ER - Going to ER - Arrival Wait Time</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="0a148d4f-4193-4c17-99c8-a6792f14cfb0">
+          <AttributeID>ER DEMOGRAPHICS EDCP30 CDS</AttributeID>
+          <Name>ED Visit - ER - After ER - Understand the Main Health Problem</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="08fcc1a8-f9db-414d-8786-21f68d43c7eb">
+          <AttributeID>ER DEMOGRAPHICS EDCP31 CDS</AttributeID>
+          <Name>ED Visit - ER - After ER - Symptoms of Health Problem</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="0dc6ae90-ca0e-4f04-98d8-e213d223ec29">
+          <AttributeID>ER DEMOGRAPHICS EDCP32 CDS</AttributeID>
+          <Name>ED Visit - ER - After ER - Prescribing New Medication</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="603a1f81-6970-4c55-b103-915dcc550df2">
+          <AttributeID>ER DEMOGRAPHICS EDCP33 CDS</AttributeID>
+          <Name>ED Visit - ER - After ER - Understandable Explanation of Newly Prescribed Medication</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="45683f3b-84d7-451a-a8dd-c6eeb3b98666">
+          <AttributeID>ER DEMOGRAPHICS EDCP35 CDS</AttributeID>
+          <Name>ED Visit - ER - After ER - Able to Get Follow-Up</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="17634f88-d1cc-47e6-86f9-b22487ad1a85">
+          <AttributeID>ER DEMOGRAPHICS EDCP36 CDS</AttributeID>
+          <Name>ED Visit - ER - Overall Experience - Facility Rating</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a242cbf4-5404-4740-acaa-33300983cb08">
+          <AttributeID>ER DEMOGRAPHICS EDCP37 CDS</AttributeID>
+          <Name>ED Visit - ER - Overall Experience - Facility Recommendation</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="d8bbe03c-a305-41d6-8bc6-b15c59e8c134">
+          <AttributeID>ER DEMOGRAPHICS EDCP39 CDS</AttributeID>
+          <Name>ED Visit - ER - Your Health Care - Frequency of ER Visits</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="fb93404a-c2fd-4f54-8942-a359ba125c41">
+          <AttributeID>ER DEMOGRAPHICS EDCP4 CDS</AttributeID>
+          <Name>ED Visit - ER - Going to ER - Importance of Visit</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="818451d3-550e-47ec-81c1-43f515655436">
+          <AttributeID>ER DEMOGRAPHICS EDCP40 CDS</AttributeID>
+          <Name>ED Visit - ER - Your Health Care - Opportunity for Health Care</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b3bad9d9-ee8e-4994-acca-5f071072dbfd">
+          <AttributeID>ER DEMOGRAPHICS EDCP41 CDS</AttributeID>
+          <Name>ED Visit - ER - Your Health Care - Frequency of Doctor Visits for Advice</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="1cf7d81a-833a-4493-a132-3e21f4b39cd7">
+          <AttributeID>ER DEMOGRAPHICS EDCP42 CDS</AttributeID>
+          <Name>ED Visit - ER - After ER - Rate Overall Health</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="165eaaae-4239-4af1-aa9f-f256760c3303">
+          <AttributeID>ER DEMOGRAPHICS EDCP43 CDS</AttributeID>
+          <Name>ED Visit - ER - About You - Overall Rate of Mental Health</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="2a6eb935-cd1d-41e3-a154-e93324541a2d">
+          <AttributeID>ER DEMOGRAPHICS EDCP48 CDS</AttributeID>
+          <Name>ED Visit - ER - About You - Level of Education</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="91b0710b-4491-4c96-b85d-9b92e49c94a7">
+          <AttributeID>ER DEMOGRAPHICS EDCP59 CDS</AttributeID>
+          <Name>ED Visit - ER - About You - Completing Survey</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="5f08496a-6bc5-4d43-a9c1-3f7f40be9f04">
+          <AttributeID>ER DEMOGRAPHICS EDCP6 CDS</AttributeID>
+          <Name>ED Visit - ER - During Visit - Getting Care Within 30 minutes</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="37b7ae7e-cf8b-43ba-b1ed-e314bdcfe153">
+          <AttributeID>ER DEMOGRAPHICS EDCP61 CDS</AttributeID>
+          <Name>ED Visit - ER - About You - Visit Assistance</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4bc3a1c0-9b49-488f-a12a-b9ea2809aad3">
+          <AttributeID>ER DEMOGRAPHICS EDCP62 CDS</AttributeID>
+          <Name>ED Visit - ER - During Visit - Given Pain Medication</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="32ebe57e-e620-48f6-8c5e-9d5f7dda9fdc">
+          <AttributeID>ER DEMOGRAPHICS EDCP63 CDS</AttributeID>
+          <Name>ED Visit - ER - During Visit - Reduction of Pain</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="933e6e9f-0fec-46c2-8a3d-3958aa066c72">
+          <AttributeID>ER DEMOGRAPHICS EDCP64 CDS</AttributeID>
+          <Name>ED Visit - ER - During Visit - Explanation of Pain Medicine Possible Side-effects</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="43e39c48-85f1-4507-8e7d-d96bf988f4a0">
+          <AttributeID>ER DEMOGRAPHICS EDCP65 CDS</AttributeID>
+          <Name>ED Visit - ER - After ER - Follow-Up Needed</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="3326b42c-8eaa-4db1-88c9-043c3f514570">
+          <AttributeID>ER DEMOGRAPHICS EDCP9 CDS</AttributeID>
+          <Name>ED Visit - ER - During Visit - Medication Review</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="c5720510-607a-4de1-b387-04aa9f122dfd">
+          <AttributeID>ER ANALYSIS F1 CDS</AttributeID>
+          <Name>ED Visit - ER - Personal Issues - Delays</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b7ae3347-0700-483c-8ed9-d0b20c671c66">
+          <AttributeID>ER ANALYSIS F2 CDS</AttributeID>
+          <Name>ED Visit - ER - Personal Issues - Staff Care</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="e26d3526-b50a-4aa0-9001-9081298e6882">
+          <AttributeID>ER ANALYSIS F4 CDS</AttributeID>
+          <Name>ED Visit - ER - Overall Assessment - Facility Recommendation</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b10272f8-3ba7-4ee1-b4e9-312e3ea10991">
+          <AttributeID>ER ANALYSIS F41 CDS</AttributeID>
+          <Name>ED Visit - ER - Personal Issues - Pain Control</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="31514483-b9a8-49fc-9cb8-872d391985d8">
+          <AttributeID>ER ANALYSIS F68 CDS</AttributeID>
+          <Name>ED Visit - ER - Overall Assessment - Overall Rate of Care</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="2ab74d5d-534f-4119-87b1-f31673274ffd">
+          <AttributeID>ER ANALYSIS Q11822 1 CDS</AttributeID>
+          <Name>ED Visit - ER - Overall Assessment - Rating the teamwork between doctors nurses and staff</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="c15d6611-fe60-489f-8b2d-905823a83118">
+          <AttributeID>PG PE SURVEYED</AttributeID>
+          <Name>ED Visit - PE - Survey responded</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="513d63de-6b57-4779-9160-9730ef595451">
+          <AttributeID>PE ANALYSIS A2 CDS</AttributeID>
+          <Name>ED Visit - PE - Insurance - Privacy</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="3cff2866-c778-49c2-8fca-c1aea5e424f5">
+          <AttributeID>PE ANALYSIS A20 CDS</AttributeID>
+          <Name>ED Visit - PE - Insurance - Courtesy of Staff</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="2ae66ac6-1690-463e-80ac-445c11b8b1af">
+          <AttributeID>PE ANALYSIS A24 CDS</AttributeID>
+          <Name>ED Visit - PE - Arrival - Wait Time Before Being Called</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="7062bfb9-5b5e-4de7-a269-fdac37fdf922">
+          <AttributeID>PE ANALYSIS A25 CDS</AttributeID>
+          <Name>ED Visit - PE - Arrival - Helpfulness of Staff</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="8918e498-f3cc-4d40-843f-6f83c6df4c5e">
+          <AttributeID>PE ANALYSIS A3 CDS</AttributeID>
+          <Name>ED Visit - PE - Insurance - Ease of Completion</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="ac101316-1e46-4564-bc24-b4e50bb5cca0">
+          <AttributeID>PE ANALYSIS A4 CDS</AttributeID>
+          <Name>ED Visit - PE - Arrival - Wait Time Before Noticed Arrival</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="223a8d8d-569d-4228-92eb-5a0bc2284d5c">
+          <AttributeID>PE ANALYSIS A5 CDS</AttributeID>
+          <Name>ED Visit - PE - Arrival - Comfort of the Waiting Area</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b7db21dd-3441-41f4-8fcd-650b2913c537">
+          <AttributeID>PE ANALYSIS A7 CDS</AttributeID>
+          <Name>ED Visit - PE - Arrival - Activities to Engage Child</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="873bb185-1256-4f1a-96e8-7fecd7a16471">
+          <AttributeID>PE ANALYSIS B1 CDS</AttributeID>
+          <Name>ED Visit - PE - Nurse - Courtesy</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="f2b74fda-eeec-4f76-9de1-df12a54a4ae3">
+          <AttributeID>PE ANALYSIS B11 CDS</AttributeID>
+          <Name>ED Visit - PE - Nurse - Listen to You and Your Child</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="0e942fd8-49a7-495d-8cd2-f57bf8a26759">
+          <AttributeID>PE ANALYSIS B3 CDS</AttributeID>
+          <Name>ED Visit - PE - Nurse - Attention to Your and Your child Needs</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="2d0c2cd1-7cf9-472d-9396-7ae79b217f9f">
+          <AttributeID>PE ANALYSIS B4 CDS</AttributeID>
+          <Name>ED Visit - PE - Nurse - Informing Treatment Information</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="544ff51c-3f97-45cc-9970-7a86c5f36fb7">
+          <AttributeID>PE ANALYSIS B5 CDS</AttributeID>
+          <Name>ED Visit - PE - Nurse - Privacy</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="60494cc9-1108-41ba-8595-4b023495f822">
+          <AttributeID>PE ANALYSIS C1 CDS</AttributeID>
+          <Name>ED Visit - PE - Arrival - Waiting Time to Treatment Area</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="fee5b1e9-a908-4bd1-acc1-65bdfc8887aa">
+          <AttributeID>PE ANALYSIS C2 CDS</AttributeID>
+          <Name>ED Visit - PE - Doctor - Courtesy</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="d0cf0d4e-8475-462a-b3ac-676b0e5c4d82">
+          <AttributeID>PE ANALYSIS C4 CDS</AttributeID>
+          <Name>ED Visit - PE - Doctor - Concern for Comfort</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="daa11f46-3a00-4ebf-8937-d8c1bdc95135">
+          <AttributeID>PE ANALYSIS C5 CDS</AttributeID>
+          <Name>ED Visit - PE - Doctor - Informing Treatment Info</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="2b4d9700-c775-4fe3-809d-1425b248c710">
+          <AttributeID>PE ANALYSIS C6 CDS</AttributeID>
+          <Name>ED Visit - PE - Personal Issues - Home Care Instructions</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="e0aac0a1-1b5f-4792-a241-37e4568bde76">
+          <AttributeID>PE ANALYSIS C9 CDS</AttributeID>
+          <Name>ED Visit - PE - Doctor - Took Time to Listen</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a27354d4-9c6a-4f44-bbca-fb7634798083">
+          <AttributeID>PE ANALYSIS D14 CDS</AttributeID>
+          <Name>ED Visit - PE - Test - Concern for Comfort When Blood Drawn</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="d20aec4b-7e43-4ff6-aefc-1bf65f834f36">
+          <AttributeID>PE ANALYSIS D15 CDS</AttributeID>
+          <Name>ED Visit - PE - Test - Concern for Comfort During Radiology Test</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="efd11a4d-f027-4f24-9747-2c2139521d3c">
+          <AttributeID>PE ANALYSIS D2 CDS</AttributeID>
+          <Name>ED Visit - PE - Test - Courtesy of Person Who Took Child Blood</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="999ff6ec-8700-40a7-a456-278df7a6f275">
+          <AttributeID>PE ANALYSIS D3 CDS</AttributeID>
+          <Name>ED Visit - PE - Test - Radiology Waiting Time</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="83273d4e-6697-4a61-a3cd-ac88aa688fd4">
+          <AttributeID>PE ANALYSIS D4 CDS</AttributeID>
+          <Name>ED Visit - PE - Test - Courtesy of Radiology Staff</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="2b7a61e6-170c-4ce6-b7c8-6440849e3ab8">
+          <AttributeID>PE ANALYSIS F1 CDS</AttributeID>
+          <Name>ED Visit - PE - Personal Issues - Well Informed About Delays</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="9ae1135c-4676-43ea-a030-1f9b6e56d0c6">
+          <AttributeID>PE ANALYSIS F15 CDS</AttributeID>
+          <Name>ED Visit - PE - Personal Issues - Pain Well Controlled</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="ddaeb222-6298-41e8-96a4-ec6966e41515">
+          <AttributeID>PE ANALYSIS F2 CDS</AttributeID>
+          <Name>ED Visit - PE - Personal Issues - Staff Sensitivity to Fears-Concerns</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="44e3f320-1851-4f74-8d80-5ecf9a2cb197">
+          <AttributeID>PE ANALYSIS F20 CDS</AttributeID>
+          <Name>ED Visit - PE - Personal Issues - Overall Care Rating</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a9483cff-cdde-4832-8d40-8ff345200c1b">
+          <AttributeID>PE ANALYSIS F4 CDS</AttributeID>
+          <Name>ED Visit - PE - Overall Assessment - Facility Recommendation</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="6370e537-e70e-49cf-a5e7-fc5258c39b26">
+          <AttributeID>PG ER SURVEYED</AttributeID>
+          <Name>ED Visit - ER - Survey responded</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <AttributeHierarchyDisplayFolder>Hidden</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f174d996-cd36-4464-9466-197c69e02f7c">
+      <ID>MEANS ARRVL CDS</ID>
+      <Name>ED Visit - Means of Arrival</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6cb9c3a7-7e30-42cd-bee3-1b5038b45713">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="2c79d84f-877e-48cf-849d-85381bf549bd">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>MEANS_ARRVL_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="330902a8-65bf-445b-94d5-62d05117d3ae">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="5493034f-015a-4aa2-bbf8-2f12fcaf3790">
+          <TableID>EDVisitMeansOfArrivalDim</TableID>
+          <ColumnID>MEANS_ARRVL_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="40280908-fa6c-474b-906a-c954e82f35a9">
+      <ID>ACTY LVL CDS</ID>
+      <Name>ED Visit - Acuity Level</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="378f2034-bad9-4abe-aa65-66f6b5d2d798">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="3377eef8-dcb8-434b-a00e-35ee21aa6c7a">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ACTY_LVL_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="68ffaea4-9064-4b6e-9258-9a381ad6bd61">
+        <DataType>WChar</DataType>
+        <DataSize>15</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="3123bfd6-34a4-4236-b91b-410275120356">
+          <TableID>EDVisitActivityLevelDim</TableID>
+          <ColumnID>ACTY_LVL_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="875886a8-0361-4677-81e1-f76b5acb393d">
+      <ID>VST FNNCL CLSS CDS</ID>
+      <Name>ED Visit - Financial Class</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="00ccde6c-a8ac-49a7-bad0-ddb0e12dd029">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="024c8eb0-f41a-4670-829f-541aa6450b83">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>VST_FNNCL_CLSS_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="62133827-efe1-40cd-a69f-325aee660e03">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="16809948-62e7-46ac-affb-de981a5308df">
+          <TableID>EDVisitFinancialClass</TableID>
+          <ColumnID>VST_FNNCL_CLSS_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="8df7e7a7-b6f8-4977-a6d0-5b3244431128">
+      <ID>ED DSPSTN CDS</ID>
+      <Name>ED Visit - Disposition</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="97d248b9-1db4-4217-a6da-c2ecb627943f">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="75509ca7-0314-4264-acde-f1e8e3f499b2">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ED_DSPSTN_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="d7b7bdae-804f-48fc-a304-c02642597582">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="0706229d-e506-49c8-897a-48a46008bf63">
+          <TableID>EDVisitDispositionDim</TableID>
+          <ColumnID>ED_DSPSTN_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="32ab41c2-d2be-44bd-b627-f73433e0f4f0">
+      <ID>ER ANALYSIS A2 CDS</ID>
+      <Name>ED Visit - ER - Insurance - Privacy</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="98e55996-f6e7-4476-ac35-f868aa10e0e7">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="3ce1dfbb-2422-4353-a5ba-12b760e017d8">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_A2_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="30fc947b-bf73-4aff-804f-eab3867d2a16">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="00c9f644-a883-4125-b2c4-f0d23c16e6ef">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_A2</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="14d05b8e-13c8-4a02-89c1-3a42b5066cd5">
+      <ID>ER ANALYSIS A28 CDS</ID>
+      <Name>ED Visit - ER - Insurance - Courtesy of Staff</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="fc17c73a-d062-4065-b89e-f10b3a312b39">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="02155454-7b71-479c-b0cc-1102cf9cf259">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_A28_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="62b1c86f-248a-4c54-a5f1-557eec21b83d">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="bbfe62b8-14c3-4a8e-88fd-68536e6a4703">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_A28</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="cd1f92b4-ae7a-4a0c-b617-09376b4ae87f">
+      <ID>ER ANALYSIS A3 CDS</ID>
+      <Name>ED Visit - ER - Insurance - Ease of Completion</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e9494f2f-abca-4925-930c-e472b459ba6d">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c117a3a5-8daf-49a9-9045-d1cb60209bb0">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_A3_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="6b68ea8f-257d-4422-8d8e-6a4fa09ed78d">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="faf20e54-2c2b-49d2-9cc9-39b7b04e293a">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_A3</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="5a265e60-2d52-4b18-8ebb-2307e0cfb936">
+      <ID>ER ANALYSIS A4 CDS</ID>
+      <Name>ED Visit - ER - Arrival - Waiting Time Before Brought to the Treatment Area</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="38883701-eb56-4189-b744-3d67b04a2e40">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5e80a98d-2646-4d1b-b439-01e734434000">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_A4_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="0719c1ba-50f4-4dd6-9aee-cb25de039c19">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="39a1cce4-faae-4a47-aee9-35ea2fc05796">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_A4</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e9d3a5a9-d823-4f72-a4bc-d616d46874a4">
+      <ID>ER ANALYSIS A5 CDS</ID>
+      <Name>ED Visit - ER - Arrival - Comfort of the Waiting Area</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="69477243-93a5-495a-9b48-85b698ea92ad">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ffc84b86-4062-409e-8142-a543e25c91d6">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_A5_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="37d09965-ce9f-43e6-9193-af459c8b6a4d">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="99cde0de-9682-48b4-aaf1-78ef314f1ea1">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_A5</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="2a56c023-5f21-4ff1-af85-960702928b7c">
+      <ID>ER ANALYSIS A86 CDS</ID>
+      <Name>ED Visit - ER - Arrival - Wait Time After Arrival</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f2cbee28-2505-4495-ae74-b07050b4ffe7">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6160933a-3e2b-4155-9d79-8d0cc199c45d">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_A86_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="8b52e3e6-70e1-4df9-b284-665378f5d87a">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="ac5cfca5-2e9f-4ca4-94c8-611f66a541b5">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_A86</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="169786a3-1d09-47ab-888f-af401e636ffc">
+      <ID>ER ANALYSIS A87 CDS</ID>
+      <Name>ED Visit - ER - Arrival - Helpfulness of Staff</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="1e2fbea2-1dee-40e4-aadc-e02811453ce5">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6b59e03a-ef21-4779-81e5-b1695e47643b">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_A87_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="41cce51f-dffa-4832-af2b-d1e20dfa58a0">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="3f316cc7-5554-4d9e-ae29-0ed8ab67a7f3">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_A87</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="9825ce54-5fc2-4cc0-bd0a-86bd96bb1efc">
+      <ID>ER ANALYSIS B1 CDS</ID>
+      <Name>ED Visit - ER - Nurse - Courtesy</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b35c710f-d1c8-4b31-a9d6-dcdedb1699b2">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e3f34650-ff77-49b0-a990-2b5f9a3d6583">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_B1_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="841c4631-9ed7-4a7f-a189-17098e65263e">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="ec8936ea-43fd-41eb-bca9-1d9cd2bbf50b">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_B1</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="fddf8d19-853e-460f-8565-6d5c5275b1e4">
+      <ID>ER ANALYSIS B3 CDS</ID>
+      <Name>ED Visit - ER - Nurse - Attention to Needs</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="a34f1323-5dd0-499d-bf14-4b40a64d959a">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="225cb087-a913-4d00-b612-d025f9fe9c37">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_B3_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="161a0f25-d1e4-4413-a471-f2ee49e23fc6">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="62f4f430-d0a0-4cec-9232-8b0d9b0245a0">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_B3</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a4ecf494-3221-45af-98e9-0eb3ca52fce2">
+      <ID>ER ANALYSIS B4 CDS</ID>
+      <Name>ED Visit - ER - Nurse - Informing Treatment Information</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6e0940b9-5611-491c-b83f-3e2b4505dd1e">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b6514ef2-e370-4011-97ce-839763aba117">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_B4_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="7e466a88-8916-46e2-b604-59c19b003538">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="7dd0e8e8-d30c-47fc-8785-c869c04e6e14">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_B4</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="edb7f573-9400-4548-b1c9-8b8fb72aefe6">
+      <ID>ER ANALYSIS B5 CDS</ID>
+      <Name>ED Visit - ER - Nurse - Privacy</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="90cf0654-f69c-4bc4-b46b-05747d7812f4">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="bc3a77fb-bcef-4163-a3a9-5133972dc36d">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_B5_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="30cfb445-f9f8-4cb8-846d-16fe4b62a3cf">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="1ac7a3cd-0926-4ab9-a2b9-1c0ff4c7346d">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_B5</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="5a62dba9-7d23-4a03-8059-dfbeeb5679ad">
+      <ID>ER ANALYSIS B76 CDS</ID>
+      <Name>ED Visit - ER - Nurse- Listening Carefully</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="21567a25-3279-4d6a-a51c-5c0a58003ae6">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="21153f58-3293-408d-a0ce-60ea397bb28a">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_B76_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="abd04623-91fd-46f5-a5e8-941ced3c1d60">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="943a86c1-3eaf-4eb3-8b9d-0f94861b3b80">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_B76</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="020cb2d8-6758-4c50-8b24-0439c15ddb8f">
+      <ID>ER ANALYSIS C1 CDS</ID>
+      <Name>ED Visit - ER - Arrival - Wait Time in Treatment Area</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c030241c-23fd-4a06-b532-765a5dd4f6fe">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b4bdb42d-7da5-4be1-a28a-da42fb0cb3fa">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_C1_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="29707da6-1e41-41da-9561-53108c7e7d58">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="085d0b27-5c86-4d69-93b7-a0eba8e50805">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_C1</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="c2a7cad0-15ba-4e02-ba8a-7310fd972b2c">
+      <ID>ER ANALYSIS C2 CDS</ID>
+      <Name>ED Visit - ER - Doctor - Courtesy</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="db4f66ef-c15d-4224-a566-c69dea42a131">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5cfdfed5-0ee8-4f30-bacf-98edefd81848">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_C2_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="352b3c9c-7c8c-426d-a251-47d6a8680b04">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="72d4f535-db96-48c4-a02a-c82f0e4efbe9">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_C2</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f3a4d1a8-5ac5-4669-8ef3-ba3cbce725ff">
+      <ID>ER ANALYSIS C4 CDS</ID>
+      <Name>ED Visit - ER - Doctor - Concern for Comfort</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b81be39d-c8a1-4e6b-84a9-fca8492f1e40">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="66380d99-ccb5-468b-b21d-7a5fd9388d70">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_C4_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="1262da3c-0f33-464e-9f10-6a14b656cf30">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="baf41aac-29b5-42f6-a64a-2badc206b8b6">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_C4</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="fdbee0a3-0a2a-4c6d-bfee-125eb9b6224b">
+      <ID>ER ANALYSIS C5 CDS</ID>
+      <Name>ED Visit - ER - Doctor - Informing Treatment Information</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ce5deddc-3a99-450c-a606-b18dbf123828">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c5882f17-639d-4ed7-b58a-852a68dae8db">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_C5_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="368b6ac4-b4de-45a7-b8ba-130d9f564392">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="cd5cc2fe-048c-4bec-b85f-9f383ab1bebd">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_C5</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="b00adbf7-d6e4-41f8-9893-328ff747eb78">
+      <ID>ER ANALYSIS C7 CDS</ID>
+      <Name>ED Visit - ER - Personal Issues - Given Take Home Information</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6169ff4b-30da-415b-9420-e86b62122f70">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c9a86fcc-f559-44c4-b01a-04ba3626e62e">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_C7_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="8fd0b698-f629-426b-a50e-499551ece80c">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="6b0c7713-a6b5-461a-9ae5-3c31cf086272">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_C7</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e2ef9682-0d87-49b6-ab83-769a0cb77675">
+      <ID>ER ANALYSIS C75 CDS</ID>
+      <Name>ED Visit - ER - Doctor - Listening Carefully</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="57556b48-f737-49ac-b5f4-7faaa2ed8990">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="3d7df364-3f74-400f-b5a8-6d890eba727d">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_C75_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="42d56a9b-db81-45da-a486-39be04fc035c">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="3fe1a02c-fce6-4446-8e10-7ae832623c32">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_C75</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="4723a37c-dc40-449d-aa3e-14cf0fb8a27e">
+      <ID>ER ANALYSIS D2 CDS</ID>
+      <Name>ED Visit - ER - Test - Courtesy of Person Drawing Blood</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="86912c3e-bef3-4b36-ad07-6b35968c8a6a">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="674c54e7-62ff-42c0-bbf7-7dbe2c1ad7d0">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_D2_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="f78352c8-a0df-4c81-9b76-0d9d10ace586">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="58a2b80c-2344-4769-ab21-c28385e8ce62">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_D2</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="64974eb5-46a0-4ec5-a5c4-15c2a97cc604">
+      <ID>ER ANALYSIS D3 CDS</ID>
+      <Name>ED Visit - ER - Test - Radiology Waiting Time</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="01c2ce6c-5326-4f77-95c6-ee82836a88bb">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="854542d8-fe6e-4ea6-8ca2-435bae5dd015">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_D3_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="23519678-7c79-4649-afad-9f645cdaf48f">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="de3ac537-fd08-4950-a281-0c8faa737154">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_D3</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f9706ffd-94a6-4c5f-b32a-aef703ddf4dc">
+      <ID>ER ANALYSIS D4 CDS</ID>
+      <Name>ED Visit - ER - Test - Courtesy of Radiology staff</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="998cf1b9-d6b5-496f-a5ea-95f19345fad1">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d0bd6221-f520-4e56-9376-41494d0034ee">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_D4_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="7a2ed3d4-cf83-48c5-89d3-ff2f8201255a">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="65178927-c1c6-4d93-adf9-eeca7fd5820d">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_D4</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="48132f3e-6f68-4919-9a28-1f6dd2da0601">
+      <ID>ER ANALYSIS D52 CDS</ID>
+      <Name>ED Visit - ER - Test - Concern for Comfort When Drawing Blood</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0be359d5-13be-4d81-8962-e2b947cd31ad">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="312fb148-3234-4d58-ba3f-0fef5e9328c7">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_D52_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="0388e343-84b7-4a97-aae8-6d3c145bdf6e">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="73c65665-5d48-403f-a258-6d30506a7660">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_D52</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a1959529-a19a-4cc4-9aad-77025d5ad6e5">
+      <ID>ER ANALYSIS D65 CDS</ID>
+      <Name>ED Visit - ER - Test - Concern for Comfort by Radiology Staff</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c23d5c55-1dad-4ac4-9dc4-1b0b2ef4e312">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a0b9dd58-dcbc-4bc7-b901-95a21eefe220">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_D65_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="0907ee1b-8d21-4369-8938-d11673f4bac7">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="fb329436-ae70-4e0f-a622-dae590db8fa4">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_D65</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="8bd684be-e991-40b0-bcdf-4e7f6adc59c9">
+      <ID>ER ANALYSIS E1 CDS</ID>
+      <Name>ED Visit - ER - Family-Friends - Treatment</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="fc3aabdd-0d6b-45ea-94cf-a907d3c67863">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="995a0b52-8225-4c94-96f3-96e967b959cd">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_E1_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="d3f5fb30-3737-4682-81c4-5c0a78ca74cb">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="ead98fea-3e2e-47bf-9d46-6bea25ff8749">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_E1</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f9164b8e-98ef-42b4-8814-481aacfadee9">
+      <ID>ER ANALYSIS E2 CDS</ID>
+      <Name>ED Visit - ER - Family-Friends - Staff Concern for Informing Family</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5778b7ca-6dd3-4ff3-949b-827d52233c4d">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4d321d02-76e7-4069-ae9c-4d79e45997e0">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_E2_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="0e25a086-7739-4007-a098-b5ba483f76af">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="195507b9-3538-4b3a-b424-95b22dfbd41d">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_E2</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="5739b210-1545-4691-9806-5ce55f628730">
+      <ID>ER ANALYSIS E3 CDS</ID>
+      <Name>ED Visit - ER - Family-Friends - Staff Concern for letting Family be present</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e8ca204c-d344-4405-8630-b8b2653e90eb">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="15945ef6-7b7c-44fb-bbdb-41e58f749aee">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_E3_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="2395c92f-b484-4af5-b2b9-1b025bb57ff7">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="a39683ce-d49d-4bba-9ebc-bcb3a6641fa9">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_E3</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="32b644db-0d5d-4493-bf5c-68c7ad24ffd8">
+      <ID>ER DEMOGRAPHICS EDCP1 CDS</ID>
+      <Name>ED Visit - ER - Going to ER - Primary Reasoning for Visit</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="36c44502-e0c8-4da6-b8dc-89b1c7e1e530">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a1bbc4ae-eb7a-4e22-af91-babc6f73ad49">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP1_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="f864e755-d102-41b4-8092-3dd279607a89">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="ad837560-e5ee-4ef1-9f78-5bed44badd3a">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP1</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f8b186eb-4978-4f96-8360-348c48bd58cd">
+      <ID>ER DEMOGRAPHICS EDCP10 CDS</ID>
+      <Name>ED Visit - ER - During Visit - Given New Medicine</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="8e56295b-8e6f-4d43-bb4c-c0a869471ba3">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="3137c885-211d-4fec-84ed-48efa1ff7b4d">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP10_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="a55f8a98-6140-4752-808c-c326e85b7fa8">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="15cbb263-2009-4fe9-a0e1-4e45ddedac19">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP10</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a2f752ad-adfa-4820-a74e-2259aed02fd0">
+      <ID>ER DEMOGRAPHICS EDCP11 CDS</ID>
+      <Name>ED Visit - ER - During Visit - Explanation of New Medicine</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="265be124-b879-403f-99ec-40cee5bcaf9b">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e2bbf78a-4a6b-477e-a728-707a7ce602ff">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP11_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="68f41039-8c0a-4ada-9e67-86be5aad8538">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="8f79964d-f9eb-4135-9726-0cc9d1478ee2">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP11</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3d80f6cb-03a0-4c68-b4ee-b80604e975a4">
+      <ID>ER DEMOGRAPHICS EDCP12 CDS</ID>
+      <Name>ED Visit - ER - During Visit - Understandable Explanation of New Medication Side-Effects</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="9aaf96dc-e481-4e19-b925-4f6c851148fc">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f1d53ac7-e2c1-441b-af44-1e6cb2af2866">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP12_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn dwd:design-time-name="aba00819-af6f-413d-9b1c-8491246fea86">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="e544118e-8332-46d4-a26e-8d968f8861d8">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP12</ColumnID>
+        </Source>
+      </ValueColumn>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3f2885ab-1c43-4254-a28d-86bce85c56f2">
+      <ID>ER DEMOGRAPHICS EDCP13 CDS</ID>
+      <Name>ED Visit - ER - During Visit - Have Pain</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="1cbd1774-a2be-4add-9fc6-89bb2b3fe1b2">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="2525eec5-43ef-4999-8078-04a9814deb37">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP13_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="1652ad29-1b4d-4d6b-af2f-4bd59a90dc0e">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="45258d7d-e63a-4df2-b03a-95e40003f322">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP13</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="1469bba1-132b-437d-91a4-6ead82e553a5">
+      <ID>ER DEMOGRAPHICS EDCP16 CDS</ID>
+      <Name>ED Visit - ER - During Visit - Blood Test X-Ray or any Other Tests</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="2f1ddf1b-6c3a-4a0e-a216-64c1723a55be">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="31ae4695-5433-4a63-b4b4-63154a85c73b">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP16_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="270f04e9-a390-419e-a810-92f70a6f668b">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="4ab638d7-40a8-40b4-94a7-f3481d0c1267">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP16</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e7bcb664-4e67-4c85-8a22-98a4887244b9">
+      <ID>ER DEMOGRAPHICS EDCP17 CDS</ID>
+      <Name>ED Visit - ER - During Visit - Results of Tests</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0bc22505-9f2b-4930-8e15-f3cc2f4047dd">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="51d44c8e-61cc-41ff-a549-b65d5b5c1b37">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP17_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="e124c56b-1ffa-4611-83ed-113e1be1cf86">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="cc589087-69b6-465c-b2c8-6b04d0042671">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP17</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="4049d24f-7c2e-4787-b663-0f58b8f0a020">
+      <ID>ER DEMOGRAPHICS EDCP2 CDS</ID>
+      <Name>ED Visit - ER - Going to ER - Transportation by Ambulance</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="8a1bb878-3aef-4af9-807a-e5111c21fac0">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5ac2f374-53d6-48d8-bd24-b876766ce2c8">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP2_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="1b5ca795-69af-4843-87ac-6ce8ed2a5d0a">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="532cc2cd-6348-457e-a892-e6041ac075fa">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP2</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="da810ab7-4692-484c-a572-215c7cfa2a93">
+      <ID>ER DEMOGRAPHICS EDCP22 CDS</ID>
+      <Name>ED Visit - ER - Staff Care - Courtesy of Nurses</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="2f45e71f-3e7b-415d-8fe4-3650b6622cc0">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ac3d8dc1-6e0a-4d05-92b1-a96a15735495">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP22_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="f7f728e2-7c89-4346-b29e-72fc77883954">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="e0141df5-333e-4b7c-8a31-041b707574a3">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP22</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="48b076de-4cec-4492-a372-8616313af432">
+      <ID>ER DEMOGRAPHICS EDCP23 CDS</ID>
+      <Name>ED Visit - ER - Staff Care - Nurses Listening Carefully</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="34e4006a-9a72-4f55-afdd-6bac3c47f9ba">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="074e71d5-5724-4e49-90f8-da968e7be044">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP23_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="1c310cf5-116a-49c7-b37b-4251219cf84b">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="9edead02-9ee7-4ffc-a5fe-01e74cc00ed5">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP23</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f81784ae-e574-439b-99e0-2a5cda238cbe">
+      <ID>ER DEMOGRAPHICS EDCP24 CDS</ID>
+      <Name>ED Visit - ER - Staff Care - Understandable Explanation by Nurse</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="2329ee3d-e559-4858-ac36-f55c059a6405">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="166b8ae3-29fb-4cb4-800a-44c1854fb4a4">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP24_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="4624df31-19e3-422c-991b-14166c62cc5a">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="bca5d3e7-95e2-4d7f-b1a2-927472446b7a">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP24</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="1eae9b57-ac7f-40df-870c-180b2ad45a2a">
+      <ID>ER DEMOGRAPHICS EDCP25 CDS</ID>
+      <Name>ED Visit - ER - Staff Care - Time Spent with Nurse</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="09885cf2-80e5-4490-bb42-ed8ad54c3cad">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6083fac1-ae35-4d0c-9ac8-a4062020126b">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP25_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="5594b962-e76b-42c6-a69d-f63cab574133">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="42fb278f-52c2-43ae-a9be-1b00270653d8">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP25</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="ad9b2cef-91d4-4513-b3ff-8eaafdd0a66e">
+      <ID>ER DEMOGRAPHICS EDCP26 CDS</ID>
+      <Name>ED Visit - ER - Staff Care - Courtesy of Doctors</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5306b010-9452-4657-8c03-e27d34e8e150">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="69bb2fcd-6d02-45b5-a276-ab48e507a111">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP26_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="9827b315-1de9-475d-8fc5-f8dc70057a8a">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="75541603-4cd7-47c5-a43b-7725843e4bfd">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP26</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="afad838f-ef65-4dee-8401-843c96e1b3ef">
+      <ID>ER DEMOGRAPHICS EDCP27 CDS</ID>
+      <Name>ED Visit - ER - Staff Care - Doctors Listening Carefully</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5470ff83-d6cf-4cd8-a9b8-e836141d0dbd">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a2c6a16e-cdaf-4d23-80e3-cc74130af0db">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP27_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="e4608aa9-0d1d-494c-86b5-17d1b223a0d1">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="159345e7-bf96-43fc-b962-2d7c6e15d320">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP27</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="735d1be3-3473-4a45-8504-e60b5e158f3d">
+      <ID>ER DEMOGRAPHICS EDCP28 CDS</ID>
+      <Name>ED Visit - ER - Staff Care - Understandable Explanation by Doctor</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e1e7913e-128d-4f37-8deb-0e9227f5b6ce">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="804bedf1-7366-43ad-b06d-30d7caaa1144">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP28_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="b6374bd2-a3cd-45e5-98bc-158b0a4c125d">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="e563b303-ac92-46fb-bcc1-68be68b538d3">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP28</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="4f09a031-cc64-4351-8953-ce855659b010">
+      <ID>ER DEMOGRAPHICS EDCP29 CDS</ID>
+      <Name>ED Visit - ER - Staff Care - Time Spent with Doctor</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="28912079-479e-4391-b999-506d9b3a7015">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="194b0155-32ba-44a2-94e4-b337b2a8544f">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP29_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="977bfac9-f540-42c4-b6bc-34ed85e83fd1">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="a1a4557b-8494-4f40-94e7-bb7caef665a7">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP29</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="2feba0f2-8117-4816-a190-b30e84e62104">
+      <ID>ER DEMOGRAPHICS EDCP3 CDS</ID>
+      <Name>ED Visit - ER - Going to ER - Arrival Wait Time</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="7a59779f-684e-47c9-847b-f79c8a2b3144">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="2cd99b74-a189-41c4-b35c-781e5c3dbd13">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP3_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="32e398d0-a8b3-4046-bf6b-45d3b2f2c0f5">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="388a608a-bc40-4414-b2e4-4a04f9f3e2d6">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP3</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3bef55c9-d190-48b2-ab69-7fb647b69e32">
+      <ID>ER DEMOGRAPHICS EDCP30 CDS</ID>
+      <Name>ED Visit - ER - After ER - Understand the Main Health Problem</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b3d956ed-672d-4e12-852d-efb982031ad4">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="598b9e7b-6c42-43d0-a241-e28e3b2697d6">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP30_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="d44157c6-4cb0-43e4-84c2-b627453117dd">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="935efd8a-5555-4c00-95f6-372538c11469">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP30</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="645e7c27-fa25-493b-a20e-007ffedf9d2f">
+      <ID>ER DEMOGRAPHICS EDCP31 CDS</ID>
+      <Name>ED Visit - ER - After ER - Symptoms of Health Problem</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6aae61eb-0f73-4ca8-a45d-118ffe409964">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d5b017ac-d2b7-46bb-b433-24fe098b76cc">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP31_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="afefb76a-5177-4e4b-8fc4-0646cd352bc5">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="c4ada6ef-cb19-4e9e-a5ab-ffc39830542e">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP31</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="0c4ab63f-1e1b-4603-9415-b926df688a7c">
+      <ID>ER DEMOGRAPHICS EDCP32 CDS</ID>
+      <Name>ED Visit - ER - After ER - Prescribing New Medication</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ce05caab-9821-4ac5-b9c9-c3cacd3890c9">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a1560d10-0320-465d-b85d-58a9ce9cdf5a">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP32_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="036e0d8e-d006-4e47-964f-db48d4eb228d">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="03b3c31d-e7e7-4f3d-ac25-c5cc4bb89ffb">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP32</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e7f077f3-e8ad-4a02-9b03-fe69b2b2133d">
+      <ID>ER DEMOGRAPHICS EDCP33 CDS</ID>
+      <Name>ED Visit - ER - After ER - Understandable Explanation of Newly Prescribed Medication</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e6f5fdbb-9fa6-455a-81b4-2abe1bb91e0c">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4f68b4d7-e6fa-4933-841e-9c60cdabfc8e">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP33_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="5575e371-d5f8-42fc-9885-eca2a3ec7348">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="ee15ee17-1758-4281-8d38-df9c133f5e57">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP33</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="572e874b-be7f-4780-846a-85b71ea8c595">
+      <ID>ER DEMOGRAPHICS EDCP35 CDS</ID>
+      <Name>ED Visit - ER - After ER - Able to Get Follow-Up</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ce11449e-44de-40e0-b850-ae98da6729a2">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="eb9ff9a8-389c-458d-b89e-93a4ef7dfcde">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP35_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="cb766bc9-6f79-4637-b0dd-be332017a627">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="58b3e989-e02f-452f-b22e-01c32c5fe62b">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP35</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="4314149e-d752-49d8-88ef-47a4262bafd0">
+      <ID>ER DEMOGRAPHICS EDCP36 CDS</ID>
+      <Name>ED Visit - ER - Overall Experience - Facility Rating</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e1bd5e16-a5df-4472-8d47-7469f18df89c">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="dba614bb-06d5-4992-8d82-c00f1079451b">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP36_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="dd3f5a4f-f02f-4b5c-8e31-07777bb5247f">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="2dcda582-bcf1-4332-8432-fa662a4412e9">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP36</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="78fb593c-cec1-462d-a217-2633995229fb">
+      <ID>ER DEMOGRAPHICS EDCP37 CDS</ID>
+      <Name>ED Visit - ER - Overall Experience - Facility Recommendation</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="81f13763-9965-43be-837a-0dc0907b966b">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="355e89ac-7783-4605-809f-33a21d72113c">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP37_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="7e25691a-29c8-4f3b-abb6-ef432742d62f">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="0f38561e-83c7-4b92-97c9-1b94ea61d8fa">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP37</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="b6080f3f-b21b-4916-9b48-bfb19c5dcbcb">
+      <ID>ER DEMOGRAPHICS EDCP39 CDS</ID>
+      <Name>ED Visit - ER - Your Health Care - Frequency of ER Visits</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="cd1d87f0-06bd-4c85-b050-0f7a5a261067">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a16dfef2-2637-49ab-890d-8337211d9814">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP39_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="662525b1-b4db-4ee5-a980-6b0656316ed8">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="1dde22de-1b7e-4f29-8e7e-40d7c2a42d31">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP39</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="cfd7d1c8-bb14-42ed-8b05-71b355c674e4">
+      <ID>ER DEMOGRAPHICS EDCP4 CDS</ID>
+      <Name>ED Visit - ER - Going to ER - Importance of Visit</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="bff3c451-596e-45e6-b97f-f14910d96134">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="3c4e5d42-895f-4d8a-aa1a-60b2d3c3c391">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP4_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="e0d2ccce-76e2-4ba4-9594-120328e14870">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="cafe5835-a205-4b8e-8f85-414cda043d54">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP4</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="9b3c3cac-88bd-4a69-9c06-a908c2947703">
+      <ID>ER DEMOGRAPHICS EDCP40 CDS</ID>
+      <Name>ED Visit - ER - Your Health Care - Opportunity for Health Care</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b9750b88-c9cb-446b-baa9-ead47b5f965e">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="258c4e8b-64fc-4e14-812f-edb29db91468">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP40_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="cec57186-60b8-4862-bed6-c560abddcb82">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="fdb9b546-13f4-4e88-87e8-facfe033c1a7">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP40</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="12dc8e31-a000-445d-8eb9-1bb3bb96a91c">
+      <ID>ER DEMOGRAPHICS EDCP41 CDS</ID>
+      <Name>ED Visit - ER - Your Health Care - Frequency of Doctor Visits for Advice</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ac125dba-9756-4c89-b413-431ce5ad62ec">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="2e64afa4-e35e-4692-8288-cca24380aeae">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP41_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="666c439f-15cc-4742-8d90-188128f63e7d">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="0dc6f21e-35f5-4591-a4da-c0ac0f87a1fb">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP41</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="778e5551-a3af-407e-b003-fc4a1c75eddd">
+      <ID>ER DEMOGRAPHICS EDCP42 CDS</ID>
+      <Name>ED Visit - ER - After ER - Rate Overall Health</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="494597b7-026c-4709-ade8-fbc7d7c79701">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d9370c62-4dfc-43d5-8fff-058482c25a2a">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP42_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="7f59dc22-52f9-4d5c-8f03-357fb6ebe6b1">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="2e146e2f-787f-4b7c-87b3-1927ca92a1cc">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP42</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="45a82586-09f7-4364-92f5-8c764abf5543">
+      <ID>ER DEMOGRAPHICS EDCP43 CDS</ID>
+      <Name>ED Visit - ER - About You - Overall Rate of Mental Health</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="2a641750-4220-4270-8a8e-77fa3e7142a1">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="62fa4e9b-afbd-4d7b-b110-ec7ded64c8e1">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP43_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="dbd54841-f18c-4aa5-9ecd-d22497939a3e">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="b4a866a8-d0c2-43dd-8d50-abca6fdd5507">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP43</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="c71ec4f5-fb7c-4696-8a7d-b167741bf18c">
+      <ID>ER DEMOGRAPHICS EDCP48 CDS</ID>
+      <Name>ED Visit - ER - About You - Level of Education</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="601c9bbf-4fe1-432a-9c35-091a9729e760">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6a27fab4-1e5d-4b3c-9953-1d596e10b705">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP48_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="ae07ecda-3734-4d3a-8313-52989ad508fa">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="27872cde-7384-49bf-a293-858e88d1c3f2">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP48</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="327158c4-da9d-40a5-b62f-ede4150a0028">
+      <ID>ER DEMOGRAPHICS EDCP59 CDS</ID>
+      <Name>ED Visit - ER - About You - Completing Survey</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ba575f9e-c677-4b9e-8527-bc9b9b7116fb">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="bfe84558-3738-4956-96ce-2b6404f50df1">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP59_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="c20c6995-7c92-4f2e-935d-c593b4ad05e2">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="c19b124c-fe19-4fd6-bddc-83bfb7f64943">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP59</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="5b458c0a-41c3-41c7-978b-5e413da2d5c1">
+      <ID>ER DEMOGRAPHICS EDCP6 CDS</ID>
+      <Name>ED Visit - ER - During Visit - Getting Care Within 30 minutes</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d481c95f-70f5-4835-88be-aeb40cf889dd">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a4dba4e4-64c9-4ab3-a727-7d5e72c08b82">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP6_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="d1d53b66-bf66-4a46-be4f-2289d31815e5">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="37a91c21-e3ee-4cc7-8897-871b7966b11d">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP6</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f5ab38f2-6f9d-4b33-a44b-b837e72c87ca">
+      <ID>ER DEMOGRAPHICS EDCP61 CDS</ID>
+      <Name>ED Visit - ER - About You - Visit Assistance</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="bd35e10f-04db-47ec-89c1-cc1a09ef2e09">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a74110af-af10-43e6-a38f-dca0c54db894">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP61_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="5b1bc420-a108-44ed-b9b2-ddd77b2ef770">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="620c2651-6bc0-4d69-ab5e-d3c83b5f0bab">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP61</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="999d1f50-5a63-41fa-9d74-0a4ac0a410a6">
+      <ID>ER DEMOGRAPHICS EDCP62 CDS</ID>
+      <Name>ED Visit - ER - During Visit - Given Pain Medication</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="110150e3-7702-4e53-b9ea-8f6f211ac77c">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="40a8f361-0b74-405e-90bf-5cae19eca5a0">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP62_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="6c70b263-3457-48f4-970c-b73fcf233aec">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="4d07da81-8b90-4dbd-8625-ac3e0f382354">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP62</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="180f9226-e9b0-4a66-8af0-17399f680058">
+      <ID>ER DEMOGRAPHICS EDCP63 CDS</ID>
+      <Name>ED Visit - ER - During Visit - Reduction of Pain</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5e5a13f2-93b2-4726-886d-657637cd39b5">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e0e45155-c5e6-4ff6-9498-10f4983a1d39">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP63_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="6ead086c-2891-4ce0-8599-770fe023f3cd">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="e42ae754-57ce-47f1-a629-fc98d9fb9099">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP63</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="de03b460-9b44-4603-83a2-04dc7aebb92a">
+      <ID>ER DEMOGRAPHICS EDCP64 CDS</ID>
+      <Name>ED Visit - ER - During Visit - Explanation of Pain Medicine Possible Side-effects</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="2ca96879-89a4-4ddc-835a-eddd8a23311b">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e4a0c70f-aa29-40eb-b98b-81e640fdf333">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP64_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="568986e0-511a-4333-9e8c-dcb469d6f363">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="bea20ce0-82fd-493b-a190-764deaa3f8b5">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP64</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="63e269be-45b5-4de3-8ffb-5f33e07e3d1a">
+      <ID>ER DEMOGRAPHICS EDCP65 CDS</ID>
+      <Name>ED Visit - ER - After ER - Follow-Up Needed</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="4c28b14e-42ed-4b37-bf00-b9d876b6a908">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="921d06fc-c089-4c16-8b06-a58720d842a6">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP65_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="29848d2c-817d-4951-a059-365a59341546">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="758ea70f-3491-4bca-a92d-3f364b966ebd">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP65</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="b4ecea91-ba4b-4bc7-b3aa-32214e821d02">
+      <ID>ER DEMOGRAPHICS EDCP9 CDS</ID>
+      <Name>ED Visit - ER - During Visit - Medication Review</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b396b190-42a9-4de5-8424-9b38ab05a9b3">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7d64bdeb-0b1c-4332-b657-a74ebd152e0b">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_DEMOGRAPHICS_EDCP9_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="efdb33fd-b15e-4452-b253-d47d65ff6fd5">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="08ab9e20-5c65-4760-abae-75b1a7d87cd5">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_DEMOGRAPHICS_EDCP9</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a50a0307-6b2c-4e4b-bc9b-7e130541cd78">
+      <ID>ER ANALYSIS F1 CDS</ID>
+      <Name>ED Visit - ER - Personal Issues - Delays</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0f7bfe44-37e2-402a-b1c4-ad953b004542">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="08fef6ba-b28c-4d59-9418-24445808403e">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_F1_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="409391ad-aa33-4399-a97a-dda821c188e4">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="7d3a920c-f5d7-41f0-8310-3e655657eae5">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_F1</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="11d0996d-da1a-4437-a28a-41d83750f971">
+      <ID>ER ANALYSIS F2 CDS</ID>
+      <Name>ED Visit - ER - Personal Issues - Staff Care</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b263e3c8-d6a3-45d1-a049-ee68e9842d34">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="32525465-d065-454c-a37d-8a08d4932b09">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_F2_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="a2cab56f-92d8-4be2-bcdc-20ed08bf1016">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="727c2ee1-804c-46c2-854d-87a51963a4f9">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_F2</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e5b53608-08bb-417a-b16b-7ca719c62122">
+      <ID>ER ANALYSIS F4 CDS</ID>
+      <Name>ED Visit - ER - Overall Assessment - Facility Recommendation</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="099e27af-2415-4600-9636-2512c1e9dc34">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="98564239-d0f9-40ce-abb1-f452f7ce23a1">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_F4_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="dee265ad-5363-4757-9f52-a7012d8b44dc">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="63333664-44d8-4aee-b73c-4834d0e3d73d">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_F4</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="ef441772-7081-4c04-b831-22cec4955431">
+      <ID>ER ANALYSIS F41 CDS</ID>
+      <Name>ED Visit - ER - Personal Issues - Pain Control</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="fa56725a-d6dc-4219-9d0a-04ce91458928">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="850c3bab-5f11-4fb0-ac50-e418be91c6f4">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_F41_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="a475c0f7-fcdc-4eb3-979c-6c0eb1904a38">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="b8b754a3-5b83-4d4d-b538-14c0d34af2ec">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_F41</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a0561542-edbc-4c8d-81b0-8d703c4962e6">
+      <ID>ER ANALYSIS F68 CDS</ID>
+      <Name>ED Visit - ER - Overall Assessment - Overall Rate of Care</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f8a6e3c4-f3fa-4b68-ac4e-298c29aabab3">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="67953eab-a23e-4cc6-8a12-54d452393ea9">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_F68_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="e5b90e63-4452-4c3a-b56f-5e5d3837fe62">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="bf6951c1-7851-4f27-a04b-d6be9925f222">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_F68</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="8264b578-29dc-4249-a998-1b5d774e5f35">
+      <ID>ER ANALYSIS Q11822 1 CDS</ID>
+      <Name>ED Visit - ER - Overall Assessment - Rating the teamwork between doctors nurses and staff</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="9aaf6bed-7f47-4dcd-9ebb-9df841334c5a">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="181fb9ef-4c3e-493e-bdd4-057c3b6704ea">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>ER_ANALYSIS_Q11822_1_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="89012712-8813-4286-8343-6a7da6724ebc">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="9c479cd9-7156-4137-92ab-05c70bdd3852">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>ER_ANALYSIS_Q11822_1</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="aed6c05f-917b-4560-b7bf-eda1add7b83b">
+      <ID>PG PE SURVEYED</ID>
+      <Name>ED Visit - PE - Survey responded</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="055d3906-796c-4534-b35e-7bceb89c295b">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ddc4be6c-d91e-47f0-a462-d5ade250f232">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PG_PE_SURVEYED</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="1800f660-bff6-448b-96b9-143ce0d9257b">
+      <ID>PE ANALYSIS A2 CDS</ID>
+      <Name>ED Visit - PE - Insurance - Privacy</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="58777ecf-eec1-4f4d-ad96-1393b0128cf8">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="9fcace7c-6dca-4be0-9b69-3928cf83d7d3">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_A2_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="b4724fa3-6b67-450f-b335-33d61cc09177">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="839e9365-8a2e-434c-8ce6-a428c042a70b">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_A2</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="9f40a0da-88bb-499c-bb0a-61d367243dbf">
+      <ID>PE ANALYSIS A20 CDS</ID>
+      <Name>ED Visit - PE - Insurance - Courtesy of Staff</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="2621f1f7-bf7f-456a-853a-c43b6aac93be">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b874255b-a919-4a92-9ce2-ea357b3a0796">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_A20_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="a7d9da1b-6b3b-4a64-bf94-1408aa9fb92c">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="2f2f4e5e-0dea-41c4-8f11-fa4922b9e0fe">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_A20</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="6b501fd6-19da-4afc-80f6-689f0013fea9">
+      <ID>PE ANALYSIS A24 CDS</ID>
+      <Name>ED Visit - PE - Arrival - Wait Time Before Being Called</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="aa231df8-a989-4d0c-9529-7afb2b6a572d">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d1f04bd5-6cb2-4b90-93df-d369f8d59941">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_A24_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="f278048b-719d-40c9-927b-9f3ed060eae2">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="896e9c65-6bf2-41c9-886d-46049c66127f">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_A24</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="1c6bf11f-8a3a-4149-b85d-c7b37f068d02">
+      <ID>PE ANALYSIS A25 CDS</ID>
+      <Name>ED Visit - PE - Arrival - Helpfulness of Staff</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="1e00a479-66c1-4d93-a18d-50c67475fb85">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="99541cfb-afd6-420c-b076-50f42ca1a78d">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_A25_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="f4e7d413-769f-4633-8cd2-cc5d98b50003">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="093d2d7a-1e6c-4ac8-915b-3d39d416ca50">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_A25</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="6d52ab96-71fb-49c5-b5cf-b6019cdead38">
+      <ID>PE ANALYSIS A3 CDS</ID>
+      <Name>ED Visit - PE - Insurance - Ease of Completion</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="96728996-d1f2-46ba-95ae-a44bec366920">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="01ab14e5-9488-459b-8453-6778bb3a2c6e">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_A3_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="780dc385-b4a1-434d-99b4-5d8037c5dc54">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="ef27227d-01b4-468a-ad4a-a26fae60ff3c">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_A3</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="51baea20-f219-4dca-b689-d8cd1eb7aefd">
+      <ID>PE ANALYSIS A4 CDS</ID>
+      <Name>ED Visit - PE - Arrival - Wait Time Before Noticed Arrival</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d7744de9-1843-487a-ba44-b7698087532f">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="cf7e1cba-ef04-45c9-b3c6-957cc75ea8c7">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_A4_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="4bba998d-6103-43f7-b82f-9c6e883f73f8">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="5052c3c2-4e26-4e65-a831-2ed02d9283fa">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_A4</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="23b408be-279e-4161-a459-24dc796768f6">
+      <ID>PE ANALYSIS A5 CDS</ID>
+      <Name>ED Visit - PE - Arrival - Comfort of the Waiting Area</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="8e46d3f4-798b-4872-8302-c3b0de5f808b">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="aa255afb-7edd-4a9f-bf30-7b467c83b665">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_A5_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="e011a71c-ecce-4d2f-922b-1d09294f2b61">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="87cc228d-0071-4cfc-bf14-3c740c9a776e">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_A5</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="55f77378-0b19-4f94-8b68-5701c3b8d014">
+      <ID>PE ANALYSIS A7 CDS</ID>
+      <Name>ED Visit - PE - Arrival - Activities to Engage Child</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e427ece4-85b3-49ee-84bb-3b3ee9b82e44">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7e2952e4-0b53-4f3f-ad35-042aee48725f">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_A7_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="274b425c-5462-4d66-a387-592d4104d75f">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="8964f65c-f9ba-415f-9c48-fcd6d10ad1b4">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_A7</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="c6b6e4d0-98e0-4823-8c72-83e5d916caea">
+      <ID>PE ANALYSIS B1 CDS</ID>
+      <Name>ED Visit - PE - Nurse - Courtesy</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e53af6cf-6cf0-48cc-9805-0f2e0a89ea4b">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="968f630d-2f78-494d-a562-ad507f5c24ff">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_B1_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="79d0754e-0ad1-427d-9f31-b022318461f5">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="d3044e9f-2bc9-4e13-ab72-c3facc420fa4">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_B1</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="660815d1-eee3-4979-a5c5-3b42d8836a16">
+      <ID>PE ANALYSIS B11 CDS</ID>
+      <Name>ED Visit - PE - Nurse - Listen to You and Your Child</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ea34a68e-7596-40d7-94fc-57c90afea549">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="18a452f0-309b-4f0d-a54d-c5ca88a4fec4">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_B11_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="45dfb466-55d9-4c55-a33c-e0a46a97c7b4">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="e1ddaa98-7247-4b63-9aa1-fa6586d020f1">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_B11</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="31828298-c777-41ee-a8e7-43d7581048e3">
+      <ID>PE ANALYSIS B3 CDS</ID>
+      <Name>ED Visit - PE - Nurse - Attention to Your and Your child Needs</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6e83791c-64ba-4135-9463-f4b78c9d1514">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a372ed12-8805-4256-b807-c13098366efe">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_B3_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="22c4a559-5c8d-4fa5-8e66-61533215250d">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="388d9f2d-f1b5-4a58-aca4-b02bf9b3b62c">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_B3</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="7e3556ce-2ba3-42ac-b7fb-e1c12d6d9cc2">
+      <ID>PE ANALYSIS B4 CDS</ID>
+      <Name>ED Visit - PE - Nurse - Informing Treatment Information</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e27ef561-a6f2-43d2-b852-c8569fc79f7d">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a79b91b7-53ea-49f2-9b68-cd37fbcfc381">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_B4_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn dwd:design-time-name="366b4be7-6a15-484a-be75-1637af4ca467">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="3323c732-7a52-4f3d-85a2-640cd4238e4c">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_B4</ColumnID>
+        </Source>
+      </ValueColumn>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="4d94c922-bef7-41f1-8e14-3420a7b750d9">
+      <ID>PE ANALYSIS B5 CDS</ID>
+      <Name>ED Visit - PE - Nurse - Privacy</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="9f29dc3f-7fa4-4966-a2f4-0fb0a71704d8">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="502c021a-aa88-4316-8b3c-babef373b36b">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_B5_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="cc4deba3-1068-4666-95a6-7905b6548626">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="1ba3b1a0-a76d-446a-89da-f40746c863ce">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_B5</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="319bf385-5b01-42e4-9514-8e510a640177">
+      <ID>PE ANALYSIS C1 CDS</ID>
+      <Name>ED Visit - PE - Arrival - Waiting Time to Treatment Area</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="af5304ca-6618-4ddd-ac34-4d9040b16360">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d3434b58-9cec-4074-873c-dcdfa5ef9abd">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_C1_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="db63e541-cdaf-4b9c-bb5c-01053092f070">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="071ad1bf-eaad-4a86-9da4-f493dafcef6e">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_C1</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a068a473-1185-4ce0-a647-8559f0547708">
+      <ID>PE ANALYSIS C2 CDS</ID>
+      <Name>ED Visit - PE - Doctor - Courtesy</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="44a8c005-a702-48ff-b168-56ad712efc72">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8e00638d-f9e8-40c4-b3cc-5be9d2073a0f">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_C2_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="87b738de-5096-4704-b640-1e9ee091387d">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="c46f520d-c329-4674-8766-832753033a4f">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_C2</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="06a0a9e8-3c22-41fd-9439-297b88b4f232">
+      <ID>PE ANALYSIS C4 CDS</ID>
+      <Name>ED Visit - PE - Doctor - Concern for Comfort</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="eed1d8c2-5255-4d10-a8ac-da379f60e29b">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="65ae9e4a-f670-4a76-84bf-e26384b98016">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_C4_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="900bc6e8-2856-4a0c-8862-de6bea5f6f65">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="4127aa2e-4a2c-4b84-9485-3632372daa2d">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_C4</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="ab09691e-4b76-42e9-a083-086727b6fbd2">
+      <ID>PE ANALYSIS C5 CDS</ID>
+      <Name>ED Visit - PE - Doctor - Informing Treatment Info</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="145917f4-0877-43d5-9a68-f991db3499b0">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="69c719aa-30ea-4a63-93e1-e69e1e2f3396">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_C5_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn dwd:design-time-name="4107b159-92a3-483d-b7b4-57c7689958c1">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="1396f64e-28d8-4ec0-881a-dc98bc7b610c">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_C5</ColumnID>
+        </Source>
+      </ValueColumn>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="1236e2f7-3094-4579-b19e-18cdb4450a31">
+      <ID>PE ANALYSIS C6 CDS</ID>
+      <Name>ED Visit - PE - Personal Issues - Home Care Instructions</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="8e91aeec-89b6-4d87-9a14-c1950f085556">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d5726f83-db1d-4995-89bd-48d98ac030db">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_C6_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="ab9d6f17-2191-4461-b715-c485b081c373">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="8ee12813-3395-47a2-ac07-73cd90dc88f7">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_C6</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="4e03c338-ac4c-4f10-93ac-f43ffd062c4f">
+      <ID>PE ANALYSIS C9 CDS</ID>
+      <Name>ED Visit - PE - Doctor - Took Time to Listen</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0597db00-a3bb-4635-89c8-9c3af3a8618e">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="50818c0b-2d6a-4b62-9dff-46968e0aa7b0">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_C9_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="91422763-d29d-4f60-80dc-f4011786774d">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="0d0353b0-757c-4833-a70c-cccd6bab7398">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_C9</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="97264e58-a40f-4fff-90b9-65c3c1e75534">
+      <ID>PE ANALYSIS D14 CDS</ID>
+      <Name>ED Visit - PE - Test - Concern for Comfort When Blood Drawn</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="a60ae29a-ae11-40f8-9661-1839cfc2f22d">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d8f73c10-d892-4efc-9a98-dece2196abd3">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_D14_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="e783a11d-0879-46da-a868-a0e1d24a80b9">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="d0e2eeee-0707-4b6a-b1ea-5ca808dd8450">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_D14</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="54901eb7-26af-4876-a6df-565017acc0cf">
+      <ID>PE ANALYSIS D15 CDS</ID>
+      <Name>ED Visit - PE - Test - Concern for Comfort During Radiology Test</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="fcfc1314-c0e9-41e4-8da4-98b8b490ae96">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="588a5e06-be1e-41c0-a4d6-55cb8b7e56b2">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_D15_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="95e7409b-fd11-4b5c-b0a4-4cb015d7a281">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="e685f6ac-a6de-4863-b729-5c525a958300">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_D15</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="0fefb0a8-644c-4c33-bf43-c9b74108e4a0">
+      <ID>PE ANALYSIS D2 CDS</ID>
+      <Name>ED Visit - PE - Test - Courtesy of Person Who Took Child Blood</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="df8ef23e-da33-4b4f-bf6b-8faebf36737e">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d36ed3c9-9ecb-40fd-977e-111126894af6">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_D2_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="b5af5388-9e7b-4b69-8234-7fd54b4031bd">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="adba03c2-e9aa-4aae-aac9-60b2ddec2568">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_D2</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a21a09ff-2cec-4f70-87c2-62f9b4686960">
+      <ID>PE ANALYSIS D3 CDS</ID>
+      <Name>ED Visit - PE - Test - Radiology Waiting Time</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="9bc9966b-ca28-4c90-9972-d5c9472d9053">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ffabb840-a7fe-4deb-8a84-244e6cab5307">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_D3_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="bb95c280-6dca-47fb-a245-e83eeb1612c2">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="d7a35b1e-e866-4fc5-8e1e-e6117ee6a4eb">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_D3</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="c440ad4d-ca61-41f3-a8b6-3a099979ab8a">
+      <ID>PE ANALYSIS D4 CDS</ID>
+      <Name>ED Visit - PE - Test - Courtesy of Radiology Staff</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d336a912-0b55-4c8f-a3a4-8dc111ef1f7e">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c4a49b3a-c654-45e0-9b81-86ae3d30df82">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_D4_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn dwd:design-time-name="de67d4ac-7401-4514-83af-62fb9a22a29f">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="f5f8585f-1a47-4c07-a767-c5c87803cde9">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_D4</ColumnID>
+        </Source>
+      </ValueColumn>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3e55a0c7-6617-48e2-8fdb-b6ce1c454dc5">
+      <ID>PE ANALYSIS F1 CDS</ID>
+      <Name>ED Visit - PE - Personal Issues - Well Informed About Delays</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0b608b5e-c8d2-4464-ba10-37a5a016845a">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="23002edb-e6cd-4d30-aa1b-ec447efbbd4f">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_F1_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="21ff5f60-f9e4-4ebd-842f-20e6dffef4d2">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="f6d84157-1751-4c2e-a29d-1dd2a0e20681">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_F1</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3aa8a76d-4cd7-4d19-8c41-dfcea5a90fb0">
+      <ID>PE ANALYSIS F15 CDS</ID>
+      <Name>ED Visit - PE - Personal Issues - Pain Well Controlled</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b177a2f6-82a4-4b98-80d5-2b7f0e4926aa">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b41d2a92-3e97-4c00-afd7-d1ad73384981">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_F15_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ValueColumn dwd:design-time-name="15bad7a2-bc33-4491-97ae-b85c057d8377">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="63ee9091-df4c-45d2-90cc-90b5e628e64f">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_F15</ColumnID>
+        </Source>
+      </ValueColumn>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e958ca28-fd1a-4e84-82bd-0bd25358afdc">
+      <ID>PE ANALYSIS F2 CDS</ID>
+      <Name>ED Visit - PE - Personal Issues - Staff Sensitivity to Fears-Concerns</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="bf8b4093-dc65-4efc-8f74-cb13c1795db2">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5df069f1-55af-42a7-a5ef-0a4df7df05ec">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_F2_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="b3c5bb86-2399-494d-a7c3-626492587902">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="017557ed-c973-482e-b19d-52c241162c9b">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_F2</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a611ba54-955a-4775-9e80-d09cddba386b">
+      <ID>PE ANALYSIS F20 CDS</ID>
+      <Name>ED Visit - PE - Personal Issues - Overall Care Rating</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="892fdfc5-c4d5-4575-917e-0734f8ca7e7c">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b0c256fa-76e6-4093-ac58-a0d3af372413">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_F20_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="f98677cf-da8f-4340-93a8-f8a5b897094f">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="915d3e04-2deb-4d29-bc9a-8b888bc9e5ff">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_F20</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="6cedc788-40c0-4865-a987-41ae4c9c42ae">
+      <ID>PE ANALYSIS F4 CDS</ID>
+      <Name>ED Visit - PE - Overall Assessment - Facility Recommendation</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="37a47746-9f60-488a-ad23-1698252c25d4">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="fa7288f4-991a-4a81-85af-5a7bc2d3834a">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PE_ANALYSIS_F4_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="c2491ee6-9f53-42d5-a167-715ed1e55d88">
+        <DataType>WChar</DataType>
+        <DataSize>9</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="dc3a8c26-cfe4-4adc-8881-471027845411">
+          <TableID>EDVisitDim</TableID>
+          <ColumnID>PE_ANALYSIS_F4</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Pediatric Emergency</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="cb7ae309-8711-4f48-af52-984e813212f9">
+      <ID>PG ER SURVEYED</ID>
+      <Name>ED Visit - ER - Survey responded</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f9bbe88d-2eb7-4683-b39d-dd7fca948973">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c14e823d-d5f0-4227-8685-3554545afa47">
+            <TableID>EDVisitDim</TableID>
+            <ColumnID>PG_ER_SURVEYED</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyDisplayFolder>Patient Experience - Emergency Room</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ProactiveCaching dwd:design-time-name="403ecd65-68fa-44b4-be80-9c7a0a08b8e3">
+    <SilenceInterval>-PT1S</SilenceInterval>
+    <Latency>-PT1S</Latency>
+    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+    <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="3709ec88-57d6-490e-83a0-8803d26c9a4f" />
+  </ProactiveCaching>
+  <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

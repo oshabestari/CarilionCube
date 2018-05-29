@@ -1,0 +1,598 @@
+﻿<ConfigurationSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Database>
+    <DataSources>
+      <DataSource>
+        <ID>Carilion</ID>
+        <ConnectionString>Provider=SQLNCLI11.1;Data Source=192.0.0.1;Integrated Security=SSPI;Initial Catalog=Carilion</ConnectionString>
+        <ImpersonationInfo>
+          <ImpersonationMode xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">ImpersonateServiceAccount</ImpersonationMode>
+          <ImpersonationInfoSecurity xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Unchanged</ImpersonationInfoSecurity>
+        </ImpersonationInfo>
+      </DataSource>
+      <DataSource>
+        <ID>EDW</ID>
+        <ConnectionString>Provider=NZOLEDB;Data Source=192.0.0.1;Persist Security Info=True;Initial Catalog=EDW_PRD</ConnectionString>
+        <ImpersonationInfo>
+          <ImpersonationMode xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Default</ImpersonationMode>
+          <ImpersonationInfoSecurity xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Unchanged</ImpersonationInfoSecurity>
+        </ImpersonationInfo>
+      </DataSource>
+    </DataSources>
+    <Dimensions>
+      <Dimension>
+        <ID>Binary</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Census - Geographical Area</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Census - Measure Type</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Census - Source</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Date</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Department</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Diagnosis Present On Admit</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Diagnosis Source</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Diagnosis</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DiagnosisBridge</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DRG Sequence</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DRG Type</ID>
+      </Dimension>
+      <Dimension>
+        <ID>DRG</ID>
+      </Dimension>
+      <Dimension>
+        <ID>ED Visit</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Encounter</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Inpatient</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Lab Component Result Fact Lab Status Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Lab Component Result Fact Result Flag Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Lab Component Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Lab Test Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Lab Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Measure</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Medication - Administration Action</ID>
+      </Dimension>
+      <Dimension>
+        <ID>MedicationOrder</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Medication</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Outpatient</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Patient</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Pharmacy Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Procedure - Order Class</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Procedure - Order Mode</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Procedure - Order Priority</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Procedure - Order Set</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Procedure - Order Source</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Procedure Order Standing Status Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Procedure - Order Status</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Procedure - Order Type</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Procedure Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Program</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Provider</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Surgical Case Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Surgical Procedure Event Anesthesia Type Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Surgical Procedure Event Laterality Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Surgical Procedure Event Procedure Site Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Surgical Procedure Event Service Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Sugical Procedure Event Wound Class Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Surgical Supply Use Log Status Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Surgical Supply Use OR Service Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Surgical Supply Dim</ID>
+      </Dimension>
+      <Dimension>
+        <ID>Time</ID>
+      </Dimension>
+      <Dimension>
+        <ID>User Dim</ID>
+      </Dimension>
+    </Dimensions>
+    <Cubes>
+      <Cube>
+        <ID>Analytics</ID>
+        <MeasureGroups>
+          <MeasureGroup>
+            <ID>Measure MD Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Measure MD Fact</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Measure QD Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Measure QD Fact</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Measure ML Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Measure ML Fact</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Measure QL Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Measure QL Fact</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Diagnosis Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Diagnosis New</ID>
+              </Partition>
+              <Partition>
+                <ID>Diagnosis Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Diagnosis</ID>
+            <Partitions>
+              <Partition>
+                <ID>Diagnosis New</ID>
+              </Partition>
+              <Partition>
+                <ID>Diagnosis Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Diagnosis 1</ID>
+            <Partitions>
+              <Partition>
+                <ID>Diagnosis New</ID>
+              </Partition>
+              <Partition>
+                <ID>Diagnosis Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Diagnosis Bridge</ID>
+            <Partitions>
+              <Partition>
+                <ID>Diagnosis Bridge</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>DRG Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>DRG New</ID>
+              </Partition>
+              <Partition>
+                <ID>DRG Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>DRG</ID>
+            <Partitions>
+              <Partition>
+                <ID>DRG New</ID>
+              </Partition>
+              <Partition>
+                <ID>DRG Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>DRG 1</ID>
+            <Partitions>
+              <Partition>
+                <ID>DRG New</ID>
+              </Partition>
+              <Partition>
+                <ID>DRG Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>ED Visit Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>ED Visit New</ID>
+              </Partition>
+              <Partition>
+                <ID>ED Visit Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>ED Visit</ID>
+            <Partitions>
+              <Partition>
+                <ID>ED VisitPatient New</ID>
+              </Partition>
+              <Partition>
+                <ID>ED Visit-Patient Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Encounter Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Encounter Fact Old</ID>
+              </Partition>
+              <Partition>
+                <ID>Encounter Fact New</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Encounter</ID>
+            <Partitions>
+              <Partition>
+                <ID>Encounter Fact Old</ID>
+              </Partition>
+              <Partition>
+                <ID>Encounter Fact New</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Inpatient Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Inpatient Fact</ID>
+              </Partition>
+              <Partition>
+                <ID>Inpatient Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Inpatient</ID>
+            <Partitions>
+              <Partition>
+                <ID>Inpatient Fact</ID>
+              </Partition>
+              <Partition>
+                <ID>Inpatient Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Lab Component Result Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Lab Component Result Fact</ID>
+              </Partition>
+              <Partition>
+                <ID>Lab Component Result Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Lab Component Result</ID>
+            <Partitions>
+              <Partition>
+                <ID>Lab Component Result Fact</ID>
+              </Partition>
+              <Partition>
+                <ID>Lab Component Result Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Lab Component Result 1</ID>
+            <Partitions>
+              <Partition>
+                <ID>Lab Component Result Fact</ID>
+              </Partition>
+              <Partition>
+                <ID>Lab Component Result Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Lab Test Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Lab Test Fact</ID>
+              </Partition>
+              <Partition>
+                <ID>Lab Test Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Lab Test</ID>
+            <Partitions>
+              <Partition>
+                <ID>Lab Test Fact</ID>
+              </Partition>
+              <Partition>
+                <ID>Lab Test Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Lab Test 1</ID>
+            <Partitions>
+              <Partition>
+                <ID>Lab Test Fact</ID>
+              </Partition>
+              <Partition>
+                <ID>Lab Test Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Medication Administration Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Medication Administration - New</ID>
+              </Partition>
+              <Partition>
+                <ID>Medication Administration Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Medication Administration 1</ID>
+            <Partitions>
+              <Partition>
+                <ID>Medication Administration - New</ID>
+              </Partition>
+              <Partition>
+                <ID>Medication Administration Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Medication Administration</ID>
+            <Partitions>
+              <Partition>
+                <ID>Medication Administration - New</ID>
+              </Partition>
+              <Partition>
+                <ID>Medication Administration Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Medication Order Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Medication Order New</ID>
+              </Partition>
+              <Partition>
+                <ID>Medication Order Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Medication Order</ID>
+            <Partitions>
+              <Partition>
+                <ID>Medication Order New</ID>
+              </Partition>
+              <Partition>
+                <ID>Medication Order Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Medication Order 1</ID>
+            <Partitions>
+              <Partition>
+                <ID>Medication Order New</ID>
+              </Partition>
+              <Partition>
+                <ID>Medication Order Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Outpatient Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Outpatient Fact</ID>
+              </Partition>
+              <Partition>
+                <ID>Outpatient Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Outpatient</ID>
+            <Partitions>
+              <Partition>
+                <ID>Outpatient Fact</ID>
+              </Partition>
+              <Partition>
+                <ID>Outpatient Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Patient Dim</ID>
+            <Partitions>
+              <Partition>
+                <ID>Patient Dim</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Procedure Order Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Procedure Order New</ID>
+              </Partition>
+              <Partition>
+                <ID>Procedure Order Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Procedure Order</ID>
+            <Partitions>
+              <Partition>
+                <ID>Procedure Order New</ID>
+              </Partition>
+              <Partition>
+                <ID>Procedure Order Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Procedure Order 1</ID>
+            <Partitions>
+              <Partition>
+                <ID>Procedure Order New</ID>
+              </Partition>
+              <Partition>
+                <ID>Procedure Order Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Surgical Case Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Surgical Case Fact</ID>
+              </Partition>
+              <Partition>
+                <ID>Surgical Case Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Surgical Procedure Event Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Surgical Procedure Event Fact</ID>
+              </Partition>
+              <Partition>
+                <ID>Surgical Procedure Event Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+          <MeasureGroup>
+            <ID>Surgical Supply Use Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Surgical Supply Use Fact</ID>
+              </Partition>
+              <Partition>
+                <ID>Surgical Supply Use Old</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+        </MeasureGroups>
+      </Cube>
+      <Cube>
+        <ID>Census</ID>
+        <MeasureGroups>
+          <MeasureGroup>
+            <ID>Census Measure Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Census Measure Fact</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+        </MeasureGroups>
+      </Cube>
+    </Cubes>
+    <DataSourceImpersonationInfo>
+      <ImpersonationMode xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Default</ImpersonationMode>
+      <ImpersonationInfoSecurity xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Unchanged</ImpersonationInfoSecurity>
+    </DataSourceImpersonationInfo>
+  </Database>
+</ConfigurationSettings>

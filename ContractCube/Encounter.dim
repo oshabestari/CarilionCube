@@ -1,0 +1,505 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="4d303d16-7dd8-4948-ba57-520035cdcfd4" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Encounter</ID>
+  <Name>Encounter</Name>
+  <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="20" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="3833" scrolltop="-1132" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="8128" y="15600" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="EncounterDim" left="6131" top="4279" logicalid="10" controlid="1" masterid="0" hint1="0" hint2="0" width="4471" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00007711000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="DW_ENCNT_DIM" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="EncounterEncouterTypeDim" left="0" top="5839" logicalid="11" controlid="2" masterid="0" hint1="0" hint2="0" width="3731" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000930e000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="EncounterEncouterypeDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="3431" top="6379" logicalid="12" controlid="3" masterid="0" hint1="0" hint2="0" width="3000" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[EncounterDim-EncounterEncouterypeDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="2" destid="1" sourceattachpoint="17" destattachpoint="22" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="3731" y="6778" />
+              <point x="4931" y="6778" />
+              <point x="4931" y="6779" />
+              <point x="6131" y="6779" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="EncounterLevelofCareDim" left="13002" top="5839" logicalid="13" controlid="4" masterid="0" hint1="0" hint2="0" width="4048" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000d00f000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="EncounterLevelofCareDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="10302" top="6379" logicalid="14" controlid="5" masterid="0" hint1="0" hint2="0" width="3000" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[EncounterDim-EncounterLevelofCareDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="4" destid="1" sourceattachpoint="16" destattachpoint="23" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="13002" y="6778" />
+              <point x="11802" y="6778" />
+              <point x="11802" y="6779" />
+              <point x="10602" y="6779" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="EncounterPatientStatusDim" left="6686" top="11679" logicalid="15" controlid="6" masterid="0" hint1="0" hint2="0" width="3360" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000200d000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="EncounterPatientStatusDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="7967" top="8979" logicalid="16" controlid="7" masterid="0" hint1="0" hint2="0" width="799" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[EncounterDim-EncounterPatientStatusDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="6" destid="1" sourceattachpoint="4" destattachpoint="7" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="8366" y="11679" />
+              <point x="8366" y="9279" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="EncouterBaseClassDim" left="6866" top="0" logicalid="17" controlid="8" masterid="0" hint1="0" hint2="0" width="3000" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000b80b000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="EncouterBaseClassDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="6867" top="1380" logicalid="18" controlid="9" masterid="0" hint1="0" hint2="0" width="799" height="3199" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[EncounterDim-EncouterBaseClassDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="8" destid="1" sourceattachpoint="1" destattachpoint="2" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="7266" y="1879" />
+              <point x="7266" y="4279" />
+            </connector>
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>3833</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-1132</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="43848cd5-ae34-427c-a890-5d74b6fb4e5a">
+    <DataSourceViewID>Carilion</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="55e6d345-f86a-4c89-94d4-3e1efba33574">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="00852c89-5bc1-41d6-9432-f0c649407fb8">
+      <ID>ENCNT SK</ID>
+      <Name>Encounter</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="1dfb7166-c82b-49c2-8eca-bf4562e49326">
+          <DataType>BigInt</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="0d8e8b54-3530-48ff-aed6-05a9bf423779">
+            <TableID>DW_ENCNT_DIM</TableID>
+            <ColumnID>ENCNT_SK</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="89d07b13-eff3-4392-aa04-578ba8333eec">
+          <AttributeID>PTNT STS CDS</AttributeID>
+          <Name>Patient Status</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="db4cacb9-0dcd-466a-9ad8-2121c91f434b">
+          <AttributeID>ENCNT TYPE CDS</AttributeID>
+          <Name>Encounter Type</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="ab31a21b-4f63-4595-a8bf-1a2159eae8a9">
+          <AttributeID>LEVL OF CARE CDS</AttributeID>
+          <Name>Level of Care</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="c93f4e0b-9df5-4048-bd1c-d69b6099d024">
+          <AttributeID>CL CDS</AttributeID>
+          <Name>Base Class</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="42e2eec3-f44d-44ea-837e-70aefa30829d">
+          <AttributeID>TRAUMA IND</AttributeID>
+          <Name>Trauma Indicator</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="cc34309d-7e1f-4fe6-b30b-ea8784ca155b">
+          <AttributeID>AGE YRS AT ENCNT</AttributeID>
+          <Name>Age at Encounter - Years</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="36e6948d-0c7e-4242-a5f7-5eda92a07b0a">
+          <AttributeID>AGE MNTHS AT ENCNT</AttributeID>
+          <Name>Age at Encounter - Months</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="3bd4a298-0f32-4332-ad3c-13149da7ff16">
+          <AttributeID>AGE DYS AT ENCNT</AttributeID>
+          <Name>Age at Encounter - Days</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b8f5b2ae-f520-46b1-a5df-45d8e40768c2">
+          <AttributeID>BILLING CLASS CDS</AttributeID>
+          <Name>Encounter - Billing Class</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b2128671-6a81-4e31-9a80-a31a56ebe8fa">
+          <AttributeID>DEPT CDS</AttributeID>
+          <Name>Encounter - Department</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="da8c0ad3-288b-4eef-8862-c09b6dce0f3f">
+          <AttributeID>PRD LINE CDS</AttributeID>
+          <Name>Encounter - Product Line</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <AttributeHierarchyDisplayFolder>Hidden</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="b6a0b678-16a0-4ac0-ace5-804179d34416">
+      <ID>PTNT STS CDS</ID>
+      <Name>Encounter - Patient Status</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="aac47a46-b143-4ea2-99d1-e05b452eaaf0">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4915f0d6-f9b1-4dee-a0c7-a1faef407c06">
+            <TableID>DW_ENCNT_DIM</TableID>
+            <ColumnID>PTNT_STS_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="700df282-1a43-42c1-a17d-255d63e95dc5">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="12f8517d-6b4f-43be-a03a-5591a6a83e92">
+          <TableID>EncounterPatientStatusDim</TableID>
+          <ColumnID>PTNT_STS_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="51643660-7f6f-4cc7-97e2-93bf51d26747">
+      <ID>ENCNT TYPE CDS</ID>
+      <Name>Encounter - Encounter Type</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5a26617e-7d50-4aa9-a665-e319052fe830">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a623be86-3eb7-4e26-b580-2dee3dbd43e5">
+            <TableID>DW_ENCNT_DIM</TableID>
+            <ColumnID>ENCNT_TYPE_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="19779d1a-560a-418d-a927-3a8fb69d2833">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="cabc49ad-5b4f-4671-8e2b-67f7f4af261d">
+          <TableID>EncounterEncouterypeDim</TableID>
+          <ColumnID>ENCNT_TYPE_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="37256538-f707-4c6e-a824-816b7e67def9">
+      <ID>LEVL OF CARE CDS</ID>
+      <Name>Encounter - Level of Care</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6a9517b3-8d4b-4505-b485-8a4fce6c7994">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1cc2ae2e-b6c3-4fcc-9da6-34ba8eb6f929">
+            <TableID>DW_ENCNT_DIM</TableID>
+            <ColumnID>LEVL_OF_CARE_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="3f1aedb9-0aa7-402d-8b60-8f9617cde741">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="a3eb075a-2f76-4b82-801f-98b88ce7875b">
+          <TableID>EncounterLevelofCareDim</TableID>
+          <ColumnID>LEVL_OF_CARE_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="4766acc5-a1a8-4ff1-bb65-7abf700b529a">
+      <ID>CL CDS</ID>
+      <Name>Encounter - Base Class</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5b9ec5a3-f5c4-4486-87bf-7e6630c232b8">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="fc36d826-b61c-4aab-92fb-16cbca6c10e8">
+            <TableID>DW_ENCNT_DIM</TableID>
+            <ColumnID>PTNT_BSE_CLSS_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="677d54bb-26ac-48b0-856e-bf93a086d304">
+        <DataType>WChar</DataType>
+        <DataSize>10</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="f5a322de-7c11-440a-990b-bf982bba8214">
+          <TableID>EncouterBaseClassDim</TableID>
+          <ColumnID>PTNT_BSE_CLSS_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="97b60377-248c-4a62-8e19-1ed39eb25b78">
+      <ID>TRAUMA IND</ID>
+      <Name>Encounter - Trauma Indicator</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="312759c8-1347-40cc-abc1-0b04ede36f17">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e58a9a96-71d8-405c-b897-6e83f92b0bf3">
+            <TableID>DW_ENCNT_DIM</TableID>
+            <ColumnID>TRAUMA_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="0819710c-874e-41db-b93e-d6472df8bb68">
+      <ID>AGE YRS AT ENCNT</ID>
+      <Name>Encounter - Age at Encounter - Years</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="17d5af35-1ac6-4086-b5a4-8becc5cc40ef">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="daa95458-fa47-4b51-a448-5f7518f70377">
+            <TableID>DW_ENCNT_DIM</TableID>
+            <ColumnID>AGE_YRS_AT_ENCNT</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="bdd56577-2a07-4a5b-84d6-5d0327af7b86">
+      <ID>AGE MNTHS AT ENCNT</ID>
+      <Name>Encounter - Age at Encounter - Months</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="93839b90-6202-4d45-b8d4-99de54c4039d">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ee1b6a9e-394b-488e-ad53-7d5ebd2f84d6">
+            <TableID>DW_ENCNT_DIM</TableID>
+            <ColumnID>AGE_MNTHS_AT_ENCNT</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="385c18a6-edfc-4d49-b548-683c6c9652c5">
+      <ID>AGE DYS AT ENCNT</ID>
+      <Name>Encounter - Age at Encounter - Days</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="11d767f2-5509-4495-afdb-32674a1fae58">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="3ca62555-7d39-4a56-a354-c8f69accdf22">
+            <TableID>DW_ENCNT_DIM</TableID>
+            <ColumnID>AGE_DYS_AT_ENCNT</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="560f5302-9e41-4a72-8b10-a49099732112">
+      <ID>BILLING CLASS CDS</ID>
+      <Name>Encounter - Billing Class</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="047461d3-702a-41ee-be13-1213e6559060">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d31dc8b0-59e9-4209-995c-3f564ffc3d50">
+            <TableID>DW_ENCNT_DIM</TableID>
+            <ColumnID>BILLING_CLASS_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="76e3249c-3260-4c66-a825-ab90f3120ad4">
+        <DataType>WChar</DataType>
+        <DataSize>11</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="68d89f3e-f8ff-4007-8e5a-c405f5434a77">
+          <TableID>EncounterBillingClassDim</TableID>
+          <ColumnID>BILLING_CLASS_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="c193f3e9-0cda-4c34-9916-6ed705a934ea">
+      <ID>DEPT CDS</ID>
+      <Name>Encounter - Department</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="4d5fc6b7-aea8-43f2-b2f5-fad5f5a0200e">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7e9bdf07-2dc9-405f-9c54-7d3eb40bad2e">
+            <TableID>DW_ENCNT_DIM</TableID>
+            <ColumnID>DEPT_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="bff5ac70-234f-49a9-acf2-1f58f048c1a0">
+        <DataType>WChar</DataType>
+        <DataSize>18</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="e9430365-1867-4ed2-a319-0286dab02fa5">
+          <TableID>EncounterDepartmentDim</TableID>
+          <ColumnID>DEPT_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="1a021994-40e8-462a-a455-31172d2487d9">
+      <ID>PRD LINE CDS</ID>
+      <Name>Encounter - Product Line</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="8db34d4d-9ec8-4d20-898c-ca88e2f0b7d9">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="efbafe72-05ff-401b-be6a-7f4ec3360bef">
+            <TableID>DW_ENCNT_DIM</TableID>
+            <ColumnID>PRD_LINE_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="7650dd57-0235-475e-bb58-ce9bcc861cde">
+        <DataType>WChar</DataType>
+        <DataSize>57</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="9cd28091-35a8-470d-8bc7-abba84568b11">
+          <TableID>EncounterProductLineDim</TableID>
+          <ColumnID>PROD_LINE_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

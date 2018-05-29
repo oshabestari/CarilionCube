@@ -1,0 +1,205 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Surgical Case Dim</ID>
+  <Name>Surgical Case</Name>
+  <CreatedTimestamp>2017-09-27T18:52:28.92Z</CreatedTimestamp>
+  <LastSchemaUpdate>2017-09-27T18:58:09.133333Z</LastSchemaUpdate>
+  <LastProcessed>2017-10-10T14:30:43.353333Z</LastProcessed>
+  <State>Processed</State>
+  <Source xsi:type="DataSourceViewBinding">
+    <DataSourceViewID>Carilion</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration>
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Language>1033</Language>
+  <Collation>Latin1_General_CI_AS</Collation>
+  <UnknownMemberName>Unknown</UnknownMemberName>
+  <Attributes>
+    <Attribute>
+      <ID>CASE SK</ID>
+      <Name>Surgical Case</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>BigInt</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>SurgicalCaseDim</TableID>
+            <ColumnID>CASE_SK</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <NullProcessing>ZeroOrBlank</NullProcessing>
+        <Source xsi:type="ColumnBinding">
+          <TableID>SurgicalCaseDim</TableID>
+          <ColumnID>CASE_SK</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship>
+          <AttributeID>PRMY SRVC CDS</AttributeID>
+          <Name>Surgical Case - Primary Service</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>PRCDR LEVL CDS</AttributeID>
+          <Name>Surgical Case - Procedure Level</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>CL CDS</AttributeID>
+          <Name>Surgical Case - Class</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>SRG PTNT CLASS CDS</AttributeID>
+          <Name>Surgical Case - Patient Class</Name>
+        </AttributeRelationship>
+        <AttributeRelationship>
+          <AttributeID>PRMY ANSTH TYPE CDS</AttributeID>
+          <Name>Surgical Case - Primary Anesthesia Type</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>PRMY SRVC CDS</ID>
+      <Name>Surgical Case - Primary Service</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>SurgicalCasePrimaryServiceDim</TableID>
+            <ColumnID>PRMY_SRVC_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>SurgicalCasePrimaryServiceDim</TableID>
+          <ColumnID>PRMY_SRVC_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>PRCDR LEVL CDS</ID>
+      <Name>Surgical Case - Procedure Level</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>SurgicalCaseProcedureLevelDim</TableID>
+            <ColumnID>PRCDR_LEVL_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>SurgicalCaseProcedureLevelDim</TableID>
+          <ColumnID>PRCDR_LEVL_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>CL CDS</ID>
+      <Name>Surgical Case - Class</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>SurgicalCaseClassDim</TableID>
+            <ColumnID>CL_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>SurgicalCaseClassDim</TableID>
+          <ColumnID>CL_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>SRG PTNT CLASS CDS</ID>
+      <Name>Surgical Case - Patient Class</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>SurgicalCasePatientClassDim</TableID>
+            <ColumnID>SRG_PTNT_CLASS_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>SurgicalCasePatientClassDim</TableID>
+          <ColumnID>SRG_PTNT_CLASS_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute>
+      <ID>PRMY ANSTH TYPE CDS</ID>
+      <Name>Surgical Case - Primary Anesthesia Type</Name>
+      <KeyColumns>
+        <KeyColumn>
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding">
+            <TableID>SurgicalCasePrimaryAnesthesiaTypeDim</TableID>
+            <ColumnID>PRMY_ANSTH_TYPE_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn>
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding">
+          <TableID>SurgicalCasePrimaryAnesthesiaTypeDim</TableID>
+          <ColumnID>PRMY_ANSTH_TYPE_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ProactiveCaching>
+    <SilenceInterval>-PT1S</SilenceInterval>
+    <Latency>-PT1S</Latency>
+    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+    <Source xsi:type="ProactiveCachingInheritedBinding" />
+  </ProactiveCaching>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

@@ -1,0 +1,525 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="d3096c53-e14a-41e5-b4a1-d7062c3eec0d" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Medication</ID>
+  <Name>Medication</Name>
+  <CreatedTimestamp>2017-05-24T21:07:14.286667Z</CreatedTimestamp>
+  <LastSchemaUpdate>2017-06-01T20:55:30.286667Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="28" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2178" scrolltop="-13924" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="7472" y="15600" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="MedicationDim" left="5231" top="-6516" logicalid="14" controlid="1" masterid="0" hint1="0" hint2="0" width="4048" height="7936" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000d00f0000001f0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="MedicationDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="MedicationTherapeuticClassDim" left="11679" top="-5627" logicalid="15" controlid="2" masterid="0" hint1="0" hint2="0" width="3889" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000310f000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="MedicationTherapeuticClassDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="8979" top="-5087" logicalid="16" controlid="3" masterid="0" hint1="0" hint2="0" width="3000" height="1739" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[MedicationDim-MedicationTherapeuticClassDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="2" destid="1" sourceattachpoint="16" destattachpoint="25" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="11679" y="-4688" />
+              <point x="10479" y="-4688" />
+              <point x="10479" y="-3648" />
+              <point x="9279" y="-3648" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="MedicationPharmacologicalClassDim" left="2015" top="3820" logicalid="17" controlid="4" masterid="0" hint1="0" hint2="0" width="5080" height="3546" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000d8130000da0d0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="MedicationPharmacologicalClassDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="4156" top="1120" logicalid="18" controlid="5" masterid="0" hint1="0" hint2="0" width="2299" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[MedicationDim-MedicationPharmacologicalClassDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="4" destid="1" sourceattachpoint="8" destattachpoint="3" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="4555" y="3820" />
+              <point x="4555" y="2620" />
+              <point x="6155" y="2620" />
+              <point x="6155" y="1420" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="MedicationAdministrationRouteDim" left="-2646" top="-3488" logicalid="19" controlid="6" masterid="0" hint1="0" hint2="0" width="5477" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00006515000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="MedicationAdministrationRouteDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="2531" top="-2948" logicalid="20" controlid="7" masterid="0" hint1="0" hint2="0" width="3000" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[MedicationDim-MedicationAdministrationRouteDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="6" destid="1" sourceattachpoint="21" destattachpoint="28" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="2831" y="-2549" />
+              <point x="4031" y="-2549" />
+              <point x="4031" y="-2548" />
+              <point x="5231" y="-2548" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="MedicationPharmacologicalSubclassDim" left="2232" top="-10795" logicalid="21" controlid="8" masterid="0" hint1="0" hint2="0" width="4101" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00000510000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="MedicationPharmacologicalSubclassDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="3883" top="-9415" logicalid="22" controlid="9" masterid="0" hint1="0" hint2="0" width="2572" height="3199" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[MedicationDim-MedicationPharmacologicalSubclassDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="8" destid="1" sourceattachpoint="7" destattachpoint="2" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="4282" y="-8916" />
+              <point x="4282" y="-7716" />
+              <point x="6155" y="-7716" />
+              <point x="6155" y="-6516" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="MedicationDEAClassDim" left="8733" top="-10795" logicalid="23" controlid="10" masterid="0" hint1="0" hint2="0" width="3545" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000d90d000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="MedicationDEAClassDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="7505" top="-9415" logicalid="24" controlid="11" masterid="0" hint1="0" hint2="0" width="3400" height="3199" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[MedicationDim-MedicationDEAClassDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="10" destid="1" sourceattachpoint="7" destattachpoint="8" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="10505" y="-8916" />
+              <point x="10505" y="-7716" />
+              <point x="7805" y="-7716" />
+              <point x="7805" y="-6516" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="MedicationFormDim" left="11679" top="-1348" logicalid="25" controlid="12" masterid="0" hint1="0" hint2="0" width="3889" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000310f000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="MedicationFormDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="8979" top="-2298" logicalid="26" controlid="13" masterid="0" hint1="0" hint2="0" width="3000" height="2289" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[MedicationDim-MedicationFormDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="12" destid="1" sourceattachpoint="16" destattachpoint="31" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="11679" y="-409" />
+              <point x="10479" y="-409" />
+              <point x="10479" y="-1998" />
+              <point x="9279" y="-1998" />
+            </connector>
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-2178</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-13924</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-2646</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>-10795</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>2017-06-01T18:40:56.55Z</LastProcessed>
+  <State>Processed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="9a5cc8d6-c88d-41ef-bc2d-e9ba3a688ebe">
+    <DataSourceViewID>Carilion</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="97e019ec-240c-4bfb-89a3-5a38d70660c3">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Language>1033</Language>
+  <Collation>Latin1_General_CI_AS</Collation>
+  <UnknownMemberName>Unknown</UnknownMemberName>
+  <Attributes>
+    <Attribute dwd:design-time-name="bbc7701a-1e85-4455-b8e5-ff7a89774c74">
+      <ID>MDCTN SK</ID>
+      <Name>Medication - Name</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="376ef1a0-c1e9-431e-b344-c1cdcb3c27f5">
+          <DataType>BigInt</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="9e6c9824-a5a3-4470-8601-ffb62cacd862">
+            <TableID>MedicationDim</TableID>
+            <ColumnID>MDCTN_SK</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="360699c4-8930-4bd8-8c75-6467b3787c81">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <NullProcessing>ZeroOrBlank</NullProcessing>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="91b87a36-9e84-4856-b771-cf80d7dd157f">
+          <TableID>MedicationDim</TableID>
+          <ColumnID>MDCTN_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="c39ab31f-e33f-4b6e-bffb-34b05d944bed">
+          <AttributeID>MDCTN NM</AttributeID>
+          <Name>MDCTN NM</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="945788ac-70e1-48fc-83d3-a77fec943486">
+          <AttributeID>THRPC CLASS CDS</AttributeID>
+          <Name>THRPC CLASS CDS</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="77e3183f-7f3d-404c-b7dd-102dae4ee9e3">
+          <AttributeID>PHARM CLASS CDS</AttributeID>
+          <Name>Medication - Pharmacological Class</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="676230be-d5ad-464e-98f7-2e70b9b09ae8">
+          <AttributeID>PHARM SUBCLS CDS</AttributeID>
+          <Name>Medication - Pharmacological Subclass</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4dde9fa9-5f78-4ade-82c7-f695a1eca348">
+          <AttributeID>MDCTN FORM CDS</AttributeID>
+          <Name>Medication - Form</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a2298492-979f-44d5-9d51-e388e549d3f8">
+          <AttributeID>ADMN RT CDS</AttributeID>
+          <Name>Medication - Administration Route</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="accd6ae5-4004-4746-b183-220a37e2450b">
+          <AttributeID>DEA CLASS CDS</AttributeID>
+          <Name>Medication - DEA Class</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="ee7ba0e5-5093-49e1-9b52-2ecf3712581b">
+          <AttributeID>CNTLD SUBSTN IND</AttributeID>
+          <Name>Medication - Controlled Substance Indicator</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3b446208-6827-45c9-8893-d98132ad0f09">
+      <ID>MDCTN NM</ID>
+      <Name>Medication - Generic Name</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e2700ee9-3079-4a67-a501-c6352f9c1283">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e01be753-8873-4d9f-9e86-c1ec39e305bb">
+            <TableID>MedicationDim</TableID>
+            <ColumnID>GNRC_NM</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="9d14e5b7-0bac-42d4-bcf8-96181e92f643">
+      <ID>THRPC CLASS CDS</ID>
+      <Name>Medication - Therapeutic Class</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="bf59d5c3-f6f4-4430-940a-0503e80b8452">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="566677c7-85c4-4777-a469-507df55eae82">
+            <TableID>MedicationDim</TableID>
+            <ColumnID>THRPC_CLASS_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="cae2f121-c3dc-4db2-a92a-a59b9b0b6c9d">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="c7f94ecb-f4d3-4af4-b801-fe8bbd878a91">
+          <TableID>MedicationTherapeuticClassDim</TableID>
+          <ColumnID>THRPC_CLASS_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3f29368e-e2d7-4388-9cae-300bc7e5b4bf">
+      <ID>PHARM CLASS CDS</ID>
+      <Name>Medication - Pharmacological Class</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="62917f6e-93d3-4a8d-84ad-4fa2197eba9f">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="0dc45ae9-5ff2-4797-9dbb-5dc304d633db">
+            <TableID>MedicationDim</TableID>
+            <ColumnID>PHARM_CLASS_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="65d52430-1cb6-4767-806c-f635946ab933">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="66c965b6-51bd-4f60-88ba-7b150809e8b2">
+          <TableID>MedicationPharmacologicalClassDim</TableID>
+          <ColumnID>PHARM_CLASS_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="33fe99a2-1d25-470e-91f7-8f2e5ace2a67">
+      <ID>PHARM SUBCLS CDS</ID>
+      <Name>Medication - Pharmacological Subclass</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="bec944a1-790f-4509-8e15-44d1e64d14ad">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="bd1b8f9c-902c-4bba-b285-a6c835a62b21">
+            <TableID>MedicationDim</TableID>
+            <ColumnID>PHARM_SUBCLS_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="640e8dee-d388-44e4-b319-dae12c4fe6ee">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="580ca0ac-19af-40f3-a4ba-6a2ff4c139be">
+          <TableID>MedicationPharmacologicalSubclassDim</TableID>
+          <ColumnID>PHARM_SUBCLS_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="ba2e1735-b77e-423e-b0db-07d48a720c00">
+      <ID>MDCTN FORM CDS</ID>
+      <Name>Medication - Form</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c492d154-68b0-48e2-85a9-7a2b8fc469b7">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ccede7e4-8e1a-43b0-b762-8d86ab3f847e">
+            <TableID>MedicationDim</TableID>
+            <ColumnID>MDCTN_FORM_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="ae6a97e6-0883-4a45-a743-a9724e02e9fc">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="fc7489a2-f839-4bd6-b457-e6e971010038">
+          <TableID>MedicationFormDim</TableID>
+          <ColumnID>MDCTN_FORM_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="1349957d-0a3d-422d-bfd9-eaeb05793148">
+      <ID>ADMN RT CDS</ID>
+      <Name>Medication - Administration Route</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="33b7da3b-933f-4e79-8aa3-afdebd28e0b1">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="26187057-4305-4c36-b62d-c57993cbf373">
+            <TableID>MedicationDim</TableID>
+            <ColumnID>ADMN_RT_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="70cfd0ed-1a64-4887-a6bd-9be0369a26d9">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="04c105da-f366-4dea-add5-140536cfa038">
+          <TableID>MedicationAdministrationRouteDim</TableID>
+          <ColumnID>ADMN_RT_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="d3d48d95-41a0-4d5e-899f-72ce39e23ed5">
+      <ID>DEA CLASS CDS</ID>
+      <Name>Medication - Drug Enforcement Agency Class</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e0474040-8eed-4c0b-870b-079bcf448ef0">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="031c123c-d47e-4bf9-9cdf-7f7cd27df6b2">
+            <TableID>MedicationDim</TableID>
+            <ColumnID>DEA_CLASS_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="0d90b265-20a4-496e-8ab9-d6432afc6c85">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="0ce6999d-d3ca-4e8b-a44b-1cddb00088d9">
+          <TableID>MedicationDEAClassDim</TableID>
+          <ColumnID>DEA_CLASS_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="02830c23-b1a3-4ba7-9e90-17db6100f84f">
+      <ID>CNTLD SUBSTN IND</ID>
+      <Name>Medication - Controlled Substance Indicator</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="2d2a7a57-babc-4394-97fe-74628e0665a7">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b1a07a9e-8d19-4527-975b-09c097f9b900">
+            <TableID>MedicationDim</TableID>
+            <ColumnID>CNTLD_SUBSTN_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="5fe7b988-265f-442e-9e38-583a97e6ce39">
+        <DataType>WChar</DataType>
+        <DataSize>3</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="2b2bb27e-9c9f-453b-8f81-7780d7aa7c0b">
+          <TableID>MedicationDim</TableID>
+          <ColumnID>CNTLD_SUBSTN_IND</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ProactiveCaching dwd:design-time-name="479da568-aa23-4725-925f-dea5bfc6a2e4">
+    <SilenceInterval>-PT1S</SilenceInterval>
+    <Latency>-PT1S</Latency>
+    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+    <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="0618bc8b-0f8a-4111-a83c-6c87394be6fe" />
+  </ProactiveCaching>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

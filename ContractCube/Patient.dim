@@ -1,0 +1,712 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="e64af7bd-5410-4cae-91ae-6fa03a98a7c3" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Patient</ID>
+  <Name>Patient</Name>
+  <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2626" scrolltop="9410" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="8636" y="15600" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="PatientDim" left="-509" top="6395" logicalid="2" controlid="1" masterid="0" hint1="0" hint2="0" width="4577" height="10344" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000e111000068280000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="LDW_PTNT_DIM" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-2626</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>9410</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-509</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>6395</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ARDiagramLayout</Name>
+      <Value>
+        <DiagramLayout ZoomPercent="100" ViewPortX="0" ViewPortY="16" xmlns="">
+          <Shapes NodeWidth="112">
+            <Shape Id="PTNT SK 1" Expanded="true">
+              <Attributes>
+                <Attribute Id="PTNT SK 1" />
+                <Attribute Id="AGE" />
+                <Attribute Id="AGE AT REG" />
+                <Attribute Id="LIV STS CDS" />
+                <Attribute Id="AVAIL IND" />
+                <Attribute Id="CARLN EMP HLTH PLN IND" />
+                <Attribute Id="ETHNCTY CDS" />
+                <Attribute Id="FIFTH RACE CDS" />
+                <Attribute Id="PRMY RACE CDS" />
+                <Attribute Id="FOURTH RACE CDS" />
+                <Attribute Id="SEX CDS" />
+                <Attribute Id="HI LEVL OF EDU CDS" />
+                <Attribute Id="MRTL STS CDS" />
+                <Attribute Id="MULTI RACIAL" />
+                <Attribute Id="PRMY LANG CDS" />
+                <Attribute Id="PRMY FNCL CLASS CDS" />
+                <Attribute Id="PRMY PAYOR CDS 1" />
+                <Attribute Id="RELG CDS" />
+                <Attribute Id="SCND RACE CDS" />
+                <Attribute Id="SMKE STS CDS" />
+                <Attribute Id="THRD RACE CDS" />
+                <Attribute Id="PSTL CDS" />
+              </Attributes>
+              <Position x="20" y="20" />
+            </Shape>
+          </Shapes>
+        </DiagramLayout>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="2a1f9300-88df-44ab-8c6b-09226e6cff1e">
+    <DataSourceViewID>Carilion</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="fdcc6e15-db34-49a0-b0cc-a9e1c615c1a5">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="03c39060-a0a7-4a92-8fbc-54382fc6d91a">
+      <ID>LIV STS CDS</ID>
+      <Name>Patient - Alive Status</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="92a86a89-36fd-4025-9d07-98ae6452fa4c">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b2d8d24d-48b7-4bb5-9ffd-02485762d92a">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>LIV_STS_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="83374148-8ca5-4a4e-aa6a-6e07235b7367">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="f674b1a2-fd87-46e1-acea-ad021433f4e6">
+          <TableID>LDW_PTNT_DIM</TableID>
+          <ColumnID>LIV_STS_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="ce2d168d-3497-4acc-a71a-e3b5582e8991">
+      <ID>ETHNCTY CDS</ID>
+      <Name>Patient - Ethnicity</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b689f780-cf6a-4122-8135-eabeb4bcca0c">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="565b40e6-5c99-4c24-b48d-c7d9e0e17b0b">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>ETHNCTY_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="32127d45-8b2a-490f-aa63-e3ddceb327f1">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="acfddbac-d581-4000-a829-c81d3b14797f">
+          <TableID>LDW_PTNT_DIM</TableID>
+          <ColumnID>ETHNCTY_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a8e42e5c-ca46-4349-ace6-5d3743e913a9">
+      <ID>FIFTH RACE CDS</ID>
+      <Name>Patient - Fifth Race</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="ed241640-a97f-46a9-b7d4-e8b23e421a87">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a2f48423-6b45-4346-bd66-f829d128386a">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>FIFTH_RACE_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="1abba12b-bfb4-4828-8bba-45613521e8d5">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="1deefbe5-8def-4094-b8be-4039fa6676c5">
+          <TableID>LDW_PTNT_DIM</TableID>
+          <ColumnID>FIFTH_RACE_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="8c392ecf-207c-44d2-b124-a0ab6892b704">
+      <ID>PRMY LANG CDS</ID>
+      <Name>Patient - Preferred Language</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6ff13ec2-aade-48c5-bf86-43c5046b6c01">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b41d98d7-fe85-479a-857d-e81b7519320d">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>PRMY_LANG_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="c3ec971d-5b14-43f9-962a-214b795bcfbb">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="76366e0e-efb0-4b5f-a569-f26b07fe060e">
+          <TableID>LDW_PTNT_DIM</TableID>
+          <ColumnID>PRMY_LANG_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="6f33484e-bd44-4d32-ae65-147ab2f3c45c">
+      <ID>PRMY RACE CDS</ID>
+      <Name>Patient - First Race</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f5363141-81a4-44cd-a741-30dbda558710">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6103b763-d361-4ca2-a266-1440947f3e49">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>PRMY_RACE_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="0690d0ed-5f5a-4fce-8498-ff2473c3daab">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="25a74f7c-6433-418f-889b-d0e5e91aef0a">
+          <TableID>LDW_PTNT_DIM</TableID>
+          <ColumnID>PRMY_RACE_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a459a05c-e0f3-4030-ac44-bd0417a45966">
+      <ID>SCND RACE CDS</ID>
+      <Name>Patient - Second Race</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="34c4f9db-96af-4d27-bfab-7a9675986449">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="db1e7ae7-e2e6-42ab-bffa-f662d29c3909">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>SCND_RACE_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="c1f6943e-7352-433b-8041-cabe4c2e87a0">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="e6644ae5-f0df-48fe-bfc9-cf28da9903df">
+          <TableID>LDW_PTNT_DIM</TableID>
+          <ColumnID>SCND_RACE_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="cc27116c-6b95-4558-8c06-e8a3b7822e86">
+      <ID>THRD RACE CDS</ID>
+      <Name>Patient - Third Race</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c2db65a3-0c49-4463-b26a-062b1d8bbd89">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="eee59a08-320f-43d5-92d5-a2ea21e2928f">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>THRD_RACE_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="5f50e107-eec4-4137-ba81-2f1b3220d88b">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="0a0a6bf2-ab7a-4051-9fa6-22d0fbb8acac">
+          <TableID>LDW_PTNT_DIM</TableID>
+          <ColumnID>THRD_RACE_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="ae273aa6-ae39-47cd-ab22-bdf6a8534ebf">
+      <ID>FOURTH RACE CDS</ID>
+      <Name>Patient - Fourth Race</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="eadaf3d2-1a31-4550-932f-f516d2c330ae">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="00155419-4160-43bf-817a-100e2d6b3981">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>FOURTH_RACE_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="a5184ba8-6310-4598-bbbc-19e551c58588">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="8b1dd6ca-021d-4456-9ac1-08b645686123">
+          <TableID>LDW_PTNT_DIM</TableID>
+          <ColumnID>FOURTH_RACE_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3dc9c3dd-d22b-4946-a73b-2e09038f6385">
+      <ID>HI LEVL OF EDU CDS</ID>
+      <Name>Patient - Highest Level of Education</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f0d8dd48-ba17-43c4-97df-eebcbd723eb9">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="daa6da8a-1e6c-4917-9103-98313f561ea4">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>HI_LEVL_OF_EDU_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="1f9bc710-8b9a-478e-bdd1-e7270e2ec90c">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="ae69b655-0831-4a39-8a05-0789764c1e2b">
+          <TableID>LDW_PTNT_DIM</TableID>
+          <ColumnID>HI_LEVL_OF_EDU_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="5384524b-9d6c-4d72-9e43-e92ddd3ce13f">
+      <ID>MRTL STS CDS</ID>
+      <Name>Patient - Marital Status</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d7cbbee2-4a3a-4f38-bd3a-292855995866">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="61da6486-739b-4054-a662-ee49a1696bf0">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>MRTL_STS_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="e4eeb748-a7b2-4869-9154-ec8247212eaf">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="14e3657e-0e55-4a87-81f0-6c5a87e97f96">
+          <TableID>LDW_PTNT_DIM</TableID>
+          <ColumnID>MRTL_STS_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="8e34b7c3-be7d-4359-bf27-489778d78767">
+      <ID>MULTI RACIAL</ID>
+      <Name>Patient - Multiracial</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="4143f724-2934-4683-a1ae-449c1ac2fcb0">
+          <DataType>WChar</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="0362287a-05ae-4b41-8c17-53388277a323">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>MULTI_RACIAL</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="b1efcd9b-644a-4f81-9e3a-b96cba9e24e7">
+      <ID>PRMY FNCL CLASS CDS</ID>
+      <Name>Patient - Primary Financial Class</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b29d3533-f7a3-4425-9c6b-dbf9eb58d244">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="8a0ba8e9-c868-492d-a3fc-78ca7950cbf1">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>PRMY_FNCL_CLASS_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="1996f484-ef81-44d2-a2a8-0fb908ec1b60">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="1d1d8f80-bf25-429f-926d-2f7e0b4b65b6">
+          <TableID>LDW_PTNT_DIM</TableID>
+          <ColumnID>PRMY_FNCL_CLASS_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="b98a0ea1-542e-4254-aa30-97d83f207e3d">
+      <ID>RELG CDS</ID>
+      <Name>Patient - Religion</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="dd1e8b7f-974f-4495-942e-fea741962446">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="5aa135cd-b858-4b20-bf51-ccfaedf5baaf">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>RELG_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="93bf12ee-e826-450c-80d2-a5b1a74b5dd3">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="dc3472a3-ef62-4480-8dbc-a26cf9059fd0">
+          <TableID>LDW_PTNT_DIM</TableID>
+          <ColumnID>RELG_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f1ac06af-ef71-4550-b629-49d9f73a9056">
+      <ID>SEX CDS</ID>
+      <Name>Patient - Gender</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6bd1cedf-4426-49cb-83d8-fdd299e0c8b7">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="01852ed5-4b1e-4517-8d14-31ec06eae147">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>SEX_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="1a2e4f96-445f-43db-985c-39ef2b11f16e">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="dd285a45-3bdf-4f28-9f8c-847f7119dbbc">
+          <TableID>LDW_PTNT_DIM</TableID>
+          <ColumnID>SEX_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="7d7486a2-d9a2-43f8-a9fc-10dab7f25743">
+      <ID>SMKE STS CDS</ID>
+      <Name>Patient - Smoking Status</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="46f5e30f-6f07-4bf2-bf80-a57893b4a47f">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="0af5cb91-4fe9-402d-9bfc-a79471fba05d">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>SMKE_STS_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="21c52406-fafa-4eae-8b66-ec36b9fec507">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="11b9ac70-a6e7-466f-949d-b40d0eb0237e">
+          <TableID>LDW_PTNT_DIM</TableID>
+          <ColumnID>SMKE_STS_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="0cb8d6ac-25cb-41c0-8f36-c5f2cdde039b">
+      <ID>PRMY PAYOR CDS 1</ID>
+      <Name>Patient - Primary Payor</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e5667c60-9ab2-43cd-a9db-e994f6202924">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="3cf9420d-3848-4e52-a4c4-63c50b22ff17">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>PRMY_PAYOR_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="491d5903-84ea-4881-a95b-3eb00e438ba4">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="411d8e77-87f0-472c-abb7-7a6cc532af0a">
+          <TableID>LDW_PTNT_DIM</TableID>
+          <ColumnID>PRMY_PAYOR_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="6bb7f07d-2f51-45ec-8d3b-3eac4db6fd17">
+      <ID>AGE</ID>
+      <Name>Patient - Age - Years</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e2d7815d-3ffd-4bfa-a172-7f02996e17e7">
+          <DataType>BigInt</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="166ea9d2-86d9-4e4f-ae72-b1a0b8b0a3da">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>AGE</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a3b5bcee-2088-49b9-a890-49f7c0d18ae7">
+      <ID>PSTL CDS</ID>
+      <Name>Patient - Zip Code</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="4df4fb01-ccb7-46d5-bc0f-e6406be39cd7">
+          <DataType>WChar</DataType>
+          <DataSize>15</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e209fd20-214d-48c6-ae85-ba31dfa976ee">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>PSTL_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="b5953511-19e0-4b56-9a20-58b06c927b3b">
+      <ID>AVAIL IND</ID>
+      <Name>Patient - Availability</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="de0aad97-faa0-451f-9b19-dca5c72676bd">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="2635b87f-5af8-49a1-970d-35faeec69dc7">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>AVAIL_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="dfa2b842-108a-47b9-a722-2d2b1b04d4a3">
+      <ID>PTNT SK 1</ID>
+      <Name>Patient</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="3fec707b-42ea-474c-9509-585e8f36693f">
+          <DataType>BigInt</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="125c3296-df0a-4cd4-b596-a6c3e62475af">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>PTNT_SK</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="dd1aa7dd-e207-459f-ba9d-c62d663f4a90">
+        <DataType>WChar</DataType>
+        <DataSize>80</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="cab4c74b-126e-44c2-960f-5f615d8c7bdb">
+          <TableID>LDW_PTNT_DIM</TableID>
+          <ColumnID>MPI_NUM</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="442c5bb2-0e7e-4016-b65d-6eda147e0f6d">
+          <AttributeID>AGE</AttributeID>
+          <Name>Age</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4077dc19-1d6e-4bb5-a164-ded58a906241">
+          <AttributeID>LIV STS CDS</AttributeID>
+          <Name>Alive Status</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="927f5e18-5797-4e0d-8606-c2a31343fd42">
+          <AttributeID>AVAIL IND</AttributeID>
+          <Name>Availability</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="10df68ad-c058-4162-879c-c1871e3b742c">
+          <AttributeID>ETHNCTY CDS</AttributeID>
+          <Name>Ethnicity</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="8bc65a54-abf8-4f03-b793-bcdf294ffc2a">
+          <AttributeID>FIFTH RACE CDS</AttributeID>
+          <Name>Fifth Race</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="3b921b53-d198-4b9c-ac50-4aeb0ff21f2d">
+          <AttributeID>PRMY RACE CDS</AttributeID>
+          <Name>First Race</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="95476f96-a163-4fcd-8b6d-3a92861a2fa4">
+          <AttributeID>FOURTH RACE CDS</AttributeID>
+          <Name>Fourth Race</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a6c49c99-f5d8-4f20-8474-d508fa5d94ef">
+          <AttributeID>SEX CDS</AttributeID>
+          <Name>Gender</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="744bb326-e483-48b8-8913-90a6290129ff">
+          <AttributeID>HI LEVL OF EDU CDS</AttributeID>
+          <Name>Highest Level Of Education</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="5b1a784b-c89f-4d7d-b880-4199918e55e2">
+          <AttributeID>MULTI RACIAL</AttributeID>
+          <Name>Multi Racial</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="3a52842e-4442-4737-a47c-264dfd5e3641">
+          <AttributeID>MRTL STS CDS</AttributeID>
+          <Name>Marital Status</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="df525430-17d5-4b5e-b646-d0da02e08ef1">
+          <AttributeID>PRMY LANG CDS</AttributeID>
+          <Name>Preferred Language</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="ab9ff8bb-f8dd-4ff0-b029-045425dad8ff">
+          <AttributeID>PRMY FNCL CLASS CDS</AttributeID>
+          <Name>Primary Financial Class</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4c1de100-40c6-4b56-b922-82e81b588edd">
+          <AttributeID>PRMY PAYOR CDS 1</AttributeID>
+          <Name>Primary Payor</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="c2119935-79e2-4332-ac9f-83f02ce2d96c">
+          <AttributeID>RELG CDS</AttributeID>
+          <Name>Religion</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="25b424c5-aec1-4016-8183-20656ad250d4">
+          <AttributeID>SCND RACE CDS</AttributeID>
+          <Name>Second Race</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="54b7b6c9-6bbd-4c88-a1bf-006e55b8c5ec">
+          <AttributeID>SMKE STS CDS</AttributeID>
+          <Name>Smoking Status</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="8b02f434-8da0-40dc-884e-f846df980162">
+          <AttributeID>THRD RACE CDS</AttributeID>
+          <Name>Third Race</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="73be6fe2-a6bd-447b-bdf0-a3cb78c1c358">
+          <AttributeID>PSTL CDS</AttributeID>
+          <Name>Zip Code</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="f7a4e475-10a2-433d-bc76-c0a92aa2f37c">
+          <AttributeID>AGE AT REG</AttributeID>
+          <Name>Age at Registration - Years</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="2b4df91a-b793-4f2d-b03d-30322d5a5555">
+          <AttributeID>CARLN EMP HLTH PLN IND</AttributeID>
+          <Name>Patient - Employee Plan</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="800245b6-467b-495a-9765-beb06d6dddab">
+          <AttributeID>ACTIVE</AttributeID>
+          <Name>Patient - Active Panel</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <AttributeHierarchyDisplayFolder>Hidden</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="20d7b43e-a764-49e8-aa1e-7d86e2a1571d">
+      <ID>AGE AT REG</ID>
+      <Name>Patient - Age at Registration - Years</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d01ac8d4-8bea-4e2b-abbd-118af8be8944">
+          <DataType>BigInt</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="48eedfb9-61bf-4766-8ae5-400e9f63eb44">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>AGE_AT_REG</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="1da0f5bd-5d9b-455b-9e9b-1eece9ed69c8">
+      <ID>CARLN EMP HLTH PLN IND</ID>
+      <Name>Patient - Employee Plan Member</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b68b89a9-af67-4476-b976-eb04297bf18d">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7e9f4edd-a77d-4bc8-a107-b64a6c49da6a">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>CARLN_EMP_HLTH_PLN_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="4cbfbafb-65ac-4763-98de-0045e0ea2b9a">
+      <ID>ACTIVE</ID>
+      <Name>Patient - Active Panel</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="2c3ad0fa-1027-4e19-8045-f6a52ab94b00">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="9273b270-36e7-4f16-9332-e7d3f79efeff">
+            <TableID>LDW_PTNT_DIM</TableID>
+            <ColumnID>ACTIVE</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

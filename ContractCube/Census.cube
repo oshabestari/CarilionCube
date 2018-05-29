@@ -1,0 +1,395 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="6aa88dd2-9da6-49e7-9322-474975060442" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Census</ID>
+  <Name>Census</Name>
+  <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="16" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-13726" scrolltop="-5000" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="75" x="29104" y="16272" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="CensusMeasureFact" left="712" top="4340" logicalid="8" controlid="1" masterid="0" hint1="0" hint2="0" width="3307" height="3572" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000eb0c0000f40d0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="CensusMeasureFact" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="CensusSourceDim" left="6419" top="4763" logicalid="9" controlid="2" masterid="0" hint1="0" hint2="0" width="4313" height="2725" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000d9100000a50a0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="CensusSourceDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="CensusGeographicalAreaDim" left="236" top="10312" logicalid="10" controlid="3" masterid="0" hint1="0" hint2="0" width="4260" height="2302" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000a4100000fe080000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="CensusGeographicalAreaDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="1967" top="7612" logicalid="11" controlid="4" masterid="0" hint1="0" hint2="0" width="799" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[CensusMeasureFact-CensusGeographicalAreaDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="3" destid="1" sourceattachpoint="6" destattachpoint="5" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="2366" y="10312" />
+              <point x="2366" y="9112" />
+              <point x="2365" y="9112" />
+              <point x="2365" y="7912" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="3719" top="5726" logicalid="12" controlid="5" masterid="0" hint1="0" hint2="0" width="3000" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[CensusMeasureFact-CensusSourceDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="2" destid="1" sourceattachpoint="18" destattachpoint="17" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="6419" y="6125" />
+              <point x="5219" y="6125" />
+              <point x="5219" y="6126" />
+              <point x="4019" y="6126" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="CensusMeasureTypeDim" left="20" top="0" logicalid="13" controlid="6" masterid="0" hint1="0" hint2="0" width="4692" height="1940" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00005412000094070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="CensusMeasureTypeDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="1967" top="1441" logicalid="14" controlid="7" masterid="0" hint1="0" hint2="0" width="799" height="3199" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[CensusMeasureFact-CensusMeasureTypeDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="6" destid="1" sourceattachpoint="9" destattachpoint="4" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="2366" y="1940" />
+              <point x="2366" y="3140" />
+              <point x="2365" y="3140" />
+              <point x="2365" y="4340" />
+            </connector>
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-13726</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-5000</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>20</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>75</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Dimensions>
+    <Dimension dwd:design-time-name="daa35d19-5cc2-41e2-9ebe-6e51de264926">
+      <ID>Census - Geographical Area</ID>
+      <Name>Census - Geographical Area</Name>
+      <DimensionID>Census - Geographical Area</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="30727f14-5480-4e8e-b108-993e39d76902">
+          <AttributeID>GEO AREA SK</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="77367f89-f704-40ea-87d0-36506f5c13af">
+          <AttributeID>GEO AREA TYPE</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="30cf9293-3738-4149-bb23-682f897c47c0">
+      <ID>Census - Source</ID>
+      <Name>Census - Source</Name>
+      <DimensionID>Census - Source</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="f38f7143-bd45-44f2-b42d-42b9c2b26812">
+          <AttributeID>SRC SK</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="f876f570-b3f6-4884-a2a7-e25198143a54">
+          <AttributeID>SRC YR</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="9f12dfa6-6f4e-42b0-b822-75de2b2cf894">
+          <AttributeID>SRC ESTMTE IN YRS</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+    <Dimension dwd:design-time-name="d8cc696e-8785-47a3-ae13-add750d4a0bb">
+      <ID>Census - Measure Type</ID>
+      <Name>Census - Measure Type</Name>
+      <DimensionID>Census - Measure Type</DimensionID>
+      <Attributes>
+        <Attribute dwd:design-time-name="2fa3fc38-3e0e-441d-b5a5-d0727d640d0f">
+          <AttributeID>MSR TYPE SK</AttributeID>
+        </Attribute>
+      </Attributes>
+    </Dimension>
+  </Dimensions>
+  <MeasureGroups>
+    <MeasureGroup dwd:design-time-name="f0252b3b-7c5e-479c-ac2c-c2c57d97cb96">
+      <ID>Census Measure Fact</ID>
+      <Name>Census Measures</Name>
+      <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+      <State>Unprocessed</State>
+      <Measures>
+        <Measure dwd:design-time-name="e1f07218-a41c-4f92-9000-7b57934fde4b">
+          <ID>Census Measure Fact Count</ID>
+          <Name>Census Measure  - Count</Name>
+          <AggregateFunction>Count</AggregateFunction>
+          <Source dwd:design-time-name="080c03ac-db02-4089-ac7b-79d10f951407">
+            <DataType>Integer</DataType>
+            <DataSize>4</DataSize>
+            <Source xsi:type="RowBinding" dwd:design-time-name="2398c12e-6cfe-4a0e-84c9-e6e6bcb0359a">
+              <TableID>CensusMeasureFact</TableID>
+            </Source>
+          </Source>
+          <FormatString>#,##0;-#,##0</FormatString>
+        </Measure>
+        <Measure dwd:design-time-name="d82b7483-749e-4804-abf3-0f9fc938c0ee">
+          <ID>MSR FLT VAL</ID>
+          <Name>Census Measure  - Sum</Name>
+          <Source dwd:design-time-name="e50d5abd-7995-4f34-a019-bff0fcb5a554">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="745b3b41-0733-491a-814b-cd6218b58862">
+              <TableID>CensusMeasureFact</TableID>
+              <ColumnID>MSR_FLT_VAL</ColumnID>
+            </Source>
+          </Source>
+          <Visible>false</Visible>
+        </Measure>
+        <Measure dwd:design-time-name="9417d516-4302-42b9-809a-1a0341ec865e">
+          <ID>MSR FLT VAL LOG</ID>
+          <Name>Census Measure Log - Sum</Name>
+          <Source dwd:design-time-name="1d1bc354-a24c-4774-88c2-ec454c2069c1">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="645bcae1-cec4-4222-860e-516fd7af77e6">
+              <TableID>CensusMeasureFact</TableID>
+              <ColumnID>MSR_FLT_VAL_LOG</ColumnID>
+            </Source>
+          </Source>
+          <Visible>false</Visible>
+        </Measure>
+        <Measure dwd:design-time-name="a2ae42ca-6558-41b3-a04c-cd0cf12c4fe2">
+          <ID>Minimum MSR FLT VAL</ID>
+          <Name>Census Measure  - Min</Name>
+          <AggregateFunction>Min</AggregateFunction>
+          <Source dwd:design-time-name="ca706d8f-f868-4f9e-a1fe-fc85c5c1ce4d">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="21a2bb56-9900-4b4e-83a3-883759993bf4">
+              <TableID>CensusMeasureFact</TableID>
+              <ColumnID>MSR_FLT_VAL</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+        <Measure dwd:design-time-name="f4ad6fdd-e53b-4d5e-8c68-1b36b50dc87b">
+          <ID>Maximum MSR FLT VAL</ID>
+          <Name>Census Measure  - Max</Name>
+          <AggregateFunction>Max</AggregateFunction>
+          <Source dwd:design-time-name="6bdb9901-ac1c-4c87-948e-4d6c588cef67">
+            <DataType>Double</DataType>
+            <Source xsi:type="ColumnBinding" dwd:design-time-name="fe987d04-6187-45c5-9abf-b5ec945ef736">
+              <TableID>CensusMeasureFact</TableID>
+              <ColumnID>MSR_FLT_VAL</ColumnID>
+            </Source>
+          </Source>
+        </Measure>
+      </Measures>
+      <StorageMode>Molap</StorageMode>
+      <ProcessingMode>Regular</ProcessingMode>
+      <Dimensions>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="f400fed9-9c89-4227-abc4-37f8f65d1dce">
+          <CubeDimensionID>Census - Geographical Area</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="17d52ed8-55b4-4fc0-aa0c-751ba0d05b94">
+              <AttributeID>GEO AREA SK</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="c0709475-1a3e-48a7-b20e-102356aeac44">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="973f6638-cde2-47cc-b7fb-3851fcb06d7f">
+                    <TableID>CensusMeasureFact</TableID>
+                    <ColumnID>GEO_AREA_SK</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="2faa0375-270e-4a63-9067-4ec9669985ec">
+          <CubeDimensionID>Census - Source</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="1b32aa46-0a16-4558-ba82-184a472b3409">
+              <AttributeID>SRC SK</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="d62b412c-6f0d-430c-b73f-c73cc53f615f">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="f78e4e13-1bc0-4605-8d3d-9bddfc53a761">
+                    <TableID>CensusMeasureFact</TableID>
+                    <ColumnID>SRC_SK</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="d9e71b67-62ca-4f5f-b228-00e05f5b4c2d">
+          <CubeDimensionID>Census - Measure Type</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="3561ffda-e71d-47b6-b21e-9571e1f64132">
+              <AttributeID>MSR TYPE SK</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="fec0c24c-9c3f-4774-af8b-675a75ee6180">
+                  <DataType>Integer</DataType>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="234b4c56-6b29-4f37-8d25-ef7e8dfdfd5e">
+                    <TableID>CensusMeasureFact</TableID>
+                    <ColumnID>MSR_TYPE_SK</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
+        </Dimension>
+      </Dimensions>
+      <Partitions />
+    </MeasureGroup>
+  </MeasureGroups>
+  <Source dwd:design-time-name="b40546d6-8df5-4729-95dc-517ed56af4b4">
+    <DataSourceViewID>Carilion</DataSourceViewID>
+  </Source>
+  <MdxScripts>
+    <MdxScript dwd:design-time-name="7e33e7d4-a370-4b45-9c66-00d2a1ed6f2b">
+      <ID>MdxScript</ID>
+      <Name>MdxScript</Name>
+      <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+      <Commands>
+        <Command>
+          <Text>/*
+The CALCULATE command controls the aggregation of leaf cells in the cube.
+If the CALCULATE command is deleted or modified, the data within the cube is affected.
+You should edit this command only if you manually specify how the cube is aggregated.
+*/
+CALCULATE;       
+CREATE MEMBER CURRENTCUBE.[Measures].[Census Measure - Arithmetic Average]
+ AS NULL, 
+FORMAT_STRING = "#,##0.00;-#,##0.00", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Census Measures'  ;     
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Census Measure - Geometric Average]
+ AS NULL, 
+FORMAT_STRING = "#,##0.00;-#,##0.00", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Census Measures'  ;     
+
+SCOPE ([Census Measure - Arithmetic Average]);     
+    SCOPE(DESCENDANTS([Census - Measure Type].[Census - Measure Type],,AFTER));     
+        THIS =
+            IIF([Measures].[Census Measure  - Count] = 0 , NULL,ROUND([Census Measure  - Sum]/[Census Measure  - Count],2));     
+    END SCOPE;     
+END SCOPE;      
+
+SCOPE ([Census Measure - Geometric Average]);     
+    SCOPE(DESCENDANTS([Census - Measure Type].[Census - Measure Type],,AFTER));     
+        THIS =
+            IIF ([Measures].[Census Measure  - Count] = 0 , NULL, IIF ([Measures].[Census Measure  - Sum] = 0,0 , ROUND(10 ^ ([Census Measure Log - Sum]/[Census Measure  - Count]),2)));     
+    END SCOPE;     
+END SCOPE;    
+
+SCOPE ([Census Measure  - Min]);     
+    SCOPE(ASCENDANTS([Census - Measure Type].[Census - Measure Type]));     
+        THIS =
+            NULL;     
+    END SCOPE;     
+END SCOPE;  
+
+SCOPE ([Census Measure  - Max]);     
+    SCOPE(ASCENDANTS([Census - Measure Type].[Census - Measure Type]));     
+        THIS =
+            NULL;     
+    END SCOPE;     
+END SCOPE; </Text>
+        </Command>
+      </Commands>
+    </MdxScript>
+  </MdxScripts>
+</Cube>

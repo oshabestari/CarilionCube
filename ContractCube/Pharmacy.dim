@@ -1,0 +1,303 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="0dd9e79e-b5a5-4e39-bcad-a25cfd46d1a1" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Pharmacy Dim</ID>
+  <Name>Pharmacy</Name>
+  <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="8" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-4200" scrolltop="-5636" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="12012" y="21034" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="PharmacyDim" left="20" top="0" logicalid="4" controlid="1" masterid="0" hint1="0" hint2="0" width="3625" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000290e000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="PharmacyDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="PharmacyPhysicalTypeDim" left="-1085" top="-3201" logicalid="5" controlid="2" masterid="0" hint1="0" hint2="0" width="3360" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000200d000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="PharmacyPhysicalTypeDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="-354" top="-1821" logicalid="6" controlid="3" masterid="0" hint1="0" hint2="0" width="836" height="2121" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[PharmacyDim-PharmacyPhysicalTypeDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="2" destid="1" sourceattachpoint="3" destattachpoint="0" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="45" y="-1322" />
+              <point x="45" y="-661" />
+              <point x="182" y="-661" />
+              <point x="182" y="0" />
+            </connector>
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-4200</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-5636</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-1085</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>-3201</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="c43f35c6-5db6-4de8-92f3-2fb815c6ce00">
+    <DataSourceViewID>Carilion</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="e2699c07-e8cb-4aa3-aed4-8c0754657046">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="9489c22b-7229-4b81-8d4b-f6ca43f7922c">
+      <ID>PHRM SK</ID>
+      <Name>Pharmacy</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="a0fd7edc-4a48-40d0-ace4-b778279d0a8e">
+          <DataType>BigInt</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="db50fee7-29d5-48ca-bc6b-74fd32762b37">
+            <TableID>PharmacyDim</TableID>
+            <ColumnID>PHRM_SK</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="ec3c3274-13e2-4970-92aa-8f3959e685be">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="2108d751-eb27-48f7-944c-032a83bdc0de">
+          <TableID>PharmacyDim</TableID>
+          <ColumnID>PHRM_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="f81512ba-3a66-4639-a232-76ae7ee0d1f4">
+          <AttributeID>SYS TYPE DESC</AttributeID>
+          <Name>Pharmacy - Type</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a9e210e8-527a-4357-b33c-cc072374b654">
+          <AttributeID>PHY TYPE CDS</AttributeID>
+          <Name>Pharmacy - Physical Type</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="18464311-ce37-4cfb-8a3f-af9a60f6e22d">
+          <AttributeID>NPI NUM</AttributeID>
+          <Name>Pharmacy - National Provider Identifier Number</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="5e5f7922-b815-46f9-8e8e-579440e6b7dc">
+          <AttributeID>DEA NUM</AttributeID>
+          <Name>Pharmacy - Drug Enforcement Administration Number</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="23892b97-a2d0-4378-af1e-0e8bab57953a">
+          <AttributeID>NCPDP NUM</AttributeID>
+          <Name>Pharmacy - National Council for Prescription Drug Programs Number</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="a3352b4d-22f0-4d6c-82cc-1e4d09cf2cba">
+          <AttributeID>FCLT SPRT IND</AttributeID>
+          <Name>Pharmacy - Facility Administered Medications Supported</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="f6b565a0-d69e-42c7-9638-f6d50929cee9">
+          <AttributeID>RX SUP IND</AttributeID>
+          <Name>Pharmacy - Prescriptions Supported</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="61f3c600-afe2-4c85-993c-fb363c0e95c3">
+      <ID>SYS TYPE DESC</ID>
+      <Name>Pharmacy - Type</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5762fb47-d91d-4bad-a2cd-ccf0811dd618">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="2232ad72-49da-4a15-ba05-6aaf7d17db8b">
+            <TableID>PharmacyDim</TableID>
+            <ColumnID>SYS_TYPE_DESC</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="a4c55e3f-b67a-4d60-a67a-223782a85181">
+      <ID>PHY TYPE CDS</ID>
+      <Name>Pharmacy - Physical Type</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="dda2c7ee-d17b-45af-b1de-b1f5dea386d9">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d65f635d-c57f-40a9-8bfd-486c9df8966d">
+            <TableID>PharmacyDim</TableID>
+            <ColumnID>PHY_TYPE_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="8cabbee0-23a9-4946-be75-be8bfb8c5e48">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="64dc4e1e-67be-4b1c-a17a-de351fa575ef">
+          <TableID>PharmacyPhysicalTypeDim</TableID>
+          <ColumnID>PHY_TYPE_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="c3faf4a3-14e4-4b5d-911e-5e12858f05c7">
+      <ID>NPI NUM</ID>
+      <Name>Pharmacy - National Provider Identifier Number</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="a1dd0b41-dff1-4ff8-8afa-4fe2f8930538">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b2b6ec47-1cf4-4d63-9490-ff658392623b">
+            <TableID>PharmacyDim</TableID>
+            <ColumnID>NPI_NUM</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3d63733b-15f4-4de9-a3ad-ea83d464fb2a">
+      <ID>DEA NUM</ID>
+      <Name>Pharmacy - Drug Enforcement Administration Number</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="de1c56e1-eb94-4726-9dc0-78f17292316b">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f98c0693-3a28-4aea-82c0-bbd4b5aebf81">
+            <TableID>PharmacyDim</TableID>
+            <ColumnID>DEA_NUM</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="826fc2aa-2cfe-4663-8102-1019cdcbf476">
+      <ID>NCPDP NUM</ID>
+      <Name>Pharmacy - National Council for Prescription Drug Programs Number</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="680478bb-6125-4bdd-b48b-c1bbf4673ba7">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a6cea8d5-e05c-423e-a79d-18a0c0cabd26">
+            <TableID>PharmacyDim</TableID>
+            <ColumnID>NCPDP_NUM</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="63851ae6-9f17-47df-bd29-711f0a5616ee">
+      <ID>FCLT SPRT IND</ID>
+      <Name>Pharmacy - Facility Administered Medications Supported</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="acf9c2da-26b0-4d85-b790-0cd680d5c979">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="acd56572-1153-4a92-8e48-6672e48f11e1">
+            <TableID>PharmacyDim</TableID>
+            <ColumnID>FCLT_SPRT_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="5d28fcef-c5e3-4fdf-816a-505568673c02">
+      <ID>RX SUP IND</ID>
+      <Name>Pharmacy - Prescriptions Supported</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="dc0237f1-a761-43be-add8-76ee2c581e20">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c0440971-f979-4ecb-b97d-e631799d7665">
+            <TableID>PharmacyDim</TableID>
+            <ColumnID>RX_SUP_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

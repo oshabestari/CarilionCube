@@ -1,0 +1,240 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="ef361d3a-32f9-448e-ad15-0c2e9970ecbb" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Lab Dim</ID>
+  <Name>Lab</Name>
+  <CreatedTimestamp>2017-07-27T19:08:38.356667Z</CreatedTimestamp>
+  <LastSchemaUpdate>2017-08-11T21:34:40.933333Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2401" scrolltop="-10438" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="11430" y="21034" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="LabDim" left="20" top="0" logicalid="2" controlid="1" masterid="0" hint1="0" hint2="0" width="3360" height="3995" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000200d00009b0f0000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="LabDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-2401</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-10438</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>20</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>2017-08-11T17:57:59.866667Z</LastProcessed>
+  <State>Processed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="2bc068e1-eb73-4432-a4be-4c22fccbccb6">
+    <DataSourceViewID>Carilion</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="3ddce3f1-fb60-4332-a093-6501e2180bcf">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Language>1033</Language>
+  <Collation>Latin1_General_CI_AS</Collation>
+  <UnknownMemberName>Unknown</UnknownMemberName>
+  <Attributes>
+    <Attribute dwd:design-time-name="3d4bc1d5-5739-420a-9de4-98fff952469f">
+      <ID>LAB SK</ID>
+      <Name>Lab</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="7664fcff-0fe7-4d87-ac87-7c04652e7903">
+          <DataType>BigInt</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f35b0f25-1589-4150-8b1f-277ea563f511">
+            <TableID>LabDim</TableID>
+            <ColumnID>LAB_SK</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="5403bcc4-fd58-4f28-a619-4c5bd4f0dfe5">
+        <DataType>WChar</DataType>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="beaa382f-03b8-43c5-8349-1ee0acbb7830">
+          <TableID>LabDim</TableID>
+          <ColumnID>LAB_SK</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="fbeda55d-8cfe-407b-8e3a-b14867b98648">
+          <AttributeID>LAB NAME</AttributeID>
+          <Name>Lab - Name</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="de1b6bbe-0a30-40e3-84e8-38524d0ae7f0">
+          <AttributeID>LAB CITY</AttributeID>
+          <Name>Lab - City</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="ad4fbe8f-698e-4eea-be70-af9aff984dbb">
+          <AttributeID>LAB PSTL CDS</AttributeID>
+          <Name>Lab - Zip</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="c1c130d0-afb8-4d0d-93ca-aed19229d617">
+          <AttributeID>LAB ST ABBR</AttributeID>
+          <Name>Lab - State</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="b0cc07dd-54be-442c-8e31-ff145355e7fd">
+      <ID>LAB NAME</ID>
+      <Name>Lab - Name</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="cd396579-af67-4781-b677-29618fb567f9">
+          <DataType>WChar</DataType>
+          <DataSize>513</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7266fbb9-2fd1-4c59-959a-36edb485ccf8">
+            <TableID>LabDim</TableID>
+            <ColumnID>LAB_NAME</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="39699b64-db26-4e5d-8244-fdc033da95bb">
+        <DataType>WChar</DataType>
+        <DataSize>513</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="35a60931-22a1-40e0-b36d-b2147fc11b4c">
+          <TableID>LabDim</TableID>
+          <ColumnID>LAB_NAME</ColumnID>
+        </Source>
+      </NameColumn>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="96ccb7f0-875c-4693-8bc8-d49a127352bd">
+      <ID>LAB CITY</ID>
+      <Name>Lab - City</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="3b0227a1-06e5-4024-b523-c31e59585af6">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a99ed7db-cbcc-4924-a740-6741058eed5b">
+            <TableID>LabDim</TableID>
+            <ColumnID>LAB_CITY</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="b64570bd-45b0-4fdb-abeb-a1b231277ea2">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="228c6627-66f5-4c6b-a1a4-dc071758e210">
+          <TableID>LabDim</TableID>
+          <ColumnID>LAB_CITY</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="47232ff3-77a8-4ca9-bb28-69969ce8cfb2">
+      <ID>LAB PSTL CDS</ID>
+      <Name>Lab - Zip Code</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="edeccb27-3182-410a-af05-574744f26f57">
+          <DataType>WChar</DataType>
+          <DataSize>15</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e1a02a6c-ef5c-47ea-b337-9e4f7f2129f9">
+            <TableID>LabDim</TableID>
+            <ColumnID>LAB_PSTL_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="59c4ff79-727d-4bf8-966b-c5101d156baa">
+        <DataType>WChar</DataType>
+        <DataSize>15</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="7dc06bbe-8da8-45c9-9b12-c5197c191717">
+          <TableID>LabDim</TableID>
+          <ColumnID>LAB_PSTL_CDS</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="6943b950-c497-4dbb-8a97-dc15c51ccb40">
+      <ID>LAB ST ABBR</ID>
+      <Name>Lab - State</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c3848f03-1dca-4046-b174-572dd04ebefb">
+          <DataType>WChar</DataType>
+          <DataSize>80</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="bc3ce745-0d69-4a04-869b-99b7e27f7514">
+            <TableID>LabDim</TableID>
+            <ColumnID>LAB_ST_ABBR</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="86397d11-8264-44c8-b0be-f6f3593ab1aa">
+        <DataType>WChar</DataType>
+        <DataSize>80</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="eb66a426-138f-40b7-b4ee-3643a0443f20">
+          <TableID>LabDim</TableID>
+          <ColumnID>LAB_ST_ABBR</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ProactiveCaching dwd:design-time-name="60d6270f-792b-465b-956b-ffab10ca290b">
+    <SilenceInterval>-PT1S</SilenceInterval>
+    <Latency>-PT1S</Latency>
+    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+    <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="29987a0f-7387-4e8b-bf7b-9b716dcba870" />
+  </ProactiveCaching>
+  <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

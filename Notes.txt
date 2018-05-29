@@ -1,0 +1,24 @@
+DRG - diagnosis - based on finance
+Several DRG - MSD is the main one - 
+
+ED - Emergency dept
+
+Encounter a high level rollup: in patient (assigned bed), out patient, ED, other
+
+lab orders - has lab components
+
+payers (insurarers)
+
+medication - administration + prescription ( + dispensing [not capturing outside pharmacy] - not complete data so excluded)
+
+Procedure Order - surgery + consulations + interventions + xray (anything not medication + lab)
+
+Surgical - very important - return on investment is high - optimize the number of surgery=ies per room
+	surgery case = why done
+	procedure events - as part of one surgery - might take do several things done at the same time to prevent reopening the patient
+	supply use - supplies are expensive - titanium parts for knee
+	
+
+
+
+

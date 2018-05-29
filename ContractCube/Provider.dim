@@ -1,0 +1,654 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="89e08f56-7206-4ae9-a6c2-52edd5eca842" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Provider</ID>
+  <Name>Provider</Name>
+  <CreatedTimestamp>2017-06-21T20:49:12.123333Z</CreatedTimestamp>
+  <LastSchemaUpdate>2017-06-29T20:42:40.066667Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="28" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="1989" scrolltop="-6178" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="9694" y="15600" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="ProviderInternalExternalDim" left="-953" top="2452" logicalid="14" controlid="1" masterid="0" hint1="0" hint2="0" width="3545" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000d90d000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="ProviderInternalExternalDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="ProviderDim" left="4992" top="892" logicalid="15" controlid="2" masterid="0" hint1="0" hint2="0" width="4736" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00008012000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="ProviderDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="2292" top="2992" logicalid="16" controlid="3" masterid="0" hint1="0" hint2="0" width="3000" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[ProviderDim-ProviderInternalExternalDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="1" destid="2" sourceattachpoint="17" destattachpoint="26" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="2592" y="3391" />
+              <point x="3792" y="3391" />
+              <point x="3792" y="3392" />
+              <point x="4992" y="3392" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="ProviderFieldOfPracticeDim" left="5031" top="-3387" logicalid="17" controlid="4" masterid="0" hint1="0" hint2="0" width="4657" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00003112000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="ProviderFieldOfPracticeDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="6960" top="-2007" logicalid="18" controlid="5" masterid="0" hint1="0" hint2="0" width="799" height="3199" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[ProviderDim-ProviderFieldOfPracticeDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="4" destid="2" sourceattachpoint="9" destattachpoint="8" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="7359" y="-1508" />
+              <point x="7359" y="-308" />
+              <point x="7360" y="-308" />
+              <point x="7360" y="892" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="ProviderPrimaryDepartmentDim" left="2451" top="8871" logicalid="19" controlid="6" masterid="0" hint1="0" hint2="0" width="3440" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000700d000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="ProviderPrimaryDepartmentDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="3772" top="5592" logicalid="20" controlid="7" masterid="0" hint1="0" hint2="0" width="2788" height="3779" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[ProviderDim-ProviderPrimaryDepartmentDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="6" destid="2" sourceattachpoint="4" destattachpoint="5" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="4171" y="8871" />
+              <point x="4171" y="7382" />
+              <point x="6260" y="7382" />
+              <point x="6260" y="5892" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="ProviderReportingStructureDim" left="12128" top="313" logicalid="21" controlid="8" masterid="0" hint1="0" hint2="0" width="3784" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000c80e000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="ProviderReportingStructureDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="9428" top="853" logicalid="22" controlid="9" masterid="0" hint1="0" hint2="0" width="3000" height="1739" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[ProviderDim-ProviderReportingStructureDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="8" destid="2" sourceattachpoint="16" destattachpoint="23" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="12128" y="1252" />
+              <point x="10928" y="1252" />
+              <point x="10928" y="2292" />
+              <point x="9728" y="2292" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="ProviderTypeDim" left="8291" top="8871" logicalid="23" controlid="10" masterid="0" hint1="0" hint2="0" width="3979" height="1588" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00008b0f000034060000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="ProviderTypeDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="7610" top="5592" logicalid="24" controlid="11" masterid="0" hint1="0" hint2="0" width="3070" height="3779" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[ProviderDim-ProviderTypeDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="10" destid="2" sourceattachpoint="6" destattachpoint="11" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="10280" y="8871" />
+              <point x="10280" y="7382" />
+              <point x="7910" y="7382" />
+              <point x="7910" y="5892" />
+            </connector>
+          </ddscontrol>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="ProviderPrimarySpecialtyDim" left="12128" top="4592" logicalid="25" controlid="12" masterid="0" hint1="0" hint2="0" width="3731" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000930e000057070000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="ProviderPrimarySpecialtyDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+          <ddscontrol controlprogid="MSDDS.Polyline" left="9428" top="3642" logicalid="26" controlid="13" masterid="0" hint1="0" hint2="0" width="3000" height="2289" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobj>
+                <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
+              </ddsxmlobj>
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="dataSet.Relations[ProviderDim-ProviderPrimarySpecialtyDim]" vartype="8" />
+                <property name="Virtual" value="0" vartype="11" />
+                <property name="VisibleAP" value="0" vartype="3" />
+              </ddsxmlobj>
+            </layoutobject>
+            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="12" destid="2" sourceattachpoint="16" destattachpoint="29" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
+              <point x="12128" y="5531" />
+              <point x="10928" y="5531" />
+              <point x="10928" y="3942" />
+              <point x="9728" y="3942" />
+            </connector>
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>1989</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-6178</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>-953</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>-3387</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ARDiagramLayout</Name>
+      <Value>
+        <DiagramLayout ZoomPercent="100" ViewPortX="0" ViewPortY="0" xmlns="">
+          <Shapes NodeWidth="201">
+            <Shape Id="PROVDR SK" Expanded="true">
+              <Attributes>
+                <Attribute Id="PROVDR SK" />
+                <Attribute Id="CLNC TITL CDS" />
+                <Attribute Id="MU FLD OF PRACT CDS" />
+                <Attribute Id="HSPTLST IND" />
+                <Attribute Id="INTN EXT CDS" />
+                <Attribute Id="PROVDR NM ID" />
+                <Attribute Id="PRMY DEPT CDS" />
+                <Attribute Id="RPTNG STRC CDS" />
+                <Attribute Id="RSDNT IND" />
+                <Attribute Id="PROVDR TYPE CDS" />
+              </Attributes>
+              <Position x="20" y="20" />
+            </Shape>
+          </Shapes>
+        </DiagramLayout>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>2017-06-29T20:42:48.756667Z</LastProcessed>
+  <State>Processed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="36daf519-6679-489c-af0a-ea5cd272b8d6">
+    <DataSourceViewID>Carilion</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="310c71b2-10bd-47c2-906f-15056ffd5e65">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Language>1130</Language>
+  <UnknownMemberName>Unknown</UnknownMemberName>
+  <Attributes>
+    <Attribute dwd:design-time-name="256e45df-fc9e-46f7-bb52-3b8769bc9069">
+      <ID>PROVDR SK</ID>
+      <Name>Provider</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c2188f5a-d04e-4945-adcf-7c16d305039d">
+          <DataType>BigInt</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e57748d0-5747-430f-9cc3-88eb9df9f678">
+            <TableID>ProviderDim</TableID>
+            <ColumnID>PROVDR_SK</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="32cc2745-9790-4ec1-bd3c-5942209e7481">
+        <DataType>WChar</DataType>
+        <DataSize>278</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="949b8fd1-fafa-4475-8211-0553bf97296b">
+          <TableID>ProviderDim</TableID>
+          <ColumnID>PROVDR_NM_ID</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="b313d70d-5f9f-4e7c-a000-5bd52f1e30fe">
+          <AttributeID>PROVDR TYPE CDS</AttributeID>
+          <Name>Provider - Type</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="8b2a4f44-e68e-4b45-98ac-55df9563d435">
+          <AttributeID>PRMY DEPT CDS</AttributeID>
+          <Name>Provider - Primary Department</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="2b9c13aa-2ee3-42e2-b7b5-d146d26ab789">
+          <AttributeID>MU FLD OF PRACT CDS</AttributeID>
+          <Name>Provider - Field of Practice</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="f387862e-4b8b-44e4-ac16-2a67b6583324">
+          <AttributeID>RPTNG STRC CDS</AttributeID>
+          <Name>Provider - Reporting Structure</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="85579a1d-2dd2-4c81-9915-68a9c8a08a2a">
+          <AttributeID>HSPTLST IND</AttributeID>
+          <Name>Provider - Hospitalist</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="51386b96-c9d2-4293-ada3-138b48b27597">
+          <AttributeID>CLNC TITL CDS</AttributeID>
+          <Name>Provider - Clinician Title</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="b7714d2f-bdc4-4d77-aa6c-3df2d5da4683">
+          <AttributeID>RSDNT IND</AttributeID>
+          <Name>Provider - Resident</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="ea9d5262-b74b-4cb1-a278-d1f5d2f5de9c">
+          <AttributeID>PRMY SPCLY CDS</AttributeID>
+          <Name>Provider - Primary Specialty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="532f54b9-87f8-4e72-b91b-3c517839a916">
+          <AttributeID>INTN EXT CDS 1</AttributeID>
+          <Name>Provider - Affiliation</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="5a489457-110e-4e80-afee-2c4da860a8c2">
+          <AttributeID>LDAP USR</AttributeID>
+          <Name>Provider - UserID</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="805909fe-8b43-4a7f-9198-a7c4b13716fa">
+          <AttributeID>PROVDR ACTV IND</AttributeID>
+          <Name>Provider - Active</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="908af8bc-dcf6-45d8-b5d7-94ec90a46ed6">
+          <AttributeID>Section CDS</AttributeID>
+          <Name>Provider - Section</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="1d688b30-b4d1-4fe9-96ee-b2e229e81083">
+      <ID>PROVDR TYPE CDS</ID>
+      <Name>Provider - Type</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="bd008992-2e14-4449-9cb1-33f14d48dafd">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="fcce7080-f201-4b0b-bc68-af3295585ffc">
+            <TableID>ProviderDim</TableID>
+            <ColumnID>PROVDR_TYPE_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="064327af-36b6-4729-9913-b87961013daf">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="73ab6c4d-16e4-4f03-b8b4-7aad0bdb7c13">
+          <TableID>ProviderDim</TableID>
+          <ColumnID>PROVDR_TYPE_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="ffd40fa8-d537-40cf-8afb-d5a9f1eebd8c">
+      <ID>PRMY DEPT CDS</ID>
+      <Name>Provider - Primary Department</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="222d437f-c9b4-4632-81ba-a9d7b8e84039">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="67c6211c-f891-49dd-be15-d0617c027552">
+            <TableID>ProviderDim</TableID>
+            <ColumnID>PRMY_DEPT_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="bd07f198-aaf4-4060-a07b-926c61f8226b">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="43e96e37-35ab-4177-87b0-4dcbac7d9e0f">
+          <TableID>ProviderDim</TableID>
+          <ColumnID>PRMY_DEPT_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="196d131f-8eb0-4301-9c86-a57b604b13e2">
+      <ID>MU FLD OF PRACT CDS</ID>
+      <Name>Provider - Field of Practice</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="07ed9945-0ee2-4f0f-bca5-b07306e0cd05">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="2a6a20e8-82bb-446c-bca5-83191ec8b466">
+            <TableID>ProviderDim</TableID>
+            <ColumnID>MU_FLD_OF_PRACT_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="2fdce3d6-7538-4d52-bc39-78346569c22c">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="26f8b4ed-bda2-499b-ad8a-9ecc58983c67">
+          <TableID>ProviderDim</TableID>
+          <ColumnID>MU_FLD_OF_PRACT_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="09608e4f-3d4e-4b58-9640-1a41f204c6ee">
+      <ID>RPTNG STRC CDS</ID>
+      <Name>Provider - Reporting Structure</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e87cc699-a873-4133-9dff-d8c285865c8e">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="be717667-5f10-4f2c-ac23-61646de5b306">
+            <TableID>ProviderDim</TableID>
+            <ColumnID>RPTNG_STRC_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="96a81b97-0a87-4a1a-ae6a-c77208d5e482">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="277abd93-d4f2-41e6-924c-1c3f47e467b2">
+          <TableID>ProviderDim</TableID>
+          <ColumnID>RPTNG_STRC_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="62101acd-5d89-42fc-b9de-4962d73d2c15">
+      <ID>HSPTLST IND</ID>
+      <Name>Provider - Hospitalist</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6385f8d0-1def-4ee0-9acc-c3f3b51558e0">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="572d6f53-9d6b-4e66-8d4f-98fab26a538f">
+            <TableID>ProviderDim</TableID>
+            <ColumnID>HSPTLST_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="36955117-0198-44f8-8b8f-7badfc80b996">
+        <DataType>WChar</DataType>
+        <DataSize>3</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="c21c8a04-768a-4342-afdf-26aa852ca10b">
+          <TableID>ProviderDim</TableID>
+          <ColumnID>HSPTLST_IND</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="b0d8a083-57b0-4fb9-99f4-d9a02cf6fc4c">
+      <ID>CLNC TITL CDS</ID>
+      <Name>Provider - Clinician Title</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="eb6b72f2-f3cd-4979-ab1c-4bd73c8d22b8">
+          <DataType>WChar</DataType>
+          <DataSize>80</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="16c5958b-415a-41ad-a9cc-06a13f9d4c0c">
+            <TableID>ProviderDim</TableID>
+            <ColumnID>CLNC_TITL_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="81c1688d-ca81-4bcd-853b-d1baaf61ef28">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="fb4aa0a8-f0d5-41b3-ad0f-8062a46fc12b">
+          <TableID>ProviderDim</TableID>
+          <ColumnID>CLNC_TITL_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f67649cc-eed8-4bf8-a82d-56cecd748847">
+      <ID>RSDNT IND</ID>
+      <Name>Provider - Resident</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0d4f4a53-05c5-4a26-963a-8a829d277e8a">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="9a384574-4d69-44eb-9503-011167eab6b5">
+            <TableID>ProviderDim</TableID>
+            <ColumnID>RSDNT_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="7da3a99d-c465-4254-aec0-c2a0fbb4df68">
+        <DataType>WChar</DataType>
+        <DataSize>3</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="82778383-494f-4b96-9eb8-7b1cedcd053d">
+          <TableID>ProviderDim</TableID>
+          <ColumnID>RSDNT_IND</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="75fd50b9-abe3-4530-b4c9-942275d20877">
+      <ID>PRMY SPCLY CDS</ID>
+      <Name>Provider - Primary Specialty</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="b3b9656e-8d3d-4cdf-aea5-9d883b07cc43">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e54518e8-2ef8-444b-80a3-011ad13176ef">
+            <TableID>ProviderDim</TableID>
+            <ColumnID>PRMY_SPCLY_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="87a37d7a-989c-44c3-8f7e-6ceed81da53f">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="4855fdc0-896d-4594-afc4-ee7f368817ad">
+          <TableID>ProviderDim</TableID>
+          <ColumnID>PRMY_SPCLY_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="7715be79-3776-442a-b7be-2a44e1b9589e">
+      <ID>INTN EXT CDS 1</ID>
+      <Name>Provider - Affiliation</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="73215951-a5e7-4a6e-9671-ec34e1818bd7">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b35dfaaa-bc18-47bf-afc5-082d391c4869">
+            <TableID>ProviderDim</TableID>
+            <ColumnID>INTN_EXT_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="a5a88f91-bdbb-4ff1-8598-d57162655d55">
+        <DataType>WChar</DataType>
+        <DataSize>254</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="4ace1250-4ede-4bb5-95be-d9c431bfe224">
+          <TableID>ProviderDim</TableID>
+          <ColumnID>INTN_EXT_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="0681e967-0f4c-49ee-b2c7-e22ce5bc4156">
+      <ID>LDAP USR</ID>
+      <Name>Provider - UserID</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="3c6d7ea9-d5fc-40f3-9cc7-a9e50bbd5b63">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="09624ae7-7ad4-4b2a-808e-781f52a4adb0">
+            <TableID>ProviderDim</TableID>
+            <ColumnID>LDAP_USR</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3fb85961-5227-4e9f-87bc-7e8392238677">
+      <ID>PROVDR ACTV IND</ID>
+      <Name>Provider - Active</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="e6f3165d-3b8b-4c1b-9a91-6d2605a25819">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6902b3d7-abc2-47e5-9a9f-a8ef1e005f78">
+            <TableID>ProviderDim</TableID>
+            <ColumnID>PROVDR_ACTV_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3bd1182d-fe71-4e0a-843b-918bd8cad8e3">
+      <ID>Section CDS</ID>
+      <Name>Provider - Section</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f38d179c-8e8f-4e69-a6c2-a4535e982d27">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="60e0e461-7b29-41b1-9e7b-49a0a764c962">
+            <TableID>ProviderDim</TableID>
+            <ColumnID>Section_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="c82787db-24d0-445b-a2fe-2ef05bac035b">
+        <DataType>WChar</DataType>
+        <DataSize>100</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="4227ac83-c232-4911-9c87-369dddca2bb5">
+          <TableID>ProviderDim</TableID>
+          <ColumnID>Section_Desc</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ProactiveCaching dwd:design-time-name="b5037ed0-331a-49d7-ab24-731a52c86a28">
+    <SilenceInterval>-PT1S</SilenceInterval>
+    <Latency>-PT1S</Latency>
+    <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+    <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+    <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="ef7806ba-9578-4c67-b5ec-65327c39234a" />
+  </ProactiveCaching>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

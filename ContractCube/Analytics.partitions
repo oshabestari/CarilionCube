@@ -1,0 +1,3046 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="68cb3fbb-ca4e-4b31-bf9d-28e7d3a615fd" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Analytics</ID>
+  <MeasureGroups>
+    <MeasureGroup>
+      <ID>Encounter Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="cc200d3b-22e2-46ad-92d5-9238b1eba67f">
+          <ID>Encounter Fact Old</ID>
+          <Name>Encounter Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="f83d5a67-805e-4e39-8557-e53b5219a4bf">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT ENCNT_FACT_SK
+       , ENCNT_SK
+       , PTNT_SK
+       , DEPT_SK
+       , ENCNT_DT
+       , AGE_YRS_AT_ENCNT
+       , AGE_MNTHS_AT_ENCNT
+       , AGE_DYS_AT_ENCNT
+       , ENCNT_WAIT_IN_DAYS
+  FROM CUBESPRD.ENCNT_FACT WHERE ENCNT_DT &lt; '2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="d0056ceb-8c3a-4087-b552-ec97393e7312">
+          <ID>Encounter Fact New</ID>
+          <Name>Encounter New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="190495e6-b646-410a-aa58-0321d041a0e6">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT ENCNT_FACT_SK
+       , ENCNT_SK
+       , PTNT_SK
+       , DEPT_SK
+       , ENCNT_DT
+       , AGE_YRS_AT_ENCNT
+       , AGE_MNTHS_AT_ENCNT
+       , AGE_DYS_AT_ENCNT
+       , ENCNT_WAIT_IN_DAYS
+  FROM CUBESPRD.ENCNT_FACT WHERE ENCNT_DT &gt;= '2017-07-01' OR ENCNT_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Encounter</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="76e16948-9c71-4a96-8666-7e1b29d4953c">
+          <ID>Encounter Fact Old</ID>
+          <Name>Encounter-Patient Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="c7a21eb1-c52c-4ca8-b8ff-84c00444d1f7">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT ENCNT_FACT_SK
+       , ENCNT_SK
+       , PTNT_SK
+       , DEPT_SK
+       , ENCNT_DT
+       , AGE_YRS_AT_ENCNT
+       , AGE_MNTHS_AT_ENCNT
+       , AGE_DYS_AT_ENCNT
+       , ENCNT_WAIT_IN_DAYS
+  FROM CUBESPRD.ENCNT_FACT  WHERE ENCNT_DT &lt; '2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="0e1ff985-65b8-4878-a3ad-e42b45e13451">
+          <ID>Encounter Fact New</ID>
+          <Name>Encounter-Patient New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="30b00aaf-de7c-431a-a6d8-a01299be6a90">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT ENCNT_FACT_SK
+       , ENCNT_SK
+       , PTNT_SK
+       , DEPT_SK
+       , ENCNT_DT
+       , AGE_YRS_AT_ENCNT
+       , AGE_MNTHS_AT_ENCNT
+       , AGE_DYS_AT_ENCNT
+       , ENCNT_WAIT_IN_DAYS
+  FROM CUBESPRD.ENCNT_FACT   WHERE   ENCNT_DT &gt;= '2017-07-01' OR ENCNT_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Patient Dim</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="1dbd8380-9d63-4bb4-abfb-fee592bcecdf">
+          <ID>Patient Dim</ID>
+          <Name>Patient</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="cfed35c5-dc55-4de0-9925-3fab6589056a">
+            <DataSourceViewID>Carilion</DataSourceViewID>
+            <TableID>LDW_PTNT_DIM</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Inpatient Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="ee7c913a-7e16-46b9-9d24-08229ea1e5ae">
+          <ID>Inpatient Fact</ID>
+          <Name>Inpatient New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="f801134e-2af8-42db-8261-054913aeb561">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT INPTNT_VST_SK
+       , SRC_ENCNT_ID
+       , CLNC_INPTNT_ADMT_DT
+       , CLNC_INPTNT_ADMT_TS_SK 
+       , ENCNT_SK
+       , AGE_YRS_AT_CLNC_INPTNT_ADMT
+	   , CASE WHEN AGE_YRS_AT_CLNC_INPTNT_ADMT=0 THEN 0 
+		WHEN (AGE_YRS_AT_CLNC_INPTNT_ADMT&lt;0 
+		OR AGE_YRS_AT_CLNC_INPTNT_ADMT&gt; 120) THEN NULL ELSE Log(AGE_YRS_AT_CLNC_INPTNT_ADMT)
+		END As AGE_YRS_AT_CLNC_INPTNT_ADMT_Log
+       , AGE_MNTHS_AT_CLNC_INPTNT_ADMT
+       , AGE_DYS_AT_CLNC_INPTNT_ADMT
+       , LOS_DYS_CLNC_INPTNT
+	   , LOS_HRS_CLNC_INPTNT
+       , CASE WHEN LOS_DYS_CLNC_INPTNT=0 THEN 0 
+		WHEN LOS_DYS_CLNC_INPTNT&lt;0 THEN NULL ELSE Log(LOS_DYS_CLNC_INPTNT)
+		END As LOS_DYS_CLNC_INPTNT_Log
+       , CASE WHEN LOS_HRS_CLNC_INPTNT=0 THEN 0 
+		WHEN LOS_HRS_CLNC_INPTNT &lt; 0 THEN NULL ELSE Log(LOS_HRS_CLNC_INPTNT)
+		END As LOS_HRS_CLNC_INPTNT_Log
+       , INPTNT_APPT_MADE_DT
+       , HSPTL_ADMT_DT
+       , HSPTL_ADMT_TS_SK
+       , HSPTL_DSCRG_DT
+       , HSPTL_DSCRG_TS_SK
+       , PRMY_CDD_PRCDR_SK
+       , PRMY_CDD_DIAG_SK
+       , LOS_DYS_EXPCT_INPTNT
+	   , PTNT_SK 
+	   , HSPTL_ADMT_PROVDR_SK
+       , HSPTL_DSCRG_PROVDR_SK
+  FROM CUBESPRD.INPTNT_FACT
+  WHERE CLNC_INPTNT_ADMT_DT &gt;= '2017-07-01' OR CLNC_INPTNT_ADMT_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="88299e45-ac07-4cbc-85a8-c9ee79a553a7">
+          <ID>Inpatient Old</ID>
+          <Name>Inpatient Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="48dfb2c5-0c34-456c-9f2d-1a470d2d96af">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT INPTNT_VST_SK
+       , SRC_ENCNT_ID
+       , CLNC_INPTNT_ADMT_DT
+       , CLNC_INPTNT_ADMT_TS_SK 
+       , ENCNT_SK
+       , AGE_YRS_AT_CLNC_INPTNT_ADMT
+	   , CASE WHEN AGE_YRS_AT_CLNC_INPTNT_ADMT=0 THEN 0 
+		WHEN (AGE_YRS_AT_CLNC_INPTNT_ADMT&lt;0 
+		OR AGE_YRS_AT_CLNC_INPTNT_ADMT&gt; 120) THEN NULL ELSE Log(AGE_YRS_AT_CLNC_INPTNT_ADMT)
+		END As AGE_YRS_AT_CLNC_INPTNT_ADMT_Log
+       , AGE_MNTHS_AT_CLNC_INPTNT_ADMT
+       , AGE_DYS_AT_CLNC_INPTNT_ADMT
+       , LOS_DYS_CLNC_INPTNT
+	   , LOS_HRS_CLNC_INPTNT
+       , CASE WHEN LOS_DYS_CLNC_INPTNT=0 THEN 0 
+		WHEN LOS_DYS_CLNC_INPTNT&lt;0 THEN NULL ELSE Log(LOS_DYS_CLNC_INPTNT)
+		END As LOS_DYS_CLNC_INPTNT_Log
+       , CASE WHEN LOS_HRS_CLNC_INPTNT=0 THEN 0 
+		WHEN LOS_HRS_CLNC_INPTNT &lt; 0 THEN NULL ELSE Log(LOS_HRS_CLNC_INPTNT)
+		END As LOS_HRS_CLNC_INPTNT_Log
+       , INPTNT_APPT_MADE_DT
+       , HSPTL_ADMT_DT
+       , HSPTL_ADMT_TS_SK
+       , HSPTL_DSCRG_DT
+       , HSPTL_DSCRG_TS_SK
+       , PRMY_CDD_PRCDR_SK
+       , PRMY_CDD_DIAG_SK
+       , LOS_DYS_EXPCT_INPTNT
+	   , PTNT_SK 
+	   , HSPTL_ADMT_PROVDR_SK
+       , HSPTL_DSCRG_PROVDR_SK
+  FROM CUBESPRD.INPTNT_FACT
+   WHERE CLNC_INPTNT_ADMT_DT &lt; '2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Inpatient</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="d1470eb8-51fe-4ff3-9a44-e75c4b2a70f9">
+          <ID>Inpatient Fact</ID>
+          <Name>Inpatient-Patient New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="e1421547-451a-4520-a832-3661e9d3d448">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT INPTNT_VST_SK
+       , SRC_ENCNT_ID
+       , CLNC_INPTNT_ADMT_DT
+       , CLNC_INPTNT_ADMT_TS_SK 
+       , ENCNT_SK
+       , AGE_YRS_AT_CLNC_INPTNT_ADMT
+	   , CASE WHEN AGE_YRS_AT_CLNC_INPTNT_ADMT=0 THEN 0 
+		WHEN (AGE_YRS_AT_CLNC_INPTNT_ADMT&lt;0 
+		OR AGE_YRS_AT_CLNC_INPTNT_ADMT&gt; 120) THEN NULL ELSE Log(AGE_YRS_AT_CLNC_INPTNT_ADMT)
+		END As AGE_YRS_AT_CLNC_INPTNT_ADMT_Log
+       , AGE_MNTHS_AT_CLNC_INPTNT_ADMT
+       , AGE_DYS_AT_CLNC_INPTNT_ADMT
+       , LOS_DYS_CLNC_INPTNT
+	   , LOS_HRS_CLNC_INPTNT
+       , CASE WHEN LOS_DYS_CLNC_INPTNT=0 THEN 0 
+		WHEN LOS_DYS_CLNC_INPTNT&lt;0 THEN NULL ELSE Log(LOS_DYS_CLNC_INPTNT)
+		END As LOS_DYS_CLNC_INPTNT_Log
+       , CASE WHEN LOS_HRS_CLNC_INPTNT=0 THEN 0 
+		WHEN LOS_HRS_CLNC_INPTNT &lt; 0 THEN NULL ELSE Log(LOS_HRS_CLNC_INPTNT)
+		END As LOS_HRS_CLNC_INPTNT_Log
+       , INPTNT_APPT_MADE_DT
+       , HSPTL_ADMT_DT
+       , HSPTL_ADMT_TS_SK
+       , HSPTL_DSCRG_DT
+       , HSPTL_DSCRG_TS_SK
+       , PRMY_CDD_PRCDR_SK
+       , PRMY_CDD_DIAG_SK
+       , LOS_DYS_EXPCT_INPTNT
+	   , PTNT_SK 
+	   , HSPTL_ADMT_PROVDR_SK
+       , HSPTL_DSCRG_PROVDR_SK
+  FROM CUBESPRD.INPTNT_FACT
+  WHERE CLNC_INPTNT_ADMT_DT &gt;= '2017-07-01' OR CLNC_INPTNT_ADMT_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="48e9ea03-3792-433b-830a-ad79d322d893">
+          <ID>Inpatient Old</ID>
+          <Name>Inpatient-Patient Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="bfcc201a-5c76-43f6-a4bc-8b913b64562a">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT INPTNT_VST_SK
+       , SRC_ENCNT_ID
+       , CLNC_INPTNT_ADMT_DT
+       , CLNC_INPTNT_ADMT_TS_SK 
+       , ENCNT_SK
+       , AGE_YRS_AT_CLNC_INPTNT_ADMT
+	   , CASE WHEN AGE_YRS_AT_CLNC_INPTNT_ADMT=0 THEN 0 
+		WHEN (AGE_YRS_AT_CLNC_INPTNT_ADMT&lt;0 
+		OR AGE_YRS_AT_CLNC_INPTNT_ADMT&gt; 120) THEN NULL ELSE Log(AGE_YRS_AT_CLNC_INPTNT_ADMT)
+		END As AGE_YRS_AT_CLNC_INPTNT_ADMT_Log
+       , AGE_MNTHS_AT_CLNC_INPTNT_ADMT
+       , AGE_DYS_AT_CLNC_INPTNT_ADMT
+       , LOS_DYS_CLNC_INPTNT
+	   , LOS_HRS_CLNC_INPTNT
+       , CASE WHEN LOS_DYS_CLNC_INPTNT=0 THEN 0 
+		WHEN LOS_DYS_CLNC_INPTNT&lt;0 THEN NULL ELSE Log(LOS_DYS_CLNC_INPTNT)
+		END As LOS_DYS_CLNC_INPTNT_Log
+       , CASE WHEN LOS_HRS_CLNC_INPTNT=0 THEN 0 
+		WHEN LOS_HRS_CLNC_INPTNT &lt; 0 THEN NULL ELSE Log(LOS_HRS_CLNC_INPTNT)
+		END As LOS_HRS_CLNC_INPTNT_Log
+       , INPTNT_APPT_MADE_DT
+       , HSPTL_ADMT_DT
+       , HSPTL_ADMT_TS_SK
+       , HSPTL_DSCRG_DT
+       , HSPTL_DSCRG_TS_SK
+       , PRMY_CDD_PRCDR_SK
+       , PRMY_CDD_DIAG_SK
+       , LOS_DYS_EXPCT_INPTNT
+	   , PTNT_SK 
+	   , HSPTL_ADMT_PROVDR_SK
+       , HSPTL_DSCRG_PROVDR_SK
+  FROM CUBESPRD.INPTNT_FACT
+   WHERE CLNC_INPTNT_ADMT_DT &lt; '2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Outpatient Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="a28ac8e3-e49c-4467-8a31-8dfc45ce7dbf">
+          <ID>Outpatient Fact</ID>
+          <Name>Outpatient New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="a108e17c-145f-4892-995d-988d461d6c3d">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT ENCNT_SK
+       , PTNT_SK
+       , APPT_TS_SK
+       , APPT_DT
+       , APPT_LNGTH
+       , CASE WHEN APPT_LNGTH=0 THEN 0 WHEN APPT_LNGTH&lt;0 THEN NULL ELSE LOG(APPT_LNGTH) END AS APPT_LNGTH_LOG
+       , APPT_CRTN_INSTNT_TS_SK
+       , APPT_CRTN_INSTNT_DT
+       , CHCK_IN_INSTNT_TS_SK
+       , CHCK_IN_INSTNT_DT
+       , CHCK_OUT_INSTNT_TS_SK
+       , CHCK_OUT_INSTNT_DT
+       , ARRVL_INSTNT_TS_SK
+       , ARRVL_INSTNT_DT
+       , SCNDS_WTNG
+       , CASE WHEN SCNDS_WTNG=0 THEN 0 WHEN SCNDS_WTNG&lt;0 THEN NULL ELSE LOG(SCNDS_WTNG) END AS SCNDS_WTNG_LOG
+       , DEPT_SK
+       , RM_INSTNT_TS_SK
+       , RM_INSTNT_DT
+       , SCDS_IN_RM
+       , CASE WHEN SCDS_IN_RM=0 THEN 0 WHEN SCDS_IN_RM&lt;0 THEN NULL ELSE LOG(SCDS_IN_RM) END AS SCDS_IN_RM_LOG
+       , BDY_MSS_IDX
+       , BDY_SRFC_AREA
+       , SYSTLC
+       , DISTLC
+       , TMP_IN_FHRNHT
+       , PULSE
+       , RSPRTNS
+       , PRMY_DIAG_SK
+       , PRMY_VST_PRVDR_KEY
+       , SCND_VST_PRVDR_KEY
+       , THRD_VST_PRVDR_KEY
+       , FRTH_VST_PRVDR_KEY
+       , AGE_YRS_AT_ENCNT
+       , CASE WHEN AGE_YRS_AT_ENCNT=0 THEN 0 WHEN AGE_YRS_AT_ENCNT&lt;0 THEN NULL ELSE LOG(AGE_YRS_AT_ENCNT) END AS AGE_YRS_AT_ENCNT_LOG
+       , AGE_MNTHS_AT_ENCNT
+       , AGE_DYS_AT_ENCNT
+  FROM CUBESPRD.OUTPTNT_FACT  WHERE APPT_DT &gt;= '2017-07-01' OR APPT_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="5c4fa3ff-29db-48e9-be2b-3412e21d8e45">
+          <ID>Outpatient Old</ID>
+          <Name>Outpatient Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="fc81d158-0021-421e-85fc-1cbfee07e8d2">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT ENCNT_SK
+       , PTNT_SK
+       , APPT_TS_SK
+       , APPT_DT
+       , APPT_LNGTH
+       , CASE WHEN APPT_LNGTH=0 THEN 0 WHEN APPT_LNGTH&lt;0 THEN NULL ELSE LOG(APPT_LNGTH) END AS APPT_LNGTH_LOG
+       , APPT_CRTN_INSTNT_TS_SK
+       , APPT_CRTN_INSTNT_DT
+       , CHCK_IN_INSTNT_TS_SK
+       , CHCK_IN_INSTNT_DT
+       , CHCK_OUT_INSTNT_TS_SK
+       , CHCK_OUT_INSTNT_DT
+       , ARRVL_INSTNT_TS_SK
+       , ARRVL_INSTNT_DT
+       , SCNDS_WTNG
+       , CASE WHEN SCNDS_WTNG=0 THEN 0 WHEN SCNDS_WTNG&lt;0 THEN NULL ELSE LOG(SCNDS_WTNG) END AS SCNDS_WTNG_LOG
+       , DEPT_SK
+       , RM_INSTNT_TS_SK
+       , RM_INSTNT_DT
+       , SCDS_IN_RM
+       , CASE WHEN SCDS_IN_RM=0 THEN 0 WHEN SCDS_IN_RM&lt;0 THEN NULL ELSE LOG(SCDS_IN_RM) END AS SCDS_IN_RM_LOG
+       , BDY_MSS_IDX
+       , BDY_SRFC_AREA
+       , SYSTLC
+       , DISTLC
+       , TMP_IN_FHRNHT
+       , PULSE
+       , RSPRTNS
+       , PRMY_DIAG_SK
+       , PRMY_VST_PRVDR_KEY
+       , SCND_VST_PRVDR_KEY
+       , THRD_VST_PRVDR_KEY
+       , FRTH_VST_PRVDR_KEY
+       , AGE_YRS_AT_ENCNT
+       , CASE WHEN AGE_YRS_AT_ENCNT=0 THEN 0 WHEN AGE_YRS_AT_ENCNT&lt;0 THEN NULL ELSE LOG(AGE_YRS_AT_ENCNT) END AS AGE_YRS_AT_ENCNT_LOG
+       , AGE_MNTHS_AT_ENCNT
+       , AGE_DYS_AT_ENCNT
+  FROM CUBESPRD.OUTPTNT_FACT  WHERE APPT_DT &lt; '2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Outpatient</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="903695c1-9b22-425f-957d-f1cd3585346e">
+          <ID>Outpatient Fact</ID>
+          <Name>Outpatient-Patient New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="f4fbf62f-cefc-403a-845e-941b542cb0f3">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT ENCNT_SK
+       , PTNT_SK
+       , APPT_TS_SK
+       , APPT_DT
+       , APPT_LNGTH
+       , CASE WHEN APPT_LNGTH=0 THEN 0 WHEN APPT_LNGTH&lt;0 THEN NULL ELSE LOG(APPT_LNGTH) END AS APPT_LNGTH_LOG
+       , APPT_CRTN_INSTNT_TS_SK
+       , APPT_CRTN_INSTNT_DT
+       , CHCK_IN_INSTNT_TS_SK
+       , CHCK_IN_INSTNT_DT
+       , CHCK_OUT_INSTNT_TS_SK
+       , CHCK_OUT_INSTNT_DT
+       , ARRVL_INSTNT_TS_SK
+       , ARRVL_INSTNT_DT
+       , SCNDS_WTNG
+       , CASE WHEN SCNDS_WTNG=0 THEN 0 WHEN SCNDS_WTNG&lt;0 THEN NULL ELSE LOG(SCNDS_WTNG) END AS SCNDS_WTNG_LOG
+       , DEPT_SK
+       , RM_INSTNT_TS_SK
+       , RM_INSTNT_DT
+       , SCDS_IN_RM
+       , CASE WHEN SCDS_IN_RM=0 THEN 0 WHEN SCDS_IN_RM&lt;0 THEN NULL ELSE LOG(SCDS_IN_RM) END AS SCDS_IN_RM_LOG
+       , BDY_MSS_IDX
+       , BDY_SRFC_AREA
+       , SYSTLC
+       , DISTLC
+       , TMP_IN_FHRNHT
+       , PULSE
+       , RSPRTNS
+       , PRMY_DIAG_SK
+       , PRMY_VST_PRVDR_KEY
+       , SCND_VST_PRVDR_KEY
+       , THRD_VST_PRVDR_KEY
+       , FRTH_VST_PRVDR_KEY
+       , AGE_YRS_AT_ENCNT
+       , CASE WHEN AGE_YRS_AT_ENCNT=0 THEN 0 WHEN AGE_YRS_AT_ENCNT&lt;0 THEN NULL ELSE LOG(AGE_YRS_AT_ENCNT) END AS AGE_YRS_AT_ENCNT_LOG
+       , AGE_MNTHS_AT_ENCNT
+       , AGE_DYS_AT_ENCNT
+  FROM CUBESPRD.OUTPTNT_FACT WHERE APPT_DT &gt;= '2017-07-01' OR APPT_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="878556a2-3c3f-4089-8358-f75c8db0510f">
+          <ID>Outpatient Old</ID>
+          <Name>Outpatient-Patient Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="920a7312-02c6-44f9-aef9-7683c3ec6b62">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT ENCNT_SK
+       , PTNT_SK
+       , APPT_TS_SK
+       , APPT_DT
+       , APPT_LNGTH
+       , CASE WHEN APPT_LNGTH=0 THEN 0 WHEN APPT_LNGTH&lt;0 THEN NULL ELSE LOG(APPT_LNGTH) END AS APPT_LNGTH_LOG
+       , APPT_CRTN_INSTNT_TS_SK
+       , APPT_CRTN_INSTNT_DT
+       , CHCK_IN_INSTNT_TS_SK
+       , CHCK_IN_INSTNT_DT
+       , CHCK_OUT_INSTNT_TS_SK
+       , CHCK_OUT_INSTNT_DT
+       , ARRVL_INSTNT_TS_SK
+       , ARRVL_INSTNT_DT
+       , SCNDS_WTNG
+       , CASE WHEN SCNDS_WTNG=0 THEN 0 WHEN SCNDS_WTNG&lt;0 THEN NULL ELSE LOG(SCNDS_WTNG) END AS SCNDS_WTNG_LOG
+       , DEPT_SK
+       , RM_INSTNT_TS_SK
+       , RM_INSTNT_DT
+       , SCDS_IN_RM
+       , CASE WHEN SCDS_IN_RM=0 THEN 0 WHEN SCDS_IN_RM&lt;0 THEN NULL ELSE LOG(SCDS_IN_RM) END AS SCDS_IN_RM_LOG
+       , BDY_MSS_IDX
+       , BDY_SRFC_AREA
+       , SYSTLC
+       , DISTLC
+       , TMP_IN_FHRNHT
+       , PULSE
+       , RSPRTNS
+       , PRMY_DIAG_SK
+       , PRMY_VST_PRVDR_KEY
+       , SCND_VST_PRVDR_KEY
+       , THRD_VST_PRVDR_KEY
+       , FRTH_VST_PRVDR_KEY
+       , AGE_YRS_AT_ENCNT
+       , CASE WHEN AGE_YRS_AT_ENCNT=0 THEN 0 WHEN AGE_YRS_AT_ENCNT&lt;0 THEN NULL ELSE LOG(AGE_YRS_AT_ENCNT) END AS AGE_YRS_AT_ENCNT_LOG
+       , AGE_MNTHS_AT_ENCNT
+       , AGE_DYS_AT_ENCNT
+  FROM CUBESPRD.OUTPTNT_FACT WHERE APPT_DT &lt; '2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>ED Visit Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="043e7271-b120-4b46-8746-df3f47c72b7e">
+          <ID>ED Visit New</ID>
+          <Name>ED Visit New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="8e9f673e-0a33-487a-8689-1c6b0576ba60">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT EDPTNT_VST_SK
+       , ENCNT_SK
+       , PTNT_SK
+       , HSP_DSCRG_DT
+       , HSP_DSCRG_TS_SK
+       , ARRVL_DT
+       , ARRVL_TS_SK
+       , ED_DSCRG_DT
+       , ED_DSCRG_TS_SK
+       , DSPSTN_INSTNT_DT
+       , DSPSTN_INSTNT_TS_SK
+       , FRST_NONED_DEPT_ARRVL_DT
+       , FRST_NONED_DEPT_ARRVL_TS_SK
+       , AVS_PRNT_INSTNT_DT
+       , AVS_PRNT_INSTNT_TS_SK
+       , AGE_YRS_AT_ENCNT
+       , AGE_MNTHS_AT_ENCNT
+       , AGE_DYS_AT_ENCNT
+       , ADMT_DEPT_SK
+       , FRST_NON_ED_DEPT_SK
+       , PAT_RMD_DT
+       , PAT_RMD_TS_SK
+       , REG_CMPLTD_DT
+       , REG_CMPLTD_TS_SK
+       , TRGE_START_DT
+       , TRGE_START_TS_SK
+       , TRGE_CMPLTD_DT
+       , TRGE_CMPLTD_TS_SK
+       , FRST_ATTND_DT
+       , FRST_ATTND_TS_SK
+       , LAB_ORDRD_DT
+       , LAB_ORDRD_TS_SK
+       , LAB_CMPLTD_DT
+       , LAB_CMPLTD_TS_SK
+       , LAB_PRVDR_RVW_DT
+       , LAB_PRVDR_RVW_TS_SK
+       , IMG_ORDRD_DT
+       , IMG_ORDRD_TS_SK
+       , IMG_TST_CMPLTD_DT
+       , IMG_TST_CMPLTD_TS_SK
+       , IMG_PRVDR_RVW_DT
+       , IMG_PRVDR_RVW_TS_SK
+       , BED_RQST_DT
+       , BED_RQST_TS_SK
+       , CASE WHEN ARRV_TO_REG_CMPLTD &lt; 0 THEN NULL ELSE ARRV_TO_REG_CMPLTD END AS ARRV_TO_REG_CMPLTD
+	   , CASE WHEN ARRV_TO_REG_CMPLTD=0 THEN 0 WHEN ARRV_TO_REG_CMPLTD&lt;0 THEN NULL ELSE Log(ARRV_TO_REG_CMPLTD)END As ARRV_TO_REG_CMPLTD_Log
+       , CASE WHEN ARRV_TO_TRG_STRT &lt; 0 THEN NULL ELSE ARRV_TO_TRG_STRT END AS ARRV_TO_TRG_STRT
+       , CASE WHEN ARRV_TO_TRG_STRT=0 THEN 0 WHEN ARRV_TO_TRG_STRT&lt;0 THEN NULL ELSE Log(ARRV_TO_TRG_STRT)END As ARRV_TO_TRG_STRT_Log
+       , CASE WHEN TRG_STRT_TO_TRG_CMPLTD &lt; 0 THEN NULL ELSE TRG_STRT_TO_TRG_CMPLTD END AS TRG_STRT_TO_TRG_CMPLTD
+       , CASE WHEN TRG_STRT_TO_TRG_CMPLTD=0 THEN 0 WHEN TRG_STRT_TO_TRG_CMPLTD&lt;0 THEN NULL ELSE Log(TRG_STRT_TO_TRG_CMPLTD)END As TRG_STRT_TO_TRG_CMPLTD_Log
+       , CASE WHEN TRG_STRT_TO_PTNT_RMD &lt; 0 THEN NULL ELSE TRG_STRT_TO_PTNT_RMD END AS TRG_STRT_TO_PTNT_RMD
+       , CASE WHEN TRG_STRT_TO_PTNT_RMD=0 THEN 0 WHEN TRG_STRT_TO_PTNT_RMD&lt;0 THEN NULL ELSE Log(TRG_STRT_TO_PTNT_RMD)END As TRG_STRT_TO_PTNT_RMD_Log
+       , CASE WHEN BED_RQST_TO_PTNT_RMD &lt; 0 THEN NULL ELSE BED_RQST_TO_PTNT_RMD END AS BED_RQST_TO_PTNT_RMD
+       , CASE WHEN BED_RQST_TO_PTNT_RMD=0 THEN 0 WHEN BED_RQST_TO_PTNT_RMD&lt;0 THEN NULL ELSE Log(BED_RQST_TO_PTNT_RMD)END As BED_RQST_TO_PTNT_RMD_Log
+       , CASE WHEN TRG_CMPLTD_TO_PTNT_RMD &lt; 0 THEN NULL ELSE TRG_CMPLTD_TO_PTNT_RMD END AS TRG_CMPLTD_TO_PTNT_RMD
+       , CASE WHEN TRG_CMPLTD_TO_PTNT_RMD=0 THEN 0 WHEN TRG_CMPLTD_TO_PTNT_RMD&lt;0 THEN NULL ELSE Log(TRG_CMPLTD_TO_PTNT_RMD)END As TRG_CMPLTD_TO_PTNT_RMD_Log
+       , CASE WHEN TRG_CMPLTD_TO_ASSGN_ATTND &lt; 0 THEN NULL ELSE TRG_CMPLTD_TO_ASSGN_ATTND END AS TRG_CMPLTD_TO_ASSGN_ATTND
+       , CASE WHEN TRG_CMPLTD_TO_ASSGN_ATTND=0 THEN 0 WHEN TRG_CMPLTD_TO_ASSGN_ATTND&lt;0 THEN NULL ELSE Log(TRG_CMPLTD_TO_ASSGN_ATTND)END As TRG_CMPLTD_TO_ASSGN_ATTND_Log
+       , CASE WHEN PTNT_RMD_TO_ASSGN_ATTND &lt; 0 THEN NULL ELSE PTNT_RMD_TO_ASSGN_ATTND END AS PTNT_RMD_TO_ASSGN_ATTND
+       , CASE WHEN PTNT_RMD_TO_ASSGN_ATTND=0 THEN 0 WHEN PTNT_RMD_TO_ASSGN_ATTND&lt;0 THEN NULL ELSE Log(PTNT_RMD_TO_ASSGN_ATTND)END As PTNT_RMD_TO_ASSGN_ATTND_Log
+       , CASE WHEN ASSGN_ATTND_TO_DSPSTN &lt; 0 THEN NULL ELSE ASSGN_ATTND_TO_DSPSTN END AS ASSGN_ATTND_TO_DSPSTN
+       , CASE WHEN ASSGN_ATTND_TO_DSPSTN=0 THEN 0 WHEN ASSGN_ATTND_TO_DSPSTN&lt;0 THEN NULL ELSE Log(ASSGN_ATTND_TO_DSPSTN)END As ASSGN_ATTND_TO_DSPSTN_Log
+       , CASE WHEN DSPTN_TO_ED_DSCRG &lt; 0 THEN NULL ELSE DSPTN_TO_ED_DSCRG END AS DSPTN_TO_ED_DSCRG
+       , CASE WHEN DSPTN_TO_ED_DSCRG=0 THEN 0 WHEN DSPTN_TO_ED_DSCRG&lt;0 THEN NULL ELSE Log(DSPTN_TO_ED_DSCRG)END As DSPTN_TO_ED_DSCRG_Log
+       , CASE WHEN AVS_PRNTD_TO_ED_DSCRG &lt; 0 THEN NULL ELSE AVS_PRNTD_TO_ED_DSCRG END AS AVS_PRNTD_TO_ED_DSCRG
+       , CASE WHEN AVS_PRNTD_TO_ED_DSCRG=0 THEN 0 WHEN AVS_PRNTD_TO_ED_DSCRG&lt;0 THEN NULL ELSE Log(AVS_PRNTD_TO_ED_DSCRG)END As AVS_PRNTD_TO_ED_DSCRG_Log
+       , CASE WHEN ARRV_TO_LAB_ORDRD &lt; 0 THEN NULL ELSE ARRV_TO_LAB_ORDRD END AS ARRV_TO_LAB_ORDRD
+       , CASE WHEN ARRV_TO_LAB_ORDRD=0 THEN 0 WHEN ARRV_TO_LAB_ORDRD&lt;0 THEN NULL ELSE Log(ARRV_TO_LAB_ORDRD)END As ARRV_TO_LAB_ORDRD_Log
+       , CASE WHEN LAB_ORDRD_TO_CMPLTD &lt; 0 THEN NULL ELSE LAB_ORDRD_TO_CMPLTD END AS LAB_ORDRD_TO_CMPLTD
+       , CASE WHEN LAB_ORDRD_TO_CMPLTD=0 THEN 0 WHEN LAB_ORDRD_TO_CMPLTD&lt;0 THEN NULL ELSE Log(LAB_ORDRD_TO_CMPLTD)END As LAB_ORDRD_TO_CMPLTD_Log
+       , CASE WHEN LAB_CMPLTD_TO_PRVDR_RVW &lt; 0 THEN NULL ELSE LAB_CMPLTD_TO_PRVDR_RVW END AS LAB_CMPLTD_TO_PRVDR_RVW
+       , CASE WHEN LAB_CMPLTD_TO_PRVDR_RVW=0 THEN 0 WHEN LAB_CMPLTD_TO_PRVDR_RVW&lt;0 THEN NULL ELSE Log(LAB_CMPLTD_TO_PRVDR_RVW)END As LAB_CMPLTD_TO_PRVDR_RVW_Log
+       , CASE WHEN ARRV_TO_IMG_ORDRD &lt; 0 THEN NULL ELSE ARRV_TO_IMG_ORDRD END AS ARRV_TO_IMG_ORDRD
+       , CASE WHEN ARRV_TO_IMG_ORDRD=0 THEN 0 WHEN ARRV_TO_IMG_ORDRD&lt;0 THEN NULL ELSE Log(ARRV_TO_IMG_ORDRD)END As ARRV_TO_IMG_ORDRD_Log
+       , CASE WHEN IMG_TST_ORDRD_TO_CMPLTD &lt; 0 THEN NULL ELSE IMG_TST_ORDRD_TO_CMPLTD END AS IMG_TST_ORDRD_TO_CMPLTD
+       , CASE WHEN IMG_TST_ORDRD_TO_CMPLTD=0 THEN 0 WHEN IMG_TST_ORDRD_TO_CMPLTD&lt;0 THEN NULL ELSE Log(IMG_TST_ORDRD_TO_CMPLTD)END As IMG_TST_ORDRD_TO_CMPLTD_Log
+       , CASE WHEN IMG_TST_CMPLTD_TO_PRVDR_RVW &lt; 0 THEN NULL ELSE IMG_TST_CMPLTD_TO_PRVDR_RVW END AS IMG_TST_CMPLTD_TO_PRVDR_RVW
+       , CASE WHEN IMG_TST_CMPLTD_TO_PRVDR_RVW=0 THEN 0 WHEN IMG_TST_CMPLTD_TO_PRVDR_RVW&lt;0 THEN NULL ELSE Log(IMG_TST_CMPLTD_TO_PRVDR_RVW)END As IMG_TST_CMPLTD_TO_PRVDR_RVW_Log
+       , CASE WHEN ARRV_TO_ED_DSCRG &lt; 0 THEN NULL ELSE ARRV_TO_ED_DSCRG END AS ARRV_TO_ED_DSCRG
+       , CASE WHEN ARRV_TO_ED_DSCRG=0 THEN 0 WHEN ARRV_TO_ED_DSCRG&lt;0 THEN NULL ELSE Log(ARRV_TO_ED_DSCRG)END As ARRV_TO_ED_DSCRG_Log
+       , GLSGW_VAL
+       , CASE WHEN GLSGW_VAL=0 THEN 0 WHEN GLSGW_VAL&lt;0 THEN NULL ELSE Log(GLSGW_VAL)END As GLSGW_VAL_Log
+FROM CUBESPRD.ED_VST_FACT  WHERE   ARRVL_DT &gt;='2017-07-01'  OR ARRVL_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="3f95ecd3-0232-4d56-ba61-5c2d3539213c">
+          <ID>ED Visit Old</ID>
+          <Name>ED Visit Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="c95c6f12-2723-4e9c-8973-9619ac8795be">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT EDPTNT_VST_SK
+       , ENCNT_SK
+       , PTNT_SK
+       , HSP_DSCRG_DT
+       , HSP_DSCRG_TS_SK
+       , ARRVL_DT
+       , ARRVL_TS_SK
+       , ED_DSCRG_DT
+       , ED_DSCRG_TS_SK
+       , DSPSTN_INSTNT_DT
+       , DSPSTN_INSTNT_TS_SK
+       , FRST_NONED_DEPT_ARRVL_DT
+       , FRST_NONED_DEPT_ARRVL_TS_SK
+       , AVS_PRNT_INSTNT_DT
+       , AVS_PRNT_INSTNT_TS_SK
+       , AGE_YRS_AT_ENCNT
+       , AGE_MNTHS_AT_ENCNT
+       , AGE_DYS_AT_ENCNT
+       , ADMT_DEPT_SK
+       , FRST_NON_ED_DEPT_SK
+       , PAT_RMD_DT
+       , PAT_RMD_TS_SK
+       , REG_CMPLTD_DT
+       , REG_CMPLTD_TS_SK
+       , TRGE_START_DT
+       , TRGE_START_TS_SK
+       , TRGE_CMPLTD_DT
+       , TRGE_CMPLTD_TS_SK
+       , FRST_ATTND_DT
+       , FRST_ATTND_TS_SK
+       , LAB_ORDRD_DT
+       , LAB_ORDRD_TS_SK
+       , LAB_CMPLTD_DT
+       , LAB_CMPLTD_TS_SK
+       , LAB_PRVDR_RVW_DT
+       , LAB_PRVDR_RVW_TS_SK
+       , IMG_ORDRD_DT
+       , IMG_ORDRD_TS_SK
+       , IMG_TST_CMPLTD_DT
+       , IMG_TST_CMPLTD_TS_SK
+       , IMG_PRVDR_RVW_DT
+       , IMG_PRVDR_RVW_TS_SK
+       , BED_RQST_DT
+       , BED_RQST_TS_SK
+       , CASE WHEN ARRV_TO_REG_CMPLTD &lt; 0 THEN NULL ELSE ARRV_TO_REG_CMPLTD END AS ARRV_TO_REG_CMPLTD
+	   , CASE WHEN ARRV_TO_REG_CMPLTD=0 THEN 0 WHEN ARRV_TO_REG_CMPLTD&lt;0 THEN NULL ELSE Log(ARRV_TO_REG_CMPLTD)END As ARRV_TO_REG_CMPLTD_Log
+       , CASE WHEN ARRV_TO_TRG_STRT &lt; 0 THEN NULL ELSE ARRV_TO_TRG_STRT END AS ARRV_TO_TRG_STRT
+       , CASE WHEN ARRV_TO_TRG_STRT=0 THEN 0 WHEN ARRV_TO_TRG_STRT&lt;0 THEN NULL ELSE Log(ARRV_TO_TRG_STRT)END As ARRV_TO_TRG_STRT_Log
+       , CASE WHEN TRG_STRT_TO_TRG_CMPLTD &lt; 0 THEN NULL ELSE TRG_STRT_TO_TRG_CMPLTD END AS TRG_STRT_TO_TRG_CMPLTD
+       , CASE WHEN TRG_STRT_TO_TRG_CMPLTD=0 THEN 0 WHEN TRG_STRT_TO_TRG_CMPLTD&lt;0 THEN NULL ELSE Log(TRG_STRT_TO_TRG_CMPLTD)END As TRG_STRT_TO_TRG_CMPLTD_Log
+       , CASE WHEN TRG_STRT_TO_PTNT_RMD &lt; 0 THEN NULL ELSE TRG_STRT_TO_PTNT_RMD END AS TRG_STRT_TO_PTNT_RMD
+       , CASE WHEN TRG_STRT_TO_PTNT_RMD=0 THEN 0 WHEN TRG_STRT_TO_PTNT_RMD&lt;0 THEN NULL ELSE Log(TRG_STRT_TO_PTNT_RMD)END As TRG_STRT_TO_PTNT_RMD_Log
+       , CASE WHEN BED_RQST_TO_PTNT_RMD &lt; 0 THEN NULL ELSE BED_RQST_TO_PTNT_RMD END AS BED_RQST_TO_PTNT_RMD
+       , CASE WHEN BED_RQST_TO_PTNT_RMD=0 THEN 0 WHEN BED_RQST_TO_PTNT_RMD&lt;0 THEN NULL ELSE Log(BED_RQST_TO_PTNT_RMD)END As BED_RQST_TO_PTNT_RMD_Log
+       , CASE WHEN TRG_CMPLTD_TO_PTNT_RMD &lt; 0 THEN NULL ELSE TRG_CMPLTD_TO_PTNT_RMD END AS TRG_CMPLTD_TO_PTNT_RMD
+       , CASE WHEN TRG_CMPLTD_TO_PTNT_RMD=0 THEN 0 WHEN TRG_CMPLTD_TO_PTNT_RMD&lt;0 THEN NULL ELSE Log(TRG_CMPLTD_TO_PTNT_RMD)END As TRG_CMPLTD_TO_PTNT_RMD_Log
+       , CASE WHEN TRG_CMPLTD_TO_ASSGN_ATTND &lt; 0 THEN NULL ELSE TRG_CMPLTD_TO_ASSGN_ATTND END AS TRG_CMPLTD_TO_ASSGN_ATTND
+       , CASE WHEN TRG_CMPLTD_TO_ASSGN_ATTND=0 THEN 0 WHEN TRG_CMPLTD_TO_ASSGN_ATTND&lt;0 THEN NULL ELSE Log(TRG_CMPLTD_TO_ASSGN_ATTND)END As TRG_CMPLTD_TO_ASSGN_ATTND_Log
+       , CASE WHEN PTNT_RMD_TO_ASSGN_ATTND &lt; 0 THEN NULL ELSE PTNT_RMD_TO_ASSGN_ATTND END AS PTNT_RMD_TO_ASSGN_ATTND
+       , CASE WHEN PTNT_RMD_TO_ASSGN_ATTND=0 THEN 0 WHEN PTNT_RMD_TO_ASSGN_ATTND&lt;0 THEN NULL ELSE Log(PTNT_RMD_TO_ASSGN_ATTND)END As PTNT_RMD_TO_ASSGN_ATTND_Log
+       , CASE WHEN ASSGN_ATTND_TO_DSPSTN &lt; 0 THEN NULL ELSE ASSGN_ATTND_TO_DSPSTN END AS ASSGN_ATTND_TO_DSPSTN
+       , CASE WHEN ASSGN_ATTND_TO_DSPSTN=0 THEN 0 WHEN ASSGN_ATTND_TO_DSPSTN&lt;0 THEN NULL ELSE Log(ASSGN_ATTND_TO_DSPSTN)END As ASSGN_ATTND_TO_DSPSTN_Log
+       , CASE WHEN DSPTN_TO_ED_DSCRG &lt; 0 THEN NULL ELSE DSPTN_TO_ED_DSCRG END AS DSPTN_TO_ED_DSCRG
+       , CASE WHEN DSPTN_TO_ED_DSCRG=0 THEN 0 WHEN DSPTN_TO_ED_DSCRG&lt;0 THEN NULL ELSE Log(DSPTN_TO_ED_DSCRG)END As DSPTN_TO_ED_DSCRG_Log
+       , CASE WHEN AVS_PRNTD_TO_ED_DSCRG &lt; 0 THEN NULL ELSE AVS_PRNTD_TO_ED_DSCRG END AS AVS_PRNTD_TO_ED_DSCRG
+       , CASE WHEN AVS_PRNTD_TO_ED_DSCRG=0 THEN 0 WHEN AVS_PRNTD_TO_ED_DSCRG&lt;0 THEN NULL ELSE Log(AVS_PRNTD_TO_ED_DSCRG)END As AVS_PRNTD_TO_ED_DSCRG_Log
+       , CASE WHEN ARRV_TO_LAB_ORDRD &lt; 0 THEN NULL ELSE ARRV_TO_LAB_ORDRD END AS ARRV_TO_LAB_ORDRD
+       , CASE WHEN ARRV_TO_LAB_ORDRD=0 THEN 0 WHEN ARRV_TO_LAB_ORDRD&lt;0 THEN NULL ELSE Log(ARRV_TO_LAB_ORDRD)END As ARRV_TO_LAB_ORDRD_Log
+       , CASE WHEN LAB_ORDRD_TO_CMPLTD &lt; 0 THEN NULL ELSE LAB_ORDRD_TO_CMPLTD END AS LAB_ORDRD_TO_CMPLTD
+       , CASE WHEN LAB_ORDRD_TO_CMPLTD=0 THEN 0 WHEN LAB_ORDRD_TO_CMPLTD&lt;0 THEN NULL ELSE Log(LAB_ORDRD_TO_CMPLTD)END As LAB_ORDRD_TO_CMPLTD_Log
+       , CASE WHEN LAB_CMPLTD_TO_PRVDR_RVW &lt; 0 THEN NULL ELSE LAB_CMPLTD_TO_PRVDR_RVW END AS LAB_CMPLTD_TO_PRVDR_RVW
+       , CASE WHEN LAB_CMPLTD_TO_PRVDR_RVW=0 THEN 0 WHEN LAB_CMPLTD_TO_PRVDR_RVW&lt;0 THEN NULL ELSE Log(LAB_CMPLTD_TO_PRVDR_RVW)END As LAB_CMPLTD_TO_PRVDR_RVW_Log
+       , CASE WHEN ARRV_TO_IMG_ORDRD &lt; 0 THEN NULL ELSE ARRV_TO_IMG_ORDRD END AS ARRV_TO_IMG_ORDRD
+       , CASE WHEN ARRV_TO_IMG_ORDRD=0 THEN 0 WHEN ARRV_TO_IMG_ORDRD&lt;0 THEN NULL ELSE Log(ARRV_TO_IMG_ORDRD)END As ARRV_TO_IMG_ORDRD_Log
+       , CASE WHEN IMG_TST_ORDRD_TO_CMPLTD &lt; 0 THEN NULL ELSE IMG_TST_ORDRD_TO_CMPLTD END AS IMG_TST_ORDRD_TO_CMPLTD
+       , CASE WHEN IMG_TST_ORDRD_TO_CMPLTD=0 THEN 0 WHEN IMG_TST_ORDRD_TO_CMPLTD&lt;0 THEN NULL ELSE Log(IMG_TST_ORDRD_TO_CMPLTD)END As IMG_TST_ORDRD_TO_CMPLTD_Log
+       , CASE WHEN IMG_TST_CMPLTD_TO_PRVDR_RVW &lt; 0 THEN NULL ELSE IMG_TST_CMPLTD_TO_PRVDR_RVW END AS IMG_TST_CMPLTD_TO_PRVDR_RVW
+       , CASE WHEN IMG_TST_CMPLTD_TO_PRVDR_RVW=0 THEN 0 WHEN IMG_TST_CMPLTD_TO_PRVDR_RVW&lt;0 THEN NULL ELSE Log(IMG_TST_CMPLTD_TO_PRVDR_RVW)END As IMG_TST_CMPLTD_TO_PRVDR_RVW_Log
+       , CASE WHEN ARRV_TO_ED_DSCRG &lt; 0 THEN NULL ELSE ARRV_TO_ED_DSCRG END AS ARRV_TO_ED_DSCRG
+       , CASE WHEN ARRV_TO_ED_DSCRG=0 THEN 0 WHEN ARRV_TO_ED_DSCRG&lt;0 THEN NULL ELSE Log(ARRV_TO_ED_DSCRG)END As ARRV_TO_ED_DSCRG_Log
+       , GLSGW_VAL
+       , CASE WHEN GLSGW_VAL=0 THEN 0 WHEN GLSGW_VAL&lt;0 THEN NULL ELSE Log(GLSGW_VAL)END As GLSGW_VAL_Log
+FROM CUBESPRD.ED_VST_FACT  WHERE  ARRVL_DT &lt;'2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>ED Visit</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="8d10dda8-b586-45a4-88ca-f24f8befdd87">
+          <ID>ED VisitPatient New</ID>
+          <Name>ED Visit-Patient New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="ee1668a0-90d6-42ec-b91c-0c6c6590533a">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT EDPTNT_VST_SK
+       , ENCNT_SK
+       , PTNT_SK
+       , HSP_DSCRG_DT
+       , HSP_DSCRG_TS_SK
+       , ARRVL_DT
+       , ARRVL_TS_SK
+       , ED_DSCRG_DT
+       , ED_DSCRG_TS_SK
+       , DSPSTN_INSTNT_DT
+       , DSPSTN_INSTNT_TS_SK
+       , FRST_NONED_DEPT_ARRVL_DT
+       , FRST_NONED_DEPT_ARRVL_TS_SK
+       , AVS_PRNT_INSTNT_DT
+       , AVS_PRNT_INSTNT_TS_SK
+       , AGE_YRS_AT_ENCNT
+       , AGE_MNTHS_AT_ENCNT
+       , AGE_DYS_AT_ENCNT
+       , ADMT_DEPT_SK
+       , FRST_NON_ED_DEPT_SK
+       , PAT_RMD_DT
+       , PAT_RMD_TS_SK
+       , REG_CMPLTD_DT
+       , REG_CMPLTD_TS_SK
+       , TRGE_START_DT
+       , TRGE_START_TS_SK
+       , TRGE_CMPLTD_DT
+       , TRGE_CMPLTD_TS_SK
+       , FRST_ATTND_DT
+       , FRST_ATTND_TS_SK
+       , LAB_ORDRD_DT
+       , LAB_ORDRD_TS_SK
+       , LAB_CMPLTD_DT
+       , LAB_CMPLTD_TS_SK
+       , LAB_PRVDR_RVW_DT
+       , LAB_PRVDR_RVW_TS_SK
+       , IMG_ORDRD_DT
+       , IMG_ORDRD_TS_SK
+       , IMG_TST_CMPLTD_DT
+       , IMG_TST_CMPLTD_TS_SK
+       , IMG_PRVDR_RVW_DT
+       , IMG_PRVDR_RVW_TS_SK
+       , BED_RQST_DT
+       , BED_RQST_TS_SK
+       , CASE WHEN ARRV_TO_REG_CMPLTD &lt; 0 THEN NULL ELSE ARRV_TO_REG_CMPLTD END AS ARRV_TO_REG_CMPLTD
+	   , CASE WHEN ARRV_TO_REG_CMPLTD=0 THEN 0 WHEN ARRV_TO_REG_CMPLTD&lt;0 THEN NULL ELSE Log(ARRV_TO_REG_CMPLTD)END As ARRV_TO_REG_CMPLTD_Log
+       , CASE WHEN ARRV_TO_TRG_STRT &lt; 0 THEN NULL ELSE ARRV_TO_TRG_STRT END AS ARRV_TO_TRG_STRT
+       , CASE WHEN ARRV_TO_TRG_STRT=0 THEN 0 WHEN ARRV_TO_TRG_STRT&lt;0 THEN NULL ELSE Log(ARRV_TO_TRG_STRT)END As ARRV_TO_TRG_STRT_Log
+       , CASE WHEN TRG_STRT_TO_TRG_CMPLTD &lt; 0 THEN NULL ELSE TRG_STRT_TO_TRG_CMPLTD END AS TRG_STRT_TO_TRG_CMPLTD
+       , CASE WHEN TRG_STRT_TO_TRG_CMPLTD=0 THEN 0 WHEN TRG_STRT_TO_TRG_CMPLTD&lt;0 THEN NULL ELSE Log(TRG_STRT_TO_TRG_CMPLTD)END As TRG_STRT_TO_TRG_CMPLTD_Log
+       , CASE WHEN TRG_STRT_TO_PTNT_RMD &lt; 0 THEN NULL ELSE TRG_STRT_TO_PTNT_RMD END AS TRG_STRT_TO_PTNT_RMD
+       , CASE WHEN TRG_STRT_TO_PTNT_RMD=0 THEN 0 WHEN TRG_STRT_TO_PTNT_RMD&lt;0 THEN NULL ELSE Log(TRG_STRT_TO_PTNT_RMD)END As TRG_STRT_TO_PTNT_RMD_Log
+       , CASE WHEN BED_RQST_TO_PTNT_RMD &lt; 0 THEN NULL ELSE BED_RQST_TO_PTNT_RMD END AS BED_RQST_TO_PTNT_RMD
+       , CASE WHEN BED_RQST_TO_PTNT_RMD=0 THEN 0 WHEN BED_RQST_TO_PTNT_RMD&lt;0 THEN NULL ELSE Log(BED_RQST_TO_PTNT_RMD)END As BED_RQST_TO_PTNT_RMD_Log
+       , CASE WHEN TRG_CMPLTD_TO_PTNT_RMD &lt; 0 THEN NULL ELSE TRG_CMPLTD_TO_PTNT_RMD END AS TRG_CMPLTD_TO_PTNT_RMD
+       , CASE WHEN TRG_CMPLTD_TO_PTNT_RMD=0 THEN 0 WHEN TRG_CMPLTD_TO_PTNT_RMD&lt;0 THEN NULL ELSE Log(TRG_CMPLTD_TO_PTNT_RMD)END As TRG_CMPLTD_TO_PTNT_RMD_Log
+       , CASE WHEN TRG_CMPLTD_TO_ASSGN_ATTND &lt; 0 THEN NULL ELSE TRG_CMPLTD_TO_ASSGN_ATTND END AS TRG_CMPLTD_TO_ASSGN_ATTND
+       , CASE WHEN TRG_CMPLTD_TO_ASSGN_ATTND=0 THEN 0 WHEN TRG_CMPLTD_TO_ASSGN_ATTND&lt;0 THEN NULL ELSE Log(TRG_CMPLTD_TO_ASSGN_ATTND)END As TRG_CMPLTD_TO_ASSGN_ATTND_Log
+       , CASE WHEN PTNT_RMD_TO_ASSGN_ATTND &lt; 0 THEN NULL ELSE PTNT_RMD_TO_ASSGN_ATTND END AS PTNT_RMD_TO_ASSGN_ATTND
+       , CASE WHEN PTNT_RMD_TO_ASSGN_ATTND=0 THEN 0 WHEN PTNT_RMD_TO_ASSGN_ATTND&lt;0 THEN NULL ELSE Log(PTNT_RMD_TO_ASSGN_ATTND)END As PTNT_RMD_TO_ASSGN_ATTND_Log
+       , CASE WHEN ASSGN_ATTND_TO_DSPSTN &lt; 0 THEN NULL ELSE ASSGN_ATTND_TO_DSPSTN END AS ASSGN_ATTND_TO_DSPSTN
+       , CASE WHEN ASSGN_ATTND_TO_DSPSTN=0 THEN 0 WHEN ASSGN_ATTND_TO_DSPSTN&lt;0 THEN NULL ELSE Log(ASSGN_ATTND_TO_DSPSTN)END As ASSGN_ATTND_TO_DSPSTN_Log
+       , CASE WHEN DSPTN_TO_ED_DSCRG &lt; 0 THEN NULL ELSE DSPTN_TO_ED_DSCRG END AS DSPTN_TO_ED_DSCRG
+       , CASE WHEN DSPTN_TO_ED_DSCRG=0 THEN 0 WHEN DSPTN_TO_ED_DSCRG&lt;0 THEN NULL ELSE Log(DSPTN_TO_ED_DSCRG)END As DSPTN_TO_ED_DSCRG_Log
+       , CASE WHEN AVS_PRNTD_TO_ED_DSCRG &lt; 0 THEN NULL ELSE AVS_PRNTD_TO_ED_DSCRG END AS AVS_PRNTD_TO_ED_DSCRG
+       , CASE WHEN AVS_PRNTD_TO_ED_DSCRG=0 THEN 0 WHEN AVS_PRNTD_TO_ED_DSCRG&lt;0 THEN NULL ELSE Log(AVS_PRNTD_TO_ED_DSCRG)END As AVS_PRNTD_TO_ED_DSCRG_Log
+       , CASE WHEN ARRV_TO_LAB_ORDRD &lt; 0 THEN NULL ELSE ARRV_TO_LAB_ORDRD END AS ARRV_TO_LAB_ORDRD
+       , CASE WHEN ARRV_TO_LAB_ORDRD=0 THEN 0 WHEN ARRV_TO_LAB_ORDRD&lt;0 THEN NULL ELSE Log(ARRV_TO_LAB_ORDRD)END As ARRV_TO_LAB_ORDRD_Log
+       , CASE WHEN LAB_ORDRD_TO_CMPLTD &lt; 0 THEN NULL ELSE LAB_ORDRD_TO_CMPLTD END AS LAB_ORDRD_TO_CMPLTD
+       , CASE WHEN LAB_ORDRD_TO_CMPLTD=0 THEN 0 WHEN LAB_ORDRD_TO_CMPLTD&lt;0 THEN NULL ELSE Log(LAB_ORDRD_TO_CMPLTD)END As LAB_ORDRD_TO_CMPLTD_Log
+       , CASE WHEN LAB_CMPLTD_TO_PRVDR_RVW &lt; 0 THEN NULL ELSE LAB_CMPLTD_TO_PRVDR_RVW END AS LAB_CMPLTD_TO_PRVDR_RVW
+       , CASE WHEN LAB_CMPLTD_TO_PRVDR_RVW=0 THEN 0 WHEN LAB_CMPLTD_TO_PRVDR_RVW&lt;0 THEN NULL ELSE Log(LAB_CMPLTD_TO_PRVDR_RVW)END As LAB_CMPLTD_TO_PRVDR_RVW_Log
+       , CASE WHEN ARRV_TO_IMG_ORDRD &lt; 0 THEN NULL ELSE ARRV_TO_IMG_ORDRD END AS ARRV_TO_IMG_ORDRD
+       , CASE WHEN ARRV_TO_IMG_ORDRD=0 THEN 0 WHEN ARRV_TO_IMG_ORDRD&lt;0 THEN NULL ELSE Log(ARRV_TO_IMG_ORDRD)END As ARRV_TO_IMG_ORDRD_Log
+       , CASE WHEN IMG_TST_ORDRD_TO_CMPLTD &lt; 0 THEN NULL ELSE IMG_TST_ORDRD_TO_CMPLTD END AS IMG_TST_ORDRD_TO_CMPLTD
+       , CASE WHEN IMG_TST_ORDRD_TO_CMPLTD=0 THEN 0 WHEN IMG_TST_ORDRD_TO_CMPLTD&lt;0 THEN NULL ELSE Log(IMG_TST_ORDRD_TO_CMPLTD)END As IMG_TST_ORDRD_TO_CMPLTD_Log
+       , CASE WHEN IMG_TST_CMPLTD_TO_PRVDR_RVW &lt; 0 THEN NULL ELSE IMG_TST_CMPLTD_TO_PRVDR_RVW END AS IMG_TST_CMPLTD_TO_PRVDR_RVW
+       , CASE WHEN IMG_TST_CMPLTD_TO_PRVDR_RVW=0 THEN 0 WHEN IMG_TST_CMPLTD_TO_PRVDR_RVW&lt;0 THEN NULL ELSE Log(IMG_TST_CMPLTD_TO_PRVDR_RVW)END As IMG_TST_CMPLTD_TO_PRVDR_RVW_Log
+       , CASE WHEN ARRV_TO_ED_DSCRG &lt; 0 THEN NULL ELSE ARRV_TO_ED_DSCRG END AS ARRV_TO_ED_DSCRG
+       , CASE WHEN ARRV_TO_ED_DSCRG=0 THEN 0 WHEN ARRV_TO_ED_DSCRG&lt;0 THEN NULL ELSE Log(ARRV_TO_ED_DSCRG)END As ARRV_TO_ED_DSCRG_Log
+       , GLSGW_VAL
+       , CASE WHEN GLSGW_VAL=0 THEN 0 WHEN GLSGW_VAL&lt;0 THEN NULL ELSE Log(GLSGW_VAL)END As GLSGW_VAL_Log
+FROM CUBESPRD.ED_VST_FACT  WHERE   ARRVL_DT &gt;='2017-07-01'  OR ARRVL_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="46c4814f-bb9c-4d41-8b21-fd33aaa07f2e">
+          <ID>ED Visit-Patient Old</ID>
+          <Name>ED Visit-Patient Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="2d15a905-8182-4a49-8287-0fd9f2151946">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT EDPTNT_VST_SK
+       , ENCNT_SK
+       , PTNT_SK
+       , HSP_DSCRG_DT
+       , HSP_DSCRG_TS_SK
+       , ARRVL_DT
+       , ARRVL_TS_SK
+       , ED_DSCRG_DT
+       , ED_DSCRG_TS_SK
+       , DSPSTN_INSTNT_DT
+       , DSPSTN_INSTNT_TS_SK
+       , FRST_NONED_DEPT_ARRVL_DT
+       , FRST_NONED_DEPT_ARRVL_TS_SK
+       , AVS_PRNT_INSTNT_DT
+       , AVS_PRNT_INSTNT_TS_SK
+       , AGE_YRS_AT_ENCNT
+       , AGE_MNTHS_AT_ENCNT
+       , AGE_DYS_AT_ENCNT
+       , ADMT_DEPT_SK
+       , FRST_NON_ED_DEPT_SK
+       , PAT_RMD_DT
+       , PAT_RMD_TS_SK
+       , REG_CMPLTD_DT
+       , REG_CMPLTD_TS_SK
+       , TRGE_START_DT
+       , TRGE_START_TS_SK
+       , TRGE_CMPLTD_DT
+       , TRGE_CMPLTD_TS_SK
+       , FRST_ATTND_DT
+       , FRST_ATTND_TS_SK
+       , LAB_ORDRD_DT
+       , LAB_ORDRD_TS_SK
+       , LAB_CMPLTD_DT
+       , LAB_CMPLTD_TS_SK
+       , LAB_PRVDR_RVW_DT
+       , LAB_PRVDR_RVW_TS_SK
+       , IMG_ORDRD_DT
+       , IMG_ORDRD_TS_SK
+       , IMG_TST_CMPLTD_DT
+       , IMG_TST_CMPLTD_TS_SK
+       , IMG_PRVDR_RVW_DT
+       , IMG_PRVDR_RVW_TS_SK
+       , BED_RQST_DT
+       , BED_RQST_TS_SK
+       , CASE WHEN ARRV_TO_REG_CMPLTD &lt; 0 THEN NULL ELSE ARRV_TO_REG_CMPLTD END AS ARRV_TO_REG_CMPLTD
+	   , CASE WHEN ARRV_TO_REG_CMPLTD=0 THEN 0 WHEN ARRV_TO_REG_CMPLTD&lt;0 THEN NULL ELSE Log(ARRV_TO_REG_CMPLTD)END As ARRV_TO_REG_CMPLTD_Log
+       , CASE WHEN ARRV_TO_TRG_STRT &lt; 0 THEN NULL ELSE ARRV_TO_TRG_STRT END AS ARRV_TO_TRG_STRT
+       , CASE WHEN ARRV_TO_TRG_STRT=0 THEN 0 WHEN ARRV_TO_TRG_STRT&lt;0 THEN NULL ELSE Log(ARRV_TO_TRG_STRT)END As ARRV_TO_TRG_STRT_Log
+       , CASE WHEN TRG_STRT_TO_TRG_CMPLTD &lt; 0 THEN NULL ELSE TRG_STRT_TO_TRG_CMPLTD END AS TRG_STRT_TO_TRG_CMPLTD
+       , CASE WHEN TRG_STRT_TO_TRG_CMPLTD=0 THEN 0 WHEN TRG_STRT_TO_TRG_CMPLTD&lt;0 THEN NULL ELSE Log(TRG_STRT_TO_TRG_CMPLTD)END As TRG_STRT_TO_TRG_CMPLTD_Log
+       , CASE WHEN TRG_STRT_TO_PTNT_RMD &lt; 0 THEN NULL ELSE TRG_STRT_TO_PTNT_RMD END AS TRG_STRT_TO_PTNT_RMD
+       , CASE WHEN TRG_STRT_TO_PTNT_RMD=0 THEN 0 WHEN TRG_STRT_TO_PTNT_RMD&lt;0 THEN NULL ELSE Log(TRG_STRT_TO_PTNT_RMD)END As TRG_STRT_TO_PTNT_RMD_Log
+       , CASE WHEN BED_RQST_TO_PTNT_RMD &lt; 0 THEN NULL ELSE BED_RQST_TO_PTNT_RMD END AS BED_RQST_TO_PTNT_RMD
+       , CASE WHEN BED_RQST_TO_PTNT_RMD=0 THEN 0 WHEN BED_RQST_TO_PTNT_RMD&lt;0 THEN NULL ELSE Log(BED_RQST_TO_PTNT_RMD)END As BED_RQST_TO_PTNT_RMD_Log
+       , CASE WHEN TRG_CMPLTD_TO_PTNT_RMD &lt; 0 THEN NULL ELSE TRG_CMPLTD_TO_PTNT_RMD END AS TRG_CMPLTD_TO_PTNT_RMD
+       , CASE WHEN TRG_CMPLTD_TO_PTNT_RMD=0 THEN 0 WHEN TRG_CMPLTD_TO_PTNT_RMD&lt;0 THEN NULL ELSE Log(TRG_CMPLTD_TO_PTNT_RMD)END As TRG_CMPLTD_TO_PTNT_RMD_Log
+       , CASE WHEN TRG_CMPLTD_TO_ASSGN_ATTND &lt; 0 THEN NULL ELSE TRG_CMPLTD_TO_ASSGN_ATTND END AS TRG_CMPLTD_TO_ASSGN_ATTND
+       , CASE WHEN TRG_CMPLTD_TO_ASSGN_ATTND=0 THEN 0 WHEN TRG_CMPLTD_TO_ASSGN_ATTND&lt;0 THEN NULL ELSE Log(TRG_CMPLTD_TO_ASSGN_ATTND)END As TRG_CMPLTD_TO_ASSGN_ATTND_Log
+       , CASE WHEN PTNT_RMD_TO_ASSGN_ATTND &lt; 0 THEN NULL ELSE PTNT_RMD_TO_ASSGN_ATTND END AS PTNT_RMD_TO_ASSGN_ATTND
+       , CASE WHEN PTNT_RMD_TO_ASSGN_ATTND=0 THEN 0 WHEN PTNT_RMD_TO_ASSGN_ATTND&lt;0 THEN NULL ELSE Log(PTNT_RMD_TO_ASSGN_ATTND)END As PTNT_RMD_TO_ASSGN_ATTND_Log
+       , CASE WHEN ASSGN_ATTND_TO_DSPSTN &lt; 0 THEN NULL ELSE ASSGN_ATTND_TO_DSPSTN END AS ASSGN_ATTND_TO_DSPSTN
+       , CASE WHEN ASSGN_ATTND_TO_DSPSTN=0 THEN 0 WHEN ASSGN_ATTND_TO_DSPSTN&lt;0 THEN NULL ELSE Log(ASSGN_ATTND_TO_DSPSTN)END As ASSGN_ATTND_TO_DSPSTN_Log
+       , CASE WHEN DSPTN_TO_ED_DSCRG &lt; 0 THEN NULL ELSE DSPTN_TO_ED_DSCRG END AS DSPTN_TO_ED_DSCRG
+       , CASE WHEN DSPTN_TO_ED_DSCRG=0 THEN 0 WHEN DSPTN_TO_ED_DSCRG&lt;0 THEN NULL ELSE Log(DSPTN_TO_ED_DSCRG)END As DSPTN_TO_ED_DSCRG_Log
+       , CASE WHEN AVS_PRNTD_TO_ED_DSCRG &lt; 0 THEN NULL ELSE AVS_PRNTD_TO_ED_DSCRG END AS AVS_PRNTD_TO_ED_DSCRG
+       , CASE WHEN AVS_PRNTD_TO_ED_DSCRG=0 THEN 0 WHEN AVS_PRNTD_TO_ED_DSCRG&lt;0 THEN NULL ELSE Log(AVS_PRNTD_TO_ED_DSCRG)END As AVS_PRNTD_TO_ED_DSCRG_Log
+       , CASE WHEN ARRV_TO_LAB_ORDRD &lt; 0 THEN NULL ELSE ARRV_TO_LAB_ORDRD END AS ARRV_TO_LAB_ORDRD
+       , CASE WHEN ARRV_TO_LAB_ORDRD=0 THEN 0 WHEN ARRV_TO_LAB_ORDRD&lt;0 THEN NULL ELSE Log(ARRV_TO_LAB_ORDRD)END As ARRV_TO_LAB_ORDRD_Log
+       , CASE WHEN LAB_ORDRD_TO_CMPLTD &lt; 0 THEN NULL ELSE LAB_ORDRD_TO_CMPLTD END AS LAB_ORDRD_TO_CMPLTD
+       , CASE WHEN LAB_ORDRD_TO_CMPLTD=0 THEN 0 WHEN LAB_ORDRD_TO_CMPLTD&lt;0 THEN NULL ELSE Log(LAB_ORDRD_TO_CMPLTD)END As LAB_ORDRD_TO_CMPLTD_Log
+       , CASE WHEN LAB_CMPLTD_TO_PRVDR_RVW &lt; 0 THEN NULL ELSE LAB_CMPLTD_TO_PRVDR_RVW END AS LAB_CMPLTD_TO_PRVDR_RVW
+       , CASE WHEN LAB_CMPLTD_TO_PRVDR_RVW=0 THEN 0 WHEN LAB_CMPLTD_TO_PRVDR_RVW&lt;0 THEN NULL ELSE Log(LAB_CMPLTD_TO_PRVDR_RVW)END As LAB_CMPLTD_TO_PRVDR_RVW_Log
+       , CASE WHEN ARRV_TO_IMG_ORDRD &lt; 0 THEN NULL ELSE ARRV_TO_IMG_ORDRD END AS ARRV_TO_IMG_ORDRD
+       , CASE WHEN ARRV_TO_IMG_ORDRD=0 THEN 0 WHEN ARRV_TO_IMG_ORDRD&lt;0 THEN NULL ELSE Log(ARRV_TO_IMG_ORDRD)END As ARRV_TO_IMG_ORDRD_Log
+       , CASE WHEN IMG_TST_ORDRD_TO_CMPLTD &lt; 0 THEN NULL ELSE IMG_TST_ORDRD_TO_CMPLTD END AS IMG_TST_ORDRD_TO_CMPLTD
+       , CASE WHEN IMG_TST_ORDRD_TO_CMPLTD=0 THEN 0 WHEN IMG_TST_ORDRD_TO_CMPLTD&lt;0 THEN NULL ELSE Log(IMG_TST_ORDRD_TO_CMPLTD)END As IMG_TST_ORDRD_TO_CMPLTD_Log
+       , CASE WHEN IMG_TST_CMPLTD_TO_PRVDR_RVW &lt; 0 THEN NULL ELSE IMG_TST_CMPLTD_TO_PRVDR_RVW END AS IMG_TST_CMPLTD_TO_PRVDR_RVW
+       , CASE WHEN IMG_TST_CMPLTD_TO_PRVDR_RVW=0 THEN 0 WHEN IMG_TST_CMPLTD_TO_PRVDR_RVW&lt;0 THEN NULL ELSE Log(IMG_TST_CMPLTD_TO_PRVDR_RVW)END As IMG_TST_CMPLTD_TO_PRVDR_RVW_Log
+       , CASE WHEN ARRV_TO_ED_DSCRG &lt; 0 THEN NULL ELSE ARRV_TO_ED_DSCRG END AS ARRV_TO_ED_DSCRG
+       , CASE WHEN ARRV_TO_ED_DSCRG=0 THEN 0 WHEN ARRV_TO_ED_DSCRG&lt;0 THEN NULL ELSE Log(ARRV_TO_ED_DSCRG)END As ARRV_TO_ED_DSCRG_Log
+       , GLSGW_VAL
+       , CASE WHEN GLSGW_VAL=0 THEN 0 WHEN GLSGW_VAL&lt;0 THEN NULL ELSE Log(GLSGW_VAL)END As GLSGW_VAL_Log
+FROM CUBESPRD.ED_VST_FACT  WHERE  ARRVL_DT &lt;'2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Diagnosis Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="03d53917-208b-4a65-a479-c051006d94be">
+          <ID>Diagnosis New</ID>
+          <Name>Diagnosis New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="510e87ec-e5f8-4259-a239-0785dea989f0">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT        DIAG_SK, DF.SRC_TYPE,SRC_DIAG_SQNC, 
+CASE 
+WHEN DF.DIAG_CD_SK &lt; 0 THEN NULL ELSE DF.DIAG_CD_SK 
+END AS DIAG_CD_SK, DF.PTNT_SK, ENCNT_SK, DEPT_SK, CHRNC_IND, PRMY_DIAG_IND, SCND_DIAG_IND, 
+CASE 
+WHEN (PRSNT_ON_ADMT_CD &lt; 0) 
+OR (PRSNT_ON_ADMT_CD IN (1410783,3)) THEN NULL ELSE CAST (PRSNT_ON_ADMT_CD AS INTEGER) 
+END AS PRSNT_ON_ADMT_CD, ED_DIAG_IND, 
+CASE 
+WHEN DIAG_STRT_DT &lt; '1900-01-02'::"DATETIME" THEN NULL ELSE DIAG_STRT_DT 
+END AS DIAG_STRT_DT, DIAG_STRT_TS_SK, 
+CASE 
+WHEN DIAG_END_DT = '1000-01-02'::"DATETIME" OR DIAG_END_DT &gt; '2100-01-02'::"DATETIME" THEN NULL ELSE DIAG_END_DT 
+END AS DIAG_END_DT, DIAG_END_TS_SK
+FROM CUBESPRD.DIAG_FACT DF INNER JOIN CUBESPRD.DIAG_CD_DIM DCD ON DF.DIAG_CD_SK=DCD.DIAG_CD_SK INNER JOIN CUBESDEV.PTNT_DIM PD ON df.PTNT_SK=pd.PTNT_SK
+WHERE   DIAG_STRT_DT &gt;='2017-07-01'  OR DIAG_STRT_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="46caebbf-d7f2-4bcb-b8ad-6d2eb2d362c2">
+          <ID>Diagnosis Old</ID>
+          <Name>Diagnosis Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="9cdd71ce-2651-4304-aef6-5c180c252cca">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT        DIAG_SK, DF.SRC_TYPE,SRC_DIAG_SQNC, 
+CASE 
+WHEN DF.DIAG_CD_SK &lt; 0 THEN NULL ELSE DF.DIAG_CD_SK 
+END AS DIAG_CD_SK, DF.PTNT_SK, ENCNT_SK, DEPT_SK, CHRNC_IND, PRMY_DIAG_IND, SCND_DIAG_IND, 
+CASE 
+WHEN (PRSNT_ON_ADMT_CD &lt; 0) 
+OR (PRSNT_ON_ADMT_CD IN (1410783,3)) THEN NULL ELSE CAST (PRSNT_ON_ADMT_CD AS INTEGER) 
+END AS PRSNT_ON_ADMT_CD, ED_DIAG_IND, 
+CASE 
+WHEN DIAG_STRT_DT &lt; '1900-01-02'::"DATETIME" THEN NULL ELSE DIAG_STRT_DT 
+END AS DIAG_STRT_DT, DIAG_STRT_TS_SK, 
+CASE 
+WHEN DIAG_END_DT = '1000-01-02'::"DATETIME" OR DIAG_END_DT &gt; '2100-01-02'::"DATETIME" THEN NULL ELSE DIAG_END_DT 
+END AS DIAG_END_DT, DIAG_END_TS_SK
+FROM CUBESPRD.DIAG_FACT DF INNER JOIN CUBESPRD.DIAG_CD_DIM DCD ON DF.DIAG_CD_SK=DCD.DIAG_CD_SK INNER JOIN CUBESDEV.PTNT_DIM PD ON df.PTNT_SK=pd.PTNT_SK
+WHERE   DIAG_STRT_DT &lt;'2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Diagnosis Bridge</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="1e28ccc0-ba4b-4a6b-bc9b-6b7bda4e1fac">
+          <ID>Diagnosis Bridge</ID>
+          <Name>Diagnosis Bridge</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="a1e28e53-e78a-4853-86ab-841f0e8dc3b4">
+            <DataSourceViewID>Carilion</DataSourceViewID>
+            <TableID>dbo_DIAG_BRIDGE</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>DRG Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="8b60174a-45ec-40cd-8233-13f970ec4f26">
+          <ID>DRG New</ID>
+          <Name>DRG New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="56f659cb-a54a-4bcb-82ea-4fea71ee265f">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT ENCNT_DRG_SK
+       , PRTY_SQNC
+       , DRG_CD_SK
+       , DRG_TYPE_CD
+       , ACCT_SK
+       , ENCNT_SK
+       , PTNT_SK
+       , ENCNT_DT
+  FROM CUBESPRD.DRG_FACT 
+WHERE  ENCNT_DT &gt;='2017-07-01' OR ENCNT_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="1c595afe-17e4-414c-b08b-17303c65bed7">
+          <ID>DRG Old</ID>
+          <Name>DRG Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="82022a5e-c4e7-405e-bd13-a083094065f6">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT ENCNT_DRG_SK
+       , PRTY_SQNC
+       , DRG_CD_SK
+       , DRG_TYPE_CD
+       , ACCT_SK
+       , ENCNT_SK
+       , PTNT_SK
+       , ENCNT_DT
+  FROM CUBESPRD.DRG_FACT 
+WHERE   ENCNT_DT &lt;'2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Diagnosis</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="5a98c690-5587-4879-b50b-bee48b133773">
+          <ID>Diagnosis New</ID>
+          <Name>Diagnosis-Encounter New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="85ccfe6d-75c1-4298-810d-e650664f10ff">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT        DIAG_SK, DF.SRC_TYPE,SRC_DIAG_SQNC, 
+CASE 
+WHEN DF.DIAG_CD_SK &lt; 0 THEN NULL ELSE DF.DIAG_CD_SK 
+END AS DIAG_CD_SK, DF.PTNT_SK, ENCNT_SK, DEPT_SK, CHRNC_IND, PRMY_DIAG_IND, SCND_DIAG_IND, 
+CASE 
+WHEN (PRSNT_ON_ADMT_CD &lt; 0) 
+OR (PRSNT_ON_ADMT_CD IN (1410783,3)) THEN NULL ELSE CAST (PRSNT_ON_ADMT_CD AS INTEGER) 
+END AS PRSNT_ON_ADMT_CD, ED_DIAG_IND, 
+CASE 
+WHEN DIAG_STRT_DT &lt; '1900-01-02'::"DATETIME" THEN NULL ELSE DIAG_STRT_DT 
+END AS DIAG_STRT_DT, DIAG_STRT_TS_SK, 
+CASE 
+WHEN DIAG_END_DT = '1000-01-02'::"DATETIME" OR DIAG_END_DT &gt; '2100-01-02'::"DATETIME" THEN NULL ELSE DIAG_END_DT 
+END AS DIAG_END_DT, DIAG_END_TS_SK
+FROM CUBESPRD.DIAG_FACT DF INNER JOIN CUBESPRD.DIAG_CD_DIM DCD ON DF.DIAG_CD_SK=DCD.DIAG_CD_SK INNER JOIN CUBESDEV.PTNT_DIM PD ON df.PTNT_SK=pd.PTNT_SK
+WHERE   DIAG_STRT_DT &gt;='2017-07-01'  OR DIAG_STRT_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="8b156383-e6e2-4396-b208-0e94f37c9123">
+          <ID>Diagnosis Old</ID>
+          <Name>Diagnosis-Encounter Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="999eec22-eb75-478f-8dcd-34e9e74f84aa">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT        DIAG_SK, DF.SRC_TYPE,SRC_DIAG_SQNC, 
+CASE 
+WHEN DF.DIAG_CD_SK &lt; 0 THEN NULL ELSE DF.DIAG_CD_SK 
+END AS DIAG_CD_SK, DF.PTNT_SK, ENCNT_SK, DEPT_SK, CHRNC_IND, PRMY_DIAG_IND, SCND_DIAG_IND, 
+CASE 
+WHEN (PRSNT_ON_ADMT_CD &lt; 0) 
+OR (PRSNT_ON_ADMT_CD IN (1410783,3)) THEN NULL ELSE CAST (PRSNT_ON_ADMT_CD AS INTEGER) 
+END AS PRSNT_ON_ADMT_CD, ED_DIAG_IND, 
+CASE 
+WHEN DIAG_STRT_DT &lt; '1900-01-02'::"DATETIME" THEN NULL ELSE DIAG_STRT_DT 
+END AS DIAG_STRT_DT, DIAG_STRT_TS_SK, 
+CASE 
+WHEN DIAG_END_DT = '1000-01-02'::"DATETIME" OR DIAG_END_DT &gt; '2100-01-02'::"DATETIME" THEN NULL ELSE DIAG_END_DT 
+END AS DIAG_END_DT, DIAG_END_TS_SK
+FROM CUBESPRD.DIAG_FACT DF INNER JOIN CUBESPRD.DIAG_CD_DIM DCD ON DF.DIAG_CD_SK=DCD.DIAG_CD_SK INNER JOIN CUBESDEV.PTNT_DIM PD ON df.PTNT_SK=pd.PTNT_SK
+WHERE   DIAG_STRT_DT &lt;'2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Diagnosis 1</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="7fc7faaf-cb79-4185-937b-d48eeca268a9">
+          <ID>Diagnosis New</ID>
+          <Name>Diagnosis-Patient New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="c63823a0-9594-4fd6-b786-76aab0d4fc0d">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT        DIAG_SK, DF.SRC_TYPE,SRC_DIAG_SQNC, 
+CASE 
+WHEN DF.DIAG_CD_SK &lt; 0 THEN NULL ELSE DF.DIAG_CD_SK 
+END AS DIAG_CD_SK, DF.PTNT_SK, ENCNT_SK, DEPT_SK, CHRNC_IND, PRMY_DIAG_IND, SCND_DIAG_IND, 
+CASE 
+WHEN (PRSNT_ON_ADMT_CD &lt; 0) 
+OR (PRSNT_ON_ADMT_CD IN (1410783,3)) THEN NULL ELSE CAST (PRSNT_ON_ADMT_CD AS INTEGER) 
+END AS PRSNT_ON_ADMT_CD, ED_DIAG_IND, 
+CASE 
+WHEN DIAG_STRT_DT &lt; '1900-01-02'::"DATETIME" THEN NULL ELSE DIAG_STRT_DT 
+END AS DIAG_STRT_DT, DIAG_STRT_TS_SK, 
+CASE 
+WHEN DIAG_END_DT = '1000-01-02'::"DATETIME" OR DIAG_END_DT &gt; '2100-01-02'::"DATETIME" THEN NULL ELSE DIAG_END_DT 
+END AS DIAG_END_DT, DIAG_END_TS_SK
+FROM CUBESPRD.DIAG_FACT DF INNER JOIN CUBESPRD.DIAG_CD_DIM DCD ON DF.DIAG_CD_SK=DCD.DIAG_CD_SK INNER JOIN CUBESDEV.PTNT_DIM PD ON df.PTNT_SK=pd.PTNT_SK
+WHERE   DIAG_STRT_DT &gt;='2017-07-01'  OR DIAG_STRT_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="d263c684-b202-45d5-a6b1-c1e8871a8b3f">
+          <ID>Diagnosis Old</ID>
+          <Name>Diagnosis-Patient Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="c2a29cee-a0ff-4679-a41b-1f3078e196a1">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT        DIAG_SK, DF.SRC_TYPE,SRC_DIAG_SQNC, 
+CASE 
+WHEN DF.DIAG_CD_SK &lt; 0 THEN NULL ELSE DF.DIAG_CD_SK 
+END AS DIAG_CD_SK, DF.PTNT_SK, ENCNT_SK, DEPT_SK, CHRNC_IND, PRMY_DIAG_IND, SCND_DIAG_IND, 
+CASE 
+WHEN (PRSNT_ON_ADMT_CD &lt; 0) 
+OR (PRSNT_ON_ADMT_CD IN (1410783,3)) THEN NULL ELSE CAST (PRSNT_ON_ADMT_CD AS INTEGER) 
+END AS PRSNT_ON_ADMT_CD, ED_DIAG_IND, 
+CASE 
+WHEN DIAG_STRT_DT &lt; '1900-01-02'::"DATETIME" THEN NULL ELSE DIAG_STRT_DT 
+END AS DIAG_STRT_DT, DIAG_STRT_TS_SK, 
+CASE 
+WHEN DIAG_END_DT = '1000-01-02'::"DATETIME" OR DIAG_END_DT &gt; '2100-01-02'::"DATETIME" THEN NULL ELSE DIAG_END_DT 
+END AS DIAG_END_DT, DIAG_END_TS_SK
+FROM CUBESPRD.DIAG_FACT DF INNER JOIN CUBESPRD.DIAG_CD_DIM DCD ON DF.DIAG_CD_SK=DCD.DIAG_CD_SK INNER JOIN CUBESDEV.PTNT_DIM PD ON df.PTNT_SK=pd.PTNT_SK
+WHERE   DIAG_STRT_DT &lt;'2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>DRG</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="d0018c9d-0241-46e1-97b2-223bcf4e0bc1">
+          <ID>DRG New</ID>
+          <Name>DRG-Encounter New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="ac4f26f6-1a7d-4f2c-a517-76c55da09c30">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT ENCNT_DRG_SK
+       , PRTY_SQNC
+       , DRG_CD_SK
+       , DRG_TYPE_CD
+       , ACCT_SK
+       , ENCNT_SK
+       , PTNT_SK
+       , ENCNT_DT
+  FROM CUBESPRD.DRG_FACT 
+WHERE  ENCNT_DT &gt;='2017-07-01' OR ENCNT_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="39e77557-7ca1-4a70-875b-c0f957ca093e">
+          <ID>DRG Old</ID>
+          <Name>DRG-Encounter Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="78e3435d-fd69-46ca-b9e6-2ec84b0e506d">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT ENCNT_DRG_SK
+       , PRTY_SQNC
+       , DRG_CD_SK
+       , DRG_TYPE_CD
+       , ACCT_SK
+       , ENCNT_SK
+       , PTNT_SK
+       , ENCNT_DT
+  FROM CUBESPRD.DRG_FACT 
+WHERE   ENCNT_DT &lt;'2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>DRG 1</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="482f5d7c-5657-46bc-b1d1-ed459d143a58">
+          <ID>DRG New</ID>
+          <Name>DRG-Patient New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="61ac8999-c81a-4caf-be0b-f5e7c14cd35c">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT ENCNT_DRG_SK
+       , PRTY_SQNC
+       , DRG_CD_SK
+       , DRG_TYPE_CD
+       , ACCT_SK
+       , ENCNT_SK
+       , PTNT_SK
+       , ENCNT_DT
+  FROM CUBESPRD.DRG_FACT 
+WHERE  ENCNT_DT &gt;='2017-07-01' OR ENCNT_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="a66736bf-26bb-4439-977f-c5a0f28cdae5">
+          <ID>DRG Old</ID>
+          <Name>DRG-Patient Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="431bb73d-c757-41ff-bcc7-acf0245713d3">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT ENCNT_DRG_SK
+       , PRTY_SQNC
+       , DRG_CD_SK
+       , DRG_TYPE_CD
+       , ACCT_SK
+       , ENCNT_SK
+       , PTNT_SK
+       , ENCNT_DT
+  FROM CUBESPRD.DRG_FACT 
+WHERE   ENCNT_DT &lt;'2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Procedure Order Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="5342fcf6-705c-4f61-bf31-cb152e8b17ef">
+          <ID>Procedure Order New</ID>
+          <Name>Procedure Order New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="e7e525a6-f54c-40c9-8234-bae2e2fde127">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT   PRCDR_ORDR_FACT_SK
+       , pf.ENCNT_SK
+       , PTNT_SK
+       , PRCDR_CD_SK
+       , ORDRD_BY_USR_SK
+       , ORDRD_BY_PROVDR_SK
+       , AUTH_BY_PROVDR_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , ORDR_TYP_CD
+       , ORDR_CLSS_CD
+       , ORDR_MODE_CD
+       , ORDR_SRC_CD
+       , ORDR_STS_CD
+       , ORDR_PRTY_CD
+       , STNDNG_STS_CD
+       , ORDR_SET_CD
+       , CPOE_IND
+       , REQR_COSIG_IND
+       , COSIG_IND
+       , VRBL_SGN_IND
+  FROM CUBESPRD.PRCDR_ORDR_FACT pf INNER JOIN CUBESPRD.ENCNT_DIM e ON pf.ENCNT_SK=e.ENCNT_SK WHERE PRCDR_CD_SK &gt; 0 AND ORDRD_DT &gt;= '2017-07-01' OR ORDRD_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="2b46cd56-09ea-40f3-913b-98933d1ada3d">
+          <ID>Procedure Order Old</ID>
+          <Name>Procedure Order Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="1965f806-59c6-47dd-859e-065b3c8178d3">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT   PRCDR_ORDR_FACT_SK
+       , pf.ENCNT_SK
+       , PTNT_SK
+       , PRCDR_CD_SK
+       , ORDRD_BY_USR_SK
+       , ORDRD_BY_PROVDR_SK
+       , AUTH_BY_PROVDR_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , ORDR_TYP_CD
+       , ORDR_CLSS_CD
+       , ORDR_MODE_CD
+       , ORDR_SRC_CD
+       , ORDR_STS_CD
+       , ORDR_PRTY_CD
+       , STNDNG_STS_CD
+       , ORDR_SET_CD
+       , CPOE_IND
+       , REQR_COSIG_IND
+       , COSIG_IND
+       , VRBL_SGN_IND
+  FROM CUBESPRD.PRCDR_ORDR_FACT pf INNER JOIN CUBESPRD.ENCNT_DIM e ON pf.ENCNT_SK=e.ENCNT_SK WHERE PRCDR_CD_SK &gt; 0 AND  ORDRD_DT &lt; '2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Procedure Order</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="36ffe175-c966-4f2e-a2ef-633382544519">
+          <ID>Procedure Order New</ID>
+          <Name>Procedure Order-Encounter New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="61ace449-3c2f-4b31-a219-da09391b2fe1">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT   PRCDR_ORDR_FACT_SK
+       , pf.ENCNT_SK
+       , PTNT_SK
+       , PRCDR_CD_SK
+       , ORDRD_BY_USR_SK
+       , ORDRD_BY_PROVDR_SK
+       , AUTH_BY_PROVDR_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , ORDR_TYP_CD
+       , ORDR_CLSS_CD
+       , ORDR_MODE_CD
+       , ORDR_SRC_CD
+       , ORDR_STS_CD
+       , ORDR_PRTY_CD
+       , STNDNG_STS_CD
+       , ORDR_SET_CD
+       , CPOE_IND
+       , REQR_COSIG_IND
+       , COSIG_IND
+       , VRBL_SGN_IND
+  FROM CUBESPRD.PRCDR_ORDR_FACT pf INNER JOIN CUBESPRD.ENCNT_DIM e ON pf.ENCNT_SK=e.ENCNT_SK WHERE PRCDR_CD_SK &gt; 0 AND ORDRD_DT &gt;= '2017-07-01' OR ORDRD_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="9680b0c8-04f4-4201-beec-56e05cb05c9d">
+          <ID>Procedure Order Old</ID>
+          <Name>Procedure Order-Encounter Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="1b895c05-3af9-417d-9fae-209a2ccc917f">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT   PRCDR_ORDR_FACT_SK
+       , pf.ENCNT_SK
+       , PTNT_SK
+       , PRCDR_CD_SK
+       , ORDRD_BY_USR_SK
+       , ORDRD_BY_PROVDR_SK
+       , AUTH_BY_PROVDR_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , ORDR_TYP_CD
+       , ORDR_CLSS_CD
+       , ORDR_MODE_CD
+       , ORDR_SRC_CD
+       , ORDR_STS_CD
+       , ORDR_PRTY_CD
+       , STNDNG_STS_CD
+       , ORDR_SET_CD
+       , CPOE_IND
+       , REQR_COSIG_IND
+       , COSIG_IND
+       , VRBL_SGN_IND
+  FROM CUBESPRD.PRCDR_ORDR_FACT pf INNER JOIN CUBESPRD.ENCNT_DIM e ON pf.ENCNT_SK=e.ENCNT_SK WHERE PRCDR_CD_SK &gt; 0 AND  ORDRD_DT &lt; '2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Procedure Order 1</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="665238d9-ed3d-44eb-996d-c48613628299">
+          <ID>Procedure Order New</ID>
+          <Name>Procedure Order-Patient New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="43b6b23f-a94f-4b84-bdd5-f5fd50c768f4">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT   PRCDR_ORDR_FACT_SK
+       , pf.ENCNT_SK
+       , PTNT_SK
+       , PRCDR_CD_SK
+       , ORDRD_BY_USR_SK
+       , ORDRD_BY_PROVDR_SK
+       , AUTH_BY_PROVDR_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , ORDR_TYP_CD
+       , ORDR_CLSS_CD
+       , ORDR_MODE_CD
+       , ORDR_SRC_CD
+       , ORDR_STS_CD
+       , ORDR_PRTY_CD
+       , STNDNG_STS_CD
+       , ORDR_SET_CD
+       , CPOE_IND
+       , REQR_COSIG_IND
+       , COSIG_IND
+       , VRBL_SGN_IND
+  FROM CUBESPRD.PRCDR_ORDR_FACT pf INNER JOIN CUBESPRD.ENCNT_DIM e ON pf.ENCNT_SK=e.ENCNT_SK WHERE PRCDR_CD_SK &gt; 0 AND ORDRD_DT &gt;= '2017-07-01' OR ORDRD_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="e45cc54c-8764-4087-ba41-49c827b34e54">
+          <ID>Procedure Order Old</ID>
+          <Name>Procedure Order-Patient Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="529fdebe-2eae-41f4-8c8a-ddf9855fe85e">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT   PRCDR_ORDR_FACT_SK
+       , pf.ENCNT_SK
+       , PTNT_SK
+       , PRCDR_CD_SK
+       , ORDRD_BY_USR_SK
+       , ORDRD_BY_PROVDR_SK
+       , AUTH_BY_PROVDR_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , ORDR_TYP_CD
+       , ORDR_CLSS_CD
+       , ORDR_MODE_CD
+       , ORDR_SRC_CD
+       , ORDR_STS_CD
+       , ORDR_PRTY_CD
+       , STNDNG_STS_CD
+       , ORDR_SET_CD
+       , CPOE_IND
+       , REQR_COSIG_IND
+       , COSIG_IND
+       , VRBL_SGN_IND
+  FROM CUBESPRD.PRCDR_ORDR_FACT pf INNER JOIN CUBESPRD.ENCNT_DIM e ON pf.ENCNT_SK=e.ENCNT_SK WHERE PRCDR_CD_SK &gt; 0 AND  ORDRD_DT &lt; '2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Medication Administration Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="b4fcbbb3-b5e9-41fb-a96e-d3134ad5f027">
+          <ID>Medication Administration - New</ID>
+          <Name>Medication Administration New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="4f952df2-8ae8-4313-adbb-41e16ca095a5">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT MDCTN_ADMN_FACT_SK
+       ,  ma.MDCTN_ORDR_SK 
+       , PTNT_SK
+       , ma.ENCNT_SK
+       , ADMN_DEPT_SK
+       , ADMN_USR_SK
+       , PRMY_CMPNT_SK
+       , SCND_CMPNT_SK
+       , THRD_CMPNT_SK
+       , FOURTH_CMPNT_SK
+       , FIFTH_CMPNT_SK
+       , ADMN_ACTN_CDS_SK
+       , SCHED_ADMN_DT
+       , SCHED_ADMN_TS_SK
+       , ADMN_DT
+       , ADMN_TS_SK
+       , CRG_AMT
+       , RPRST_COST
+       , ACQSTN_COST
+       , MDCTN_REQ_SCAN_AT_ADMN_IND
+       , MDCTN_SCANNED_AT_ADMN_IND
+       , PTNT_REQ_SCAN_AT_ADMN_IND
+       , PTNT_SCANNED_AT_ADMN_IND
+ FROM EDW_PRD.CUBESPRD.MDCTN_ADMN_FACT ma INNER JOIN CUBESPRD.MDCTN_ORDR_DIM mo ON ma.MDCTN_ORDR_SK=mo.MDCTN_ORDR_SK INNER JOIN CUBESPRD.ENCNT_DIM e ON ma.ENCNT_SK=e.ENCNT_SK WHERE  ADMN_DT &gt;='2017-07-01' OR ADMN_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="2d08a6ad-1a81-44b4-859f-4ca01dfd8d34">
+          <ID>Medication Administration Old</ID>
+          <Name>Medication Administration Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="e1069b26-0695-434c-8611-790459cfc718">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT MDCTN_ADMN_FACT_SK
+       ,  ma.MDCTN_ORDR_SK 
+       , PTNT_SK
+       , ma.ENCNT_SK
+       , ADMN_DEPT_SK
+       , ADMN_USR_SK
+       , PRMY_CMPNT_SK
+       , SCND_CMPNT_SK
+       , THRD_CMPNT_SK
+       , FOURTH_CMPNT_SK
+       , FIFTH_CMPNT_SK
+       , ADMN_ACTN_CDS_SK
+       , SCHED_ADMN_DT
+       , SCHED_ADMN_TS_SK
+       , ADMN_DT
+       , ADMN_TS_SK
+       , CRG_AMT
+       , RPRST_COST
+       , ACQSTN_COST
+       , MDCTN_REQ_SCAN_AT_ADMN_IND
+       , MDCTN_SCANNED_AT_ADMN_IND
+       , PTNT_REQ_SCAN_AT_ADMN_IND
+       , PTNT_SCANNED_AT_ADMN_IND
+ FROM EDW_PRD.CUBESPRD.MDCTN_ADMN_FACT ma INNER JOIN CUBESPRD.MDCTN_ORDR_DIM mo ON ma.MDCTN_ORDR_SK=mo.MDCTN_ORDR_SK INNER JOIN CUBESPRD.ENCNT_DIM e ON ma.ENCNT_SK=e.ENCNT_SK WHERE  ADMN_DT&lt;'2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Medication Order Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="d8c4391c-34c6-43b8-af02-27d391f6413b">
+          <ID>Medication Order New</ID>
+          <Name>Medication Order New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="d5df7269-e90e-4b09-879c-ffe71fb966ec">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT 	 MDCTN_ORDR_FACT_SK
+       , CASE WHEN MDCTN_ORDR_SK &lt; 0 THEN NULL ELSE MDCTN_ORDR_SK END AS MDCTN_ORDR_SK
+       , mof.PTNT_SK
+       , mof.ENCNT_SK
+       , DEPT_SK
+       , PHRM_SK
+       , MDCTN_SK
+       , ORDRD_BY_USR_SK
+       , ORDRD_BY_PROVDR_SK
+       , AUTH_BY_PROVDR_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , ORDR_STRT_DT
+       , ORDR_STRT_TS_SK
+       , ORDR_END_DT
+       , ORDR_END_TS_SK
+       , ORDR_DSCNTND_DT
+       , DSCNTND_TS_SK
+       , QTY
+       , MIN_DOSE
+       , MAXM_DOSE
+       , CLCLTD_MIN_DOSE
+       , CLCLTD_MAXM_DOSE
+       , NBR_OF_DOSES
+       , NBR_WRTN_REFILLS
+   FROM CUBESPRD.MDCTN_ORDR_FACT mof INNER JOIN CUBESPRD.ENCNT_DIM  ed ON mof.ENCNT_SK= ed.ENCNT_SK WHERE  ORDRD_DT &gt;='2017-07-01' OR ORDRD_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="fe6e88e6-ee01-4b77-8977-c69e6fdce65b">
+          <ID>Medication Order Old</ID>
+          <Name>Medication Order Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="28dc7cb8-313e-4543-9dac-ef039dcebe2d">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT 	 MDCTN_ORDR_FACT_SK
+       , MDCTN_ORDR_SK
+       , mof.PTNT_SK
+       , mof.ENCNT_SK
+       , DEPT_SK
+       , PHRM_SK
+       , MDCTN_SK
+       , ORDRD_BY_USR_SK
+       , ORDRD_BY_PROVDR_SK
+       , AUTH_BY_PROVDR_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , ORDR_STRT_DT
+       , ORDR_STRT_TS_SK
+       , ORDR_END_DT
+       , ORDR_END_TS_SK
+       , ORDR_DSCNTND_DT
+       , DSCNTND_TS_SK
+       , QTY
+       , MIN_DOSE
+       , MAXM_DOSE
+       , CLCLTD_MIN_DOSE
+       , CLCLTD_MAXM_DOSE
+       , NBR_OF_DOSES
+       , NBR_WRTN_REFILLS
+   FROM CUBESPRD.MDCTN_ORDR_FACT mof INNER JOIN CUBESPRD.ENCNT_DIM  ed ON mof.ENCNT_SK= ed.ENCNT_SK WHERE  ORDRD_DT&lt;'2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Medication Administration</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="a4b97e7f-f246-4ba0-aec1-9c0038d2cdb6">
+          <ID>Medication Administration - New</ID>
+          <Name>Medication Administration-Patient New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="57e13a66-7496-410b-be6a-ed5fa2486cfc">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT MDCTN_ADMN_FACT_SK
+       ,  ma.MDCTN_ORDR_SK 
+       , PTNT_SK
+       , ma.ENCNT_SK
+       , ADMN_DEPT_SK
+       , ADMN_USR_SK
+       , PRMY_CMPNT_SK
+       , SCND_CMPNT_SK
+       , THRD_CMPNT_SK
+       , FOURTH_CMPNT_SK
+       , FIFTH_CMPNT_SK
+       , ADMN_ACTN_CDS_SK
+       , SCHED_ADMN_DT
+       , SCHED_ADMN_TS_SK
+       , ADMN_DT
+       , ADMN_TS_SK
+       , CRG_AMT
+       , RPRST_COST
+       , ACQSTN_COST
+       , MDCTN_REQ_SCAN_AT_ADMN_IND
+       , MDCTN_SCANNED_AT_ADMN_IND
+       , PTNT_REQ_SCAN_AT_ADMN_IND
+       , PTNT_SCANNED_AT_ADMN_IND
+ FROM EDW_PRD.CUBESPRD.MDCTN_ADMN_FACT ma INNER JOIN CUBESPRD.MDCTN_ORDR_DIM mo ON ma.MDCTN_ORDR_SK=mo.MDCTN_ORDR_SK INNER JOIN CUBESPRD.ENCNT_DIM e ON ma.ENCNT_SK=e.ENCNT_SK WHERE  ADMN_DT &gt;='2017-07-01' OR ADMN_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="026d97ad-6267-4dd3-945e-dc97c3a5a2a2">
+          <ID>Medication Administration Old</ID>
+          <Name>Medication Administration-Patient Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="c229bb94-ef98-4e76-85f0-b78bb1baaa2f">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT MDCTN_ADMN_FACT_SK
+       ,  ma.MDCTN_ORDR_SK 
+       , PTNT_SK
+       , ma.ENCNT_SK
+       , ADMN_DEPT_SK
+       , ADMN_USR_SK
+       , PRMY_CMPNT_SK
+       , SCND_CMPNT_SK
+       , THRD_CMPNT_SK
+       , FOURTH_CMPNT_SK
+       , FIFTH_CMPNT_SK
+       , ADMN_ACTN_CDS_SK
+       , SCHED_ADMN_DT
+       , SCHED_ADMN_TS_SK
+       , ADMN_DT
+       , ADMN_TS_SK
+       , CRG_AMT
+       , RPRST_COST
+       , ACQSTN_COST
+       , MDCTN_REQ_SCAN_AT_ADMN_IND
+       , MDCTN_SCANNED_AT_ADMN_IND
+       , PTNT_REQ_SCAN_AT_ADMN_IND
+       , PTNT_SCANNED_AT_ADMN_IND
+ FROM EDW_PRD.CUBESPRD.MDCTN_ADMN_FACT ma INNER JOIN CUBESPRD.MDCTN_ORDR_DIM mo ON ma.MDCTN_ORDR_SK=mo.MDCTN_ORDR_SK INNER JOIN CUBESPRD.ENCNT_DIM e ON ma.ENCNT_SK=e.ENCNT_SK WHERE  ADMN_DT&lt;'2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Medication Administration 1</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="c4b67ceb-0d30-4d09-8ca3-56e67763db0f">
+          <ID>Medication Administration - New</ID>
+          <Name>Medication Administration-Encounter New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="6996ebb6-58d2-44d7-9f94-7e56097469a8">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT MDCTN_ADMN_FACT_SK
+       ,  ma.MDCTN_ORDR_SK 
+       , PTNT_SK
+       , ma.ENCNT_SK
+       , ADMN_DEPT_SK
+       , ADMN_USR_SK
+       , PRMY_CMPNT_SK
+       , SCND_CMPNT_SK
+       , THRD_CMPNT_SK
+       , FOURTH_CMPNT_SK
+       , FIFTH_CMPNT_SK
+       , ADMN_ACTN_CDS_SK
+       , SCHED_ADMN_DT
+       , SCHED_ADMN_TS_SK
+       , ADMN_DT
+       , ADMN_TS_SK
+       , CRG_AMT
+       , RPRST_COST
+       , ACQSTN_COST
+       , MDCTN_REQ_SCAN_AT_ADMN_IND
+       , MDCTN_SCANNED_AT_ADMN_IND
+       , PTNT_REQ_SCAN_AT_ADMN_IND
+       , PTNT_SCANNED_AT_ADMN_IND
+ FROM EDW_PRD.CUBESPRD.MDCTN_ADMN_FACT ma INNER JOIN CUBESPRD.MDCTN_ORDR_DIM mo ON ma.MDCTN_ORDR_SK=mo.MDCTN_ORDR_SK INNER JOIN CUBESPRD.ENCNT_DIM e ON ma.ENCNT_SK=e.ENCNT_SK WHERE  ADMN_DT &gt;='2017-07-01' OR ADMN_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="b8e0fae2-c7c9-469e-b223-5056bf6f7b47">
+          <ID>Medication Administration Old</ID>
+          <Name>Medication Administration-Encounter Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="1240506c-6595-4005-b48d-d845f9363a72">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT MDCTN_ADMN_FACT_SK
+       ,  ma.MDCTN_ORDR_SK 
+       , PTNT_SK
+       , ma.ENCNT_SK
+       , ADMN_DEPT_SK
+       , ADMN_USR_SK
+       , PRMY_CMPNT_SK
+       , SCND_CMPNT_SK
+       , THRD_CMPNT_SK
+       , FOURTH_CMPNT_SK
+       , FIFTH_CMPNT_SK
+       , ADMN_ACTN_CDS_SK
+       , SCHED_ADMN_DT
+       , SCHED_ADMN_TS_SK
+       , ADMN_DT
+       , ADMN_TS_SK
+       , CRG_AMT
+       , RPRST_COST
+       , ACQSTN_COST
+       , MDCTN_REQ_SCAN_AT_ADMN_IND
+       , MDCTN_SCANNED_AT_ADMN_IND
+       , PTNT_REQ_SCAN_AT_ADMN_IND
+       , PTNT_SCANNED_AT_ADMN_IND
+ FROM EDW_PRD.CUBESPRD.MDCTN_ADMN_FACT ma INNER JOIN CUBESPRD.MDCTN_ORDR_DIM mo ON ma.MDCTN_ORDR_SK=mo.MDCTN_ORDR_SK INNER JOIN CUBESPRD.ENCNT_DIM e ON ma.ENCNT_SK=e.ENCNT_SK WHERE  ADMN_DT&lt;'2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Medication Order</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="afc98908-721f-4436-950b-0b5c21aa0d64">
+          <ID>Medication Order New</ID>
+          <Name>Medication Order-Encounter New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="c071f2fd-f9bc-4fcb-8a62-a3339ea94b26">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT 	 MDCTN_ORDR_FACT_SK
+        , CASE WHEN MDCTN_ORDR_SK &lt; 0 THEN NULL ELSE MDCTN_ORDR_SK END AS MDCTN_ORDR_SK
+       , mof.PTNT_SK
+       , mof.ENCNT_SK
+       , DEPT_SK
+       , PHRM_SK
+       , MDCTN_SK
+       , ORDRD_BY_USR_SK
+       , ORDRD_BY_PROVDR_SK
+       , AUTH_BY_PROVDR_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , ORDR_STRT_DT
+       , ORDR_STRT_TS_SK
+       , ORDR_END_DT
+       , ORDR_END_TS_SK
+       , ORDR_DSCNTND_DT
+       , DSCNTND_TS_SK
+       , QTY
+       , MIN_DOSE
+       , MAXM_DOSE
+       , CLCLTD_MIN_DOSE
+       , CLCLTD_MAXM_DOSE
+       , NBR_OF_DOSES
+       , NBR_WRTN_REFILLS
+   FROM CUBESPRD.MDCTN_ORDR_FACT mof INNER JOIN CUBESPRD.ENCNT_DIM  ed ON mof.ENCNT_SK= ed.ENCNT_SK WHERE  ORDRD_DT &gt;='2017-07-01' OR ORDRD_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="64838d82-cadf-46b0-970a-0bda858197e2">
+          <ID>Medication Order Old</ID>
+          <Name>Medication Order-Encounter Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="0d606a32-86ef-419d-ba21-f185f098e8cb">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT 	 MDCTN_ORDR_FACT_SK
+       , MDCTN_ORDR_SK
+       , mof.PTNT_SK
+       , mof.ENCNT_SK
+       , DEPT_SK
+       , PHRM_SK
+       , MDCTN_SK
+       , ORDRD_BY_USR_SK
+       , ORDRD_BY_PROVDR_SK
+       , AUTH_BY_PROVDR_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , ORDR_STRT_DT
+       , ORDR_STRT_TS_SK
+       , ORDR_END_DT
+       , ORDR_END_TS_SK
+       , ORDR_DSCNTND_DT
+       , DSCNTND_TS_SK
+       , QTY
+       , MIN_DOSE
+       , MAXM_DOSE
+       , CLCLTD_MIN_DOSE
+       , CLCLTD_MAXM_DOSE
+       , NBR_OF_DOSES
+       , NBR_WRTN_REFILLS
+   FROM CUBESPRD.MDCTN_ORDR_FACT mof INNER JOIN CUBESPRD.ENCNT_DIM  ed ON mof.ENCNT_SK= ed.ENCNT_SK WHERE  ORDRD_DT&lt;'2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Medication Order 1</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="63c3bb3a-6d5e-4059-9a72-b450f3f39c7d">
+          <ID>Medication Order New</ID>
+          <Name>Medication Order-Patient New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="55666693-01b0-474f-bb2e-2af51d6b03ee">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT 	 MDCTN_ORDR_FACT_SK
+        , CASE WHEN MDCTN_ORDR_SK &lt; 0 THEN NULL ELSE MDCTN_ORDR_SK END AS MDCTN_ORDR_SK
+       , mof.PTNT_SK
+       , mof.ENCNT_SK
+       , DEPT_SK
+       , PHRM_SK
+       , MDCTN_SK
+       , ORDRD_BY_USR_SK
+       , ORDRD_BY_PROVDR_SK
+       , AUTH_BY_PROVDR_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , ORDR_STRT_DT
+       , ORDR_STRT_TS_SK
+       , ORDR_END_DT
+       , ORDR_END_TS_SK
+       , ORDR_DSCNTND_DT
+       , DSCNTND_TS_SK
+       , QTY
+       , MIN_DOSE
+       , MAXM_DOSE
+       , CLCLTD_MIN_DOSE
+       , CLCLTD_MAXM_DOSE
+       , NBR_OF_DOSES
+       , NBR_WRTN_REFILLS
+   FROM CUBESPRD.MDCTN_ORDR_FACT mof INNER JOIN CUBESPRD.ENCNT_DIM  ed ON mof.ENCNT_SK= ed.ENCNT_SK WHERE  ORDRD_DT &gt;='2017-07-01' OR ORDRD_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+        <Partition dwd:design-time-name="8f071d70-87d0-4555-a49d-c2e25a711a3f">
+          <ID>Medication Order Old</ID>
+          <Name>Medication Order-Patient Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="7a780fa2-3581-4112-95f8-e36793c7bc32">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT 	 MDCTN_ORDR_FACT_SK
+       , MDCTN_ORDR_SK
+       , mof.PTNT_SK
+       , mof.ENCNT_SK
+       , DEPT_SK
+       , PHRM_SK
+       , MDCTN_SK
+       , ORDRD_BY_USR_SK
+       , ORDRD_BY_PROVDR_SK
+       , AUTH_BY_PROVDR_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , ORDR_STRT_DT
+       , ORDR_STRT_TS_SK
+       , ORDR_END_DT
+       , ORDR_END_TS_SK
+       , ORDR_DSCNTND_DT
+       , DSCNTND_TS_SK
+       , QTY
+       , MIN_DOSE
+       , MAXM_DOSE
+       , CLCLTD_MIN_DOSE
+       , CLCLTD_MAXM_DOSE
+       , NBR_OF_DOSES
+       , NBR_WRTN_REFILLS
+   FROM CUBESPRD.MDCTN_ORDR_FACT mof INNER JOIN CUBESPRD.ENCNT_DIM  ed ON mof.ENCNT_SK= ed.ENCNT_SK WHERE  ORDRD_DT&lt;'2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Lab Component Result Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="066778be-7757-42d3-854b-e9da7d088236">
+          <ID>Lab Component Result Fact</ID>
+          <Name>Lab Component Result New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="36b5bab6-51e5-4669-bed7-6451faead089">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT CMPNT_RSLT_FACT_SK
+       , SRC_CMPNT_RSLT_ID
+       , R.LAB_TST_SK
+       , R.PTNT_SK
+       , AUTH_PROVDR_SK
+       , PRCDR_CD_SK
+       , ENCNT_SK
+       , CASE WHEN RSULT_LAB_SK &lt; 0 OR RSULT_LAB_SK=1500001 THEN NULL ELSE RSULT_LAB_SK END AS RSULT_LAB_SK
+      , LAB_CMPNT_SK
+       , RSLT_FLG_CD_SK
+       , LAB_STS_CD_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , CLCT_TS_SK
+       , CLCT_DT
+       , RSLT_DT
+       , RSLT_TS_SK
+       , RSLT_VAL_INTG
+       , RSLT_VAL_FLT
+       , RSLT_VAL_TXT
+       , REF_UNT
+       , REF_NRML_VAL
+       , REFN_LOW_VAL
+       , REFN_HI_VAL
+       , R.ABNRML_IND
+  FROM EDW_PRD.CUBESPRD.LAB_CMPNT_RSLT_FACT R  
+ INNER JOIN CUBESPRD.PTNT_DIM P ON R.PTNT_SK = P.PTNT_SK 
+  INNER JOIN DW.LAB_TST_DIM AS DLTD ON R.LAB_TST_SK= DLTD.LAB_TST_SK AND DLTD.ORDR_TYPE_CDS IN ('3','31','61','7') WHERE ORDRD_DT &gt;= '2017-07-01' OR ORDRD_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+        <Partition dwd:design-time-name="e68f8af2-7214-40ef-b06f-9ed732847963">
+          <ID>Lab Component Result Old</ID>
+          <Name>Lab Component Result Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="564c4b2d-80b4-44f7-bd12-98ec5e82f835">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT CMPNT_RSLT_FACT_SK
+       , SRC_CMPNT_RSLT_ID
+       , R.LAB_TST_SK
+       , R.PTNT_SK
+       , AUTH_PROVDR_SK
+       , PRCDR_CD_SK
+       , R.ENCNT_SK
+       , CASE WHEN RSULT_LAB_SK &lt; 0 OR RSULT_LAB_SK=1500001 THEN NULL ELSE RSULT_LAB_SK END AS RSULT_LAB_SK
+       , LAB_CMPNT_SK
+       , RSLT_FLG_CD_SK
+       , LAB_STS_CD_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , CLCT_TS_SK
+       , CASE WHEN CLCT_DT &gt; NOW() THEN NULL ELSE  CLCT_DT END AS  CLCT_DT
+       , RSLT_DT
+       , RSLT_TS_SK
+       , RSLT_VAL_INTG
+       , RSLT_VAL_FLT
+       , RSLT_VAL_TXT
+       , REF_UNT
+       , REF_NRML_VAL
+       , REFN_LOW_VAL
+       , REFN_HI_VAL
+       , R.ABNRML_IND
+  FROM EDW_PRD.CUBESPRD.LAB_CMPNT_RSLT_FACT R  
+ INNER JOIN CUBESPRD.PTNT_DIM P ON R.PTNT_SK = P.PTNT_SK
+ INNER JOIN CUBESPRD.ENCNT_DIM E ON R.ENCNT_SK = E.ENCNT_SK 
+ INNER JOIN CUBESPRD.LAB_TST_DIM AS LTD ON R.LAB_TST_SK= LTD.LAB_TST_SK  
+ INNER JOIN DW.LAB_TST_DIM AS DLTD ON R.LAB_TST_SK= DLTD.LAB_TST_SK AND DLTD.ORDR_TYPE_CDS IN ('3','31','61','7')  WHERE ORDRD_DT &lt; '2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Lab Test Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="e8d08204-ecfd-45f9-b043-127038a3f3ce">
+          <ID>Lab Test Fact</ID>
+          <Name>Lab Order New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="803196e8-9a7f-4350-87a7-a0cb9f076521">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT LAB_TST_FACT_SK
+       , LTF.SRC_TST_ID
+       , LTF.LAB_TST_SK
+       , LTF.PTNT_SK
+       , AUTH_PROVDR_SK
+       , PRCDR_CD_SK
+       , LTF.ENCNT_SK
+       , CASE WHEN RSULT_LAB_SK &lt; 0 OR RSULT_LAB_SK=1500001 THEN NULL ELSE RSULT_LAB_SK END AS RSULT_LAB_SK
+       , CASE WHEN YEAR(ORDRD_DT) = '1000' THEN NULL ELSE ORDRD_DT END ORDRD_DT
+       , ORDRD_TS_SK
+       , CLCT_USR_SK
+       , CLCT_DEPT_SK
+       , CASE WHEN (YEAR(CLCT_DT) &lt; 1900 OR YEAR(CLCT_DT) &gt; 2100) THEN NULL ELSE CLCT_DT END CLCT_DT
+       , CLCT_TS_SK
+       , CASE WHEN YEAR(SCHED_CLCT_DT) &lt; 1860 THEN NULL ELSE SCHED_CLCT_DT END SCHED_CLCT_DT
+       , SCHED_CLCT_TS_SK
+       , CASE WHEN YEAR(FRST_FNL_VRFY_DT) = '1000' THEN NULL ELSE FRST_FNL_VRFY_DT END FRST_FNL_VRFY_DT  
+       , FRST_FNL_VRFY_USR_SK
+       , CASE WHEN YEAR(FRST_VRFY_DT) = '1000' THEN NULL ELSE FRST_VRFY_DT END FRST_VRFY_DT
+       , FRST_VRFY_USR_SK
+       , CASE WHEN YEAR(LST_FNL_VRFY_DT) = '1000' THEN NULL ELSE LST_FNL_VRFY_DT END LST_FNL_VRFY_DT
+       , LST_FNL_VRFY_USR_SK
+       , CASE WHEN YEAR(LST_VRFY_DT) = '1000' THEN NULL ELSE LST_VRFY_DT END LST_VRFY_DT
+       , CASE WHEN YEAR(FRST_CORR_DT) = '1000' THEN NULL ELSE FRST_CORR_DT END FRST_CORR_DT
+       , FRST_CORR_USR_SK
+       , CASE WHEN YEAR(LST_CORR_DT) = '1000' THEN NULL ELSE LST_CORR_DT END LST_CORR_DT
+       , LST_CORR_USR_SK
+       , COLL_TM_MNT
+  FROM EDW_PRD.CUBESPRD.LAB_TST_FACT LTF INNER JOIN CUBESPRD.ENCNT_DIM E ON LTF.ENCNT_SK=E.ENCNT_SK INNER JOIN EDW_PRD.CUBESPRD.PTNT_DIM PD ON  LTF.PTNT_SK=PD.PTNT_SK
+  INNER JOIN DW.LAB_TST_DIM AS DLTD ON LTF.LAB_TST_SK= DLTD.LAB_TST_SK AND DLTD.ORDR_TYPE_CDS IN ('3','31','61','7')  WHERE ORDRD_DT &gt;= '2017-07-01' OR ORDRD_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+        <Partition dwd:design-time-name="41b4cce4-8937-43ad-9297-39a744943f99">
+          <ID>Lab Test Old</ID>
+          <Name>Lab Order Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="76b91889-8e6c-4858-8a1d-99044ebec9cf">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT LAB_TST_FACT_SK
+       , LTF.SRC_TST_ID
+       , LTF.LAB_TST_SK
+       , LTF.PTNT_SK
+       , AUTH_PROVDR_SK
+       , PRCDR_CD_SK
+       , LTF.ENCNT_SK
+       , CASE WHEN RSULT_LAB_SK &lt; 0 OR RSULT_LAB_SK=1500001 THEN NULL ELSE RSULT_LAB_SK END AS RSULT_LAB_SK
+       , CASE WHEN YEAR(ORDRD_DT) = '1000' THEN NULL ELSE ORDRD_DT END ORDRD_DT
+       , ORDRD_TS_SK
+       , CLCT_USR_SK
+       , CLCT_DEPT_SK
+       , CASE WHEN (YEAR(CLCT_DT) &lt; 1900 OR YEAR(CLCT_DT) &gt; 2100) THEN NULL ELSE CLCT_DT END CLCT_DT
+       , CLCT_TS_SK
+       , CASE WHEN YEAR(SCHED_CLCT_DT) &lt; 1860 THEN NULL ELSE SCHED_CLCT_DT END SCHED_CLCT_DT
+       , SCHED_CLCT_TS_SK
+       , CASE WHEN YEAR(FRST_FNL_VRFY_DT) = '1000' THEN NULL ELSE FRST_FNL_VRFY_DT END FRST_FNL_VRFY_DT  
+       , FRST_FNL_VRFY_USR_SK
+       , CASE WHEN YEAR(FRST_VRFY_DT) = '1000' THEN NULL ELSE FRST_VRFY_DT END FRST_VRFY_DT
+       , FRST_VRFY_USR_SK
+       , CASE WHEN YEAR(LST_FNL_VRFY_DT) = '1000' THEN NULL ELSE LST_FNL_VRFY_DT END LST_FNL_VRFY_DT
+       , LST_FNL_VRFY_USR_SK
+       , CASE WHEN YEAR(LST_VRFY_DT) = '1000' THEN NULL ELSE LST_VRFY_DT END LST_VRFY_DT
+       , CASE WHEN YEAR(FRST_CORR_DT) = '1000' THEN NULL ELSE FRST_CORR_DT END FRST_CORR_DT
+       , FRST_CORR_USR_SK
+       , CASE WHEN YEAR(LST_CORR_DT) = '1000' THEN NULL ELSE LST_CORR_DT END LST_CORR_DT
+       , LST_CORR_USR_SK
+       , COLL_TM_MNT
+  FROM EDW_PRD.CUBESPRD.LAB_TST_FACT LTF INNER JOIN CUBESPRD.ENCNT_DIM E ON LTF.ENCNT_SK=E.ENCNT_SK INNER JOIN EDW_PRD.CUBESPRD.PTNT_DIM PD ON  LTF.PTNT_SK=PD.PTNT_SK
+  INNER JOIN DW.LAB_TST_DIM AS DLTD ON LTF.LAB_TST_SK= DLTD.LAB_TST_SK AND DLTD.ORDR_TYPE_CDS IN ('3','31','61','7') WHERE LTF.ORDRD_DT &lt; '2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Lab Component Result</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="3fcad6ad-261c-4237-bd84-141318acd0aa">
+          <ID>Lab Component Result Fact</ID>
+          <Name>Lab Component Result-Encounter New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="8f7ca91a-0144-49fb-ba73-e0c8da18ff75">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT CMPNT_RSLT_FACT_SK
+       , SRC_CMPNT_RSLT_ID
+       , R.LAB_TST_SK
+       , R.PTNT_SK
+       , AUTH_PROVDR_SK
+       , PRCDR_CD_SK
+       , ENCNT_SK
+       , CASE WHEN RSULT_LAB_SK &lt; 0 OR RSULT_LAB_SK=1500001 THEN NULL ELSE RSULT_LAB_SK END AS RSULT_LAB_SK
+       , LAB_CMPNT_SK
+       , RSLT_FLG_CD_SK
+       , LAB_STS_CD_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , CLCT_TS_SK
+       , CLCT_DT
+       , RSLT_DT
+       , RSLT_TS_SK
+       , RSLT_VAL_INTG
+       , RSLT_VAL_FLT
+       , RSLT_VAL_TXT
+       , REF_UNT
+       , REF_NRML_VAL
+       , REFN_LOW_VAL
+       , REFN_HI_VAL
+       , R.ABNRML_IND
+  FROM EDW_PRD.CUBESPRD.LAB_CMPNT_RSLT_FACT R  
+ INNER JOIN CUBESPRD.PTNT_DIM P ON R.PTNT_SK = P.PTNT_SK 
+  INNER JOIN DW.LAB_TST_DIM AS DLTD ON R.LAB_TST_SK= DLTD.LAB_TST_SK AND DLTD.ORDR_TYPE_CDS IN ('3','31','61','7') WHERE ORDRD_DT &gt;= '2017-07-01' OR ORDRD_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+        <Partition dwd:design-time-name="21f8f7b7-79b8-4fe0-977b-020f51e2bce9">
+          <ID>Lab Component Result Old</ID>
+          <Name>Lab Component Result-Encounter Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="85ec51d4-b914-4639-8154-c862720f85e3">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT CMPNT_RSLT_FACT_SK
+       , SRC_CMPNT_RSLT_ID
+       , R.LAB_TST_SK
+       , R.PTNT_SK
+       , AUTH_PROVDR_SK
+       , PRCDR_CD_SK
+       , R.ENCNT_SK
+       , CASE WHEN RSULT_LAB_SK &lt; 0 OR RSULT_LAB_SK=1500001 THEN NULL ELSE RSULT_LAB_SK END AS RSULT_LAB_SK
+       , LAB_CMPNT_SK
+       , RSLT_FLG_CD_SK
+       , LAB_STS_CD_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , CLCT_TS_SK
+       , CASE WHEN CLCT_DT &gt; NOW() THEN NULL ELSE  CLCT_DT END AS  CLCT_DT
+       , RSLT_DT
+       , RSLT_TS_SK
+       , RSLT_VAL_INTG
+       , RSLT_VAL_FLT
+       , RSLT_VAL_TXT
+       , REF_UNT
+       , REF_NRML_VAL
+       , REFN_LOW_VAL
+       , REFN_HI_VAL
+       , R.ABNRML_IND
+  FROM EDW_PRD.CUBESPRD.LAB_CMPNT_RSLT_FACT R  
+ INNER JOIN CUBESPRD.PTNT_DIM P ON R.PTNT_SK = P.PTNT_SK
+ INNER JOIN CUBESPRD.ENCNT_DIM E ON R.ENCNT_SK = E.ENCNT_SK 
+ INNER JOIN CUBESPRD.LAB_TST_DIM AS LTD ON R.LAB_TST_SK= LTD.LAB_TST_SK  
+ INNER JOIN DW.LAB_TST_DIM AS DLTD ON R.LAB_TST_SK= DLTD.LAB_TST_SK AND DLTD.ORDR_TYPE_CDS IN ('3','31','61','7')  WHERE ORDRD_DT &lt; '2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Lab Component Result 1</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="18b3a1f9-e46c-47c9-b9a1-436c56ff9a90">
+          <ID>Lab Component Result Fact</ID>
+          <Name>Lab Component Result-Patient New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="fe767f7b-cafa-41d5-af50-7a12bc5ccfa5">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT CMPNT_RSLT_FACT_SK
+       , SRC_CMPNT_RSLT_ID
+       , R.LAB_TST_SK
+       , R.PTNT_SK
+       , AUTH_PROVDR_SK
+       , PRCDR_CD_SK
+       , ENCNT_SK
+       , CASE WHEN RSULT_LAB_SK &lt; 0 OR RSULT_LAB_SK=1500001 THEN NULL ELSE RSULT_LAB_SK END AS RSULT_LAB_SK
+       , LAB_CMPNT_SK
+       , RSLT_FLG_CD_SK
+       , LAB_STS_CD_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , CLCT_TS_SK
+       , CLCT_DT
+       , RSLT_DT
+       , RSLT_TS_SK
+       , RSLT_VAL_INTG
+       , RSLT_VAL_FLT
+       , RSLT_VAL_TXT
+       , REF_UNT
+       , REF_NRML_VAL
+       , REFN_LOW_VAL
+       , REFN_HI_VAL
+       , R.ABNRML_IND
+  FROM EDW_PRD.CUBESPRD.LAB_CMPNT_RSLT_FACT R  
+ INNER JOIN CUBESPRD.PTNT_DIM P ON R.PTNT_SK = P.PTNT_SK 
+  INNER JOIN DW.LAB_TST_DIM AS DLTD ON R.LAB_TST_SK= DLTD.LAB_TST_SK AND DLTD.ORDR_TYPE_CDS IN ('3','31','61','7') WHERE ORDRD_DT &gt;= '2017-07-01' OR ORDRD_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+        <Partition dwd:design-time-name="fdcd5047-acff-4a78-a6aa-8dff49c3d661">
+          <ID>Lab Component Result Old</ID>
+          <Name>Lab Component Result-Patient Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="46ae1053-626a-48af-9abf-17f825e68fb5">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT CMPNT_RSLT_FACT_SK
+       , SRC_CMPNT_RSLT_ID
+       , R.LAB_TST_SK
+       , R.PTNT_SK
+       , AUTH_PROVDR_SK
+       , PRCDR_CD_SK
+       , R.ENCNT_SK
+       , CASE WHEN RSULT_LAB_SK &lt; 0 OR RSULT_LAB_SK=1500001 THEN NULL ELSE RSULT_LAB_SK END AS RSULT_LAB_SK
+       , LAB_CMPNT_SK
+       , RSLT_FLG_CD_SK
+       , LAB_STS_CD_SK
+       , ORDRD_DT
+       , ORDRD_TS_SK
+       , CLCT_TS_SK
+       , CASE WHEN CLCT_DT &gt; NOW() THEN NULL ELSE  CLCT_DT END AS  CLCT_DT
+       , RSLT_DT
+       , RSLT_TS_SK
+       , RSLT_VAL_INTG
+       , RSLT_VAL_FLT
+       , RSLT_VAL_TXT
+       , REF_UNT
+       , REF_NRML_VAL
+       , REFN_LOW_VAL
+       , REFN_HI_VAL
+       , R.ABNRML_IND
+  FROM EDW_PRD.CUBESPRD.LAB_CMPNT_RSLT_FACT R  
+ INNER JOIN CUBESPRD.PTNT_DIM P ON R.PTNT_SK = P.PTNT_SK
+ INNER JOIN CUBESPRD.ENCNT_DIM E ON R.ENCNT_SK = E.ENCNT_SK 
+ INNER JOIN CUBESPRD.LAB_TST_DIM AS LTD ON R.LAB_TST_SK= LTD.LAB_TST_SK  
+ INNER JOIN DW.LAB_TST_DIM AS DLTD ON R.LAB_TST_SK= DLTD.LAB_TST_SK AND DLTD.ORDR_TYPE_CDS IN ('3','31','61','7')  WHERE ORDRD_DT &lt; '2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Lab Test</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="5151cd82-d4ca-439a-9153-870c8e68e02d">
+          <ID>Lab Test Fact</ID>
+          <Name>Lab Order-Encounter New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="5d9af76a-b3da-4fd1-a903-9addb89f4676">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT LAB_TST_FACT_SK
+       , LTF.SRC_TST_ID
+       , LTF.LAB_TST_SK
+       , LTF.PTNT_SK
+       , AUTH_PROVDR_SK
+       , PRCDR_CD_SK
+       , LTF.ENCNT_SK
+       , CASE WHEN RSULT_LAB_SK &lt; 0 OR RSULT_LAB_SK=1500001 THEN NULL ELSE RSULT_LAB_SK END AS RSULT_LAB_SK
+       , CASE WHEN YEAR(ORDRD_DT) = '1000' THEN NULL ELSE ORDRD_DT END ORDRD_DT
+       , ORDRD_TS_SK
+       , CLCT_USR_SK
+       , CLCT_DEPT_SK
+       , CASE WHEN (YEAR(CLCT_DT) &lt; 1900 OR YEAR(CLCT_DT) &gt; 2100) THEN NULL ELSE CLCT_DT END CLCT_DT
+       , CLCT_TS_SK
+       , CASE WHEN YEAR(SCHED_CLCT_DT) &lt; 1860 THEN NULL ELSE SCHED_CLCT_DT END SCHED_CLCT_DT
+       , SCHED_CLCT_TS_SK
+       , CASE WHEN YEAR(FRST_FNL_VRFY_DT) = '1000' THEN NULL ELSE FRST_FNL_VRFY_DT END FRST_FNL_VRFY_DT  
+       , FRST_FNL_VRFY_USR_SK
+       , CASE WHEN YEAR(FRST_VRFY_DT) = '1000' THEN NULL ELSE FRST_VRFY_DT END FRST_VRFY_DT
+       , FRST_VRFY_USR_SK
+       , CASE WHEN YEAR(LST_FNL_VRFY_DT) = '1000' THEN NULL ELSE LST_FNL_VRFY_DT END LST_FNL_VRFY_DT
+       , LST_FNL_VRFY_USR_SK
+       , CASE WHEN YEAR(LST_VRFY_DT) = '1000' THEN NULL ELSE LST_VRFY_DT END LST_VRFY_DT
+       , CASE WHEN YEAR(FRST_CORR_DT) = '1000' THEN NULL ELSE FRST_CORR_DT END FRST_CORR_DT
+       , FRST_CORR_USR_SK
+       , CASE WHEN YEAR(LST_CORR_DT) = '1000' THEN NULL ELSE LST_CORR_DT END LST_CORR_DT
+       , LST_CORR_USR_SK
+       , COLL_TM_MNT
+  FROM EDW_PRD.CUBESPRD.LAB_TST_FACT LTF INNER JOIN CUBESPRD.ENCNT_DIM E ON LTF.ENCNT_SK=E.ENCNT_SK INNER JOIN EDW_PRD.CUBESPRD.PTNT_DIM PD ON  LTF.PTNT_SK=PD.PTNT_SK
+  INNER JOIN DW.LAB_TST_DIM AS DLTD ON LTF.LAB_TST_SK= DLTD.LAB_TST_SK AND DLTD.ORDR_TYPE_CDS IN ('3','31','61','7')  WHERE ORDRD_DT &gt;= '2017-07-01' OR ORDRD_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+        <Partition dwd:design-time-name="8510da5a-e8e8-4a6a-94a3-5785772468aa">
+          <ID>Lab Test Old</ID>
+          <Name>Lab Order-Encounter Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="5c65cb24-886a-4794-bf05-dc74741f64e1">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT LAB_TST_FACT_SK
+       , LTF.SRC_TST_ID
+       , LTF.LAB_TST_SK
+       , LTF.PTNT_SK
+       , AUTH_PROVDR_SK
+       , PRCDR_CD_SK
+       , LTF.ENCNT_SK
+       , CASE WHEN RSULT_LAB_SK &lt; 0 OR RSULT_LAB_SK=1500001 THEN NULL ELSE RSULT_LAB_SK END AS RSULT_LAB_SK
+       , CASE WHEN YEAR(ORDRD_DT) = '1000' THEN NULL ELSE ORDRD_DT END ORDRD_DT
+       , ORDRD_TS_SK
+       , CLCT_USR_SK
+       , CLCT_DEPT_SK
+       , CASE WHEN (YEAR(CLCT_DT) &lt; 1900 OR YEAR(CLCT_DT) &gt; 2100) THEN NULL ELSE CLCT_DT END CLCT_DT
+       , CLCT_TS_SK
+       , CASE WHEN YEAR(SCHED_CLCT_DT) &lt; 1860 THEN NULL ELSE SCHED_CLCT_DT END SCHED_CLCT_DT
+       , SCHED_CLCT_TS_SK
+       , CASE WHEN YEAR(FRST_FNL_VRFY_DT) = '1000' THEN NULL ELSE FRST_FNL_VRFY_DT END FRST_FNL_VRFY_DT  
+       , FRST_FNL_VRFY_USR_SK
+       , CASE WHEN YEAR(FRST_VRFY_DT) = '1000' THEN NULL ELSE FRST_VRFY_DT END FRST_VRFY_DT
+       , FRST_VRFY_USR_SK
+       , CASE WHEN YEAR(LST_FNL_VRFY_DT) = '1000' THEN NULL ELSE LST_FNL_VRFY_DT END LST_FNL_VRFY_DT
+       , LST_FNL_VRFY_USR_SK
+       , CASE WHEN YEAR(LST_VRFY_DT) = '1000' THEN NULL ELSE LST_VRFY_DT END LST_VRFY_DT
+       , CASE WHEN YEAR(FRST_CORR_DT) = '1000' THEN NULL ELSE FRST_CORR_DT END FRST_CORR_DT
+       , FRST_CORR_USR_SK
+       , CASE WHEN YEAR(LST_CORR_DT) = '1000' THEN NULL ELSE LST_CORR_DT END LST_CORR_DT
+       , LST_CORR_USR_SK
+       , COLL_TM_MNT
+  FROM EDW_PRD.CUBESPRD.LAB_TST_FACT LTF INNER JOIN CUBESPRD.ENCNT_DIM E ON LTF.ENCNT_SK=E.ENCNT_SK INNER JOIN EDW_PRD.CUBESPRD.PTNT_DIM PD ON  LTF.PTNT_SK=PD.PTNT_SK
+  INNER JOIN DW.LAB_TST_DIM AS DLTD ON LTF.LAB_TST_SK= DLTD.LAB_TST_SK AND DLTD.ORDR_TYPE_CDS IN ('3','31','61','7') WHERE LTF.ORDRD_DT &lt; '2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Lab Test 1</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="82206820-e2b8-4a4d-a6f7-c8a5b42ed05d">
+          <ID>Lab Test Fact</ID>
+          <Name>Lab Order-Patient New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="d3da42c9-4fae-4bee-950b-4f5e8da31871">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT LAB_TST_FACT_SK
+       , LTF.SRC_TST_ID
+       , LTF.LAB_TST_SK
+       , LTF.PTNT_SK
+       , AUTH_PROVDR_SK
+       , PRCDR_CD_SK
+       , LTF.ENCNT_SK
+       , CASE WHEN RSULT_LAB_SK &lt; 0 OR RSULT_LAB_SK=1500001 THEN NULL ELSE RSULT_LAB_SK END AS RSULT_LAB_SK
+       , CASE WHEN YEAR(ORDRD_DT) = '1000' THEN NULL ELSE ORDRD_DT END ORDRD_DT
+       , ORDRD_TS_SK
+       , CLCT_USR_SK
+       , CLCT_DEPT_SK
+       , CASE WHEN (YEAR(CLCT_DT) &lt; 1900 OR YEAR(CLCT_DT) &gt; 2100) THEN NULL ELSE CLCT_DT END CLCT_DT
+       , CLCT_TS_SK
+       , CASE WHEN YEAR(SCHED_CLCT_DT) &lt; 1860 THEN NULL ELSE SCHED_CLCT_DT END SCHED_CLCT_DT
+       , SCHED_CLCT_TS_SK
+       , CASE WHEN YEAR(FRST_FNL_VRFY_DT) = '1000' THEN NULL ELSE FRST_FNL_VRFY_DT END FRST_FNL_VRFY_DT  
+       , FRST_FNL_VRFY_USR_SK
+       , CASE WHEN YEAR(FRST_VRFY_DT) = '1000' THEN NULL ELSE FRST_VRFY_DT END FRST_VRFY_DT
+       , FRST_VRFY_USR_SK
+       , CASE WHEN YEAR(LST_FNL_VRFY_DT) = '1000' THEN NULL ELSE LST_FNL_VRFY_DT END LST_FNL_VRFY_DT
+       , LST_FNL_VRFY_USR_SK
+       , CASE WHEN YEAR(LST_VRFY_DT) = '1000' THEN NULL ELSE LST_VRFY_DT END LST_VRFY_DT
+       , CASE WHEN YEAR(FRST_CORR_DT) = '1000' THEN NULL ELSE FRST_CORR_DT END FRST_CORR_DT
+       , FRST_CORR_USR_SK
+       , CASE WHEN YEAR(LST_CORR_DT) = '1000' THEN NULL ELSE LST_CORR_DT END LST_CORR_DT
+       , LST_CORR_USR_SK
+       , COLL_TM_MNT
+  FROM EDW_PRD.CUBESPRD.LAB_TST_FACT LTF INNER JOIN CUBESPRD.ENCNT_DIM E ON LTF.ENCNT_SK=E.ENCNT_SK INNER JOIN EDW_PRD.CUBESPRD.PTNT_DIM PD ON  LTF.PTNT_SK=PD.PTNT_SK
+  INNER JOIN DW.LAB_TST_DIM AS DLTD ON LTF.LAB_TST_SK= DLTD.LAB_TST_SK AND DLTD.ORDR_TYPE_CDS IN ('3','31','61','7')  WHERE ORDRD_DT &gt;= '2017-07-01' OR ORDRD_DT IS NULL</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+        <Partition dwd:design-time-name="095c96ba-415d-4eef-ab78-c4e54f5fc1fe">
+          <ID>Lab Test Old</ID>
+          <Name>Lab Order-Patient Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="36c92662-3769-4380-abf2-9047d3cc8be8">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT LAB_TST_FACT_SK
+       , LTF.SRC_TST_ID
+       , LTF.LAB_TST_SK
+       , LTF.PTNT_SK
+       , AUTH_PROVDR_SK
+       , PRCDR_CD_SK
+       , LTF.ENCNT_SK
+       , CASE WHEN RSULT_LAB_SK &lt; 0 OR RSULT_LAB_SK=1500001 THEN NULL ELSE RSULT_LAB_SK END AS RSULT_LAB_SK
+       , CASE WHEN YEAR(ORDRD_DT) = '1000' THEN NULL ELSE ORDRD_DT END ORDRD_DT
+       , ORDRD_TS_SK
+       , CLCT_USR_SK
+       , CLCT_DEPT_SK
+       , CASE WHEN (YEAR(CLCT_DT) &lt; 1900 OR YEAR(CLCT_DT) &gt; 2100) THEN NULL ELSE CLCT_DT END CLCT_DT
+       , CLCT_TS_SK
+       , CASE WHEN YEAR(SCHED_CLCT_DT) &lt; 1860 THEN NULL ELSE SCHED_CLCT_DT END SCHED_CLCT_DT
+       , SCHED_CLCT_TS_SK
+       , CASE WHEN YEAR(FRST_FNL_VRFY_DT) = '1000' THEN NULL ELSE FRST_FNL_VRFY_DT END FRST_FNL_VRFY_DT  
+       , FRST_FNL_VRFY_USR_SK
+       , CASE WHEN YEAR(FRST_VRFY_DT) = '1000' THEN NULL ELSE FRST_VRFY_DT END FRST_VRFY_DT
+       , FRST_VRFY_USR_SK
+       , CASE WHEN YEAR(LST_FNL_VRFY_DT) = '1000' THEN NULL ELSE LST_FNL_VRFY_DT END LST_FNL_VRFY_DT
+       , LST_FNL_VRFY_USR_SK
+       , CASE WHEN YEAR(LST_VRFY_DT) = '1000' THEN NULL ELSE LST_VRFY_DT END LST_VRFY_DT
+       , CASE WHEN YEAR(FRST_CORR_DT) = '1000' THEN NULL ELSE FRST_CORR_DT END FRST_CORR_DT
+       , FRST_CORR_USR_SK
+       , CASE WHEN YEAR(LST_CORR_DT) = '1000' THEN NULL ELSE LST_CORR_DT END LST_CORR_DT
+       , LST_CORR_USR_SK
+       , COLL_TM_MNT
+  FROM EDW_PRD.CUBESPRD.LAB_TST_FACT LTF INNER JOIN CUBESPRD.ENCNT_DIM E ON LTF.ENCNT_SK=E.ENCNT_SK INNER JOIN EDW_PRD.CUBESPRD.PTNT_DIM PD ON  LTF.PTNT_SK=PD.PTNT_SK
+  INNER JOIN DW.LAB_TST_DIM AS DLTD ON LTF.LAB_TST_SK= DLTD.LAB_TST_SK AND DLTD.ORDR_TYPE_CDS IN ('3','31','61','7') WHERE LTF.ORDRD_DT &lt; '2017-07-01'</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Measure MD Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="c1a45f9b-a0fd-4251-8de1-0e6f2ff7e6e0">
+          <ID>Measure MD Fact</ID>
+          <Name>Measure MD Fact</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="594f9390-f884-4ce9-83b0-907a2eaa34af">
+            <DataSourceViewID>Carilion</DataSourceViewID>
+            <TableID>MeasureMDFact</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Measure QD Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="baa154da-cf78-460c-aac0-def120f8e4d8">
+          <ID>Measure QD Fact</ID>
+          <Name>Measure QD Fact</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="ef3c313a-cd64-4195-b4bb-91cf5965992b">
+            <DataSourceViewID>Carilion</DataSourceViewID>
+            <TableID>MeasureQDFact</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Measure ML Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="f778fa0c-af48-4961-8341-df2a5df39831">
+          <ID>Measure ML Fact</ID>
+          <Name>Measure ML Fact</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="6829a1c9-db66-4b78-8f87-120d7c9e5a14">
+            <DataSourceViewID>Carilion</DataSourceViewID>
+            <TableID>MeasureMLFact</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Measure QL Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="c14c5524-fbe7-41ba-9ddf-5192f63d0a87">
+          <ID>Measure QL Fact</ID>
+          <Name>Measure QL Fact</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="6e17cbcd-2de0-4538-89d0-08ccbb604906">
+            <DataSourceViewID>Carilion</DataSourceViewID>
+            <TableID>MeasureQLFact</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Surgical Case Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="fc9443eb-2d7f-4bb8-88a2-88ce38f3cbd7">
+          <ID>Surgical Case Fact</ID>
+          <Name>Surgical Case New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="546af14d-087d-48e9-a1db-67b8e418147d">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT SRGCL_CASE_FACT_SK
+       , CF.CASE_SK
+       , CF.PTNT_SK
+       , PRMY_PROVDR_SK
+       , ANSTHGIST_PROVDR_SK
+       , PRMY_PRCDR_CD_SK
+       , DEPT_SK
+       , DIAG_CD_SK
+       , CASE WHEN CF.HSPTL_ENCNT_SK &lt; 0 THEN NULL ELSE CF.HSPTL_ENCNT_SK END AS HSPTL_ENCNT_SK
+       , SRG_ENCNT_SK
+       , SRG_DT
+       , CASE_RQST_DT
+       , CASE_RQST_TM_SK
+       , SCHED_SETUP_STRT_DT
+       , SCHED_SETUP_STRT_TM_SK
+       , SCHED_IN_RM_DT
+       , SCHED_IN_RM_TM_SK
+       , SCHED_OUT_OF_RM_DT
+       , SCHED_OUT_OF_RM_TM_SK
+       , SCHED_CLNUP_CMPLT_DT
+       , SCHED_CLNUP_CMPLT_TM_SK
+       , PTNT_IN_FCLT_DT
+       , PTNT_IN_FCLT_TM_SK
+       , PTNT_IN_PRE_PRCDR_DT
+       , PTNT_IN_PRE_PRCDR_TM_SK
+       , RM_SETUP_STRT_DT
+       , RM_SETUP_STRT_TM_SK
+       , RM_RDY_DT
+       , RM_RDY_TM_SK
+       , ANSTH_STRT_DT
+       , ANSTH_STRT_TM_SK
+       , PRE_PRCDR_CMPLT_DT
+       , PRE_PRCDR_CMPLT_TM_SK
+       , PTNT_IN_RM_DT
+       , PTNT_IN_RM_TM_SK
+       , ANSTH_INDCTN_DT
+       , ANSTH_INDCTN_TM_SK
+       , ANSTH_RDY_DT
+       , ANSTH_RDY_TM_SK
+       , PRCDR_STRT_DT
+       , PRCDR_STRT_TM_SK
+       , PRCDR_CMPLT_DT
+       , PRCDR_CMPLT_TM_SK
+       , PTNT_OUT_OF_RM_DT
+       , PTNT_OUT_OF_RM_TM_SK
+       , RM_CLNUP_STRT_DT
+       , RM_CLNUP_STRT_TM_SK
+       , RM_CLNUP_CMPLT_DT
+       , RM_CLNUP_CMPLT_TM_SK
+       , PTNT_IN_PACU_DT
+       , PTNT_IN_PACU_TM_SK
+       , ANSTH_STOP_DT
+       , ANSTH_STOP_TM_SK
+       , PACU_CARE_CMPLT_DT
+       , PACU_CARE_CMPLT_TM_SK
+       , PTNT_OUT_OF_PACU_DT
+       , PTNT_OUT_OF_PACU_TM_SK
+       , PTNT_POST_OP_DT
+       , PTNT_POST_OP_TM_SK
+       , POST_OP_CARE_CMPLT_DT
+       , POST_OP_CARE_CMPLT_TM_SK
+       , PTNT_OUT_OF_POST_OP_DT
+       , PTNT_OUT_OF_POST_OP_TM_SK
+       , CNCL_IND
+       , ADD_ON_IND
+       , CNFD_IND
+ FROM CUBESPRD.SRGCL_CASE_FACT CF INNER JOIN CUBESPRD.PTNT_DIM P ON P.PTNT_SK=CF.PTNT_SK
+WHERE  (SRG_DT &gt;= '2017-07-01' OR SRG_DT IS NULL) AND  CF.CASE_SK &gt; 0</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+        <Partition dwd:design-time-name="74181caa-5842-468a-a17c-cc7630869d20">
+          <ID>Surgical Case Old</ID>
+          <Name>Surgical Case Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="417ee0a3-9596-490c-a8ac-3351ae94e5db">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT SRGCL_CASE_FACT_SK
+       , CASE_SK
+       , PTNT_SK
+       , PRMY_PROVDR_SK
+       , ANSTHGIST_PROVDR_SK
+       , PRMY_PRCDR_CD_SK
+       , DEPT_SK
+       , DIAG_CD_SK
+       , CASE WHEN HSPTL_ENCNT_SK &lt; 0 THEN NULL ELSE HSPTL_ENCNT_SK END AS HSPTL_ENCNT_SK
+       , SRG_ENCNT_SK
+       , SRG_DT
+       , CASE_RQST_DT
+       , CASE_RQST_TM_SK
+       , SCHED_SETUP_STRT_DT
+       , SCHED_SETUP_STRT_TM_SK
+       , SCHED_IN_RM_DT
+       , SCHED_IN_RM_TM_SK
+       , SCHED_OUT_OF_RM_DT
+       , SCHED_OUT_OF_RM_TM_SK
+       , SCHED_CLNUP_CMPLT_DT
+       , SCHED_CLNUP_CMPLT_TM_SK
+       , PTNT_IN_FCLT_DT
+       , PTNT_IN_FCLT_TM_SK
+       , PTNT_IN_PRE_PRCDR_DT
+       , PTNT_IN_PRE_PRCDR_TM_SK
+       , RM_SETUP_STRT_DT
+       , RM_SETUP_STRT_TM_SK
+       , RM_RDY_DT
+       , RM_RDY_TM_SK
+       , ANSTH_STRT_DT
+       , ANSTH_STRT_TM_SK
+       , PRE_PRCDR_CMPLT_DT
+       , PRE_PRCDR_CMPLT_TM_SK
+       , PTNT_IN_RM_DT
+       , PTNT_IN_RM_TM_SK
+       , ANSTH_INDCTN_DT
+       , ANSTH_INDCTN_TM_SK
+       , ANSTH_RDY_DT
+       , ANSTH_RDY_TM_SK
+       , PRCDR_STRT_DT
+       , PRCDR_STRT_TM_SK
+       , PRCDR_CMPLT_DT
+       , PRCDR_CMPLT_TM_SK
+       , PTNT_OUT_OF_RM_DT
+       , PTNT_OUT_OF_RM_TM_SK
+       , RM_CLNUP_STRT_DT
+       , RM_CLNUP_STRT_TM_SK
+       , RM_CLNUP_CMPLT_DT
+       , RM_CLNUP_CMPLT_TM_SK
+       , PTNT_IN_PACU_DT
+       , PTNT_IN_PACU_TM_SK
+       , ANSTH_STOP_DT
+       , ANSTH_STOP_TM_SK
+       , PACU_CARE_CMPLT_DT
+       , PACU_CARE_CMPLT_TM_SK
+       , PTNT_OUT_OF_PACU_DT
+       , PTNT_OUT_OF_PACU_TM_SK
+       , PTNT_POST_OP_DT
+       , PTNT_POST_OP_TM_SK
+       , POST_OP_CARE_CMPLT_DT
+       , POST_OP_CARE_CMPLT_TM_SK
+       , PTNT_OUT_OF_POST_OP_DT
+       , PTNT_OUT_OF_POST_OP_TM_SK
+       , CNCL_IND
+       , ADD_ON_IND
+       , CNFD_IND
+ FROM CUBESPRD.SRGCL_CASE_FACT 
+WHERE  SRG_DT &lt; '2017-07-01' AND  CASE_SK &gt; 0</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Surgical Procedure Event Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="242a4f47-caa2-442d-ab48-3e01ea2116bc">
+          <ID>Surgical Procedure Event Fact</ID>
+          <Name>Surgical Procedure Event New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="9d1930bf-9dee-4798-b02e-67acb31ea410">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT SRG_PRCDR_EV_FACT_SK
+       , SPE.PTNT_SK
+       , SPE.CASE_SK
+       , PRCDR_CD_SK
+       , PRMY_PROVDR_SURGEON_SK
+       , SCND_PROVDR_SURGEON_SK
+       , THRD_PROVDR_SURGEON_SK
+       , SCF.SRG_DT
+       , SPE.HSPTL_ENCNT_SK
+       , SPE.SRG_ENCNT_SK
+       , CASE WHEN SPE.DEPT_SK &lt; 0 THEN NULL ELSE SPE.DEPT_SK END AS DEPT_SK
+       , SRVC_CDS
+       , PRCDR_SITE_CDS
+       , LTRLTY_CDS
+       , ANSTH_TYPE_CDS
+       , WND_CLASS_CDS
+       , SCHED_IND
+       , PRFRM_IND
+       , PSSBL_IND
+  FROM CUBESPRD.SRGCL_PRCDR_EV_FACT SPE INNER JOIN CUBESPRD.SRGCL_CASE_FACT SCF ON SPE.CASE_SK=SCF.CASE_SK 
+WHERE (SCF.SRG_DT &gt;= '2017-01-01' OR SCF.SRG_DT IS NULL) AND SPE.CASE_SK &gt; 0</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+        <Partition dwd:design-time-name="ba2148a9-ab86-49a9-a186-191f88a2e2de">
+          <ID>Surgical Procedure Event Old</ID>
+          <Name>Surgical Procedure Event Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="69e3449c-93c4-4155-99c8-dfe89c43c993">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT SRG_PRCDR_EV_FACT_SK
+       , SPE.PTNT_SK
+       , SPE.CASE_SK
+       , PRCDR_CD_SK
+       , PRMY_PROVDR_SURGEON_SK
+       , SCND_PROVDR_SURGEON_SK
+       , THRD_PROVDR_SURGEON_SK
+       , SCF.SRG_DT
+       , SPE.HSPTL_ENCNT_SK
+       , SPE.SRG_ENCNT_SK
+       , CASE WHEN SPE.DEPT_SK &lt; 0 THEN NULL ELSE SPE.DEPT_SK END AS DEPT_SK
+       , SRVC_CDS
+       , PRCDR_SITE_CDS
+       , LTRLTY_CDS
+       , ANSTH_TYPE_CDS
+       , WND_CLASS_CDS
+       , SCHED_IND
+       , PRFRM_IND
+       , PSSBL_IND
+  FROM CUBESPRD.SRGCL_PRCDR_EV_FACT SPE INNER JOIN CUBESPRD.SRGCL_CASE_FACT SCF ON SPE.CASE_SK=SCF.CASE_SK
+WHERE SCF.SRG_DT  &lt; '2017-07-01' AND SPE.CASE_SK &gt; 0</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Surgical Supply Use Fact</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="5f3b55d4-acf5-4d73-8f0a-b4720a09ef0e">
+          <ID>Surgical Supply Use Fact</ID>
+          <Name>Surgical Supply Use New</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="383344c1-b93c-49af-9977-980bafe3f155">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT  SRGCL_SPPLY_USE_FACT_SK
+       , SRC_SRGCL_SPPLY_ID
+       , PTNT_SK
+       , SSUF.CASE_SK
+       , SPPLY_SK
+       , DEPT_SK
+       , SRG_DT
+       , SSUF.HSPTL_ENCNT_SK
+       , SRG_ENCNT_SK
+       , PRMY_PROVDR_SK
+       , PRCDR_CD_SK
+       , LOG_STS_CDS
+       , OR_SRVC_CDS
+       , NBR_USE
+       , NBR_WSTD
+       , NBR_OPEN
+       , NBR_PRN
+       , UNT_COST
+       , CRGBL_IND
+  FROM CUBESPRD.SRGCL_SPPLY_USE_FACT SSUF INNER  JOIN EDW_PRD.CUBESPRD.SRGCL_CASE_DIM SCD ON SSUF.CASE_SK=SCD.CASE_SK
+WHERE  (SRG_DT &gt;= '2017-07-01' OR SRG_DT IS NULL) AND SSUF.CASE_SK &gt; 0</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+        <Partition dwd:design-time-name="be8a9d17-8abe-43fc-9736-05ae0ded767d">
+          <ID>Surgical Supply Use Old</ID>
+          <Name>Surgical Supply Use Old</Name>
+          <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="QueryBinding" dwd:design-time-name="46069410-0683-4b2f-a0b6-19225afb23f3">
+            <DataSourceID>EDW</DataSourceID>
+            <QueryDefinition>SELECT  SRGCL_SPPLY_USE_FACT_SK
+       , SRC_SRGCL_SPPLY_ID
+       , PTNT_SK
+       , SSUF.CASE_SK
+       , SPPLY_SK
+       , DEPT_SK
+       , SRG_DT
+       , SSUF.HSPTL_ENCNT_SK
+       , SRG_ENCNT_SK
+       , PRMY_PROVDR_SK
+       , PRCDR_CD_SK
+       , LOG_STS_CDS
+       , OR_SRVC_CDS
+       , NBR_USE
+       , NBR_WSTD
+       , NBR_OPEN
+       , NBR_PRN
+       , UNT_COST
+       , CRGBL_IND
+  FROM CUBESPRD.SRGCL_SPPLY_USE_FACT SSUF INNER  JOIN EDW_PRD.CUBESPRD.SRGCL_CASE_DIM SCD ON SSUF.CASE_SK=SCD.CASE_SK
+WHERE  SRG_DT &lt; '2017-07-01' AND SSUF.CASE_SK &gt; 0</QueryDefinition>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+  </MeasureGroups>
+</Cube>

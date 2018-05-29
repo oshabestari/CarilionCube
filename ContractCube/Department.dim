@@ -1,0 +1,531 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="23a84916-4439-4c93-908f-56c939120273" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Department</ID>
+  <Name>Department</Name>
+  <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1700" scrolltop="-5636" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="7641" y="15600" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="DepartmentDim" left="20" top="0" logicalid="2" controlid="1" masterid="0" hint1="0" hint2="0" width="4736" height="5000" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c00008012000088130000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="DepartmentDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-1700</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-5636</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>20</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ARDiagramLayout</Name>
+      <Value>
+        <DiagramLayout ZoomPercent="100" ViewPortX="0" ViewPortY="0" xmlns="">
+          <Shapes NodeWidth="198">
+            <Shape Id="DEPT SK" Expanded="true">
+              <Attributes>
+                <Attribute Id="DEPT SK" />
+                <Attribute Id="ALT SRVC AREA CDS" />
+                <Attribute Id="ICU DEPT IND" />
+                <Attribute Id="LO CDS" />
+                <Attribute Id="PCU DEPT IND" />
+                <Attribute Id="PRFSNL BILLNG CL CDS" />
+                <Attribute Id="RSTCT IND" />
+                <Attribute Id="SRVC AREA CDS" />
+                <Attribute Id="SPCLY CDS" />
+                <Attribute Id="PSTL CDS" />
+              </Attributes>
+              <Position x="20" y="20" />
+            </Shape>
+            <Shape Id="CITY" Expanded="false">
+              <Attributes>
+                <Attribute Id="CITY" />
+              </Attributes>
+              <Position x="272" y="20" />
+            </Shape>
+            <Shape Id="ST PRV CDS" Expanded="false">
+              <Attributes>
+                <Attribute Id="ST PRV CDS" />
+              </Attributes>
+              <Position x="525" y="20" />
+            </Shape>
+          </Shapes>
+        </DiagramLayout>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="d74550ea-b2fc-4f00-a8c2-1aa6134a4463">
+    <DataSourceViewID>Carilion</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="18a18c4a-d529-4d54-a646-7c42e728e383">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="d86bfc9f-aa97-491e-936d-0a3493ba9949">
+      <ID>DEPT SK</ID>
+      <Name>Department</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d245b8b4-a920-456a-b1fd-f8efed1c9ed8">
+          <DataType>BigInt</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6d49c202-016b-4db3-80f2-ded4cd934f86">
+            <TableID>DepartmentDim</TableID>
+            <ColumnID>DEPT_SK</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="39de4e09-53fb-42f0-90f0-28ed6acb6f2b">
+        <DataType>WChar</DataType>
+        <DataSize>250</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="8e5b7f40-00c2-44e0-b696-a4936dc2f368">
+          <TableID>DepartmentDim</TableID>
+          <ColumnID>DEPT_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="b3a360f5-6c75-4ed3-adfb-f0313249dd8a">
+          <AttributeID>CITY</AttributeID>
+          <Name>Department - City</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="320286df-da2d-471e-80b7-020c1d96cad4">
+          <AttributeID>PSTL CDS</AttributeID>
+          <Name>Department - Zip Code</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="ca4be746-964c-452e-beb2-38c7681aebe6">
+          <AttributeID>SPCLY CDS</AttributeID>
+          <Name>Department - Specialty</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="ae3ea6b9-ac5e-4e95-a5cb-0041d4e3f376">
+          <AttributeID>PRFSNL BILLNG CL CDS</AttributeID>
+          <Name>Department - Professional Billing Claim Code</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="79af7131-6907-4622-ba00-06fbcc8ac1d7">
+          <AttributeID>LO CDS</AttributeID>
+          <Name>Department - Location</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="9e2265aa-2011-443a-b038-d564ee4a6e9b">
+          <AttributeID>ALT SRVC AREA CDS</AttributeID>
+          <Name>Department - Alternative Service Area</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="39a00738-57a5-49f2-a8ca-0e2a44379ac2">
+          <AttributeID>SRVC AREA CDS</AttributeID>
+          <Name>Department - Service Area</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="06ca5db5-e05b-46e7-b7bd-86dbca22910f">
+          <AttributeID>ICU DEPT IND</AttributeID>
+          <Name>Department - ICU Indicator</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="5780bb1b-6936-43ef-9278-424cb59dee74">
+          <AttributeID>PCU DEPT IND</AttributeID>
+          <Name>Department - PCU Indicator</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="182bbd4d-779f-42cb-bb19-179fa98626b1">
+          <AttributeID>RSTCT IND</AttributeID>
+          <Name>Department - Restricted Indicator</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="c26940c3-df00-40c7-ac69-51a49dec4eba">
+          <AttributeID>SRC DEPT ID</AttributeID>
+          <Name>Department - Name</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="2b4257cb-4679-410f-a6df-8c940269957c">
+          <AttributeID>FCM Region ID</AttributeID>
+          <Name>Department - FCM Region</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="697ddf3f-e6ef-415b-b375-6f75d19afd89">
+          <AttributeID>LOC TYPE CDS</AttributeID>
+          <Name>Department - Location Type</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <AttributeHierarchyDisplayFolder>Hidden</AttributeHierarchyDisplayFolder>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="708629eb-edff-413c-ba15-8935c6656fd8">
+      <ID>CITY</ID>
+      <Name>Department - City</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="557b8188-91f5-439a-8a9c-be9e82e1eddc">
+          <DataType>WChar</DataType>
+          <DataSize>30</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="afc48218-5059-4670-94f4-abc3ade2588e">
+            <TableID>DepartmentDim</TableID>
+            <ColumnID>CITY</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="fb51ff63-8969-4ae2-8df8-2f7d62a0af82">
+          <AttributeID>ST PRV CDS</AttributeID>
+          <Name>Department - State</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="5181b4fd-9935-474f-b8b6-4941613d3af8">
+      <ID>ST PRV CDS</ID>
+      <Name>Department - State</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c03bfc5a-1d47-40a6-a22c-fd9de978449f">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="52df2be7-785c-4b75-b099-6645fecf11ea">
+            <TableID>DepartmentDim</TableID>
+            <ColumnID>ST_PRV_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="4c35276d-e665-4e37-ad9a-ce990401c6d0">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="6f462c60-61ac-43f1-abd5-380cda4e8257">
+          <TableID>DepartmentDim</TableID>
+          <ColumnID>ST_PRV_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="ec9202dd-4943-409c-951c-3eba3bfd2495">
+      <ID>PSTL CDS</ID>
+      <Name>Department - Zip Code</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="590e789a-1d57-4393-af85-1632ae1f793f">
+          <DataType>WChar</DataType>
+          <DataSize>15</DataSize>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e693f21f-d65d-484a-ae3c-78b9e3d6aa4b">
+            <TableID>DepartmentDim</TableID>
+            <ColumnID>PSTL_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="90cec84a-29dd-4022-9571-40fb734f1992">
+      <ID>SPCLY CDS</ID>
+      <Name>Department - Specialty</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="76089461-069b-4e25-99e3-289edc286d65">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="fe69de59-df3b-46d4-9562-bbc17b71323e">
+            <TableID>DepartmentDim</TableID>
+            <ColumnID>SPCLY_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="729e6e33-9112-40dc-9998-d6b5b5b13a1f">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="1316131a-9f12-438f-b60e-7eb8ce2419d8">
+          <TableID>DepartmentDim</TableID>
+          <ColumnID>SPCLY_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="3f703546-d618-4ee3-a31e-0b43f36732fa">
+      <ID>PRFSNL BILLNG CL CDS</ID>
+      <Name>Department - Professional Billing Claim Code</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="54bd6815-1ee1-4881-a69a-1ae1f63deb3a">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="62d04baf-6b36-472c-bfd1-7c9678a20301">
+            <TableID>DepartmentDim</TableID>
+            <ColumnID>PRFSNL_BILLNG_CL_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="85600016-48d3-459a-a21c-01733422f6df">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="b28a8a62-879a-41ba-b736-b9aeeaa4ee1c">
+          <TableID>DepartmentDim</TableID>
+          <ColumnID>PRFSNL_BILLNG_CL_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="dbad0d1a-f0fb-41d0-82fc-18ff8003df1c">
+      <ID>LO CDS</ID>
+      <Name>Department - Location</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="c7218e7d-b896-4cb9-a4a8-2eab0a337d61">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="35851a3e-d05b-4072-a877-cf82fe314ba2">
+            <TableID>DepartmentDim</TableID>
+            <ColumnID>LO_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="b7a52357-b33c-4046-b393-1e8c182c24f2">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="52a3014f-4d2c-4cf1-875a-eb019200fdae">
+          <TableID>DepartmentDim</TableID>
+          <ColumnID>LO_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="2eadc0bc-6fe2-44aa-99e2-553e710eaf40">
+      <ID>SRVC AREA CDS</ID>
+      <Name>Department - Service Area</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="37dd1d0b-19a0-4aa8-84ef-6d6a8ced74e2">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="245a63e4-bb52-4641-8155-be1348090933">
+            <TableID>DepartmentDim</TableID>
+            <ColumnID>SRVC_AREA_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="6b7c55c4-5129-4682-b0ca-a07e32aef4d5">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="aa43cd4a-5bc6-4141-95d9-417037d162e5">
+          <TableID>DepartmentDim</TableID>
+          <ColumnID>SRVC_AREA_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="f7277871-057b-495a-9613-00448659ebe3">
+      <ID>ALT SRVC AREA CDS</ID>
+      <Name>Department - Alternative Service Area</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="7fd8dfaf-d758-437f-84c8-e52c2b85385c">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="12e131a3-e310-410c-9f0b-579d5d8d47f7">
+            <TableID>DepartmentDim</TableID>
+            <ColumnID>ALT_SRVC_AREA_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="07492c5d-b1fb-42b0-a540-3abb81cf929a">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="306ab493-c51c-4d3d-b115-ed7fefe67abc">
+          <TableID>DepartmentDim</TableID>
+          <ColumnID>ALT_SRVC_AREA_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="62939fdc-933b-48f9-afd5-7d3b26d86437">
+      <ID>ICU DEPT IND</ID>
+      <Name>Department - ICU Indicator</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="3712d65c-b524-417e-83a3-087193b5c34a">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d3046e3a-f73c-418e-b003-33918d453be5">
+            <TableID>DepartmentDim</TableID>
+            <ColumnID>ICU_DEPT_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e579314d-cc33-4d6c-8803-e654aacfdfaf">
+      <ID>PCU DEPT IND</ID>
+      <Name>Department - PCU Indicator</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="d4656e34-b5de-4651-ae90-118a75c0805a">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a6fab49e-e05f-4cf2-a988-e26735ca27dd">
+            <TableID>DepartmentDim</TableID>
+            <ColumnID>PCU_DEPT_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="d15576c2-397b-4819-9de5-e0255bfc8c20">
+      <ID>RSTCT IND</ID>
+      <Name>Department - Restricted Indicator</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="54e76950-a244-4a35-a5cb-f302e383ff1c">
+          <DataType>WChar</DataType>
+          <DataSize>3</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="1bab2242-8f7b-447b-a546-56495a7fdd93">
+            <TableID>DepartmentDim</TableID>
+            <ColumnID>RSTCT_IND</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e3409dcb-cd12-42cb-b230-22d140e6211e">
+      <ID>SRC DEPT ID</ID>
+      <Name>Department - Name</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="a8534e8d-502a-422f-9182-2bde1f74d8ea">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="bd773e87-9c5d-43c7-93a2-70d61f709a79">
+            <TableID>DepartmentDim</TableID>
+            <ColumnID>SRC_DEPT_ID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="6239ab39-a732-453d-a98b-5c5cd7c49103">
+        <DataType>WChar</DataType>
+        <DataSize>250</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="786a124e-74a6-4a46-8ccd-96b3dbd6fa53">
+          <TableID>DepartmentDim</TableID>
+          <ColumnID>DEPT_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e2997fbe-8f45-4fa1-9708-b8f8eff0ffcf">
+      <ID>FCM Region ID</ID>
+      <Name>Department - FCM Region</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="452b671f-15ce-4e01-a13d-77a256b38869">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f114f69c-2476-4e91-b72e-5c9db99d4017">
+            <TableID>DepartmentDim</TableID>
+            <ColumnID>FCM_Region_ID</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="cb5b21b0-0e28-4132-8467-0b4a97ed1e91">
+        <DataType>WChar</DataType>
+        <DataSize>100</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="332fde89-33f7-45d2-8741-de7b904fb2c3">
+          <TableID>DepartmentDim</TableID>
+          <ColumnID>FCM_Region_Name</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e190a4ea-5dee-4fec-8352-2051f948283d">
+      <ID>LOC TYPE CDS</ID>
+      <Name>Department - Location Type</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="2cb50d99-b2ce-4e00-bb79-a1c13001bf7d">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="57f476f4-420d-478c-8f0e-49da7b4c5b61">
+            <TableID>DepartmentDim</TableID>
+            <ColumnID>LOC_TYPE_CDS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="519229d2-09b8-4e43-b66b-1fd866d79187">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="d857bf10-11bb-47fb-b009-0aeed5c1e7f4">
+          <TableID>DepartmentDim</TableID>
+          <ColumnID>LOC_TYPE_DESC</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <Hierarchies>
+    <Hierarchy dwd:design-time-name="42703fca-ea47-4820-afcf-ec83d0f445e8">
+      <ID>Hierarchy</ID>
+      <Name>State - City - Department  Hierarchy</Name>
+      <Levels>
+        <Level dwd:design-time-name="004fca30-c109-4b3b-ba1c-2c64b0d6a237">
+          <ID>State-Province</ID>
+          <Name>State-Province</Name>
+          <SourceAttributeID>ST PRV CDS</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="e4cffad5-0216-4838-b2f3-ebe3d611fee9">
+          <ID>City</ID>
+          <Name>City</Name>
+          <SourceAttributeID>CITY</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="0293b0b1-8e90-4a70-a083-de7ff023a244">
+          <ID>Department - Name</ID>
+          <Name>Department</Name>
+          <SourceAttributeID>DEPT SK</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+  </Hierarchies>
+  <ddl300:StringStoresCompatibilityLevel>1100</ddl300:StringStoresCompatibilityLevel>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

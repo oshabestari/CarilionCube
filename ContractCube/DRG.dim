@@ -1,0 +1,225 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="af33b784-18a4-4319-a2f4-869152cf1674" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>DRG</ID>
+  <Name>DRG</Name>
+  <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+      <Value>
+        <dds xmlns="">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-3022" scrolltop="-5927" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="11562" y="15531" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+            <font>
+              <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
+            </font>
+            <mouseicon>
+              <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
+            </mouseicon>
+          </diagram>
+          <layoutmanager>
+            <ddsxmlobj />
+          </layoutmanager>
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="DRGDim" left="20" top="0" logicalid="2" controlid="1" masterid="0" hint1="0" hint2="0" width="3334" height="4419" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+            <control>
+              <ddsxmlobjectstreaminitwrapper binary="000c0000060d000043110000" />
+            </control>
+            <layoutobject>
+              <ddsxmlobj>
+                <property name="LogicalObject" value="DRGDim" vartype="8" />
+              </ddsxmlobj>
+            </layoutobject>
+            <shape groupshapeid="0" groupnode="0" />
+          </ddscontrol>
+        </dds>
+      </Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>-3022</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>-5927</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>20</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ARDiagramLayout</Name>
+      <Value>
+        <DiagramLayout ZoomPercent="100" ViewPortX="0" ViewPortY="0" xmlns="">
+          <Shapes NodeWidth="141">
+            <Shape Id="DRG CD SK" Expanded="true">
+              <Attributes>
+                <Attribute Id="DRG CD SK" />
+                <Attribute Id="DRG CLASS" />
+                <Attribute Id="MDC CD" />
+              </Attributes>
+              <Position x="20" y="20" />
+            </Shape>
+          </Shapes>
+        </DiagramLayout>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="097a486f-6bcb-4f92-9d3f-cd92f8126eaf">
+    <DataSourceViewID>Carilion</DataSourceViewID>
+  </Source>
+  <UnknownMember>Visible</UnknownMember>
+  <ErrorConfiguration dwd:design-time-name="9a639142-f0cb-4fba-be9b-5775407bb031">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="138ac50b-93b3-400e-9a6d-1b0ab23afc47">
+      <ID>DRG CD SK</ID>
+      <Name>DRG ID</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="aa51e3d4-2593-48ec-987d-dabd596ae1ce">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ae251775-bc07-4986-9a74-4e898a3b9fd3">
+            <TableID>DRGDim</TableID>
+            <ColumnID>DRG_CD_SK</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="690afe27-ea42-4816-8744-b57821663c68">
+        <DataType>WChar</DataType>
+        <DataSize>255</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="136a833e-ab7c-43a5-a0c7-15098915938f">
+          <TableID>DRGDim</TableID>
+          <ColumnID>DRG_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="24cfcda8-23d6-4d13-a9dc-179b79d3fac7">
+          <AttributeID>MDC CD</AttributeID>
+          <Name>MDC</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="39b895a6-13e3-4bc5-b5a4-8b1c0e9d07a0">
+          <AttributeID>DRG CLASS</AttributeID>
+          <Name>DRG Classification</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="68b36ca1-e5b8-4743-ab8d-3e7e69c297af">
+          <AttributeID>DRG NM</AttributeID>
+          <Name>DRG</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="73529f22-2100-44db-87e4-62606312ff8b">
+          <AttributeID>SVL CD</AttributeID>
+          <Name>Service Line</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="0326332b-f558-4250-a47b-d70f2e7a01c8">
+      <ID>MDC CD</ID>
+      <Name>MDC</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0ba66f41-9555-4007-9312-4615c09b2977">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4f66c586-fc1f-4998-ae6d-d5b7b3d4edb8">
+            <TableID>DRGDim</TableID>
+            <ColumnID>MDC_CD</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="af169cf1-446b-4f4f-bf01-333bee7abcc6">
+        <DataType>WChar</DataType>
+        <DataSize>100</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="7454833d-b904-4259-9a81-97bfd1cc7069">
+          <TableID>DRGDim</TableID>
+          <ColumnID>MDC_NM</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="674548d5-3481-4b8d-83b1-3831e27464b8">
+      <ID>DRG CLASS</ID>
+      <Name>DRG Classification</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5426c6f3-dc5e-47d6-ba24-e77b5ba86c4e">
+          <DataType>WChar</DataType>
+          <DataSize>20</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c25f1ea7-da43-4e0b-8a09-2476f6d2b180">
+            <TableID>DRGDim</TableID>
+            <ColumnID>DRG_CLASS</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="8d81617d-c885-49a8-b015-30c30cbb663e">
+      <ID>DRG NM</ID>
+      <Name>DRG</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="6a776ffe-1e46-45d5-a54d-c9db82299faa">
+          <DataType>WChar</DataType>
+          <DataSize>255</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="371504e0-5882-4820-ae70-a4e04bef4dab">
+            <TableID>DRGDim</TableID>
+            <ColumnID>DRG_NM</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="84c61031-241f-4b54-ac24-5e9c8b980495">
+      <ID>SVL CD</ID>
+      <Name>Service Line</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="dc14f27b-2419-43bf-868f-b0edc2deb13e">
+          <DataType>Integer</DataType>
+          <NullProcessing>UnknownMember</NullProcessing>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="b633a0ef-d766-41fd-b3f7-90d26ba5325f">
+            <TableID>DRGDim</TableID>
+            <ColumnID>SVL_CD</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="4cadf5cd-e45a-4732-8346-c9fc638477eb">
+        <DataType>WChar</DataType>
+        <DataSize>21</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="b76d6c9f-a50a-439e-a63c-9ea3d340c59f">
+          <TableID>DRGDim</TableID>
+          <ColumnID>MSDRG_SVL</ColumnID>
+        </Source>
+      </NameColumn>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>
