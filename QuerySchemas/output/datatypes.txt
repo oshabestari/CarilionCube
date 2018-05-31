@@ -1,0 +1,9 @@
+boolean
+dateTime
+decimal
+double
+duration
+int
+long
+short
+string

@@ -1,0 +1,2970 @@
+[
+    {
+        "Name": "CensusMeasureFact-CensusGeographicalAreaDim",
+        "Parent": "CensusGeographicalAreaDim",
+        "Child": "CensusMeasureFact",
+        "ParentKey": "GEO_AREA_SK",
+        "ChildKey": "GEO_AREA_SK",
+        "Description": ""
+    },
+    {
+        "Name": "CensusMeasureFact-CensusMeasureTypeDim",
+        "Parent": "CensusMeasureTypeDim",
+        "Child": "CensusMeasureFact",
+        "ParentKey": "MSR_TYPE_SK",
+        "ChildKey": "MSR_TYPE_SK",
+        "Description": ""
+    },
+    {
+        "Name": "CensusMeasureFact-CensusSourceDim",
+        "Parent": "CensusSourceDim",
+        "Child": "CensusMeasureFact",
+        "ParentKey": "SRC_SK",
+        "ChildKey": "SRC_SK",
+        "Description": ""
+    },
+    {
+        "Name": "DIAG_FACT-DepartmentDim",
+        "Parent": "DepartmentDim",
+        "Child": "LDW_DIAG_FACT",
+        "ParentKey": "DEPT_SK",
+        "ChildKey": "DEPT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "DIAG_FACT-DiagnosisBridge",
+        "Parent": "dbo_DIAG_BRIDGE",
+        "Child": "LDW_DIAG_FACT",
+        "ParentKey": "DIAG_CD_SK",
+        "ChildKey": "DIAG_CD_SK",
+        "Description": ""
+    },
+    {
+        "Name": "DIAG_FACT-EncounterDim",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "LDW_DIAG_FACT",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "DIAG_FACT-PatientDim",
+        "Parent": "LDW_PTNT_DIM",
+        "Child": "LDW_DIAG_FACT",
+        "ParentKey": "PTNT_SK",
+        "ChildKey": "PTNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "DRGFact-DRGDim",
+        "Parent": "DRGDim",
+        "Child": "DRGFact",
+        "ParentKey": "DRG_CD_SK",
+        "ChildKey": "DRG_CD_SK",
+        "Description": ""
+    },
+    {
+        "Name": "DRGFact-DRGSeqDim",
+        "Parent": "DRGSeqDim",
+        "Child": "DRGFact",
+        "ParentKey": "PRTY_SQNC",
+        "ChildKey": "PRTY_SQNC",
+        "Description": ""
+    },
+    {
+        "Name": "DRGFact-DRGTypeDim",
+        "Parent": "DRGTypeDim",
+        "Child": "DRGFact",
+        "ParentKey": "DRG_TYPE_CD",
+        "ChildKey": "DRG_TYPE_CD",
+        "Description": ""
+    },
+    {
+        "Name": "DRGFact-EncounterDim",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "DRGFact",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "DRGFact-PatientDim",
+        "Parent": "LDW_PTNT_DIM",
+        "Child": "DRGFact",
+        "ParentKey": "PTNT_SK",
+        "ChildKey": "PTNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "DiagnosisBridge-DiagnosisHierarchy",
+        "Parent": "dbo_DIAG_HYR_DIM",
+        "Child": "dbo_DIAG_BRIDGE",
+        "ParentKey": "DIAG_HIR_SK",
+        "ChildKey": "DIAG_HIR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "DiagnosisFact-BinaryDim",
+        "Parent": "BinaryDim",
+        "Child": "LDW_DIAG_FACT",
+        "ParentKey": "Binary_CD",
+        "ChildKey": "CHRNC_IND",
+        "Description": ""
+    },
+    {
+        "Name": "DiagnosisFact-BinaryDim1",
+        "Parent": "BinaryDim",
+        "Child": "LDW_DIAG_FACT",
+        "ParentKey": "Binary_CD",
+        "ChildKey": "PRMY_DIAG_IND",
+        "Description": ""
+    },
+    {
+        "Name": "DiagnosisFact-BinaryDim2",
+        "Parent": "BinaryDim",
+        "Child": "LDW_DIAG_FACT",
+        "ParentKey": "Binary_CD",
+        "ChildKey": "SCND_DIAG_IND",
+        "Description": ""
+    },
+    {
+        "Name": "DiagnosisFact-BinaryDim3",
+        "Parent": "BinaryDim",
+        "Child": "LDW_DIAG_FACT",
+        "ParentKey": "Binary_CD",
+        "ChildKey": "ED_DIAG_IND",
+        "Description": ""
+    },
+    {
+        "Name": "DiagnosisFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "LDW_DIAG_FACT",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "DIAG_STRT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "DiagnosisFact-DateDim1",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "LDW_DIAG_FACT",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "DIAG_END_DT",
+        "Description": ""
+    },
+    {
+        "Name": "DiagnosisFact-DiagnosisPresentOnAdmitDim",
+        "Parent": "DiagnosisPresentOnAdmit",
+        "Child": "LDW_DIAG_FACT",
+        "ParentKey": "PRSNT_ON_ADMT_CD",
+        "ChildKey": "PRSNT_ON_ADMT_CD",
+        "Description": ""
+    },
+    {
+        "Name": "DiagnosisFact-DiagnosisSourceDim",
+        "Parent": "DiagnosisSourceDim",
+        "Child": "LDW_DIAG_FACT",
+        "ParentKey": "SRC_TYPE",
+        "ChildKey": "SRC_TYPE",
+        "Description": ""
+    },
+    {
+        "Name": "DiagnosisFact-TimeDim",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "LDW_DIAG_FACT",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "DIAG_STRT_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "DiagnosisFact-TimeDim1",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "LDW_DIAG_FACT",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "DIAG_END_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "DiagnosisHierarchy-DiagnosisHierarchy",
+        "Parent": "dbo_DIAG_HYR_DIM",
+        "Child": "dbo_DIAG_HYR_DIM",
+        "ParentKey": "DIAG_HIR_SK",
+        "ChildKey": "DIAG_PRN_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitDim-EDVisitAcuityLevelDim",
+        "Parent": "EDVisitActivityLevelDim",
+        "Child": "EDVisitDim",
+        "ParentKey": "ACTY_LVL_CDS",
+        "ChildKey": "ACTY_LVL_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitDim-EDVisitDispositionDim",
+        "Parent": "EDVisitDispositionDim",
+        "Child": "EDVisitDim",
+        "ParentKey": "ED_DSPSTN_CDS",
+        "ChildKey": "ED_DSPSTN_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitDim-EDVisitFinancialClass",
+        "Parent": "EDVisitFinancialClass",
+        "Child": "EDVisitDim",
+        "ParentKey": "VST_FNNCL_CLSS_CDS",
+        "ChildKey": "VST_FNNCL_CLSS_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitDim-EDVisitMeansOfArrivalDim",
+        "Parent": "EDVisitMeansOfArrivalDim",
+        "Child": "EDVisitDim",
+        "ParentKey": "MEANS_ARRVL_CDS",
+        "ChildKey": "MEANS_ARRVL_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitDim-EncounterDim",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "EDVisitDim",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitDim-PatientDim",
+        "Parent": "LDW_PTNT_DIM",
+        "Child": "EDVisitDim",
+        "ParentKey": "PTNT_SK",
+        "ChildKey": "PTNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "ARRVL_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim1",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "HSP_DSCRG_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim10",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "FRST_ATTND_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim11",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "LAB_ORDRD_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim12",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "LAB_CMPLTD_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim13",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "LAB_PRVDR_RVW_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim14",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "IMG_ORDRD_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim15",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "IMG_TST_CMPLTD_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim16",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "IMG_PRVDR_RVW_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim17",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "BED_RQST_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim2",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "ED_DSCRG_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim3",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "DSPSTN_INSTNT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim4",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "FRST_NONED_DEPT_ARRVL_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim5",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "AVS_PRNT_INSTNT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim6",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "PAT_RMD_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim7",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "REG_CMPLTD_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim8",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "TRGE_START_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DateDim9",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "TRGE_CMPLTD_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DepartmentDim",
+        "Parent": "DepartmentDim",
+        "Child": "EDVisitFact",
+        "ParentKey": "DEPT_SK",
+        "ChildKey": "FRST_NON_ED_DEPT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-DepartmentDim1",
+        "Parent": "DepartmentDim",
+        "Child": "EDVisitFact",
+        "ParentKey": "DEPT_SK",
+        "ChildKey": "ADMT_DEPT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-EDVisitDim",
+        "Parent": "EDVisitDim",
+        "Child": "EDVisitFact",
+        "ParentKey": "EDPTNT_VST_SK",
+        "ChildKey": "EDPTNT_VST_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-EncounterDim",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-PatientDim",
+        "Parent": "LDW_PTNT_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "PTNT_SK",
+        "ChildKey": "PTNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "HSP_DSCRG_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim1",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "ARRVL_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim10",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "FRST_ATTND_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim11",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "LAB_ORDRD_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim12",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "LAB_CMPLTD_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim123",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "IMG_TST_CMPLTD_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim13",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "LAB_PRVDR_RVW_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim14",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "IMG_ORDRD_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim16",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "IMG_PRVDR_RVW_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim17",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "BED_RQST_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim2",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "ED_DSCRG_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim3",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "DSPSTN_INSTNT_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim4",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "FRST_NONED_DEPT_ARRVL_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim5",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "AVS_PRNT_INSTNT_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim6",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "PAT_RMD_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim7",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "REG_CMPLTD_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim8",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "TRGE_START_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EDVisitFact-TimeDim9",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "EDVisitFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "TRGE_CMPLTD_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "ENCNT_FACT-EncounterDim",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "DW_ENCNT_FACT",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "ENCNT_FACT-PatientDim",
+        "Parent": "LDW_PTNT_DIM",
+        "Child": "DW_ENCNT_FACT",
+        "ParentKey": "PTNT_SK",
+        "ChildKey": "PTNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "EncounterDim-EncounterBillingClassDim",
+        "Parent": "EncounterBillingClassDim",
+        "Child": "DW_ENCNT_DIM",
+        "ParentKey": "BILLING_CLASS_CDS",
+        "ChildKey": "BILLING_CLASS_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "EncounterDim-EncounterDepartmentDim",
+        "Parent": "EncounterDepartmentDim",
+        "Child": "DW_ENCNT_DIM",
+        "ParentKey": "DEPT_CDS",
+        "ChildKey": "DEPT_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "EncounterDim-EncounterEncouterypeDim",
+        "Parent": "EncounterEncouterypeDim",
+        "Child": "DW_ENCNT_DIM",
+        "ParentKey": "ENCNT_TYPE_CDS",
+        "ChildKey": "ENCNT_TYPE_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "EncounterDim-EncounterLevelofCareDim",
+        "Parent": "EncounterLevelofCareDim",
+        "Child": "DW_ENCNT_DIM",
+        "ParentKey": "LEVL_OF_CARE_CDS",
+        "ChildKey": "LEVL_OF_CARE_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "EncounterDim-EncounterPatientStatusDim",
+        "Parent": "EncounterPatientStatusDim",
+        "Child": "DW_ENCNT_DIM",
+        "ParentKey": "PTNT_STS_CDS",
+        "ChildKey": "PTNT_STS_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "EncounterDim-EncounterProductLineDim",
+        "Parent": "EncounterProductLineDim",
+        "Child": "DW_ENCNT_DIM",
+        "ParentKey": "PRD_LINE_CDS",
+        "ChildKey": "PRD_LINE_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "EncounterDim-EncouterBaseClassDim",
+        "Parent": "EncouterBaseClassDim",
+        "Child": "DW_ENCNT_DIM",
+        "ParentKey": "PTNT_BSE_CLSS_CDS",
+        "ChildKey": "PTNT_BSE_CLSS_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "EncounterFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "DW_ENCNT_FACT",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "ENCNT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "EncounterFact-DepartmentDim",
+        "Parent": "DepartmentDim",
+        "Child": "DW_ENCNT_FACT",
+        "ParentKey": "DEPT_SK",
+        "ChildKey": "DEPT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientDim-InpatientAdmitSourceDim",
+        "Parent": "InpatientAdmitSourceDim",
+        "Child": "InpatientDim",
+        "ParentKey": "ADMT_SRC_CDS",
+        "ChildKey": "ADMT_SRC_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientDim-InpatientAdmitTypeDim",
+        "Parent": "InpatientAdmitTypeDim",
+        "Child": "InpatientDim",
+        "ParentKey": "ADMT_TYPE_CDS",
+        "ChildKey": "ADMT_TYPE_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientDim-InpatientDischargeDestinationDim",
+        "Parent": "InpatientDischargeDestinationDim",
+        "Child": "InpatientDim",
+        "ParentKey": "DSCRG_DSTN_CDS",
+        "ChildKey": "DSCRG_DSTN_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientDim-InpatientDischargeDispositionDim",
+        "Parent": "InpatientDischargeDispositionDim",
+        "Child": "InpatientDim",
+        "ParentKey": "DSCRG_DSPSTN_CDS",
+        "ChildKey": "DSCRG_DSPSTN_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientDim-InpatientPatientClassDim",
+        "Parent": "InpatientPatientClassDim",
+        "Child": "InpatientDim",
+        "ParentKey": "PTNT_CL_CDS",
+        "ChildKey": "PTNT_CL_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "InpatientFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "INPTNT_APPT_MADE_DT",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientFact-DateDim1",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "InpatientFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "CLNC_INPTNT_ADMT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientFact-DateDim2",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "InpatientFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "HSPTL_ADMT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientFact-DateDim3",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "InpatientFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "HSPTL_DSCRG_DT",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientFact-EncounterDim",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "InpatientFact",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientFact-InpatientDim",
+        "Parent": "InpatientDim",
+        "Child": "InpatientFact",
+        "ParentKey": "INPTNT_VST_SK",
+        "ChildKey": "INPTNT_VST_SK",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientFact-PatientDim",
+        "Parent": "LDW_PTNT_DIM",
+        "Child": "InpatientFact",
+        "ParentKey": "PTNT_SK",
+        "ChildKey": "PTNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientFact-ProviderDim",
+        "Parent": "ProviderDim",
+        "Child": "InpatientFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "HSPTL_ADMT_PROVDR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientFact-ProviderDim1",
+        "Parent": "ProviderDim",
+        "Child": "InpatientFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "HSPTL_DSCRG_PROVDR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientFact-TimeDim",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "InpatientFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "HSPTL_ADMT_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientFact-TimeDim1",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "InpatientFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "HSPTL_DSCRG_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "InpatientFact-TimeDim12",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "InpatientFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "CLNC_INPTNT_ADMT_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentDim-LabComponentSubstrateDim",
+        "Parent": "LabComponentSubstrateDim",
+        "Child": "LabComponentDim",
+        "ParentKey": "CMPNT_SUBT_CDS",
+        "ChildKey": "CMPNT_SUBT_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentDim-LabComponentTypeDim",
+        "Parent": "LabComponentTypeDim",
+        "Child": "LabComponentDim",
+        "ParentKey": "CMPNT_TYPE_CDS",
+        "ChildKey": "CMPNT_TYPE_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentResultFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "LabComponentResultFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "ORDRD_DT",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentResultFact-DateDim1",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "LabComponentResultFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "CLCT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentResultFact-DateDim12",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "LabComponentResultFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "RSLT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentResultFact-EncounterDim",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "LabComponentResultFact",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentResultFact-LabComponentDim",
+        "Parent": "LabComponentDim",
+        "Child": "LabComponentResultFact",
+        "ParentKey": "CMPNT_SK",
+        "ChildKey": "LAB_CMPNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentResultFact-LabComponentResultFactLabStatusDim",
+        "Parent": "LabComponentResultFactLabStatusDim",
+        "Child": "LabComponentResultFact",
+        "ParentKey": "LAB_STS_CD_SK",
+        "ChildKey": "LAB_STS_CD_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentResultFact-LabComponentResultFactResultFlagDim",
+        "Parent": "LabComponentResultFactResultFlagDim",
+        "Child": "LabComponentResultFact",
+        "ParentKey": "RSLT_FLG_CD_SK",
+        "ChildKey": "RSLT_FLG_CD_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentResultFact-LabDim",
+        "Parent": "LabDim",
+        "Child": "LabComponentResultFact",
+        "ParentKey": "LAB_SK",
+        "ChildKey": "RSULT_LAB_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentResultFact-LabTestDim",
+        "Parent": "LabTestDim",
+        "Child": "LabComponentResultFact",
+        "ParentKey": "LAB_TST_SK",
+        "ChildKey": "LAB_TST_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentResultFact-PatientDim",
+        "Parent": "LDW_PTNT_DIM",
+        "Child": "LabComponentResultFact",
+        "ParentKey": "PTNT_SK",
+        "ChildKey": "PTNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentResultFact-ProcedureDim",
+        "Parent": "ProcedureDim",
+        "Child": "LabComponentResultFact",
+        "ParentKey": "PRCDR_CD_SK",
+        "ChildKey": "PRCDR_CD_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentResultFact-ProviderDim",
+        "Parent": "ProviderDim",
+        "Child": "LabComponentResultFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "AUTH_PROVDR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentResultFact-TimeDim",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "LabComponentResultFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "ORDRD_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentResultFact-TimeDim1",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "LabComponentResultFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "CLCT_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabComponentResultFact-TimeDim12",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "LabComponentResultFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "RSLT_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestDim-LabTestCancellationReasonDim",
+        "Parent": "LabTestCancellationReasonDim",
+        "Child": "LabTestDim",
+        "ParentKey": "CNCL_RSN_CDS",
+        "ChildKey": "CNCL_RSN_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestDim-LabTestNameDim",
+        "Parent": "LabTestNameDim",
+        "Child": "LabTestDim",
+        "ParentKey": "TST_CDS",
+        "ChildKey": "TST_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestDim-LabTestOrderPriorityDim",
+        "Parent": "LabTestOrderPriorityDim",
+        "Child": "LabTestDim",
+        "ParentKey": "ORDR_PRTY_CDS",
+        "ChildKey": "ORDR_PRTY_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestDim-LabTestOrderSourceTypeDim",
+        "Parent": "LabTestOrderSourceTypeDim",
+        "Child": "LabTestDim",
+        "ParentKey": "ORDR_SRC_TYPE_CDS",
+        "ChildKey": "ORDR_SRC_TYPE_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestDim-LabTestOrderType",
+        "Parent": "LabTestOrderType",
+        "Child": "LabTestDim",
+        "ParentKey": "ORDR_TYPE_CDS",
+        "ChildKey": "ORDR_TYPE_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestDim-LabTestSpecimenSourceDim",
+        "Parent": "LabTestSpecimenSourceDim",
+        "Child": "LabTestDim",
+        "ParentKey": "SPCMN_SRC_CDS",
+        "ChildKey": "SPCMN_SRC_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestDim-LabTestSpecimenTypeDim",
+        "Parent": "LabTestSpecimenTypeDim",
+        "Child": "LabTestDim",
+        "ParentKey": "SPCMN_TYPE_CDS",
+        "ChildKey": "SPCMN_TYPE_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestDim-LabTestVerificationStatusDim",
+        "Parent": "LabTestVerificationStatusDim",
+        "Child": "LabTestDim",
+        "ParentKey": "VRFCTN_STS_CDS",
+        "ChildKey": "VRFCTN_STS_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "LabTestFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "SCHED_CLCT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-DateDim1",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "LabTestFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "ORDRD_DT",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-DateDim12",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "LabTestFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "CLCT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-DateDim123",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "LabTestFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "FRST_FNL_VRFY_DT",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-DateDim1234",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "LabTestFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "FRST_VRFY_DT",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-DateDim12345",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "LabTestFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "LST_VRFY_DT",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-DateDim123456",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "LabTestFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "LST_FNL_VRFY_DT",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-DateDim1234567",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "LabTestFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "LST_CORR_DT",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-DateDim12345678",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "LabTestFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "FRST_CORR_DT",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-DepartmentDim",
+        "Parent": "DepartmentDim",
+        "Child": "LabTestFact",
+        "ParentKey": "DEPT_SK",
+        "ChildKey": "CLCT_DEPT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-EncounterDim",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "LabTestFact",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-LabDim",
+        "Parent": "LabDim",
+        "Child": "LabTestFact",
+        "ParentKey": "LAB_SK",
+        "ChildKey": "RSULT_LAB_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-LabTestDim",
+        "Parent": "LabTestDim",
+        "Child": "LabTestFact",
+        "ParentKey": "LAB_TST_SK",
+        "ChildKey": "LAB_TST_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-PatientDim",
+        "Parent": "LDW_PTNT_DIM",
+        "Child": "LabTestFact",
+        "ParentKey": "PTNT_SK",
+        "ChildKey": "PTNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-ProcedureDim",
+        "Parent": "ProcedureDim",
+        "Child": "LabTestFact",
+        "ParentKey": "PRCDR_CD_SK",
+        "ChildKey": "PRCDR_CD_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-ProviderDim",
+        "Parent": "ProviderDim",
+        "Child": "LabTestFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "AUTH_PROVDR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-TimeDim",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "LabTestFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "SCHED_CLCT_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-TimeDim1",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "LabTestFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "ORDRD_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-TimeDim12",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "LabTestFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "CLCT_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-UserDim",
+        "Parent": "UserDim",
+        "Child": "LabTestFact",
+        "ParentKey": "USR_SK",
+        "ChildKey": "CLCT_USR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-UserDim1",
+        "Parent": "UserDim",
+        "Child": "LabTestFact",
+        "ParentKey": "USR_SK",
+        "ChildKey": "FRST_FNL_VRFY_USR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-UserDim12",
+        "Parent": "UserDim",
+        "Child": "LabTestFact",
+        "ParentKey": "USR_SK",
+        "ChildKey": "FRST_VRFY_USR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-UserDim123",
+        "Parent": "UserDim",
+        "Child": "LabTestFact",
+        "ParentKey": "USR_SK",
+        "ChildKey": "FRST_CORR_USR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-UserDim1234",
+        "Parent": "UserDim",
+        "Child": "LabTestFact",
+        "ParentKey": "USR_SK",
+        "ChildKey": "LST_CORR_USR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "LabTestFact-UserDim12345",
+        "Parent": "UserDim",
+        "Child": "LabTestFact",
+        "ParentKey": "USR_SK",
+        "ChildKey": "LST_FNL_VRFY_USR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MeasureMDFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "MeasureMDFact",
+        "ParentKey": "YR_AND_MTH_NUM",
+        "ChildKey": "Meaure_Month",
+        "Description": ""
+    },
+    {
+        "Name": "MeasureMDFact-DepartmentDim",
+        "Parent": "DepartmentDim",
+        "Child": "MeasureMDFact",
+        "ParentKey": "SRC_DEPT_ID",
+        "ChildKey": "SRC_DEPT_ID",
+        "Description": ""
+    },
+    {
+        "Name": "MeasureMDFact-MeasureDim",
+        "Parent": "qps_Dim_Measure",
+        "Child": "MeasureMDFact",
+        "ParentKey": "Measure_Dim_ID",
+        "ChildKey": "Measure_Dim_ID",
+        "Description": ""
+    },
+    {
+        "Name": "MeasureMLFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "MeasureMLFact",
+        "ParentKey": "YR_AND_MTH_NUM",
+        "ChildKey": "Meaure_Month",
+        "Description": ""
+    },
+    {
+        "Name": "MeasureMLFact-DepartmentDim",
+        "Parent": "DepartmentDim",
+        "Child": "MeasureMLFact",
+        "ParentKey": "LO_CDS",
+        "ChildKey": "LO_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MeasureMLFact-MeasureDim",
+        "Parent": "qps_Dim_Measure",
+        "Child": "MeasureMLFact",
+        "ParentKey": "Measure_Dim_ID",
+        "ChildKey": "Measure_Dim_ID",
+        "Description": ""
+    },
+    {
+        "Name": "MeasureQDFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "MeasureQDFact",
+        "ParentKey": "YR_AND_QTR_NUM",
+        "ChildKey": "Meaure_Quarter",
+        "Description": ""
+    },
+    {
+        "Name": "MeasureQDFact-DepartmentDim",
+        "Parent": "DepartmentDim",
+        "Child": "MeasureQDFact",
+        "ParentKey": "SRC_DEPT_ID",
+        "ChildKey": "SRC_DEPT_ID",
+        "Description": ""
+    },
+    {
+        "Name": "MeasureQDFact-MeasureDim",
+        "Parent": "qps_Dim_Measure",
+        "Child": "MeasureQDFact",
+        "ParentKey": "Measure_Dim_ID",
+        "ChildKey": "Measure_Dim_ID",
+        "Description": ""
+    },
+    {
+        "Name": "MeasureQLFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "MeasureQLFact",
+        "ParentKey": "YR_AND_QTR_NUM",
+        "ChildKey": "Meaure_Quarter",
+        "Description": ""
+    },
+    {
+        "Name": "MeasureQLFact-DepartmentDim",
+        "Parent": "DepartmentDim",
+        "Child": "MeasureQLFact",
+        "ParentKey": "LO_CDS",
+        "ChildKey": "LO_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MeasureQLFact-MeasureDim",
+        "Parent": "qps_Dim_Measure",
+        "Child": "MeasureQLFact",
+        "ParentKey": "Measure_Dim_ID",
+        "ChildKey": "Measure_Dim_ID",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-BinaryDim",
+        "Parent": "BinaryDim",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "Binary_CD",
+        "ChildKey": "MDCTN_REQ_SCAN_AT_ADMN_IND",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-BinaryDim1",
+        "Parent": "BinaryDim",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "Binary_CD",
+        "ChildKey": "MDCTN_SCANNED_AT_ADMN_IND",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-BinaryDim12",
+        "Parent": "BinaryDim",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "Binary_CD",
+        "ChildKey": "PTNT_REQ_SCAN_AT_ADMN_IND",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-BinaryDim123",
+        "Parent": "BinaryDim",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "Binary_CD",
+        "ChildKey": "PTNT_SCANNED_AT_ADMN_IND",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "SCHED_ADMN_DT",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-DateDim1",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "ADMN_DT",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-DepartmentDim",
+        "Parent": "DepartmentDim",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "DEPT_SK",
+        "ChildKey": "ADMN_DEPT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-EncounterDim",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-MedicationAdministrationActionDim",
+        "Parent": "MedicationAdministrationActionDim",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "ADMN_ACTN_CDS_SK",
+        "ChildKey": "ADMN_ACTN_CDS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-MedicationDim",
+        "Parent": "MedicationDim",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "MDCTN_SK",
+        "ChildKey": "PRMY_CMPNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-MedicationDim1",
+        "Parent": "MedicationDim",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "MDCTN_SK",
+        "ChildKey": "SCND_CMPNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-MedicationDim12",
+        "Parent": "MedicationDim",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "MDCTN_SK",
+        "ChildKey": "THRD_CMPNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-MedicationDim123",
+        "Parent": "MedicationDim",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "MDCTN_SK",
+        "ChildKey": "FOURTH_CMPNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-MedicationDim1234",
+        "Parent": "MedicationDim",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "MDCTN_SK",
+        "ChildKey": "FIFTH_CMPNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-MedicationOrderDim",
+        "Parent": "MedicationOrderDim",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "MDCTN_ORDR_SK",
+        "ChildKey": "MDCTN_ORDR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-PatientDim",
+        "Parent": "LDW_PTNT_DIM",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "PTNT_SK",
+        "ChildKey": "PTNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-TimeDim",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "SCHED_ADMN_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-TimeDim1",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "ADMN_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationAdministrationFact-UserDim",
+        "Parent": "UserDim",
+        "Child": "MedicationAdministrationFact",
+        "ParentKey": "USR_SK",
+        "ChildKey": "ADMN_USR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationDim-MedicationAdministrationRouteDim",
+        "Parent": "MedicationAdministrationRouteDim",
+        "Child": "MedicationDim",
+        "ParentKey": "ADMN_RT_CDS",
+        "ChildKey": "ADMN_RT_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationDim-MedicationDEAClassDim",
+        "Parent": "MedicationDEAClassDim",
+        "Child": "MedicationDim",
+        "ParentKey": "DEA_CLASS_CDS",
+        "ChildKey": "DEA_CLASS_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationDim-MedicationFormDim",
+        "Parent": "MedicationFormDim",
+        "Child": "MedicationDim",
+        "ParentKey": "MDCTN_FORM_CDS",
+        "ChildKey": "MDCTN_FORM_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationDim-MedicationPharmacologicalClassDim",
+        "Parent": "MedicationPharmacologicalClassDim",
+        "Child": "MedicationDim",
+        "ParentKey": "PHARM_CLASS_CDS",
+        "ChildKey": "PHARM_CLASS_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationDim-MedicationPharmacologicalSubclassDim",
+        "Parent": "MedicationPharmacologicalSubclassDim",
+        "Child": "MedicationDim",
+        "ParentKey": "PHARM_SUBCLS_CDS",
+        "ChildKey": "PHARM_SUBCLS_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationDim-MedicationTherapeuticClassDim",
+        "Parent": "MedicationTherapeuticClassDim",
+        "Child": "MedicationDim",
+        "ParentKey": "THRPC_CLASS_CDS",
+        "ChildKey": "THRPC_CLASS_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderDim-MedicationOrderCalculatedDoseUnitDim",
+        "Parent": "MedicationOrderCalculatedDoseUnitDim",
+        "Child": "MedicationOrderDim",
+        "ParentKey": "CLCLTD_DOSE_UNT_CDS",
+        "ChildKey": "CLCLTD_DOSE_UNT_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderDim-MedicationOrderClassDim",
+        "Parent": "MedicationOrderClassDim",
+        "Child": "MedicationOrderDim",
+        "ParentKey": "ORDR_CLASS_CDS",
+        "ChildKey": "ORDR_CLASS_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderDim-MedicationOrderDoseUnitDim",
+        "Parent": "MedicationOrderDoseUnitDim",
+        "Child": "MedicationOrderDim",
+        "ParentKey": "DOSE_UNT_CDS",
+        "ChildKey": "DOSE_UNT_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderDim-MedicationOrderModeDim",
+        "Parent": "MedicationOrderModeDim",
+        "Child": "MedicationOrderDim",
+        "ParentKey": "ORDR_MODE_CDS",
+        "ChildKey": "ORDR_MODE_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderDim-MedicationOrderPriorityDim",
+        "Parent": "MedicationOrderPriorityDim",
+        "Child": "MedicationOrderDim",
+        "ParentKey": "ORDR_PRTY_CDS",
+        "ChildKey": "ORDR_PRTY_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderDim-MedicationOrderQuantityUnitDim",
+        "Parent": "MedicationOrderQuantityUnitDim",
+        "Child": "MedicationOrderDim",
+        "ParentKey": "QTY_UNT_CDS",
+        "ChildKey": "QTY_UNT_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderDim-MedicationOrderRouteDim",
+        "Parent": "MedicationOrderRouteDim",
+        "Child": "MedicationOrderDim",
+        "ParentKey": "RT_CDS",
+        "ChildKey": "RT_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderDim-MedicationOrderSetSourceDim",
+        "Parent": "MedicationOrderSetSourceDim",
+        "Child": "MedicationOrderDim",
+        "ParentKey": "ORDR_SET_SRC_CDS",
+        "ChildKey": "ORDR_SET_SRC_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderDim-MedicationOrderSourceDim",
+        "Parent": "MedicationOrderSourceDim",
+        "Child": "MedicationOrderDim",
+        "ParentKey": "ORDR_SRC_CDS",
+        "ChildKey": "ORDR_SRC_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "ORDRD_DT",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-DateDim1",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "ORDR_STRT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-DateDim2",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "ORDR_END_DT",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-DateDim3",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "ORDR_DSCNTND_DT",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-DepartmentDim",
+        "Parent": "DepartmentDim",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "DEPT_SK",
+        "ChildKey": "DEPT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-EncounterDim",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-MedicationDim",
+        "Parent": "MedicationDim",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "MDCTN_SK",
+        "ChildKey": "MDCTN_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-MedicationOrderDim",
+        "Parent": "MedicationOrderDim",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "MDCTN_ORDR_SK",
+        "ChildKey": "MDCTN_ORDR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-PatientDim",
+        "Parent": "LDW_PTNT_DIM",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "PTNT_SK",
+        "ChildKey": "PTNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-PharmacyDim",
+        "Parent": "PharmacyDim",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "PHRM_SK",
+        "ChildKey": "PHRM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-ProviderDim",
+        "Parent": "ProviderDim",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "ORDRD_BY_PROVDR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-ProviderDim1",
+        "Parent": "ProviderDim",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "AUTH_BY_PROVDR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-TimeDim",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "ORDRD_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-TimeDim1",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "ORDR_STRT_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-TimeDim2",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "ORDR_END_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-TimeDim3",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "DSCNTND_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "MedicationOrderFact-UserDim",
+        "Parent": "UserDim",
+        "Child": "MedicationOrderFact",
+        "ParentKey": "USR_SK",
+        "ChildKey": "ORDRD_BY_USR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientDim-EncounterDim",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "OutpatientDim",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientDim-OutpatientAdmitConfStatrusDim",
+        "Parent": "OutpatientAdmitConfirmationStatusDim",
+        "Child": "OutpatientDim",
+        "ParentKey": "ADMT_CNF_STT_CDS",
+        "ChildKey": "ADMT_CNF_STT_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientDim-OutpatientAppointmentConfirmationStatusDim",
+        "Parent": "OutpatientAppointmentConfirmation",
+        "Child": "OutpatientDim",
+        "ParentKey": "APPT_CNF_STT_CDS",
+        "ChildKey": "APPT_CNF_STT_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientDim-OutpatientAppointmentStatusDim",
+        "Parent": "OutpatientAppointmentStatusDim",
+        "Child": "OutpatientDim",
+        "ParentKey": "APPT_STTS_CDS",
+        "ChildKey": "APPT_STTS_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientDim-OutpatientCancellationReasonDim",
+        "Parent": "OutpatientCancellationReasonDim",
+        "Child": "OutpatientDim",
+        "ParentKey": "CNCL_RSN_CDS",
+        "ChildKey": "CNCL_RSN_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientDim-OutpatientFinancialClassDim",
+        "Parent": "OutpatientFinancialClassDim",
+        "Child": "OutpatientDim",
+        "ParentKey": "VST_FNNCL_CLSS_CDS",
+        "ChildKey": "VST_FNNCL_CLSS_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "OutpatientFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "APPT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-DateDim1",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "OutpatientFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "APPT_CRTN_INSTNT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-DateDim2",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "OutpatientFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "CHCK_IN_INSTNT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-DateDim3",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "OutpatientFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "CHCK_OUT_INSTNT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-DateDim4",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "OutpatientFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "ARRVL_INSTNT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-DateDim5",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "OutpatientFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "RM_INSTNT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-EncounterFact",
+        "Parent": "DW_ENCNT_FACT",
+        "Child": "OutpatientFact",
+        "ParentKey": "ENCNT_FACT_SK",
+        "ChildKey": "ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-OutpatientDim",
+        "Parent": "OutpatientDim",
+        "Child": "OutpatientFact",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-PatientDim",
+        "Parent": "LDW_PTNT_DIM",
+        "Child": "OutpatientFact",
+        "ParentKey": "PTNT_SK",
+        "ChildKey": "PTNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-ProviderDim",
+        "Parent": "ProviderDim",
+        "Child": "OutpatientFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "PRMY_VST_PRVDR_KEY",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-ProviderDim1",
+        "Parent": "ProviderDim",
+        "Child": "OutpatientFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "SCND_VST_PRVDR_KEY",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-ProviderDim12",
+        "Parent": "ProviderDim",
+        "Child": "OutpatientFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "THRD_VST_PRVDR_KEY",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-ProviderDim123",
+        "Parent": "ProviderDim",
+        "Child": "OutpatientFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "FRTH_VST_PRVDR_KEY",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-TimeDim",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "OutpatientFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "APPT_CRTN_INSTNT_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-TimeDim1",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "OutpatientFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "CHCK_IN_INSTNT_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-TimeDim12",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "OutpatientFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "APPT_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-TimeDim2",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "OutpatientFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "CHCK_OUT_INSTNT_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-TimeDim3",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "OutpatientFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "ARRVL_INSTNT_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "OutpatientFact-TimeDim4",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "OutpatientFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "RM_INSTNT_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "PatientDim-ProviderDim",
+        "Parent": "ProviderDim",
+        "Child": "LDW_PTNT_DIM",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "CRNT_PCP_PROVDR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "PersonDim-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "LDW_PTNT_DIM",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "BRTH_TS",
+        "Description": ""
+    },
+    {
+        "Name": "PersonDim-DateDim2",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "LDW_PTNT_DIM",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "REG_TS",
+        "Description": ""
+    },
+    {
+        "Name": "PharmacyDim-PharmacyPhysicalTypeDim",
+        "Parent": "PharmacyPhysicalTypeDim",
+        "Child": "PharmacyDim",
+        "ParentKey": "PHY_TYPE_CDS",
+        "ChildKey": "PHY_TYPE_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureDim-ProcedureCategoryDim",
+        "Parent": "ProcedureCategoryDim",
+        "Child": "ProcedureDim",
+        "ParentKey": "PRCDR_CGY_ID",
+        "ChildKey": "PRCDR_CGY_ID",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureDim-ProcedureRevenueCodeDim",
+        "Parent": "ProcedureRevenueCodeDim",
+        "Child": "ProcedureDim",
+        "ParentKey": "REV_CD",
+        "ChildKey": "REV_CD",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureDim-ProcedureTypeDim",
+        "Parent": "ProcedureTypeDim",
+        "Child": "ProcedureDim",
+        "ParentKey": "CD_TYPE",
+        "ChildKey": "CD_TYPE",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-BinaryDim",
+        "Parent": "BinaryDim",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "Binary_CD",
+        "ChildKey": "CPOE_IND",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-BinaryDim1",
+        "Parent": "BinaryDim",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "Binary_CD",
+        "ChildKey": "REQR_COSIG_IND",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-BinaryDim2",
+        "Parent": "BinaryDim",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "Binary_CD",
+        "ChildKey": "COSIG_IND",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-BinaryDim3",
+        "Parent": "BinaryDim",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "Binary_CD",
+        "ChildKey": "VRBL_SGN_IND",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "ORDRD_DT",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-EncounterDim",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-PatientDim",
+        "Parent": "LDW_PTNT_DIM",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "PTNT_SK",
+        "ChildKey": "PTNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-ProcedureDim",
+        "Parent": "ProcedureDim",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "PRCDR_CD_SK",
+        "ChildKey": "PRCDR_CD_SK",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-ProcedureOrderClassDim",
+        "Parent": "ProcedureOrderClassDim",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "ORDR_CLSS_CD",
+        "ChildKey": "ORDR_CLSS_CD",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-ProcedureOrderModeDim",
+        "Parent": "ProcedureOrderModeDim",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "ORDR_MODE_CD",
+        "ChildKey": "ORDR_MODE_CD",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-ProcedureOrderPriorityDim",
+        "Parent": "ProcedureOrderPriorityDim",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "ORDR_PRTY_CD",
+        "ChildKey": "ORDR_PRTY_CD",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-ProcedureOrderSetDm",
+        "Parent": "ProcedureOrderSetDm",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "ORDR_SET_CD",
+        "ChildKey": "ORDR_SET_CD",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-ProcedureOrderSourceDim",
+        "Parent": "ProcedureOrderSourceDim",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "ORDR_SRC_CD",
+        "ChildKey": "ORDR_SRC_CD",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-ProcedureOrderStandingStatusDim",
+        "Parent": "ProcedureOrderStandingStatusDim",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "STNDNG_STS_CD",
+        "ChildKey": "STNDNG_STS_CD",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-ProcedureOrderStatusDim",
+        "Parent": "ProcedureOrderStatusDim",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "ORDR_STS_CD",
+        "ChildKey": "ORDR_STS_CD",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-ProcedureOrderTypeDim",
+        "Parent": "ProcedureOrderTypeDim",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "ORDR_TYP_CD",
+        "ChildKey": "ORDR_TYP_CD",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-ProviderDim",
+        "Parent": "ProviderDim",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "ORDRD_BY_PROVDR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-ProviderDim1",
+        "Parent": "ProviderDim",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "AUTH_BY_PROVDR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-TimeDim",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "ORDRD_TS_SK",
+        "Description": ""
+    },
+    {
+        "Name": "ProcedureOrderFact-UserDim",
+        "Parent": "UserDim",
+        "Child": "ProcedureOrderFact",
+        "ParentKey": "USR_SK",
+        "ChildKey": "ORDRD_BY_USR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "ProviderDim-ProviderAffiliationDim",
+        "Parent": "ProviderAffiliationDim",
+        "Child": "ProviderDim",
+        "ParentKey": "INTN_EXT_CDS",
+        "ChildKey": "INTN_EXT_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "ProviderDim-ProviderClinicianTitleDim",
+        "Parent": "ProviderClinicianTitleDim",
+        "Child": "ProviderDim",
+        "ParentKey": "CLNC_TITL_CDS",
+        "ChildKey": "CLNC_TITL_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "ProviderDim-ProviderFieldOfPracticeDim",
+        "Parent": "ProviderFieldOfPracticeDim",
+        "Child": "ProviderDim",
+        "ParentKey": "MU_FLD_OF_PRACT_CDS",
+        "ChildKey": "MU_FLD_OF_PRACT_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "ProviderDim-ProviderInternalExternalDim",
+        "Parent": "ProviderInternalExternalDim",
+        "Child": "ProviderDim",
+        "ParentKey": "INTN_EXT_CDS",
+        "ChildKey": "INTN_EXT_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "ProviderDim-ProviderPrimaryDepartmentDim",
+        "Parent": "ProviderPrimaryDepartmentDim",
+        "Child": "ProviderDim",
+        "ParentKey": "PRMY_DEPT_CDS",
+        "ChildKey": "PRMY_DEPT_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "ProviderDim-ProviderPrimarySpecialtyDim",
+        "Parent": "ProviderPrimarySpecialtyDim",
+        "Child": "ProviderDim",
+        "ParentKey": "PRMY_SPCLY_CDS",
+        "ChildKey": "PRMY_SPCLY_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "ProviderDim-ProviderReportingStructureDim",
+        "Parent": "ProviderReportingStructureDim",
+        "Child": "ProviderDim",
+        "ParentKey": "RPTNG_STRC_CDS",
+        "ChildKey": "RPTNG_STRC_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "ProviderDim-ProviderTypeDim",
+        "Parent": "ProviderTypeDim",
+        "Child": "ProviderDim",
+        "ParentKey": "PROVDR_TYPE_CDS",
+        "ChildKey": "PROVDR_TYPE_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "QualityMeasureDim-QualityMeasureSourceDim",
+        "Parent": "QualityMeasureSourceDim",
+        "Child": "qps_Dim_Measure",
+        "ParentKey": "Source_ID",
+        "ChildKey": "Source_ID",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseDim-SurgicalCaseClassDim",
+        "Parent": "SurgicalCaseClassDim",
+        "Child": "SurgicalCaseDim",
+        "ParentKey": "CL_CDS",
+        "ChildKey": "CL_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseDim-SurgicalCasePatientClassDim",
+        "Parent": "SurgicalCasePatientClassDim",
+        "Child": "SurgicalCaseDim",
+        "ParentKey": "SRG_PTNT_CLASS_CDS",
+        "ChildKey": "SRG_PTNT_CLASS_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseDim-SurgicalCasePrimaryAnesthesiaTypeDim",
+        "Parent": "SurgicalCasePrimaryAnesthesiaTypeDim",
+        "Child": "SurgicalCaseDim",
+        "ParentKey": "PRMY_ANSTH_TYPE_CDS",
+        "ChildKey": "PRMY_ANSTH_TYPE_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseDim-SurgicalCasePrimaryServiceDim",
+        "Parent": "SurgicalCasePrimaryServiceDim",
+        "Child": "SurgicalCaseDim",
+        "ParentKey": "PRMY_SRVC_CDS",
+        "ChildKey": "PRMY_SRVC_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseDim-SurgicalCaseProcedureLevelDim",
+        "Parent": "SurgicalCaseProcedureLevelDim",
+        "Child": "SurgicalCaseDim",
+        "ParentKey": "PRCDR_LEVL_CDS",
+        "ChildKey": "PRCDR_LEVL_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseDim-SurgicalCaseReasonNotPerformedDim",
+        "Parent": "SurgicalCaseReasonNotPerformedDim",
+        "Child": "SurgicalCaseDim",
+        "ParentKey": "RSN_NOT_PRFRM_CDS",
+        "ChildKey": "RSN_NOT_PRFRM_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "SRG_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim1",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "CASE_RQST_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim12",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "SCHED_SETUP_STRT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim123",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "SCHED_IN_RM_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim1234",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "SCHED_OUT_OF_RM_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim12345",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "PTNT_IN_FCLT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim123456",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "PTNT_IN_PRE_PRCDR_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim1234567",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "PTNT_OUT_OF_POST_OP_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim12345678",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "POST_OP_CARE_CMPLT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim123456789",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "PTNT_POST_OP_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim12345678910",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "PTNT_OUT_OF_PACU_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim1234567891011",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "PACU_CARE_CMPLT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim123456789101112",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "ANSTH_STOP_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim12345678910111213",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "PTNT_IN_PACU_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim1234567891011121314",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "RM_CLNUP_CMPLT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim123456789101112131415",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "RM_CLNUP_STRT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim12345678910111213141516",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "PTNT_OUT_OF_RM_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim1234567891011121314151617",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "PRCDR_CMPLT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim123456789101112131415161718",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "PRCDR_STRT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim12345678910111213141516171819",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "ANSTH_RDY_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim123456789101112131415161718192021",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "PTNT_IN_RM_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim12345678910111213141516171819202122",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "PRE_PRCDR_CMPLT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim1234567891011121314151617181920212223",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "ANSTH_STRT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim123456789101112131415161718192021222324",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "RM_RDY_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim12345678910111213141516171819202122232425",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "RM_SETUP_STRT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DateDim1234567891011121314151617181920212223242526",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "SCHED_CLNUP_CMPLT_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DepartmentDim",
+        "Parent": "DepartmentDim",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "DEPT_SK",
+        "ChildKey": "DEPT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-DiagnosisBridge",
+        "Parent": "dbo_DIAG_BRIDGE",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "DIAG_CD_SK",
+        "ChildKey": "DIAG_CD_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-EncounterDim",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "HSPTL_ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-EncounterDim1",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "SRG_ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-PatientDim",
+        "Parent": "LDW_PTNT_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "PTNT_SK",
+        "ChildKey": "PTNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-ProcedureDim",
+        "Parent": "ProcedureDim",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "PRCDR_CD_SK",
+        "ChildKey": "PRMY_PRCDR_CD_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-ProviderDim",
+        "Parent": "ProviderDim",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "PRMY_PROVDR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-ProviderDim1",
+        "Parent": "ProviderDim",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "ANSTHGIST_PROVDR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-SurgicalCaseDim",
+        "Parent": "SurgicalCaseDim",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "CASE_SK",
+        "ChildKey": "CASE_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "CASE_RQST_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim1",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "SCHED_SETUP_STRT_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim12",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "SCHED_IN_RM_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim123",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "SCHED_OUT_OF_RM_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim1234",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "SCHED_CLNUP_CMPLT_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim12345",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "PTNT_IN_FCLT_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim123456",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "PTNT_IN_PRE_PRCDR_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim1234567",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "PTNT_OUT_OF_POST_OP_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim12345678",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "POST_OP_CARE_CMPLT_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim123456789",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "PTNT_POST_OP_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim12345678910",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "PTNT_OUT_OF_PACU_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim1234567891011",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "PACU_CARE_CMPLT_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim123456789101112",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "ANSTH_STOP_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim12345678910111213",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "PTNT_IN_PACU_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim1234567891011121314",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "RM_CLNUP_CMPLT_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim123456789101112131415",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "RM_CLNUP_STRT_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim12345678910111213141516",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "PTNT_OUT_OF_RM_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim1234567891011121314151617",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "PRCDR_CMPLT_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim123456789101112131415161718",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "PRCDR_STRT_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim12345678910111213141516171819",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "ANSTH_RDY_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim123456789101112131415161718192021",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "PTNT_IN_RM_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim12345678910111213141516171819202122",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "PRE_PRCDR_CMPLT_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim1234567891011121314151617181920212223",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "ANSTH_STRT_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim123456789101112131415161718192021222324",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "RM_RDY_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalCaseFact-TimeDim12345678910111213141516171819202122232425",
+        "Parent": "DW_TM_OF_DY_DIM",
+        "Child": "SurgicalCaseFact",
+        "ParentKey": "TM_OF_DY_SK",
+        "ChildKey": "RM_SETUP_STRT_TM_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-BinaryDim",
+        "Parent": "BinaryDim",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "Binary_CD",
+        "ChildKey": "SCHED_IND",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-BinaryDim1",
+        "Parent": "BinaryDim",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "Binary_CD",
+        "ChildKey": "PRFRM_IND",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-BinaryDim12",
+        "Parent": "BinaryDim",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "Binary_CD",
+        "ChildKey": "PSSBL_IND",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "SRG_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-EncounterDim",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "HSPTL_ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-EncounterDim1",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "SRG_ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-PatientDim",
+        "Parent": "LDW_PTNT_DIM",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "PTNT_SK",
+        "ChildKey": "PTNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-ProcedureDim",
+        "Parent": "ProcedureDim",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "PRCDR_CD_SK",
+        "ChildKey": "PRCDR_CD_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-ProviderDim",
+        "Parent": "ProviderDim",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "PRMY_PROVDR_SURGEON_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-ProviderDim1",
+        "Parent": "ProviderDim",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "SCND_PROVDR_SURGEON_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-ProviderDim12",
+        "Parent": "ProviderDim",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "THRD_PROVDR_SURGEON_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-SugicalProcedureEventWoundClassDim",
+        "Parent": "SugicalProcedureEventWoundClassDim",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "WND_CLASS_CDS",
+        "ChildKey": "WND_CLASS_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-SurgicalCaseDim",
+        "Parent": "SurgicalCaseDim",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "CASE_SK",
+        "ChildKey": "CASE_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-SurgicalProcedureEventAnesthesiaTypeDim",
+        "Parent": "SurgicalProcedureEventAnesthesiaTypeDim",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "ANSTH_TYPE_CDS",
+        "ChildKey": "ANSTH_TYPE_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-SurgicalProcedureEventLateralityDim",
+        "Parent": "SurgicalProcedureEventLateralityDim",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "LTRLTY_CDS",
+        "ChildKey": "LTRLTY_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-SurgicalProcedureEventProcedureSiteDim",
+        "Parent": "SurgicalProcedureEventProcedureSiteDim",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "PRCDR_SITE_CDS",
+        "ChildKey": "PRCDR_SITE_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalProcedureEventFact-SurgicalProcedureEventServiceDim",
+        "Parent": "SurgicalProcedureEventServiceDim",
+        "Child": "SurgicalProcedureEventFact",
+        "ParentKey": "SRVC_CDS",
+        "ChildKey": "SRVC_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalSupplyDim-SurgicalSupplyManufacturerDim",
+        "Parent": "SurgicalSupplyManufacturerDim",
+        "Child": "SurgicalSupplyDim",
+        "ParentKey": "MNFCTR_CDS",
+        "ChildKey": "MNFCTR_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalSupplyDim-SurgicalSupplyVendorDim",
+        "Parent": "SurgicalSupplyVendorDim",
+        "Child": "SurgicalSupplyDim",
+        "ParentKey": "VND_CDS",
+        "ChildKey": "VND_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalSupplyUseFact-BinaryDim",
+        "Parent": "BinaryDim",
+        "Child": "SurgicalSupplyUseFact",
+        "ParentKey": "Binary_CD",
+        "ChildKey": "CRGBL_IND",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalSupplyUseFact-DateDim",
+        "Parent": "DW_CLNDR_DIM",
+        "Child": "SurgicalSupplyUseFact",
+        "ParentKey": "CLNDR_DT",
+        "ChildKey": "SRG_DT",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalSupplyUseFact-DepartmentDim",
+        "Parent": "DepartmentDim",
+        "Child": "SurgicalSupplyUseFact",
+        "ParentKey": "DEPT_SK",
+        "ChildKey": "DEPT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalSupplyUseFact-EncounterDim",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "SurgicalSupplyUseFact",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "HSPTL_ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalSupplyUseFact-EncounterDim1",
+        "Parent": "DW_ENCNT_DIM",
+        "Child": "SurgicalSupplyUseFact",
+        "ParentKey": "ENCNT_SK",
+        "ChildKey": "SRG_ENCNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalSupplyUseFact-PatientDim",
+        "Parent": "LDW_PTNT_DIM",
+        "Child": "SurgicalSupplyUseFact",
+        "ParentKey": "PTNT_SK",
+        "ChildKey": "PTNT_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalSupplyUseFact-ProcedureDim",
+        "Parent": "ProcedureDim",
+        "Child": "SurgicalSupplyUseFact",
+        "ParentKey": "PRCDR_CD_SK",
+        "ChildKey": "PRCDR_CD_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalSupplyUseFact-ProviderDim",
+        "Parent": "ProviderDim",
+        "Child": "SurgicalSupplyUseFact",
+        "ParentKey": "PROVDR_SK",
+        "ChildKey": "PRMY_PROVDR_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalSupplyUseFact-SurgicalCaseDim",
+        "Parent": "SurgicalCaseDim",
+        "Child": "SurgicalSupplyUseFact",
+        "ParentKey": "CASE_SK",
+        "ChildKey": "CASE_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalSupplyUseFact-SurgicalSupplyDim",
+        "Parent": "SurgicalSupplyDim",
+        "Child": "SurgicalSupplyUseFact",
+        "ParentKey": "SPPLY_SK",
+        "ChildKey": "SPPLY_SK",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalSupplyUseFact-SurgicalSupplyUseLogStatusDim",
+        "Parent": "SurgicalSupplyUseLogStatusDim",
+        "Child": "SurgicalSupplyUseFact",
+        "ParentKey": "LOG_STS_CDS",
+        "ChildKey": "LOG_STS_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "SurgicalSupplyUseFact-SurgicalSupplyUseORServiceDim",
+        "Parent": "SurgicalSupplyUseORServiceDim",
+        "Child": "SurgicalSupplyUseFact",
+        "ParentKey": "OR_SRVC_CDS",
+        "ChildKey": "OR_SRVC_CDS",
+        "Description": ""
+    },
+    {
+        "Name": "UserDim-UserGenderDim",
+        "Parent": "UserGenderDim",
+        "Child": "UserDim",
+        "ParentKey": "SEX_CDS",
+        "ChildKey": "SEX_CDS",
+        "Description": ""
+    }
+]
