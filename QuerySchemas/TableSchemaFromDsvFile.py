@@ -5,6 +5,16 @@ obj = untangle.parse(r'C:\_car\CarilionCube\ContractCube\Carilion.dsv')
 
 SSAS_DSV_TableDef = collections.namedtuple('SSAS_DSV_TableDef', ['name', 'FriendlyName', 'DbTableName', 'QueryDefinition', 'columns'])
 SSAS_DSV_ColumnDef = collections.namedtuple('SSAS_DSV_ColumnDef', ['name', 'FriendlyName', 'DataType', 'Description', 'AllowNull', 'Length', 'DbColumnName'])
+SSAS_DSV_ForeignKeyDef = collections.namedtuple('SSAS_DSV_ForeignKeyDef', ['name', 'Parent', 'Child', 'ParentKey', 'ChildKey', 'Description'])
+
+foreign_keys = []
+for xe in obj.DataSourceView.Schema.xs_schema.xs_annotation.xs_appinfo.msdata_Relationship:
+    fkey = SSAS_DSV_ForeignKeyDef(name=xe['name'], Parent=xe['msdata:parent'], Child=xe['msdata:child'], 
+        ParentKey=xe['msdata:parentkey'], ChildKey=xe['msdata:childkey'], Description=xe['msprop:Description']
+        )
+    foreign_keys.append(fkey)
+    #print(fkey)
+
 
 tables = []
 for xe in obj.DataSourceView.Schema.xs_schema.xs_element.xs_complexType.xs_choice.xs_element:
@@ -35,9 +45,8 @@ for xe in obj.DataSourceView.Schema.xs_schema.xs_element.xs_complexType.xs_choic
         name=xe['name'], FriendlyName=xe['msprop:FriendlyName'], DbTableName=xe['msprop:DbTableName'],
         QueryDefinition=xe['msprop:QueryDefinition'], columns=cols
         )
-
-
-    print(tabdef)
+    tables.append(tabdef)
+    #print(tabdef)
 
 
 
