@@ -15,7 +15,7 @@
             <Name>EDW</Name>
           </ConfigurationSetting>
         </UserPasswords>
-        <TargetServer>ard-prd-db01</TargetServer>
+        <TargetServer>localhost\ssas_dim</TargetServer>
         <TargetDatabase>Analytics</TargetDatabase>
         <StartObject>
           <ObjectId></ObjectId>

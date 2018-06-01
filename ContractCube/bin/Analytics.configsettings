@@ -2,16 +2,8 @@
   <Database>
     <DataSources>
       <DataSource>
-        <ID>Carilion</ID>
-        <ConnectionString>Provider=SQLNCLI11.1;Data Source=192.0.0.1;Integrated Security=SSPI;Initial Catalog=Carilion</ConnectionString>
-        <ImpersonationInfo>
-          <ImpersonationMode xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">ImpersonateServiceAccount</ImpersonationMode>
-          <ImpersonationInfoSecurity xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Unchanged</ImpersonationInfoSecurity>
-        </ImpersonationInfo>
-      </DataSource>
-      <DataSource>
         <ID>EDW</ID>
-        <ConnectionString>Provider=NZOLEDB;Data Source=192.0.0.1;Persist Security Info=True;Initial Catalog=EDW_PRD</ConnectionString>
+        <ConnectionString>Provider=SQLNCLI11.1;Data Source=localhost;Integrated Security=SSPI;Initial Catalog=carilion_dw</ConnectionString>
         <ImpersonationInfo>
           <ImpersonationMode xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Default</ImpersonationMode>
           <ImpersonationInfoSecurity xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Unchanged</ImpersonationInfoSecurity>
