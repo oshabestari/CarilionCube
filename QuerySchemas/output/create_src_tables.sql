@@ -1403,7 +1403,7 @@ create table LabComponentDim(
 
 
 create table LabComponentResultFact(
-	CMPNT_RSLT_FACT_SK bigint  not null,
+	CMPNT_RSLT_FACT_SK bigint   null,
 	SRC_CMPNT_RSLT_ID varchar(255)   null,
 	LAB_TST_SK bigint   null,
 	PTNT_SK bigint   null,
@@ -1501,7 +1501,7 @@ create table LabTestDim(
 
 
 create table LabTestFact(
-	LAB_TST_FACT_SK bigint  not null,
+	LAB_TST_FACT_SK bigint   null,
 	SRC_TST_ID varchar(255)   null,
 	LAB_TST_SK bigint   null,
 	PTNT_SK bigint   null,

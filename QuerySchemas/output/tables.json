@@ -9880,7 +9880,7 @@
                 "FriendlyName": "CMPNT_RSLT_FACT_SK",
                 "DataType": "long",
                 "Description": null,
-                "AllowNull": false,
+                "AllowNull": true,
                 "Length": -1,
                 "DbColumnName": "CMPNT_RSLT_FACT_SK"
             },
@@ -10217,7 +10217,7 @@
                 "FriendlyName": "LAB_SK",
                 "DataType": "long",
                 "Description": null,
-                "AllowNull": false,
+                "AllowNull": true,
                 "Length": -1,
                 "DbColumnName": "LAB_SK"
             },
@@ -10475,7 +10475,7 @@
                 "FriendlyName": "LAB_TST_FACT_SK",
                 "DataType": "long",
                 "Description": null,
-                "AllowNull": false,
+                "AllowNull": true,
                 "Length": -1,
                 "DbColumnName": "LAB_TST_FACT_SK"
             },

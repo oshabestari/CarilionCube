@@ -157,6 +157,8 @@ for t in tables:
 sql.append('\n\n\n')
 sql.append('-- create table statements')
 for t in tables:
+    # if 'LabTestFact' in [t.Name, t.FriendlyName]:
+    #     print('break')
     if t.Name in primary_keys.keys():
         primary_key_column_name = primary_keys[t.Name]
     else:
