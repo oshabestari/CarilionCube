@@ -1,3 +1,9 @@
+use carilion_dw
+go
+
+
+
+
 -- drop all foreign keys
 exec dbo.usp_DropAllForeignKeyConstraints
 
@@ -10,19 +16,19 @@ drop table if exists CensusGeographicalAreaDim
 drop table if exists CensusMeasureFact
 drop table if exists CensusMeasureTypeDim
 drop table if exists CensusSourceDim
-drop table if exists qps_DM_Quality
+drop table if exists DM_Quality_Fact
 drop table if exists DRGDim
 drop table if exists DRGFact
 drop table if exists DRGSeqDim
 drop table if exists DRGTypeDim
-drop table if exists DW_CLNDR_DIM
+drop table if exists DateDim
 drop table if exists DepartmentDim
-drop table if exists dbo_DIAG_BRIDGE
-drop table if exists LDW_DIAG_FACT
-drop table if exists dbo_DIAG_HYR_DIM
-drop table if exists DiagnosisPresentOnAdmit
+drop table if exists DiagnosisBridge
+drop table if exists DiagnosisFact
+drop table if exists DiagnosisHierarchy
+drop table if exists DiagnosisPresentOnAdmitDim
 drop table if exists DiagnosisSourceDim
-drop table if exists EDVisitActivityLevelDim
+drop table if exists EDVisitAcuityLevelDim
 drop table if exists EDVisitDim
 drop table if exists EDVisitDispositionDim
 drop table if exists EDVisitFact
@@ -30,9 +36,9 @@ drop table if exists EDVisitFinancialClass
 drop table if exists EDVisitMeansOfArrivalDim
 drop table if exists EncounterBillingClassDim
 drop table if exists EncounterDepartmentDim
-drop table if exists DW_ENCNT_DIM
-drop table if exists EncounterEncouterypeDim
-drop table if exists DW_ENCNT_FACT
+drop table if exists EncounterDim
+drop table if exists EncounterEncouterTypeDim
+drop table if exists EncounterFact
 drop table if exists EncounterLevelofCareDim
 drop table if exists EncounterPatientStatusDim
 drop table if exists EncounterProductLineDim
@@ -57,17 +63,17 @@ drop table if exists LabTestFact
 drop table if exists LabTestNameDim
 drop table if exists LabTestOrderPriorityDim
 drop table if exists LabTestOrderSourceTypeDim
-drop table if exists LabTestOrderType
+drop table if exists LabTestOrderTypeDim
 drop table if exists LabTestSpecimenSourceDim
 drop table if exists LabTestSpecimenTypeDim
 drop table if exists LabTestVerificationStatusDim
-drop table if exists qps_Dim_Measure
-drop table if exists qps_Dim_Measure_Group
+drop table if exists MeasureDim
+drop table if exists MeasureGroupDim
 drop table if exists MeasureMDFact
 drop table if exists MeasureMLFact
 drop table if exists MeasureQDFact
 drop table if exists MeasureQLFact
-drop table if exists QualityMeasureSourceDim
+drop table if exists MeasureSourceDim
 drop table if exists MedicationAdministrationActionDim
 drop table if exists MedicationAdministrationFact
 drop table if exists MedicationAdministrationRouteDim
@@ -89,14 +95,14 @@ drop table if exists MedicationOrderSourceDim
 drop table if exists MedicationPharmacologicalClassDim
 drop table if exists MedicationPharmacologicalSubclassDim
 drop table if exists MedicationTherapeuticClassDim
-drop table if exists OutpatientAdmitConfirmationStatusDim
-drop table if exists OutpatientAppointmentConfirmation
+drop table if exists OutpatientAdmitConfStatrusDim
+drop table if exists OutpatientAppointmentConfirmationStatusDim
 drop table if exists OutpatientAppointmentStatusDim
 drop table if exists OutpatientCancellationReasonDim
 drop table if exists OutpatientDim
 drop table if exists OutpatientFact
 drop table if exists OutpatientFinancialClassDim
-drop table if exists LDW_PTNT_DIM
+drop table if exists PatientDim
 drop table if exists PharmacyDim
 drop table if exists PharmacyPhysicalTypeDim
 drop table if exists ProcedureCategoryDim
@@ -112,7 +118,7 @@ drop table if exists ProcedureOrderStatusDim
 drop table if exists ProcedureOrderTypeDim
 drop table if exists ProcedureRevenueCodeDim
 drop table if exists ProcedureTypeDim
-drop table if exists qps_Dim_Program
+drop table if exists ProgramDim
 drop table if exists ProviderAffiliationDim
 drop table if exists ProviderClinicianTitleDim
 drop table if exists ProviderDim
@@ -142,7 +148,7 @@ drop table if exists SurgicalSupplyUseFact
 drop table if exists SurgicalSupplyUseLogStatusDim
 drop table if exists SurgicalSupplyUseORServiceDim
 drop table if exists SurgicalSupplyVendorDim
-drop table if exists DW_TM_OF_DY_DIM
+drop table if exists TimeDim
 drop table if exists UserDim
 drop table if exists UserGenderDim
 
@@ -192,7 +198,7 @@ create table CensusSourceDim(
 );
 
 
-create table qps_DM_Quality(
+create table DM_Quality_Fact(
 	Data_ID int  not null,
 	LO_CDS int   null,
 	SRC_DEPT_ID varchar(4000)   null,
@@ -244,7 +250,7 @@ create table DRGTypeDim(
 );
 
 
-create table DW_CLNDR_DIM(
+create table DateDim(
 	CLNDR_DT_EPOCH varchar(30)   null,
 	CLNDR_DT datetime  not null,
 	CLNDR_DT_FL_NM varchar(30)   null,
@@ -286,7 +292,7 @@ create table DW_CLNDR_DIM(
 	FSCL_QTR_BGN_DT datetime   null,
 	FSCL_QTR_END_DT datetime   null,
 	FSCL_MTH_NUM smallint   null,
-	CONSTRAINT PK_DW_CLNDR_DIM_CLNDR_DT PRIMARY KEY CLUSTERED (CLNDR_DT)
+	CONSTRAINT PK_DateDim_CLNDR_DT PRIMARY KEY CLUSTERED (CLNDR_DT)
 );
 
 
@@ -323,7 +329,7 @@ create table DepartmentDim(
 );
 
 
-create table dbo_DIAG_BRIDGE(
+create table DiagnosisBridge(
 	DIAG_CD_SK int identity(1,1) not null,
 	DIAG_CD_DESC varchar(255)   null,
 	MSTR_DIAG_CD varchar(50)   null,
@@ -332,11 +338,11 @@ create table dbo_DIAG_BRIDGE(
 	ICD10_CD varchar(50)   null,
 	ICD10_CD_LST varchar(255)   null,
 	DIAG_HIR_SK int   null,
-	CONSTRAINT PK_dbo_DIAG_BRIDGE_DIAG_CD_SK PRIMARY KEY CLUSTERED (DIAG_CD_SK)
+	CONSTRAINT PK_DiagnosisBridge_DIAG_CD_SK PRIMARY KEY CLUSTERED (DIAG_CD_SK)
 );
 
 
-create table LDW_DIAG_FACT(
+create table DiagnosisFact(
 	DIAG_SK bigint  not null,
 	SRC_DIAG_SQNC int   null,
 	DIAG_CD_SK int   null,
@@ -356,18 +362,18 @@ create table LDW_DIAG_FACT(
 );
 
 
-create table dbo_DIAG_HYR_DIM(
+create table DiagnosisHierarchy(
 	DIAG_CLS_DESC varchar(255)   null,
 	DIAG_PRN_SK int   null,
 	DIAG_HIR_SK int identity(1,1) not null,
-	CONSTRAINT PK_dbo_DIAG_HYR_DIM_DIAG_HIR_SK PRIMARY KEY CLUSTERED (DIAG_HIR_SK)
+	CONSTRAINT PK_DiagnosisHierarchy_DIAG_HIR_SK PRIMARY KEY CLUSTERED (DIAG_HIR_SK)
 );
 
 
-create table DiagnosisPresentOnAdmit(
+create table DiagnosisPresentOnAdmitDim(
 	PRSNT_ON_ADMT_DESC varchar(255)   null,
 	PRSNT_ON_ADMT_CD int identity(1,1) not null,
-	CONSTRAINT PK_DiagnosisPresentOnAdmit_PRSNT_ON_ADMT_CD PRIMARY KEY CLUSTERED (PRSNT_ON_ADMT_CD)
+	CONSTRAINT PK_DiagnosisPresentOnAdmitDim_PRSNT_ON_ADMT_CD PRIMARY KEY CLUSTERED (PRSNT_ON_ADMT_CD)
 );
 
 
@@ -378,10 +384,10 @@ create table DiagnosisSourceDim(
 );
 
 
-create table EDVisitActivityLevelDim(
+create table EDVisitAcuityLevelDim(
 	ACTY_LVL_CDS int identity(1,1) not null,
 	ACTY_LVL_DESC varchar(15)   null,
-	CONSTRAINT PK_EDVisitActivityLevelDim_ACTY_LVL_CDS PRIMARY KEY CLUSTERED (ACTY_LVL_CDS)
+	CONSTRAINT PK_EDVisitAcuityLevelDim_ACTY_LVL_CDS PRIMARY KEY CLUSTERED (ACTY_LVL_CDS)
 );
 
 
@@ -721,7 +727,7 @@ create table EncounterDepartmentDim(
 );
 
 
-create table DW_ENCNT_DIM(
+create table EncounterDim(
 	ENCNT_SK bigint identity(1,1) not null,
 	SRC_ENCNT_ID varchar(255)   null,
 	PTNT_STS_CDS int   null,
@@ -735,18 +741,18 @@ create table DW_ENCNT_DIM(
 	PRD_LINE_CDS int   null,
 	BILLING_CLASS_CDS int   null,
 	DEPT_CDS int   null,
-	CONSTRAINT PK_DW_ENCNT_DIM_ENCNT_SK PRIMARY KEY CLUSTERED (ENCNT_SK)
+	CONSTRAINT PK_EncounterDim_ENCNT_SK PRIMARY KEY CLUSTERED (ENCNT_SK)
 );
 
 
-create table EncounterEncouterypeDim(
+create table EncounterEncouterTypeDim(
 	ENCNT_TYPE_CDS int identity(1,1) not null,
 	ENCNT_TYPE_DESC varchar(254)   null,
-	CONSTRAINT PK_EncounterEncouterypeDim_ENCNT_TYPE_CDS PRIMARY KEY CLUSTERED (ENCNT_TYPE_CDS)
+	CONSTRAINT PK_EncounterEncouterTypeDim_ENCNT_TYPE_CDS PRIMARY KEY CLUSTERED (ENCNT_TYPE_CDS)
 );
 
 
-create table DW_ENCNT_FACT(
+create table EncounterFact(
 	ENCNT_FACT_SK bigint identity(1,1) not null,
 	ENCNT_SK bigint   null,
 	PTNT_SK bigint   null,
@@ -756,7 +762,7 @@ create table DW_ENCNT_FACT(
 	AGE_MNTHS_AT_ENCNT int   null,
 	AGE_DYS_AT_ENCNT int   null,
 	ENCNT_WAIT_IN_DAYS int   null,
-	CONSTRAINT PK_DW_ENCNT_FACT_ENCNT_FACT_SK PRIMARY KEY CLUSTERED (ENCNT_FACT_SK)
+	CONSTRAINT PK_EncounterFact_ENCNT_FACT_SK PRIMARY KEY CLUSTERED (ENCNT_FACT_SK)
 );
 
 
@@ -1514,10 +1520,10 @@ create table LabTestOrderSourceTypeDim(
 );
 
 
-create table LabTestOrderType(
+create table LabTestOrderTypeDim(
 	ORDR_TYPE_CDS int identity(1,1) not null,
 	ORDR_TYPE_DESC varchar(50)   null,
-	CONSTRAINT PK_LabTestOrderType_ORDR_TYPE_CDS PRIMARY KEY CLUSTERED (ORDR_TYPE_CDS)
+	CONSTRAINT PK_LabTestOrderTypeDim_ORDR_TYPE_CDS PRIMARY KEY CLUSTERED (ORDR_TYPE_CDS)
 );
 
 
@@ -1542,17 +1548,17 @@ create table LabTestVerificationStatusDim(
 );
 
 
-create table qps_Dim_Measure(
+create table MeasureDim(
 	Measure_Dim_ID int identity(1,1) not null,
 	Source_ID int   null,
 	Source_Measure_ID int   null,
 	Is_Active bit   null,
 	Measure varchar(4000)   null,
-	CONSTRAINT PK_qps_Dim_Measure_Measure_Dim_ID PRIMARY KEY CLUSTERED (Measure_Dim_ID)
+	CONSTRAINT PK_MeasureDim_Measure_Dim_ID PRIMARY KEY CLUSTERED (Measure_Dim_ID)
 );
 
 
-create table qps_Dim_Measure_Group(
+create table MeasureGroupDim(
 	Measure_Group_Dim_ID int  not null,
 	Measure_Group_ID varchar(4000)   null,
 	Glossary_Link varchar(4000)   null,
@@ -1595,10 +1601,10 @@ create table MeasureQLFact(
 );
 
 
-create table QualityMeasureSourceDim(
+create table MeasureSourceDim(
 	Source_ID int identity(1,1) not null,
 	Source_Name varchar(4000)   null,
-	CONSTRAINT PK_QualityMeasureSourceDim_Source_ID PRIMARY KEY CLUSTERED (Source_ID)
+	CONSTRAINT PK_MeasureSourceDim_Source_ID PRIMARY KEY CLUSTERED (Source_ID)
 );
 
 
@@ -1823,17 +1829,17 @@ create table MedicationTherapeuticClassDim(
 );
 
 
-create table OutpatientAdmitConfirmationStatusDim(
+create table OutpatientAdmitConfStatrusDim(
 	ADMT_CNF_STT_CDS int identity(1,1) not null,
 	ADMT_CNF_STT_NM varchar(255)   null,
-	CONSTRAINT PK_OutpatientAdmitConfirmationStatusDim_ADMT_CNF_STT_CDS PRIMARY KEY CLUSTERED (ADMT_CNF_STT_CDS)
+	CONSTRAINT PK_OutpatientAdmitConfStatrusDim_ADMT_CNF_STT_CDS PRIMARY KEY CLUSTERED (ADMT_CNF_STT_CDS)
 );
 
 
-create table OutpatientAppointmentConfirmation(
+create table OutpatientAppointmentConfirmationStatusDim(
 	APPT_CNF_STT_CDS int identity(1,1) not null,
 	APPT_CNF_STT_NM varchar(255)   null,
-	CONSTRAINT PK_OutpatientAppointmentConfirmation_APPT_CNF_STT_CDS PRIMARY KEY CLUSTERED (APPT_CNF_STT_CDS)
+	CONSTRAINT PK_OutpatientAppointmentConfirmationStatusDim_APPT_CNF_STT_CDS PRIMARY KEY CLUSTERED (APPT_CNF_STT_CDS)
 );
 
 
@@ -2240,7 +2246,7 @@ create table OutpatientFinancialClassDim(
 );
 
 
-create table LDW_PTNT_DIM(
+create table PatientDim(
 	MPI_NUM varchar(80)   null,
 	BRTH_TS datetime   null,
 	MRTL_STS_CDS int   null,
@@ -2299,7 +2305,7 @@ create table LDW_PTNT_DIM(
 	CARLN_EMP_HLTH_PLN_IND varchar(3)   null,
 	LIV_STS_CDS int   null,
 	ACTIVE varchar(3)   null,
-	CONSTRAINT PK_LDW_PTNT_DIM_PTNT_SK PRIMARY KEY CLUSTERED (PTNT_SK)
+	CONSTRAINT PK_PatientDim_PTNT_SK PRIMARY KEY CLUSTERED (PTNT_SK)
 );
 
 
@@ -2440,7 +2446,7 @@ create table ProcedureTypeDim(
 );
 
 
-create table qps_Dim_Program(
+create table ProgramDim(
 	Start_Date datetime   null,
 	End_Date datetime   null,
 	Is_Active bit   null,
@@ -2780,13 +2786,13 @@ create table SurgicalSupplyVendorDim(
 );
 
 
-create table DW_TM_OF_DY_DIM(
+create table TimeDim(
 	TM_OF_DY_SK bigint identity(1,1) not null,
 	TM_OF_DY time(0)   null,
 	HR_OF_DY int   null,
 	MN_OF_DY int   null,
 	SCND_OF_DY int   null,
-	CONSTRAINT PK_DW_TM_OF_DY_DIM_TM_OF_DY_SK PRIMARY KEY CLUSTERED (TM_OF_DY_SK)
+	CONSTRAINT PK_TimeDim_TM_OF_DY_SK PRIMARY KEY CLUSTERED (TM_OF_DY_SK)
 );
 
 
@@ -2815,164 +2821,164 @@ create table UserGenderDim(
 ALTER TABLE CensusMeasureFact ADD CONSTRAINT [CensusMeasureFact-CensusGeographicalAreaDim] FOREIGN KEY (GEO_AREA_SK) REFERENCES CensusGeographicalAreaDim (GEO_AREA_SK);
 ALTER TABLE CensusMeasureFact ADD CONSTRAINT [CensusMeasureFact-CensusMeasureTypeDim] FOREIGN KEY (MSR_TYPE_SK) REFERENCES CensusMeasureTypeDim (MSR_TYPE_SK);
 ALTER TABLE CensusMeasureFact ADD CONSTRAINT [CensusMeasureFact-CensusSourceDim] FOREIGN KEY (SRC_SK) REFERENCES CensusSourceDim (SRC_SK);
-ALTER TABLE LDW_DIAG_FACT ADD CONSTRAINT [DIAG_FACT-DepartmentDim] FOREIGN KEY (DEPT_SK) REFERENCES DepartmentDim (DEPT_SK);
-ALTER TABLE LDW_DIAG_FACT ADD CONSTRAINT [DIAG_FACT-DiagnosisBridge] FOREIGN KEY (DIAG_CD_SK) REFERENCES dbo_DIAG_BRIDGE (DIAG_CD_SK);
-ALTER TABLE LDW_DIAG_FACT ADD CONSTRAINT [DIAG_FACT-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
-ALTER TABLE LDW_DIAG_FACT ADD CONSTRAINT [DIAG_FACT-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES LDW_PTNT_DIM (PTNT_SK);
+ALTER TABLE DiagnosisFact ADD CONSTRAINT [DIAG_FACT-DepartmentDim] FOREIGN KEY (DEPT_SK) REFERENCES DepartmentDim (DEPT_SK);
+ALTER TABLE DiagnosisFact ADD CONSTRAINT [DIAG_FACT-DiagnosisBridge] FOREIGN KEY (DIAG_CD_SK) REFERENCES DiagnosisBridge (DIAG_CD_SK);
+ALTER TABLE DiagnosisFact ADD CONSTRAINT [DIAG_FACT-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
+ALTER TABLE DiagnosisFact ADD CONSTRAINT [DIAG_FACT-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES PatientDim (PTNT_SK);
 ALTER TABLE DRGFact ADD CONSTRAINT [DRGFact-DRGDim] FOREIGN KEY (DRG_CD_SK) REFERENCES DRGDim (DRG_CD_SK);
 ALTER TABLE DRGFact ADD CONSTRAINT [DRGFact-DRGSeqDim] FOREIGN KEY (PRTY_SQNC) REFERENCES DRGSeqDim (PRTY_SQNC);
 ALTER TABLE DRGFact ADD CONSTRAINT [DRGFact-DRGTypeDim] FOREIGN KEY (DRG_TYPE_CD) REFERENCES DRGTypeDim (DRG_TYPE_CD);
-ALTER TABLE DRGFact ADD CONSTRAINT [DRGFact-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
-ALTER TABLE DRGFact ADD CONSTRAINT [DRGFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES LDW_PTNT_DIM (PTNT_SK);
-ALTER TABLE dbo_DIAG_BRIDGE ADD CONSTRAINT [DiagnosisBridge-DiagnosisHierarchy] FOREIGN KEY (DIAG_HIR_SK) REFERENCES dbo_DIAG_HYR_DIM (DIAG_HIR_SK);
-ALTER TABLE LDW_DIAG_FACT ADD CONSTRAINT [DiagnosisFact-BinaryDim] FOREIGN KEY (CHRNC_IND) REFERENCES BinaryDim (Binary_CD);
-ALTER TABLE LDW_DIAG_FACT ADD CONSTRAINT [DiagnosisFact-BinaryDim1] FOREIGN KEY (PRMY_DIAG_IND) REFERENCES BinaryDim (Binary_CD);
-ALTER TABLE LDW_DIAG_FACT ADD CONSTRAINT [DiagnosisFact-BinaryDim2] FOREIGN KEY (SCND_DIAG_IND) REFERENCES BinaryDim (Binary_CD);
-ALTER TABLE LDW_DIAG_FACT ADD CONSTRAINT [DiagnosisFact-BinaryDim3] FOREIGN KEY (ED_DIAG_IND) REFERENCES BinaryDim (Binary_CD);
-ALTER TABLE LDW_DIAG_FACT ADD CONSTRAINT [DiagnosisFact-DateDim] FOREIGN KEY (DIAG_STRT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE LDW_DIAG_FACT ADD CONSTRAINT [DiagnosisFact-DateDim1] FOREIGN KEY (DIAG_END_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE LDW_DIAG_FACT ADD CONSTRAINT [DiagnosisFact-DiagnosisPresentOnAdmitDim] FOREIGN KEY (PRSNT_ON_ADMT_CD) REFERENCES DiagnosisPresentOnAdmit (PRSNT_ON_ADMT_CD);
-ALTER TABLE LDW_DIAG_FACT ADD CONSTRAINT [DiagnosisFact-DiagnosisSourceDim] FOREIGN KEY (SRC_TYPE) REFERENCES DiagnosisSourceDim (SRC_TYPE);
-ALTER TABLE LDW_DIAG_FACT ADD CONSTRAINT [DiagnosisFact-TimeDim] FOREIGN KEY (DIAG_STRT_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE LDW_DIAG_FACT ADD CONSTRAINT [DiagnosisFact-TimeDim1] FOREIGN KEY (DIAG_END_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE dbo_DIAG_HYR_DIM ADD CONSTRAINT [DiagnosisHierarchy-DiagnosisHierarchy] FOREIGN KEY (DIAG_PRN_SK) REFERENCES dbo_DIAG_HYR_DIM (DIAG_HIR_SK);
-ALTER TABLE EDVisitDim ADD CONSTRAINT [EDVisitDim-EDVisitAcuityLevelDim] FOREIGN KEY (ACTY_LVL_CDS) REFERENCES EDVisitActivityLevelDim (ACTY_LVL_CDS);
+ALTER TABLE DRGFact ADD CONSTRAINT [DRGFact-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
+ALTER TABLE DRGFact ADD CONSTRAINT [DRGFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES PatientDim (PTNT_SK);
+ALTER TABLE DiagnosisBridge ADD CONSTRAINT [DiagnosisBridge-DiagnosisHierarchy] FOREIGN KEY (DIAG_HIR_SK) REFERENCES DiagnosisHierarchy (DIAG_HIR_SK);
+ALTER TABLE DiagnosisFact ADD CONSTRAINT [DiagnosisFact-BinaryDim] FOREIGN KEY (CHRNC_IND) REFERENCES BinaryDim (Binary_CD);
+ALTER TABLE DiagnosisFact ADD CONSTRAINT [DiagnosisFact-BinaryDim1] FOREIGN KEY (PRMY_DIAG_IND) REFERENCES BinaryDim (Binary_CD);
+ALTER TABLE DiagnosisFact ADD CONSTRAINT [DiagnosisFact-BinaryDim2] FOREIGN KEY (SCND_DIAG_IND) REFERENCES BinaryDim (Binary_CD);
+ALTER TABLE DiagnosisFact ADD CONSTRAINT [DiagnosisFact-BinaryDim3] FOREIGN KEY (ED_DIAG_IND) REFERENCES BinaryDim (Binary_CD);
+ALTER TABLE DiagnosisFact ADD CONSTRAINT [DiagnosisFact-DateDim] FOREIGN KEY (DIAG_STRT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE DiagnosisFact ADD CONSTRAINT [DiagnosisFact-DateDim1] FOREIGN KEY (DIAG_END_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE DiagnosisFact ADD CONSTRAINT [DiagnosisFact-DiagnosisPresentOnAdmitDim] FOREIGN KEY (PRSNT_ON_ADMT_CD) REFERENCES DiagnosisPresentOnAdmitDim (PRSNT_ON_ADMT_CD);
+ALTER TABLE DiagnosisFact ADD CONSTRAINT [DiagnosisFact-DiagnosisSourceDim] FOREIGN KEY (SRC_TYPE) REFERENCES DiagnosisSourceDim (SRC_TYPE);
+ALTER TABLE DiagnosisFact ADD CONSTRAINT [DiagnosisFact-TimeDim] FOREIGN KEY (DIAG_STRT_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE DiagnosisFact ADD CONSTRAINT [DiagnosisFact-TimeDim1] FOREIGN KEY (DIAG_END_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE DiagnosisHierarchy ADD CONSTRAINT [DiagnosisHierarchy-DiagnosisHierarchy] FOREIGN KEY (DIAG_PRN_SK) REFERENCES DiagnosisHierarchy (DIAG_HIR_SK);
+ALTER TABLE EDVisitDim ADD CONSTRAINT [EDVisitDim-EDVisitAcuityLevelDim] FOREIGN KEY (ACTY_LVL_CDS) REFERENCES EDVisitAcuityLevelDim (ACTY_LVL_CDS);
 ALTER TABLE EDVisitDim ADD CONSTRAINT [EDVisitDim-EDVisitDispositionDim] FOREIGN KEY (ED_DSPSTN_CDS) REFERENCES EDVisitDispositionDim (ED_DSPSTN_CDS);
 ALTER TABLE EDVisitDim ADD CONSTRAINT [EDVisitDim-EDVisitFinancialClass] FOREIGN KEY (VST_FNNCL_CLSS_CDS) REFERENCES EDVisitFinancialClass (VST_FNNCL_CLSS_CDS);
 ALTER TABLE EDVisitDim ADD CONSTRAINT [EDVisitDim-EDVisitMeansOfArrivalDim] FOREIGN KEY (MEANS_ARRVL_CDS) REFERENCES EDVisitMeansOfArrivalDim (MEANS_ARRVL_CDS);
-ALTER TABLE EDVisitDim ADD CONSTRAINT [EDVisitDim-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
-ALTER TABLE EDVisitDim ADD CONSTRAINT [EDVisitDim-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES LDW_PTNT_DIM (PTNT_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim] FOREIGN KEY (ARRVL_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim1] FOREIGN KEY (HSP_DSCRG_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim10] FOREIGN KEY (FRST_ATTND_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim11] FOREIGN KEY (LAB_ORDRD_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim12] FOREIGN KEY (LAB_CMPLTD_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim13] FOREIGN KEY (LAB_PRVDR_RVW_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim14] FOREIGN KEY (IMG_ORDRD_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim15] FOREIGN KEY (IMG_TST_CMPLTD_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim16] FOREIGN KEY (IMG_PRVDR_RVW_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim17] FOREIGN KEY (BED_RQST_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim2] FOREIGN KEY (ED_DSCRG_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim3] FOREIGN KEY (DSPSTN_INSTNT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim4] FOREIGN KEY (FRST_NONED_DEPT_ARRVL_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim5] FOREIGN KEY (AVS_PRNT_INSTNT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim6] FOREIGN KEY (PAT_RMD_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim7] FOREIGN KEY (REG_CMPLTD_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim8] FOREIGN KEY (TRGE_START_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim9] FOREIGN KEY (TRGE_CMPLTD_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
+ALTER TABLE EDVisitDim ADD CONSTRAINT [EDVisitDim-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
+ALTER TABLE EDVisitDim ADD CONSTRAINT [EDVisitDim-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES PatientDim (PTNT_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim] FOREIGN KEY (ARRVL_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim1] FOREIGN KEY (HSP_DSCRG_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim10] FOREIGN KEY (FRST_ATTND_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim11] FOREIGN KEY (LAB_ORDRD_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim12] FOREIGN KEY (LAB_CMPLTD_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim13] FOREIGN KEY (LAB_PRVDR_RVW_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim14] FOREIGN KEY (IMG_ORDRD_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim15] FOREIGN KEY (IMG_TST_CMPLTD_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim16] FOREIGN KEY (IMG_PRVDR_RVW_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim17] FOREIGN KEY (BED_RQST_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim2] FOREIGN KEY (ED_DSCRG_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim3] FOREIGN KEY (DSPSTN_INSTNT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim4] FOREIGN KEY (FRST_NONED_DEPT_ARRVL_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim5] FOREIGN KEY (AVS_PRNT_INSTNT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim6] FOREIGN KEY (PAT_RMD_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim7] FOREIGN KEY (REG_CMPLTD_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim8] FOREIGN KEY (TRGE_START_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DateDim9] FOREIGN KEY (TRGE_CMPLTD_DT) REFERENCES DateDim (CLNDR_DT);
 ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DepartmentDim] FOREIGN KEY (FRST_NON_ED_DEPT_SK) REFERENCES DepartmentDim (DEPT_SK);
 ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-DepartmentDim1] FOREIGN KEY (ADMT_DEPT_SK) REFERENCES DepartmentDim (DEPT_SK);
 ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-EDVisitDim] FOREIGN KEY (EDPTNT_VST_SK) REFERENCES EDVisitDim (EDPTNT_VST_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES LDW_PTNT_DIM (PTNT_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim] FOREIGN KEY (HSP_DSCRG_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim1] FOREIGN KEY (ARRVL_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim10] FOREIGN KEY (FRST_ATTND_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim11] FOREIGN KEY (LAB_ORDRD_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim12] FOREIGN KEY (LAB_CMPLTD_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim123] FOREIGN KEY (IMG_TST_CMPLTD_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim13] FOREIGN KEY (LAB_PRVDR_RVW_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim14] FOREIGN KEY (IMG_ORDRD_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim16] FOREIGN KEY (IMG_PRVDR_RVW_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim17] FOREIGN KEY (BED_RQST_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim2] FOREIGN KEY (ED_DSCRG_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim3] FOREIGN KEY (DSPSTN_INSTNT_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim4] FOREIGN KEY (FRST_NONED_DEPT_ARRVL_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim5] FOREIGN KEY (AVS_PRNT_INSTNT_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim6] FOREIGN KEY (PAT_RMD_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim7] FOREIGN KEY (REG_CMPLTD_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim8] FOREIGN KEY (TRGE_START_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim9] FOREIGN KEY (TRGE_CMPLTD_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE DW_ENCNT_FACT ADD CONSTRAINT [ENCNT_FACT-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
-ALTER TABLE DW_ENCNT_FACT ADD CONSTRAINT [ENCNT_FACT-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES LDW_PTNT_DIM (PTNT_SK);
-ALTER TABLE DW_ENCNT_DIM ADD CONSTRAINT [EncounterDim-EncounterBillingClassDim] FOREIGN KEY (BILLING_CLASS_CDS) REFERENCES EncounterBillingClassDim (BILLING_CLASS_CDS);
-ALTER TABLE DW_ENCNT_DIM ADD CONSTRAINT [EncounterDim-EncounterDepartmentDim] FOREIGN KEY (DEPT_CDS) REFERENCES EncounterDepartmentDim (DEPT_CDS);
-ALTER TABLE DW_ENCNT_DIM ADD CONSTRAINT [EncounterDim-EncounterEncouterypeDim] FOREIGN KEY (ENCNT_TYPE_CDS) REFERENCES EncounterEncouterypeDim (ENCNT_TYPE_CDS);
-ALTER TABLE DW_ENCNT_DIM ADD CONSTRAINT [EncounterDim-EncounterLevelofCareDim] FOREIGN KEY (LEVL_OF_CARE_CDS) REFERENCES EncounterLevelofCareDim (LEVL_OF_CARE_CDS);
-ALTER TABLE DW_ENCNT_DIM ADD CONSTRAINT [EncounterDim-EncounterPatientStatusDim] FOREIGN KEY (PTNT_STS_CDS) REFERENCES EncounterPatientStatusDim (PTNT_STS_CDS);
-ALTER TABLE DW_ENCNT_DIM ADD CONSTRAINT [EncounterDim-EncounterProductLineDim] FOREIGN KEY (PRD_LINE_CDS) REFERENCES EncounterProductLineDim (PRD_LINE_CDS);
-ALTER TABLE DW_ENCNT_DIM ADD CONSTRAINT [EncounterDim-EncouterBaseClassDim] FOREIGN KEY (PTNT_BSE_CLSS_CDS) REFERENCES EncouterBaseClassDim (PTNT_BSE_CLSS_CDS);
-ALTER TABLE DW_ENCNT_FACT ADD CONSTRAINT [EncounterFact-DateDim] FOREIGN KEY (ENCNT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE DW_ENCNT_FACT ADD CONSTRAINT [EncounterFact-DepartmentDim] FOREIGN KEY (DEPT_SK) REFERENCES DepartmentDim (DEPT_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES PatientDim (PTNT_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim] FOREIGN KEY (HSP_DSCRG_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim1] FOREIGN KEY (ARRVL_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim10] FOREIGN KEY (FRST_ATTND_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim11] FOREIGN KEY (LAB_ORDRD_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim12] FOREIGN KEY (LAB_CMPLTD_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim123] FOREIGN KEY (IMG_TST_CMPLTD_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim13] FOREIGN KEY (LAB_PRVDR_RVW_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim14] FOREIGN KEY (IMG_ORDRD_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim16] FOREIGN KEY (IMG_PRVDR_RVW_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim17] FOREIGN KEY (BED_RQST_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim2] FOREIGN KEY (ED_DSCRG_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim3] FOREIGN KEY (DSPSTN_INSTNT_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim4] FOREIGN KEY (FRST_NONED_DEPT_ARRVL_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim5] FOREIGN KEY (AVS_PRNT_INSTNT_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim6] FOREIGN KEY (PAT_RMD_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim7] FOREIGN KEY (REG_CMPLTD_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim8] FOREIGN KEY (TRGE_START_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EDVisitFact ADD CONSTRAINT [EDVisitFact-TimeDim9] FOREIGN KEY (TRGE_CMPLTD_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE EncounterFact ADD CONSTRAINT [ENCNT_FACT-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
+ALTER TABLE EncounterFact ADD CONSTRAINT [ENCNT_FACT-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES PatientDim (PTNT_SK);
+ALTER TABLE EncounterDim ADD CONSTRAINT [EncounterDim-EncounterBillingClassDim] FOREIGN KEY (BILLING_CLASS_CDS) REFERENCES EncounterBillingClassDim (BILLING_CLASS_CDS);
+ALTER TABLE EncounterDim ADD CONSTRAINT [EncounterDim-EncounterDepartmentDim] FOREIGN KEY (DEPT_CDS) REFERENCES EncounterDepartmentDim (DEPT_CDS);
+ALTER TABLE EncounterDim ADD CONSTRAINT [EncounterDim-EncounterEncouterypeDim] FOREIGN KEY (ENCNT_TYPE_CDS) REFERENCES EncounterEncouterTypeDim (ENCNT_TYPE_CDS);
+ALTER TABLE EncounterDim ADD CONSTRAINT [EncounterDim-EncounterLevelofCareDim] FOREIGN KEY (LEVL_OF_CARE_CDS) REFERENCES EncounterLevelofCareDim (LEVL_OF_CARE_CDS);
+ALTER TABLE EncounterDim ADD CONSTRAINT [EncounterDim-EncounterPatientStatusDim] FOREIGN KEY (PTNT_STS_CDS) REFERENCES EncounterPatientStatusDim (PTNT_STS_CDS);
+ALTER TABLE EncounterDim ADD CONSTRAINT [EncounterDim-EncounterProductLineDim] FOREIGN KEY (PRD_LINE_CDS) REFERENCES EncounterProductLineDim (PRD_LINE_CDS);
+ALTER TABLE EncounterDim ADD CONSTRAINT [EncounterDim-EncouterBaseClassDim] FOREIGN KEY (PTNT_BSE_CLSS_CDS) REFERENCES EncouterBaseClassDim (PTNT_BSE_CLSS_CDS);
+ALTER TABLE EncounterFact ADD CONSTRAINT [EncounterFact-DateDim] FOREIGN KEY (ENCNT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE EncounterFact ADD CONSTRAINT [EncounterFact-DepartmentDim] FOREIGN KEY (DEPT_SK) REFERENCES DepartmentDim (DEPT_SK);
 ALTER TABLE InpatientDim ADD CONSTRAINT [InpatientDim-InpatientAdmitSourceDim] FOREIGN KEY (ADMT_SRC_CDS) REFERENCES InpatientAdmitSourceDim (ADMT_SRC_CDS);
 ALTER TABLE InpatientDim ADD CONSTRAINT [InpatientDim-InpatientAdmitTypeDim] FOREIGN KEY (ADMT_TYPE_CDS) REFERENCES InpatientAdmitTypeDim (ADMT_TYPE_CDS);
 ALTER TABLE InpatientDim ADD CONSTRAINT [InpatientDim-InpatientDischargeDestinationDim] FOREIGN KEY (DSCRG_DSTN_CDS) REFERENCES InpatientDischargeDestinationDim (DSCRG_DSTN_CDS);
 ALTER TABLE InpatientDim ADD CONSTRAINT [InpatientDim-InpatientDischargeDispositionDim] FOREIGN KEY (DSCRG_DSPSTN_CDS) REFERENCES InpatientDischargeDispositionDim (DSCRG_DSPSTN_CDS);
 ALTER TABLE InpatientDim ADD CONSTRAINT [InpatientDim-InpatientPatientClassDim] FOREIGN KEY (PTNT_CL_CDS) REFERENCES InpatientPatientClassDim (PTNT_CL_CDS);
-ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-DateDim] FOREIGN KEY (INPTNT_APPT_MADE_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-DateDim1] FOREIGN KEY (CLNC_INPTNT_ADMT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-DateDim2] FOREIGN KEY (HSPTL_ADMT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-DateDim3] FOREIGN KEY (HSPTL_DSCRG_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
+ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-DateDim] FOREIGN KEY (INPTNT_APPT_MADE_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-DateDim1] FOREIGN KEY (CLNC_INPTNT_ADMT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-DateDim2] FOREIGN KEY (HSPTL_ADMT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-DateDim3] FOREIGN KEY (HSPTL_DSCRG_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
 ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-InpatientDim] FOREIGN KEY (INPTNT_VST_SK) REFERENCES InpatientDim (INPTNT_VST_SK);
-ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES LDW_PTNT_DIM (PTNT_SK);
+ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES PatientDim (PTNT_SK);
 ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-ProviderDim] FOREIGN KEY (HSPTL_ADMT_PROVDR_SK) REFERENCES ProviderDim (PROVDR_SK);
 ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-ProviderDim1] FOREIGN KEY (HSPTL_DSCRG_PROVDR_SK) REFERENCES ProviderDim (PROVDR_SK);
-ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-TimeDim] FOREIGN KEY (HSPTL_ADMT_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-TimeDim1] FOREIGN KEY (HSPTL_DSCRG_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-TimeDim12] FOREIGN KEY (CLNC_INPTNT_ADMT_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
+ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-TimeDim] FOREIGN KEY (HSPTL_ADMT_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-TimeDim1] FOREIGN KEY (HSPTL_DSCRG_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE InpatientFact ADD CONSTRAINT [InpatientFact-TimeDim12] FOREIGN KEY (CLNC_INPTNT_ADMT_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
 ALTER TABLE LabComponentDim ADD CONSTRAINT [LabComponentDim-LabComponentSubstrateDim] FOREIGN KEY (CMPNT_SUBT_CDS) REFERENCES LabComponentSubstrateDim (CMPNT_SUBT_CDS);
 ALTER TABLE LabComponentDim ADD CONSTRAINT [LabComponentDim-LabComponentTypeDim] FOREIGN KEY (CMPNT_TYPE_CDS) REFERENCES LabComponentTypeDim (CMPNT_TYPE_CDS);
-ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-DateDim] FOREIGN KEY (ORDRD_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-DateDim1] FOREIGN KEY (CLCT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-DateDim12] FOREIGN KEY (RSLT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
+ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-DateDim] FOREIGN KEY (ORDRD_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-DateDim1] FOREIGN KEY (CLCT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-DateDim12] FOREIGN KEY (RSLT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
 ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-LabComponentDim] FOREIGN KEY (LAB_CMPNT_SK) REFERENCES LabComponentDim (CMPNT_SK);
 ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-LabComponentResultFactLabStatusDim] FOREIGN KEY (LAB_STS_CD_SK) REFERENCES LabComponentResultFactLabStatusDim (LAB_STS_CD_SK);
 ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-LabComponentResultFactResultFlagDim] FOREIGN KEY (RSLT_FLG_CD_SK) REFERENCES LabComponentResultFactResultFlagDim (RSLT_FLG_CD_SK);
 ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-LabDim] FOREIGN KEY (RSULT_LAB_SK) REFERENCES LabDim (LAB_SK);
 ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-LabTestDim] FOREIGN KEY (LAB_TST_SK) REFERENCES LabTestDim (LAB_TST_SK);
-ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES LDW_PTNT_DIM (PTNT_SK);
+ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES PatientDim (PTNT_SK);
 ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-ProcedureDim] FOREIGN KEY (PRCDR_CD_SK) REFERENCES ProcedureDim (PRCDR_CD_SK);
 ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-ProviderDim] FOREIGN KEY (AUTH_PROVDR_SK) REFERENCES ProviderDim (PROVDR_SK);
-ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-TimeDim] FOREIGN KEY (ORDRD_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-TimeDim1] FOREIGN KEY (CLCT_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-TimeDim12] FOREIGN KEY (RSLT_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
+ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-TimeDim] FOREIGN KEY (ORDRD_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-TimeDim1] FOREIGN KEY (CLCT_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE LabComponentResultFact ADD CONSTRAINT [LabComponentResultFact-TimeDim12] FOREIGN KEY (RSLT_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
 ALTER TABLE LabTestDim ADD CONSTRAINT [LabTestDim-LabTestCancellationReasonDim] FOREIGN KEY (CNCL_RSN_CDS) REFERENCES LabTestCancellationReasonDim (CNCL_RSN_CDS);
 ALTER TABLE LabTestDim ADD CONSTRAINT [LabTestDim-LabTestNameDim] FOREIGN KEY (TST_CDS) REFERENCES LabTestNameDim (TST_CDS);
 ALTER TABLE LabTestDim ADD CONSTRAINT [LabTestDim-LabTestOrderPriorityDim] FOREIGN KEY (ORDR_PRTY_CDS) REFERENCES LabTestOrderPriorityDim (ORDR_PRTY_CDS);
 ALTER TABLE LabTestDim ADD CONSTRAINT [LabTestDim-LabTestOrderSourceTypeDim] FOREIGN KEY (ORDR_SRC_TYPE_CDS) REFERENCES LabTestOrderSourceTypeDim (ORDR_SRC_TYPE_CDS);
-ALTER TABLE LabTestDim ADD CONSTRAINT [LabTestDim-LabTestOrderType] FOREIGN KEY (ORDR_TYPE_CDS) REFERENCES LabTestOrderType (ORDR_TYPE_CDS);
+ALTER TABLE LabTestDim ADD CONSTRAINT [LabTestDim-LabTestOrderType] FOREIGN KEY (ORDR_TYPE_CDS) REFERENCES LabTestOrderTypeDim (ORDR_TYPE_CDS);
 ALTER TABLE LabTestDim ADD CONSTRAINT [LabTestDim-LabTestSpecimenSourceDim] FOREIGN KEY (SPCMN_SRC_CDS) REFERENCES LabTestSpecimenSourceDim (SPCMN_SRC_CDS);
 ALTER TABLE LabTestDim ADD CONSTRAINT [LabTestDim-LabTestSpecimenTypeDim] FOREIGN KEY (SPCMN_TYPE_CDS) REFERENCES LabTestSpecimenTypeDim (SPCMN_TYPE_CDS);
 ALTER TABLE LabTestDim ADD CONSTRAINT [LabTestDim-LabTestVerificationStatusDim] FOREIGN KEY (VRFCTN_STS_CDS) REFERENCES LabTestVerificationStatusDim (VRFCTN_STS_CDS);
-ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim] FOREIGN KEY (SCHED_CLCT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim1] FOREIGN KEY (ORDRD_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim12] FOREIGN KEY (CLCT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim123] FOREIGN KEY (FRST_FNL_VRFY_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim1234] FOREIGN KEY (FRST_VRFY_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim12345] FOREIGN KEY (LST_VRFY_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim123456] FOREIGN KEY (LST_FNL_VRFY_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim1234567] FOREIGN KEY (LST_CORR_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim12345678] FOREIGN KEY (FRST_CORR_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
+ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim] FOREIGN KEY (SCHED_CLCT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim1] FOREIGN KEY (ORDRD_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim12] FOREIGN KEY (CLCT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim123] FOREIGN KEY (FRST_FNL_VRFY_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim1234] FOREIGN KEY (FRST_VRFY_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim12345] FOREIGN KEY (LST_VRFY_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim123456] FOREIGN KEY (LST_FNL_VRFY_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim1234567] FOREIGN KEY (LST_CORR_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DateDim12345678] FOREIGN KEY (FRST_CORR_DT) REFERENCES DateDim (CLNDR_DT);
 ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-DepartmentDim] FOREIGN KEY (CLCT_DEPT_SK) REFERENCES DepartmentDim (DEPT_SK);
-ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
+ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
 ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-LabDim] FOREIGN KEY (RSULT_LAB_SK) REFERENCES LabDim (LAB_SK);
 ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-LabTestDim] FOREIGN KEY (LAB_TST_SK) REFERENCES LabTestDim (LAB_TST_SK);
-ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES LDW_PTNT_DIM (PTNT_SK);
+ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES PatientDim (PTNT_SK);
 ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-ProcedureDim] FOREIGN KEY (PRCDR_CD_SK) REFERENCES ProcedureDim (PRCDR_CD_SK);
 ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-ProviderDim] FOREIGN KEY (AUTH_PROVDR_SK) REFERENCES ProviderDim (PROVDR_SK);
-ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-TimeDim] FOREIGN KEY (SCHED_CLCT_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-TimeDim1] FOREIGN KEY (ORDRD_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-TimeDim12] FOREIGN KEY (CLCT_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
+ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-TimeDim] FOREIGN KEY (SCHED_CLCT_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-TimeDim1] FOREIGN KEY (ORDRD_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-TimeDim12] FOREIGN KEY (CLCT_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
 ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-UserDim] FOREIGN KEY (CLCT_USR_SK) REFERENCES UserDim (USR_SK);
 ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-UserDim1] FOREIGN KEY (FRST_FNL_VRFY_USR_SK) REFERENCES UserDim (USR_SK);
 ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-UserDim12] FOREIGN KEY (FRST_VRFY_USR_SK) REFERENCES UserDim (USR_SK);
 ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-UserDim123] FOREIGN KEY (FRST_CORR_USR_SK) REFERENCES UserDim (USR_SK);
 ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-UserDim1234] FOREIGN KEY (LST_CORR_USR_SK) REFERENCES UserDim (USR_SK);
 ALTER TABLE LabTestFact ADD CONSTRAINT [LabTestFact-UserDim12345] FOREIGN KEY (LST_FNL_VRFY_USR_SK) REFERENCES UserDim (USR_SK);
-ALTER TABLE MeasureMDFact ADD CONSTRAINT [MeasureMDFact-MeasureDim] FOREIGN KEY (Measure_Dim_ID) REFERENCES qps_Dim_Measure (Measure_Dim_ID);
-ALTER TABLE MeasureMLFact ADD CONSTRAINT [MeasureMLFact-MeasureDim] FOREIGN KEY (Measure_Dim_ID) REFERENCES qps_Dim_Measure (Measure_Dim_ID);
-ALTER TABLE MeasureQDFact ADD CONSTRAINT [MeasureQDFact-MeasureDim] FOREIGN KEY (Measure_Dim_ID) REFERENCES qps_Dim_Measure (Measure_Dim_ID);
-ALTER TABLE MeasureQLFact ADD CONSTRAINT [MeasureQLFact-MeasureDim] FOREIGN KEY (Measure_Dim_ID) REFERENCES qps_Dim_Measure (Measure_Dim_ID);
+ALTER TABLE MeasureMDFact ADD CONSTRAINT [MeasureMDFact-MeasureDim] FOREIGN KEY (Measure_Dim_ID) REFERENCES MeasureDim (Measure_Dim_ID);
+ALTER TABLE MeasureMLFact ADD CONSTRAINT [MeasureMLFact-MeasureDim] FOREIGN KEY (Measure_Dim_ID) REFERENCES MeasureDim (Measure_Dim_ID);
+ALTER TABLE MeasureQDFact ADD CONSTRAINT [MeasureQDFact-MeasureDim] FOREIGN KEY (Measure_Dim_ID) REFERENCES MeasureDim (Measure_Dim_ID);
+ALTER TABLE MeasureQLFact ADD CONSTRAINT [MeasureQLFact-MeasureDim] FOREIGN KEY (Measure_Dim_ID) REFERENCES MeasureDim (Measure_Dim_ID);
 ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-BinaryDim] FOREIGN KEY (MDCTN_REQ_SCAN_AT_ADMN_IND) REFERENCES BinaryDim (Binary_CD);
 ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-BinaryDim1] FOREIGN KEY (MDCTN_SCANNED_AT_ADMN_IND) REFERENCES BinaryDim (Binary_CD);
 ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-BinaryDim12] FOREIGN KEY (PTNT_REQ_SCAN_AT_ADMN_IND) REFERENCES BinaryDim (Binary_CD);
 ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-BinaryDim123] FOREIGN KEY (PTNT_SCANNED_AT_ADMN_IND) REFERENCES BinaryDim (Binary_CD);
-ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-DateDim] FOREIGN KEY (SCHED_ADMN_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-DateDim1] FOREIGN KEY (ADMN_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
+ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-DateDim] FOREIGN KEY (SCHED_ADMN_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-DateDim1] FOREIGN KEY (ADMN_DT) REFERENCES DateDim (CLNDR_DT);
 ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-DepartmentDim] FOREIGN KEY (ADMN_DEPT_SK) REFERENCES DepartmentDim (DEPT_SK);
-ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
+ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
 ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-MedicationAdministrationActionDim] FOREIGN KEY (ADMN_ACTN_CDS_SK) REFERENCES MedicationAdministrationActionDim (ADMN_ACTN_CDS_SK);
 ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-MedicationDim] FOREIGN KEY (PRMY_CMPNT_SK) REFERENCES MedicationDim (MDCTN_SK);
 ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-MedicationDim1] FOREIGN KEY (SCND_CMPNT_SK) REFERENCES MedicationDim (MDCTN_SK);
@@ -2980,9 +2986,9 @@ ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministratio
 ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-MedicationDim123] FOREIGN KEY (FOURTH_CMPNT_SK) REFERENCES MedicationDim (MDCTN_SK);
 ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-MedicationDim1234] FOREIGN KEY (FIFTH_CMPNT_SK) REFERENCES MedicationDim (MDCTN_SK);
 ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-MedicationOrderDim] FOREIGN KEY (MDCTN_ORDR_SK) REFERENCES MedicationOrderDim (MDCTN_ORDR_SK);
-ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES LDW_PTNT_DIM (PTNT_SK);
-ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-TimeDim] FOREIGN KEY (SCHED_ADMN_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-TimeDim1] FOREIGN KEY (ADMN_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
+ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES PatientDim (PTNT_SK);
+ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-TimeDim] FOREIGN KEY (SCHED_ADMN_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-TimeDim1] FOREIGN KEY (ADMN_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
 ALTER TABLE MedicationAdministrationFact ADD CONSTRAINT [MedicationAdministrationFact-UserDim] FOREIGN KEY (ADMN_USR_SK) REFERENCES UserDim (USR_SK);
 ALTER TABLE MedicationDim ADD CONSTRAINT [MedicationDim-MedicationAdministrationRouteDim] FOREIGN KEY (ADMN_RT_CDS) REFERENCES MedicationAdministrationRouteDim (ADMN_RT_CDS);
 ALTER TABLE MedicationDim ADD CONSTRAINT [MedicationDim-MedicationDEAClassDim] FOREIGN KEY (DEA_CLASS_CDS) REFERENCES MedicationDEAClassDim (DEA_CLASS_CDS);
@@ -2999,51 +3005,51 @@ ALTER TABLE MedicationOrderDim ADD CONSTRAINT [MedicationOrderDim-MedicationOrde
 ALTER TABLE MedicationOrderDim ADD CONSTRAINT [MedicationOrderDim-MedicationOrderRouteDim] FOREIGN KEY (RT_CDS) REFERENCES MedicationOrderRouteDim (RT_CDS);
 ALTER TABLE MedicationOrderDim ADD CONSTRAINT [MedicationOrderDim-MedicationOrderSetSourceDim] FOREIGN KEY (ORDR_SET_SRC_CDS) REFERENCES MedicationOrderSetSourceDim (ORDR_SET_SRC_CDS);
 ALTER TABLE MedicationOrderDim ADD CONSTRAINT [MedicationOrderDim-MedicationOrderSourceDim] FOREIGN KEY (ORDR_SRC_CDS) REFERENCES MedicationOrderSourceDim (ORDR_SRC_CDS);
-ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-DateDim] FOREIGN KEY (ORDRD_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-DateDim1] FOREIGN KEY (ORDR_STRT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-DateDim2] FOREIGN KEY (ORDR_END_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-DateDim3] FOREIGN KEY (ORDR_DSCNTND_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
+ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-DateDim] FOREIGN KEY (ORDRD_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-DateDim1] FOREIGN KEY (ORDR_STRT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-DateDim2] FOREIGN KEY (ORDR_END_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-DateDim3] FOREIGN KEY (ORDR_DSCNTND_DT) REFERENCES DateDim (CLNDR_DT);
 ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-DepartmentDim] FOREIGN KEY (DEPT_SK) REFERENCES DepartmentDim (DEPT_SK);
-ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
+ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
 ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-MedicationDim] FOREIGN KEY (MDCTN_SK) REFERENCES MedicationDim (MDCTN_SK);
 ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-MedicationOrderDim] FOREIGN KEY (MDCTN_ORDR_SK) REFERENCES MedicationOrderDim (MDCTN_ORDR_SK);
-ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES LDW_PTNT_DIM (PTNT_SK);
+ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES PatientDim (PTNT_SK);
 ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-PharmacyDim] FOREIGN KEY (PHRM_SK) REFERENCES PharmacyDim (PHRM_SK);
 ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-ProviderDim] FOREIGN KEY (ORDRD_BY_PROVDR_SK) REFERENCES ProviderDim (PROVDR_SK);
 ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-ProviderDim1] FOREIGN KEY (AUTH_BY_PROVDR_SK) REFERENCES ProviderDim (PROVDR_SK);
-ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-TimeDim] FOREIGN KEY (ORDRD_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-TimeDim1] FOREIGN KEY (ORDR_STRT_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-TimeDim2] FOREIGN KEY (ORDR_END_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-TimeDim3] FOREIGN KEY (DSCNTND_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
+ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-TimeDim] FOREIGN KEY (ORDRD_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-TimeDim1] FOREIGN KEY (ORDR_STRT_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-TimeDim2] FOREIGN KEY (ORDR_END_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-TimeDim3] FOREIGN KEY (DSCNTND_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
 ALTER TABLE MedicationOrderFact ADD CONSTRAINT [MedicationOrderFact-UserDim] FOREIGN KEY (ORDRD_BY_USR_SK) REFERENCES UserDim (USR_SK);
-ALTER TABLE OutpatientDim ADD CONSTRAINT [OutpatientDim-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
-ALTER TABLE OutpatientDim ADD CONSTRAINT [OutpatientDim-OutpatientAdmitConfStatrusDim] FOREIGN KEY (ADMT_CNF_STT_CDS) REFERENCES OutpatientAdmitConfirmationStatusDim (ADMT_CNF_STT_CDS);
-ALTER TABLE OutpatientDim ADD CONSTRAINT [OutpatientDim-OutpatientAppointmentConfirmationStatusDim] FOREIGN KEY (APPT_CNF_STT_CDS) REFERENCES OutpatientAppointmentConfirmation (APPT_CNF_STT_CDS);
+ALTER TABLE OutpatientDim ADD CONSTRAINT [OutpatientDim-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
+ALTER TABLE OutpatientDim ADD CONSTRAINT [OutpatientDim-OutpatientAdmitConfStatrusDim] FOREIGN KEY (ADMT_CNF_STT_CDS) REFERENCES OutpatientAdmitConfStatrusDim (ADMT_CNF_STT_CDS);
+ALTER TABLE OutpatientDim ADD CONSTRAINT [OutpatientDim-OutpatientAppointmentConfirmationStatusDim] FOREIGN KEY (APPT_CNF_STT_CDS) REFERENCES OutpatientAppointmentConfirmationStatusDim (APPT_CNF_STT_CDS);
 ALTER TABLE OutpatientDim ADD CONSTRAINT [OutpatientDim-OutpatientAppointmentStatusDim] FOREIGN KEY (APPT_STTS_CDS) REFERENCES OutpatientAppointmentStatusDim (APPT_STTS_CDS);
 ALTER TABLE OutpatientDim ADD CONSTRAINT [OutpatientDim-OutpatientCancellationReasonDim] FOREIGN KEY (CNCL_RSN_CDS) REFERENCES OutpatientCancellationReasonDim (CNCL_RSN_CDS);
 ALTER TABLE OutpatientDim ADD CONSTRAINT [OutpatientDim-OutpatientFinancialClassDim] FOREIGN KEY (VST_FNNCL_CLSS_CDS) REFERENCES OutpatientFinancialClassDim (VST_FNNCL_CLSS_CDS);
-ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-DateDim] FOREIGN KEY (APPT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-DateDim1] FOREIGN KEY (APPT_CRTN_INSTNT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-DateDim2] FOREIGN KEY (CHCK_IN_INSTNT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-DateDim3] FOREIGN KEY (CHCK_OUT_INSTNT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-DateDim4] FOREIGN KEY (ARRVL_INSTNT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-DateDim5] FOREIGN KEY (RM_INSTNT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-EncounterFact] FOREIGN KEY (ENCNT_SK) REFERENCES DW_ENCNT_FACT (ENCNT_FACT_SK);
+ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-DateDim] FOREIGN KEY (APPT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-DateDim1] FOREIGN KEY (APPT_CRTN_INSTNT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-DateDim2] FOREIGN KEY (CHCK_IN_INSTNT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-DateDim3] FOREIGN KEY (CHCK_OUT_INSTNT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-DateDim4] FOREIGN KEY (ARRVL_INSTNT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-DateDim5] FOREIGN KEY (RM_INSTNT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-EncounterFact] FOREIGN KEY (ENCNT_SK) REFERENCES EncounterFact (ENCNT_FACT_SK);
 ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-OutpatientDim] FOREIGN KEY (ENCNT_SK) REFERENCES OutpatientDim (ENCNT_SK);
-ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES LDW_PTNT_DIM (PTNT_SK);
+ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES PatientDim (PTNT_SK);
 ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-ProviderDim] FOREIGN KEY (PRMY_VST_PRVDR_KEY) REFERENCES ProviderDim (PROVDR_SK);
 ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-ProviderDim1] FOREIGN KEY (SCND_VST_PRVDR_KEY) REFERENCES ProviderDim (PROVDR_SK);
 ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-ProviderDim12] FOREIGN KEY (THRD_VST_PRVDR_KEY) REFERENCES ProviderDim (PROVDR_SK);
 ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-ProviderDim123] FOREIGN KEY (FRTH_VST_PRVDR_KEY) REFERENCES ProviderDim (PROVDR_SK);
-ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-TimeDim] FOREIGN KEY (APPT_CRTN_INSTNT_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-TimeDim1] FOREIGN KEY (CHCK_IN_INSTNT_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-TimeDim12] FOREIGN KEY (APPT_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-TimeDim2] FOREIGN KEY (CHCK_OUT_INSTNT_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-TimeDim3] FOREIGN KEY (ARRVL_INSTNT_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-TimeDim4] FOREIGN KEY (RM_INSTNT_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE LDW_PTNT_DIM ADD CONSTRAINT [PatientDim-ProviderDim] FOREIGN KEY (CRNT_PCP_PROVDR_SK) REFERENCES ProviderDim (PROVDR_SK);
-ALTER TABLE LDW_PTNT_DIM ADD CONSTRAINT [PersonDim-DateDim] FOREIGN KEY (BRTH_TS) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE LDW_PTNT_DIM ADD CONSTRAINT [PersonDim-DateDim2] FOREIGN KEY (REG_TS) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
+ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-TimeDim] FOREIGN KEY (APPT_CRTN_INSTNT_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-TimeDim1] FOREIGN KEY (CHCK_IN_INSTNT_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-TimeDim12] FOREIGN KEY (APPT_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-TimeDim2] FOREIGN KEY (CHCK_OUT_INSTNT_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-TimeDim3] FOREIGN KEY (ARRVL_INSTNT_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE OutpatientFact ADD CONSTRAINT [OutpatientFact-TimeDim4] FOREIGN KEY (RM_INSTNT_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE PatientDim ADD CONSTRAINT [PatientDim-ProviderDim] FOREIGN KEY (CRNT_PCP_PROVDR_SK) REFERENCES ProviderDim (PROVDR_SK);
+ALTER TABLE PatientDim ADD CONSTRAINT [PersonDim-DateDim] FOREIGN KEY (BRTH_TS) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE PatientDim ADD CONSTRAINT [PersonDim-DateDim2] FOREIGN KEY (REG_TS) REFERENCES DateDim (CLNDR_DT);
 ALTER TABLE PharmacyDim ADD CONSTRAINT [PharmacyDim-PharmacyPhysicalTypeDim] FOREIGN KEY (PHY_TYPE_CDS) REFERENCES PharmacyPhysicalTypeDim (PHY_TYPE_CDS);
 ALTER TABLE ProcedureDim ADD CONSTRAINT [ProcedureDim-ProcedureCategoryDim] FOREIGN KEY (PRCDR_CGY_ID) REFERENCES ProcedureCategoryDim (PRCDR_CGY_ID);
 ALTER TABLE ProcedureDim ADD CONSTRAINT [ProcedureDim-ProcedureRevenueCodeDim] FOREIGN KEY (REV_CD) REFERENCES ProcedureRevenueCodeDim (REV_CD);
@@ -3052,9 +3058,9 @@ ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-BinaryDim] FOR
 ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-BinaryDim1] FOREIGN KEY (REQR_COSIG_IND) REFERENCES BinaryDim (Binary_CD);
 ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-BinaryDim2] FOREIGN KEY (COSIG_IND) REFERENCES BinaryDim (Binary_CD);
 ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-BinaryDim3] FOREIGN KEY (VRBL_SGN_IND) REFERENCES BinaryDim (Binary_CD);
-ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-DateDim] FOREIGN KEY (ORDRD_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
-ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES LDW_PTNT_DIM (PTNT_SK);
+ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-DateDim] FOREIGN KEY (ORDRD_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-EncounterDim] FOREIGN KEY (ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
+ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES PatientDim (PTNT_SK);
 ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-ProcedureDim] FOREIGN KEY (PRCDR_CD_SK) REFERENCES ProcedureDim (PRCDR_CD_SK);
 ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-ProcedureOrderClassDim] FOREIGN KEY (ORDR_CLSS_CD) REFERENCES ProcedureOrderClassDim (ORDR_CLSS_CD);
 ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-ProcedureOrderModeDim] FOREIGN KEY (ORDR_MODE_CD) REFERENCES ProcedureOrderModeDim (ORDR_MODE_CD);
@@ -3066,7 +3072,7 @@ ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-ProcedureOrder
 ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-ProcedureOrderTypeDim] FOREIGN KEY (ORDR_TYP_CD) REFERENCES ProcedureOrderTypeDim (ORDR_TYP_CD);
 ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-ProviderDim] FOREIGN KEY (ORDRD_BY_PROVDR_SK) REFERENCES ProviderDim (PROVDR_SK);
 ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-ProviderDim1] FOREIGN KEY (AUTH_BY_PROVDR_SK) REFERENCES ProviderDim (PROVDR_SK);
-ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-TimeDim] FOREIGN KEY (ORDRD_TS_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
+ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-TimeDim] FOREIGN KEY (ORDRD_TS_SK) REFERENCES TimeDim (TM_OF_DY_SK);
 ALTER TABLE ProcedureOrderFact ADD CONSTRAINT [ProcedureOrderFact-UserDim] FOREIGN KEY (ORDRD_BY_USR_SK) REFERENCES UserDim (USR_SK);
 ALTER TABLE ProviderDim ADD CONSTRAINT [ProviderDim-ProviderAffiliationDim] FOREIGN KEY (INTN_EXT_CDS) REFERENCES ProviderAffiliationDim (INTN_EXT_CDS);
 ALTER TABLE ProviderDim ADD CONSTRAINT [ProviderDim-ProviderClinicianTitleDim] FOREIGN KEY (CLNC_TITL_CDS) REFERENCES ProviderClinicianTitleDim (CLNC_TITL_CDS);
@@ -3076,80 +3082,80 @@ ALTER TABLE ProviderDim ADD CONSTRAINT [ProviderDim-ProviderPrimaryDepartmentDim
 ALTER TABLE ProviderDim ADD CONSTRAINT [ProviderDim-ProviderPrimarySpecialtyDim] FOREIGN KEY (PRMY_SPCLY_CDS) REFERENCES ProviderPrimarySpecialtyDim (PRMY_SPCLY_CDS);
 ALTER TABLE ProviderDim ADD CONSTRAINT [ProviderDim-ProviderReportingStructureDim] FOREIGN KEY (RPTNG_STRC_CDS) REFERENCES ProviderReportingStructureDim (RPTNG_STRC_CDS);
 ALTER TABLE ProviderDim ADD CONSTRAINT [ProviderDim-ProviderTypeDim] FOREIGN KEY (PROVDR_TYPE_CDS) REFERENCES ProviderTypeDim (PROVDR_TYPE_CDS);
-ALTER TABLE qps_Dim_Measure ADD CONSTRAINT [QualityMeasureDim-QualityMeasureSourceDim] FOREIGN KEY (Source_ID) REFERENCES QualityMeasureSourceDim (Source_ID);
+ALTER TABLE MeasureDim ADD CONSTRAINT [QualityMeasureDim-QualityMeasureSourceDim] FOREIGN KEY (Source_ID) REFERENCES MeasureSourceDim (Source_ID);
 ALTER TABLE SurgicalCaseDim ADD CONSTRAINT [SurgicalCaseDim-SurgicalCaseClassDim] FOREIGN KEY (CL_CDS) REFERENCES SurgicalCaseClassDim (CL_CDS);
 ALTER TABLE SurgicalCaseDim ADD CONSTRAINT [SurgicalCaseDim-SurgicalCasePatientClassDim] FOREIGN KEY (SRG_PTNT_CLASS_CDS) REFERENCES SurgicalCasePatientClassDim (SRG_PTNT_CLASS_CDS);
 ALTER TABLE SurgicalCaseDim ADD CONSTRAINT [SurgicalCaseDim-SurgicalCasePrimaryAnesthesiaTypeDim] FOREIGN KEY (PRMY_ANSTH_TYPE_CDS) REFERENCES SurgicalCasePrimaryAnesthesiaTypeDim (PRMY_ANSTH_TYPE_CDS);
 ALTER TABLE SurgicalCaseDim ADD CONSTRAINT [SurgicalCaseDim-SurgicalCasePrimaryServiceDim] FOREIGN KEY (PRMY_SRVC_CDS) REFERENCES SurgicalCasePrimaryServiceDim (PRMY_SRVC_CDS);
 ALTER TABLE SurgicalCaseDim ADD CONSTRAINT [SurgicalCaseDim-SurgicalCaseProcedureLevelDim] FOREIGN KEY (PRCDR_LEVL_CDS) REFERENCES SurgicalCaseProcedureLevelDim (PRCDR_LEVL_CDS);
 ALTER TABLE SurgicalCaseDim ADD CONSTRAINT [SurgicalCaseDim-SurgicalCaseReasonNotPerformedDim] FOREIGN KEY (RSN_NOT_PRFRM_CDS) REFERENCES SurgicalCaseReasonNotPerformedDim (RSN_NOT_PRFRM_CDS);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim] FOREIGN KEY (SRG_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim1] FOREIGN KEY (CASE_RQST_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12] FOREIGN KEY (SCHED_SETUP_STRT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim123] FOREIGN KEY (SCHED_IN_RM_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim1234] FOREIGN KEY (SCHED_OUT_OF_RM_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12345] FOREIGN KEY (PTNT_IN_FCLT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim123456] FOREIGN KEY (PTNT_IN_PRE_PRCDR_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim1234567] FOREIGN KEY (PTNT_OUT_OF_POST_OP_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12345678] FOREIGN KEY (POST_OP_CARE_CMPLT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim123456789] FOREIGN KEY (PTNT_POST_OP_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12345678910] FOREIGN KEY (PTNT_OUT_OF_PACU_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim1234567891011] FOREIGN KEY (PACU_CARE_CMPLT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim123456789101112] FOREIGN KEY (ANSTH_STOP_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12345678910111213] FOREIGN KEY (PTNT_IN_PACU_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim1234567891011121314] FOREIGN KEY (RM_CLNUP_CMPLT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim123456789101112131415] FOREIGN KEY (RM_CLNUP_STRT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12345678910111213141516] FOREIGN KEY (PTNT_OUT_OF_RM_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim1234567891011121314151617] FOREIGN KEY (PRCDR_CMPLT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim123456789101112131415161718] FOREIGN KEY (PRCDR_STRT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12345678910111213141516171819] FOREIGN KEY (ANSTH_RDY_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim123456789101112131415161718192021] FOREIGN KEY (PTNT_IN_RM_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12345678910111213141516171819202122] FOREIGN KEY (PRE_PRCDR_CMPLT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim1234567891011121314151617181920212223] FOREIGN KEY (ANSTH_STRT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim123456789101112131415161718192021222324] FOREIGN KEY (RM_RDY_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12345678910111213141516171819202122232425] FOREIGN KEY (RM_SETUP_STRT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim1234567891011121314151617181920212223242526] FOREIGN KEY (SCHED_CLNUP_CMPLT_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim] FOREIGN KEY (SRG_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim1] FOREIGN KEY (CASE_RQST_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12] FOREIGN KEY (SCHED_SETUP_STRT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim123] FOREIGN KEY (SCHED_IN_RM_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim1234] FOREIGN KEY (SCHED_OUT_OF_RM_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12345] FOREIGN KEY (PTNT_IN_FCLT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim123456] FOREIGN KEY (PTNT_IN_PRE_PRCDR_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim1234567] FOREIGN KEY (PTNT_OUT_OF_POST_OP_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12345678] FOREIGN KEY (POST_OP_CARE_CMPLT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim123456789] FOREIGN KEY (PTNT_POST_OP_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12345678910] FOREIGN KEY (PTNT_OUT_OF_PACU_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim1234567891011] FOREIGN KEY (PACU_CARE_CMPLT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim123456789101112] FOREIGN KEY (ANSTH_STOP_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12345678910111213] FOREIGN KEY (PTNT_IN_PACU_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim1234567891011121314] FOREIGN KEY (RM_CLNUP_CMPLT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim123456789101112131415] FOREIGN KEY (RM_CLNUP_STRT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12345678910111213141516] FOREIGN KEY (PTNT_OUT_OF_RM_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim1234567891011121314151617] FOREIGN KEY (PRCDR_CMPLT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim123456789101112131415161718] FOREIGN KEY (PRCDR_STRT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12345678910111213141516171819] FOREIGN KEY (ANSTH_RDY_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim123456789101112131415161718192021] FOREIGN KEY (PTNT_IN_RM_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12345678910111213141516171819202122] FOREIGN KEY (PRE_PRCDR_CMPLT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim1234567891011121314151617181920212223] FOREIGN KEY (ANSTH_STRT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim123456789101112131415161718192021222324] FOREIGN KEY (RM_RDY_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim12345678910111213141516171819202122232425] FOREIGN KEY (RM_SETUP_STRT_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DateDim1234567891011121314151617181920212223242526] FOREIGN KEY (SCHED_CLNUP_CMPLT_DT) REFERENCES DateDim (CLNDR_DT);
 ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DepartmentDim] FOREIGN KEY (DEPT_SK) REFERENCES DepartmentDim (DEPT_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DiagnosisBridge] FOREIGN KEY (DIAG_CD_SK) REFERENCES dbo_DIAG_BRIDGE (DIAG_CD_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-EncounterDim] FOREIGN KEY (HSPTL_ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-EncounterDim1] FOREIGN KEY (SRG_ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES LDW_PTNT_DIM (PTNT_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-DiagnosisBridge] FOREIGN KEY (DIAG_CD_SK) REFERENCES DiagnosisBridge (DIAG_CD_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-EncounterDim] FOREIGN KEY (HSPTL_ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-EncounterDim1] FOREIGN KEY (SRG_ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES PatientDim (PTNT_SK);
 ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-ProcedureDim] FOREIGN KEY (PRMY_PRCDR_CD_SK) REFERENCES ProcedureDim (PRCDR_CD_SK);
 ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-ProviderDim] FOREIGN KEY (PRMY_PROVDR_SK) REFERENCES ProviderDim (PROVDR_SK);
 ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-ProviderDim1] FOREIGN KEY (ANSTHGIST_PROVDR_SK) REFERENCES ProviderDim (PROVDR_SK);
 ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-SurgicalCaseDim] FOREIGN KEY (CASE_SK) REFERENCES SurgicalCaseDim (CASE_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim] FOREIGN KEY (CASE_RQST_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim1] FOREIGN KEY (SCHED_SETUP_STRT_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12] FOREIGN KEY (SCHED_IN_RM_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim123] FOREIGN KEY (SCHED_OUT_OF_RM_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim1234] FOREIGN KEY (SCHED_CLNUP_CMPLT_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12345] FOREIGN KEY (PTNT_IN_FCLT_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim123456] FOREIGN KEY (PTNT_IN_PRE_PRCDR_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim1234567] FOREIGN KEY (PTNT_OUT_OF_POST_OP_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12345678] FOREIGN KEY (POST_OP_CARE_CMPLT_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim123456789] FOREIGN KEY (PTNT_POST_OP_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12345678910] FOREIGN KEY (PTNT_OUT_OF_PACU_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim1234567891011] FOREIGN KEY (PACU_CARE_CMPLT_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim123456789101112] FOREIGN KEY (ANSTH_STOP_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12345678910111213] FOREIGN KEY (PTNT_IN_PACU_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim1234567891011121314] FOREIGN KEY (RM_CLNUP_CMPLT_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim123456789101112131415] FOREIGN KEY (RM_CLNUP_STRT_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12345678910111213141516] FOREIGN KEY (PTNT_OUT_OF_RM_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim1234567891011121314151617] FOREIGN KEY (PRCDR_CMPLT_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim123456789101112131415161718] FOREIGN KEY (PRCDR_STRT_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12345678910111213141516171819] FOREIGN KEY (ANSTH_RDY_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim123456789101112131415161718192021] FOREIGN KEY (PTNT_IN_RM_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12345678910111213141516171819202122] FOREIGN KEY (PRE_PRCDR_CMPLT_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim1234567891011121314151617181920212223] FOREIGN KEY (ANSTH_STRT_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim123456789101112131415161718192021222324] FOREIGN KEY (RM_RDY_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
-ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12345678910111213141516171819202122232425] FOREIGN KEY (RM_SETUP_STRT_TM_SK) REFERENCES DW_TM_OF_DY_DIM (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim] FOREIGN KEY (CASE_RQST_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim1] FOREIGN KEY (SCHED_SETUP_STRT_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12] FOREIGN KEY (SCHED_IN_RM_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim123] FOREIGN KEY (SCHED_OUT_OF_RM_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim1234] FOREIGN KEY (SCHED_CLNUP_CMPLT_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12345] FOREIGN KEY (PTNT_IN_FCLT_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim123456] FOREIGN KEY (PTNT_IN_PRE_PRCDR_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim1234567] FOREIGN KEY (PTNT_OUT_OF_POST_OP_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12345678] FOREIGN KEY (POST_OP_CARE_CMPLT_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim123456789] FOREIGN KEY (PTNT_POST_OP_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12345678910] FOREIGN KEY (PTNT_OUT_OF_PACU_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim1234567891011] FOREIGN KEY (PACU_CARE_CMPLT_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim123456789101112] FOREIGN KEY (ANSTH_STOP_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12345678910111213] FOREIGN KEY (PTNT_IN_PACU_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim1234567891011121314] FOREIGN KEY (RM_CLNUP_CMPLT_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim123456789101112131415] FOREIGN KEY (RM_CLNUP_STRT_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12345678910111213141516] FOREIGN KEY (PTNT_OUT_OF_RM_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim1234567891011121314151617] FOREIGN KEY (PRCDR_CMPLT_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim123456789101112131415161718] FOREIGN KEY (PRCDR_STRT_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12345678910111213141516171819] FOREIGN KEY (ANSTH_RDY_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim123456789101112131415161718192021] FOREIGN KEY (PTNT_IN_RM_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12345678910111213141516171819202122] FOREIGN KEY (PRE_PRCDR_CMPLT_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim1234567891011121314151617181920212223] FOREIGN KEY (ANSTH_STRT_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim123456789101112131415161718192021222324] FOREIGN KEY (RM_RDY_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
+ALTER TABLE SurgicalCaseFact ADD CONSTRAINT [SurgicalCaseFact-TimeDim12345678910111213141516171819202122232425] FOREIGN KEY (RM_SETUP_STRT_TM_SK) REFERENCES TimeDim (TM_OF_DY_SK);
 ALTER TABLE SurgicalProcedureEventFact ADD CONSTRAINT [SurgicalProcedureEventFact-BinaryDim] FOREIGN KEY (SCHED_IND) REFERENCES BinaryDim (Binary_CD);
 ALTER TABLE SurgicalProcedureEventFact ADD CONSTRAINT [SurgicalProcedureEventFact-BinaryDim1] FOREIGN KEY (PRFRM_IND) REFERENCES BinaryDim (Binary_CD);
 ALTER TABLE SurgicalProcedureEventFact ADD CONSTRAINT [SurgicalProcedureEventFact-BinaryDim12] FOREIGN KEY (PSSBL_IND) REFERENCES BinaryDim (Binary_CD);
-ALTER TABLE SurgicalProcedureEventFact ADD CONSTRAINT [SurgicalProcedureEventFact-DateDim] FOREIGN KEY (SRG_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
-ALTER TABLE SurgicalProcedureEventFact ADD CONSTRAINT [SurgicalProcedureEventFact-EncounterDim] FOREIGN KEY (HSPTL_ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
-ALTER TABLE SurgicalProcedureEventFact ADD CONSTRAINT [SurgicalProcedureEventFact-EncounterDim1] FOREIGN KEY (SRG_ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
-ALTER TABLE SurgicalProcedureEventFact ADD CONSTRAINT [SurgicalProcedureEventFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES LDW_PTNT_DIM (PTNT_SK);
+ALTER TABLE SurgicalProcedureEventFact ADD CONSTRAINT [SurgicalProcedureEventFact-DateDim] FOREIGN KEY (SRG_DT) REFERENCES DateDim (CLNDR_DT);
+ALTER TABLE SurgicalProcedureEventFact ADD CONSTRAINT [SurgicalProcedureEventFact-EncounterDim] FOREIGN KEY (HSPTL_ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
+ALTER TABLE SurgicalProcedureEventFact ADD CONSTRAINT [SurgicalProcedureEventFact-EncounterDim1] FOREIGN KEY (SRG_ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
+ALTER TABLE SurgicalProcedureEventFact ADD CONSTRAINT [SurgicalProcedureEventFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES PatientDim (PTNT_SK);
 ALTER TABLE SurgicalProcedureEventFact ADD CONSTRAINT [SurgicalProcedureEventFact-ProcedureDim] FOREIGN KEY (PRCDR_CD_SK) REFERENCES ProcedureDim (PRCDR_CD_SK);
 ALTER TABLE SurgicalProcedureEventFact ADD CONSTRAINT [SurgicalProcedureEventFact-ProviderDim] FOREIGN KEY (PRMY_PROVDR_SURGEON_SK) REFERENCES ProviderDim (PROVDR_SK);
 ALTER TABLE SurgicalProcedureEventFact ADD CONSTRAINT [SurgicalProcedureEventFact-ProviderDim1] FOREIGN KEY (SCND_PROVDR_SURGEON_SK) REFERENCES ProviderDim (PROVDR_SK);
@@ -3163,11 +3169,11 @@ ALTER TABLE SurgicalProcedureEventFact ADD CONSTRAINT [SurgicalProcedureEventFac
 ALTER TABLE SurgicalSupplyDim ADD CONSTRAINT [SurgicalSupplyDim-SurgicalSupplyManufacturerDim] FOREIGN KEY (MNFCTR_CDS) REFERENCES SurgicalSupplyManufacturerDim (MNFCTR_CDS);
 ALTER TABLE SurgicalSupplyDim ADD CONSTRAINT [SurgicalSupplyDim-SurgicalSupplyVendorDim] FOREIGN KEY (VND_CDS) REFERENCES SurgicalSupplyVendorDim (VND_CDS);
 ALTER TABLE SurgicalSupplyUseFact ADD CONSTRAINT [SurgicalSupplyUseFact-BinaryDim] FOREIGN KEY (CRGBL_IND) REFERENCES BinaryDim (Binary_CD);
-ALTER TABLE SurgicalSupplyUseFact ADD CONSTRAINT [SurgicalSupplyUseFact-DateDim] FOREIGN KEY (SRG_DT) REFERENCES DW_CLNDR_DIM (CLNDR_DT);
+ALTER TABLE SurgicalSupplyUseFact ADD CONSTRAINT [SurgicalSupplyUseFact-DateDim] FOREIGN KEY (SRG_DT) REFERENCES DateDim (CLNDR_DT);
 ALTER TABLE SurgicalSupplyUseFact ADD CONSTRAINT [SurgicalSupplyUseFact-DepartmentDim] FOREIGN KEY (DEPT_SK) REFERENCES DepartmentDim (DEPT_SK);
-ALTER TABLE SurgicalSupplyUseFact ADD CONSTRAINT [SurgicalSupplyUseFact-EncounterDim] FOREIGN KEY (HSPTL_ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
-ALTER TABLE SurgicalSupplyUseFact ADD CONSTRAINT [SurgicalSupplyUseFact-EncounterDim1] FOREIGN KEY (SRG_ENCNT_SK) REFERENCES DW_ENCNT_DIM (ENCNT_SK);
-ALTER TABLE SurgicalSupplyUseFact ADD CONSTRAINT [SurgicalSupplyUseFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES LDW_PTNT_DIM (PTNT_SK);
+ALTER TABLE SurgicalSupplyUseFact ADD CONSTRAINT [SurgicalSupplyUseFact-EncounterDim] FOREIGN KEY (HSPTL_ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
+ALTER TABLE SurgicalSupplyUseFact ADD CONSTRAINT [SurgicalSupplyUseFact-EncounterDim1] FOREIGN KEY (SRG_ENCNT_SK) REFERENCES EncounterDim (ENCNT_SK);
+ALTER TABLE SurgicalSupplyUseFact ADD CONSTRAINT [SurgicalSupplyUseFact-PatientDim] FOREIGN KEY (PTNT_SK) REFERENCES PatientDim (PTNT_SK);
 ALTER TABLE SurgicalSupplyUseFact ADD CONSTRAINT [SurgicalSupplyUseFact-ProcedureDim] FOREIGN KEY (PRCDR_CD_SK) REFERENCES ProcedureDim (PRCDR_CD_SK);
 ALTER TABLE SurgicalSupplyUseFact ADD CONSTRAINT [SurgicalSupplyUseFact-ProviderDim] FOREIGN KEY (PRMY_PROVDR_SK) REFERENCES ProviderDim (PROVDR_SK);
 ALTER TABLE SurgicalSupplyUseFact ADD CONSTRAINT [SurgicalSupplyUseFact-SurgicalCaseDim] FOREIGN KEY (CASE_SK) REFERENCES SurgicalCaseDim (CASE_SK);

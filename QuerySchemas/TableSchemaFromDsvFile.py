@@ -2,7 +2,7 @@ import untangle
 import collections
 import json
 
-create_tables_using_friendly_names = False
+create_tables_using_friendly_names = True
 
 obj = untangle.parse(r'..\ContractCube\Carilion.dsv')
 
@@ -93,7 +93,7 @@ def GetFriendlyTableName(o):
     if isinstance(o, str):
         if create_tables_using_friendly_names:
             for t in tables:
-                if o == t:
+                if o == t.Name:
                     return t.FriendlyName
             raise Exception(str.format('Could not find table with name [{0}]', o))
         else:
@@ -147,6 +147,9 @@ def IsIdentityColumn(c, primary_key_column_name):
 
 #Build SQL create statements
 sql = []
+sql.append('use carilion_dw')
+sql.append('go')
+sql.append('\n\n\n')
 sql.append('-- drop all foreign keys')
 sql.append('exec dbo.usp_DropAllForeignKeyConstraints')
 sql.append('\n\n\n')
