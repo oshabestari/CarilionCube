@@ -66,10 +66,10 @@ for xe in obj.DataSourceView.Schema.xs_schema.xs_element.xs_complexType.xs_choic
     tables.append(tabdef)
     tables_asdict.append(tabdef_asdict._asdict())
     #print(tabdef)
-# tables.sort(key=lambda x: x.FriendlyName)
-# tables_asdict.sort(key=lambda x: x['FriendlyName'])
-tables.sort(key=lambda x: x.Name)
-tables_asdict.sort(key=lambda x: x['Name'])
+tables.sort(key=lambda x: x.FriendlyName)
+tables_asdict.sort(key=lambda x: x['FriendlyName'])
+# tables.sort(key=lambda x: x.Name)
+# tables_asdict.sort(key=lambda x: x['Name'])
 
 
 with open('./output/tables.json', 'w') as f:

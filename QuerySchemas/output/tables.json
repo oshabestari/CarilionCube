@@ -202,6 +202,95 @@
         ]
     },
     {
+        "Name": "qps_DM_Quality",
+        "FriendlyName": "DM_Quality_Fact",
+        "DbTableName": "DM_Quality_Fact",
+        "QueryDefinition": "SELECT     Data_ID, LO_CDS, SRC_DEPT_ID, Truven_Indicator, Source_Source_Measure_ID, Source_Measure_Title, Frequency, [Date], Result\r\nFROM        qps.DM_Quality_Fact",
+        "Columns": [
+            {
+                "Name": "Data_ID",
+                "FriendlyName": "Data_ID",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": false,
+                "Length": -1,
+                "DbColumnName": "Data_ID"
+            },
+            {
+                "Name": "LO_CDS",
+                "FriendlyName": "LO_CDS",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "LO_CDS"
+            },
+            {
+                "Name": "SRC_DEPT_ID",
+                "FriendlyName": "SRC_DEPT_ID",
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 4000,
+                "DbColumnName": "SRC_DEPT_ID"
+            },
+            {
+                "Name": "Truven_Indicator",
+                "FriendlyName": "Truven_Indicator",
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 4000,
+                "DbColumnName": "Truven_Indicator"
+            },
+            {
+                "Name": "Source_Measure_Title",
+                "FriendlyName": "Source_Measure_Title",
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 4000,
+                "DbColumnName": "Source_Measure_Title"
+            },
+            {
+                "Name": "Frequency",
+                "FriendlyName": "Frequency",
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 4000,
+                "DbColumnName": "Frequency"
+            },
+            {
+                "Name": "Date",
+                "FriendlyName": "Date",
+                "DataType": "dateTime",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "Date"
+            },
+            {
+                "Name": "Result",
+                "FriendlyName": "Result",
+                "DataType": "decimal",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "Result"
+            },
+            {
+                "Name": "Source_Source_Measure_ID",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "Source_Source_Measure_ID"
+            }
+        ]
+    },
+    {
         "Name": "DRGDim",
         "FriendlyName": "DRGDim",
         "DbTableName": "DRGDim",
@@ -791,273 +880,6 @@
         ]
     },
     {
-        "Name": "DW_ENCNT_DIM",
-        "FriendlyName": "EncounterDim",
-        "DbTableName": "EncounterDim",
-        "QueryDefinition": "SELECT ENCNT_SK,\r\nSRC_ENCNT_ID,\r\nPTNT_STS_CDS, \r\nENCNT_TYPE_CDS, \r\nLEVL_OF_CARE_CDS,\r\nPTNT_BSE_CLSS_CDS, \r\nCASE WHEN TRAUMA_IND= 0 THEN 'NO' WHEN TRAUMA_IND= 1 THEN 'YES' ELSE NULL END AS TRAUMA_IND,\r\nAGE_YRS_AT_ENCNT,\r\nAGE_MNTHS_AT_ENCNT,\r\nAGE_DYS_AT_ENCNT,\r\nPRD_LINE_CDS,\r\nBILLING_CLASS_CDS,\r\nDEPT_CDS\r\n--, SECTION_CDS\r\nFROM CUBESPRD.ENCNT_DIM",
-        "Columns": [
-            {
-                "Name": "ENCNT_SK",
-                "FriendlyName": null,
-                "DataType": "long",
-                "Description": null,
-                "AllowNull": false,
-                "Length": -1,
-                "DbColumnName": "ENCNT_SK"
-            },
-            {
-                "Name": "SRC_ENCNT_ID",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "SRC_ENCNT_ID"
-            },
-            {
-                "Name": "PTNT_STS_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "PTNT_STS_CDS"
-            },
-            {
-                "Name": "ENCNT_TYPE_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "ENCNT_TYPE_CDS"
-            },
-            {
-                "Name": "LEVL_OF_CARE_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "LEVL_OF_CARE_CDS"
-            },
-            {
-                "Name": "TRAUMA_IND",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 3,
-                "DbColumnName": "TRAUMA_IND"
-            },
-            {
-                "Name": "PTNT_BSE_CLSS_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "PTNT_BSE_CLSS_CDS"
-            },
-            {
-                "Name": "AGE_YRS_AT_ENCNT",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "AGE_YRS_AT_ENCNT"
-            },
-            {
-                "Name": "AGE_MNTHS_AT_ENCNT",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "AGE_MNTHS_AT_ENCNT"
-            },
-            {
-                "Name": "AGE_DYS_AT_ENCNT",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "AGE_DYS_AT_ENCNT"
-            },
-            {
-                "Name": "PRD_LINE_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "PRD_LINE_CDS"
-            },
-            {
-                "Name": "BILLING_CLASS_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "BILLING_CLASS_CDS"
-            },
-            {
-                "Name": "DEPT_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "DEPT_CDS"
-            }
-        ]
-    },
-    {
-        "Name": "DW_ENCNT_FACT",
-        "FriendlyName": "EncounterFact",
-        "DbTableName": "EncounterFact",
-        "QueryDefinition": "SELECT ENCNT_FACT_SK\r\n       , ENCNT_SK\r\n       , PTNT_SK\r\n       , DEPT_SK\r\n       , ENCNT_DT\r\n       , AGE_YRS_AT_ENCNT\r\n       , AGE_MNTHS_AT_ENCNT\r\n       , AGE_DYS_AT_ENCNT\r\n       , ENCNT_WAIT_IN_DAYS\r\n  FROM CUBESPRD.ENCNT_FACT",
-        "Columns": [
-            {
-                "Name": "ENCNT_FACT_SK",
-                "FriendlyName": "ENCNT_FACT_SK",
-                "DataType": "long",
-                "Description": null,
-                "AllowNull": false,
-                "Length": -1,
-                "DbColumnName": "ENCNT_FACT_SK"
-            },
-            {
-                "Name": "ENCNT_SK",
-                "FriendlyName": "ENCNT_SK",
-                "DataType": "long",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "ENCNT_SK"
-            },
-            {
-                "Name": "PTNT_SK",
-                "FriendlyName": "PTNT_SK",
-                "DataType": "long",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "PTNT_SK"
-            },
-            {
-                "Name": "DEPT_SK",
-                "FriendlyName": "DEPT_SK",
-                "DataType": "long",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "DEPT_SK"
-            },
-            {
-                "Name": "AGE_YRS_AT_ENCNT",
-                "FriendlyName": "AGE_YRS_AT_ENCNT",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "AGE_YRS_AT_ENCNT"
-            },
-            {
-                "Name": "ENCNT_DT",
-                "FriendlyName": null,
-                "DataType": "dateTime",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "ENCNT_DT"
-            },
-            {
-                "Name": "AGE_MNTHS_AT_ENCNT",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "AGE_MNTHS_AT_ENCNT"
-            },
-            {
-                "Name": "AGE_DYS_AT_ENCNT",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "AGE_DYS_AT_ENCNT"
-            },
-            {
-                "Name": "ENCNT_WAIT_IN_DAYS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "ENCNT_WAIT_IN_DAYS"
-            }
-        ]
-    },
-    {
-        "Name": "DW_TM_OF_DY_DIM",
-        "FriendlyName": "TimeDim",
-        "DbTableName": "TimeDim",
-        "QueryDefinition": "SELECT TM_OF_DY_SK\r\n       , TM_OF_DY\r\n       , HR_OF_DY\r\n       , MN_OF_DY\r\n       , SCND_OF_DY\r\n\r\n  FROM EDW_PRD.DW.TM_OF_DY_DIM",
-        "Columns": [
-            {
-                "Name": "TM_OF_DY_SK",
-                "FriendlyName": "TM_OF_DY_SK",
-                "DataType": "long",
-                "Description": null,
-                "AllowNull": false,
-                "Length": -1,
-                "DbColumnName": "TM_OF_DY_SK"
-            },
-            {
-                "Name": "TM_OF_DY",
-                "FriendlyName": "TM_OF_DY",
-                "DataType": "duration",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "TM_OF_DY"
-            },
-            {
-                "Name": "HR_OF_DY",
-                "FriendlyName": "HR_OF_DY",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "HR_OF_DY"
-            },
-            {
-                "Name": "MN_OF_DY",
-                "FriendlyName": "MN_OF_DY",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "MN_OF_DY"
-            },
-            {
-                "Name": "SCND_OF_DY",
-                "FriendlyName": "SCND_OF_DY",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "SCND_OF_DY"
-            }
-        ]
-    },
-    {
         "Name": "DepartmentDim",
         "FriendlyName": "DepartmentDim",
         "DbTableName": "DepartmentDim",
@@ -1314,6 +1136,273 @@
                 "AllowNull": true,
                 "Length": 255,
                 "DbColumnName": "LOC_TYPE_DESC"
+            }
+        ]
+    },
+    {
+        "Name": "dbo_DIAG_BRIDGE",
+        "FriendlyName": "DiagnosisBridge",
+        "DbTableName": "DiagnosisBridge",
+        "QueryDefinition": "SELECT        DIAG_CD_SK, MSTR_DIAG_CD, DIAG_CD_DESC, ICD9_CD, ICD9_CD_LST, ICD10_CD, ICD10_CD_LST, DIAG_HIR_SK\r\nFROM            DIAG_CD_DIM",
+        "Columns": [
+            {
+                "Name": "DIAG_CD_SK",
+                "FriendlyName": "DIAG_CD_SK",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": false,
+                "Length": -1,
+                "DbColumnName": "DIAG_CD_SK"
+            },
+            {
+                "Name": "DIAG_CD_DESC",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "DIAG_CD_DESC"
+            },
+            {
+                "Name": "MSTR_DIAG_CD",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 50,
+                "DbColumnName": "MSTR_DIAG_CD"
+            },
+            {
+                "Name": "ICD9_CD",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 50,
+                "DbColumnName": "ICD9_CD"
+            },
+            {
+                "Name": "ICD9_CD_LST",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "ICD9_CD_LST"
+            },
+            {
+                "Name": "ICD10_CD",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 50,
+                "DbColumnName": "ICD10_CD"
+            },
+            {
+                "Name": "ICD10_CD_LST",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "ICD10_CD_LST"
+            },
+            {
+                "Name": "DIAG_HIR_SK",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "DIAG_HIR_SK"
+            }
+        ]
+    },
+    {
+        "Name": "LDW_DIAG_FACT",
+        "FriendlyName": "DiagnosisFact",
+        "DbTableName": "DiagnosisFact",
+        "QueryDefinition": "SELECT        DIAG_SK, DF.SRC_TYPE,SRC_DIAG_SQNC, \r\nCASE \r\nWHEN DF.DIAG_CD_SK < 0 THEN NULL ELSE DF.DIAG_CD_SK \r\nEND AS DIAG_CD_SK, DF.PTNT_SK, ENCNT_SK, DEPT_SK, CHRNC_IND, PRMY_DIAG_IND, SCND_DIAG_IND, \r\nCASE \r\nWHEN (PRSNT_ON_ADMT_CD < 0) \r\nOR (PRSNT_ON_ADMT_CD IN (1410783,3)) THEN NULL ELSE CAST (PRSNT_ON_ADMT_CD AS INTEGER) \r\nEND AS PRSNT_ON_ADMT_CD, ED_DIAG_IND, \r\nCASE \r\nWHEN DIAG_STRT_DT < '1900-01-02'::\"DATETIME\" THEN NULL ELSE DIAG_STRT_DT \r\nEND AS DIAG_STRT_DT, DIAG_STRT_TS_SK, \r\nCASE \r\nWHEN DIAG_END_DT = '1000-01-02'::\"DATETIME\" OR DIAG_END_DT > '2100-01-02'::\"DATETIME\" THEN NULL ELSE DIAG_END_DT \r\nEND AS DIAG_END_DT, DIAG_END_TS_SK\r\nFROM CUBESPRD.DIAG_FACT DF INNER JOIN CUBESPRD.DIAG_CD_DIM DCD ON DF.DIAG_CD_SK=DCD.DIAG_CD_SK INNER JOIN CUBESDEV.PTNT_DIM PD ON df.PTNT_SK=pd.PTNT_SK",
+        "Columns": [
+            {
+                "Name": "DIAG_SK",
+                "FriendlyName": "DIAG_SK",
+                "DataType": "long",
+                "Description": null,
+                "AllowNull": false,
+                "Length": -1,
+                "DbColumnName": "DIAG_SK"
+            },
+            {
+                "Name": "SRC_DIAG_SQNC",
+                "FriendlyName": "SRC_DIAG_SQNC",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "SRC_DIAG_SQNC"
+            },
+            {
+                "Name": "DIAG_CD_SK",
+                "FriendlyName": "DIAG_CD_SK",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "DIAG_CD_SK"
+            },
+            {
+                "Name": "PTNT_SK",
+                "FriendlyName": "PTNT_SK",
+                "DataType": "long",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "PTNT_SK"
+            },
+            {
+                "Name": "ENCNT_SK",
+                "FriendlyName": "ENCNT_SK",
+                "DataType": "long",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "ENCNT_SK"
+            },
+            {
+                "Name": "DEPT_SK",
+                "FriendlyName": "DEPT_SK",
+                "DataType": "long",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "DEPT_SK"
+            },
+            {
+                "Name": "CHRNC_IND",
+                "FriendlyName": "CHRNC_IND",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "CHRNC_IND"
+            },
+            {
+                "Name": "PRMY_DIAG_IND",
+                "FriendlyName": "PRMY_DIAG_IND",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "PRMY_DIAG_IND"
+            },
+            {
+                "Name": "SCND_DIAG_IND",
+                "FriendlyName": "SCND_DIAG_IND",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "SCND_DIAG_IND"
+            },
+            {
+                "Name": "ED_DIAG_IND",
+                "FriendlyName": "ED_DIAG_IND",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "ED_DIAG_IND"
+            },
+            {
+                "Name": "DIAG_STRT_DT",
+                "FriendlyName": "DIAG_STRT_DT",
+                "DataType": "dateTime",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "DIAG_STRT_DT"
+            },
+            {
+                "Name": "DIAG_END_DT",
+                "FriendlyName": "DIAG_END_DT",
+                "DataType": "dateTime",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "DIAG_END_DT"
+            },
+            {
+                "Name": "SRC_TYPE",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 50,
+                "DbColumnName": "SRC_TYPE"
+            },
+            {
+                "Name": "PRSNT_ON_ADMT_CD",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "PRSNT_ON_ADMT_CD"
+            },
+            {
+                "Name": "DIAG_STRT_TS_SK",
+                "FriendlyName": null,
+                "DataType": "long",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "DIAG_STRT_TS_SK"
+            },
+            {
+                "Name": "DIAG_END_TS_SK",
+                "FriendlyName": null,
+                "DataType": "long",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "DIAG_END_TS_SK"
+            }
+        ]
+    },
+    {
+        "Name": "dbo_DIAG_HYR_DIM",
+        "FriendlyName": "DiagnosisHierarchy",
+        "DbTableName": "DiagnosisHierarchy",
+        "QueryDefinition": "SELECT        DIAG_HIR_SK, DIAG_CLS_DESC, DIAG_PRN_SK\r\nFROM            DIAG_HIR_DIM",
+        "Columns": [
+            {
+                "Name": "DIAG_CLS_DESC",
+                "FriendlyName": "DIAG_CLS_DESC",
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "DIAG_CLS_DESC"
+            },
+            {
+                "Name": "DIAG_PRN_SK",
+                "FriendlyName": "DIAG_PRN_SK",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "DIAG_PRN_SK"
+            },
+            {
+                "Name": "DIAG_HIR_SK",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": false,
+                "Length": -1,
+                "DbColumnName": "DIAG_HIR_SK"
             }
         ]
     },
@@ -4170,6 +4259,131 @@
         ]
     },
     {
+        "Name": "DW_ENCNT_DIM",
+        "FriendlyName": "EncounterDim",
+        "DbTableName": "EncounterDim",
+        "QueryDefinition": "SELECT ENCNT_SK,\r\nSRC_ENCNT_ID,\r\nPTNT_STS_CDS, \r\nENCNT_TYPE_CDS, \r\nLEVL_OF_CARE_CDS,\r\nPTNT_BSE_CLSS_CDS, \r\nCASE WHEN TRAUMA_IND= 0 THEN 'NO' WHEN TRAUMA_IND= 1 THEN 'YES' ELSE NULL END AS TRAUMA_IND,\r\nAGE_YRS_AT_ENCNT,\r\nAGE_MNTHS_AT_ENCNT,\r\nAGE_DYS_AT_ENCNT,\r\nPRD_LINE_CDS,\r\nBILLING_CLASS_CDS,\r\nDEPT_CDS\r\n--, SECTION_CDS\r\nFROM CUBESPRD.ENCNT_DIM",
+        "Columns": [
+            {
+                "Name": "ENCNT_SK",
+                "FriendlyName": null,
+                "DataType": "long",
+                "Description": null,
+                "AllowNull": false,
+                "Length": -1,
+                "DbColumnName": "ENCNT_SK"
+            },
+            {
+                "Name": "SRC_ENCNT_ID",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "SRC_ENCNT_ID"
+            },
+            {
+                "Name": "PTNT_STS_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "PTNT_STS_CDS"
+            },
+            {
+                "Name": "ENCNT_TYPE_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "ENCNT_TYPE_CDS"
+            },
+            {
+                "Name": "LEVL_OF_CARE_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "LEVL_OF_CARE_CDS"
+            },
+            {
+                "Name": "TRAUMA_IND",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 3,
+                "DbColumnName": "TRAUMA_IND"
+            },
+            {
+                "Name": "PTNT_BSE_CLSS_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "PTNT_BSE_CLSS_CDS"
+            },
+            {
+                "Name": "AGE_YRS_AT_ENCNT",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "AGE_YRS_AT_ENCNT"
+            },
+            {
+                "Name": "AGE_MNTHS_AT_ENCNT",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "AGE_MNTHS_AT_ENCNT"
+            },
+            {
+                "Name": "AGE_DYS_AT_ENCNT",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "AGE_DYS_AT_ENCNT"
+            },
+            {
+                "Name": "PRD_LINE_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "PRD_LINE_CDS"
+            },
+            {
+                "Name": "BILLING_CLASS_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "BILLING_CLASS_CDS"
+            },
+            {
+                "Name": "DEPT_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "DEPT_CDS"
+            }
+        ]
+    },
+    {
         "Name": "EncounterEncouterypeDim",
         "FriendlyName": "EncounterEncouterTypeDim",
         "DbTableName": "EncounterEncouterTypeDim",
@@ -4192,6 +4406,95 @@
                 "AllowNull": true,
                 "Length": 254,
                 "DbColumnName": "ENCNT_TYPE_DESC"
+            }
+        ]
+    },
+    {
+        "Name": "DW_ENCNT_FACT",
+        "FriendlyName": "EncounterFact",
+        "DbTableName": "EncounterFact",
+        "QueryDefinition": "SELECT ENCNT_FACT_SK\r\n       , ENCNT_SK\r\n       , PTNT_SK\r\n       , DEPT_SK\r\n       , ENCNT_DT\r\n       , AGE_YRS_AT_ENCNT\r\n       , AGE_MNTHS_AT_ENCNT\r\n       , AGE_DYS_AT_ENCNT\r\n       , ENCNT_WAIT_IN_DAYS\r\n  FROM CUBESPRD.ENCNT_FACT",
+        "Columns": [
+            {
+                "Name": "ENCNT_FACT_SK",
+                "FriendlyName": "ENCNT_FACT_SK",
+                "DataType": "long",
+                "Description": null,
+                "AllowNull": false,
+                "Length": -1,
+                "DbColumnName": "ENCNT_FACT_SK"
+            },
+            {
+                "Name": "ENCNT_SK",
+                "FriendlyName": "ENCNT_SK",
+                "DataType": "long",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "ENCNT_SK"
+            },
+            {
+                "Name": "PTNT_SK",
+                "FriendlyName": "PTNT_SK",
+                "DataType": "long",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "PTNT_SK"
+            },
+            {
+                "Name": "DEPT_SK",
+                "FriendlyName": "DEPT_SK",
+                "DataType": "long",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "DEPT_SK"
+            },
+            {
+                "Name": "AGE_YRS_AT_ENCNT",
+                "FriendlyName": "AGE_YRS_AT_ENCNT",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "AGE_YRS_AT_ENCNT"
+            },
+            {
+                "Name": "ENCNT_DT",
+                "FriendlyName": null,
+                "DataType": "dateTime",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "ENCNT_DT"
+            },
+            {
+                "Name": "AGE_MNTHS_AT_ENCNT",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "AGE_MNTHS_AT_ENCNT"
+            },
+            {
+                "Name": "AGE_DYS_AT_ENCNT",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "AGE_DYS_AT_ENCNT"
+            },
+            {
+                "Name": "ENCNT_WAIT_IN_DAYS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "ENCNT_WAIT_IN_DAYS"
             }
         ]
     },
@@ -9090,688 +9393,6 @@
         ]
     },
     {
-        "Name": "LDW_DIAG_FACT",
-        "FriendlyName": "DiagnosisFact",
-        "DbTableName": "DiagnosisFact",
-        "QueryDefinition": "SELECT        DIAG_SK, DF.SRC_TYPE,SRC_DIAG_SQNC, \r\nCASE \r\nWHEN DF.DIAG_CD_SK < 0 THEN NULL ELSE DF.DIAG_CD_SK \r\nEND AS DIAG_CD_SK, DF.PTNT_SK, ENCNT_SK, DEPT_SK, CHRNC_IND, PRMY_DIAG_IND, SCND_DIAG_IND, \r\nCASE \r\nWHEN (PRSNT_ON_ADMT_CD < 0) \r\nOR (PRSNT_ON_ADMT_CD IN (1410783,3)) THEN NULL ELSE CAST (PRSNT_ON_ADMT_CD AS INTEGER) \r\nEND AS PRSNT_ON_ADMT_CD, ED_DIAG_IND, \r\nCASE \r\nWHEN DIAG_STRT_DT < '1900-01-02'::\"DATETIME\" THEN NULL ELSE DIAG_STRT_DT \r\nEND AS DIAG_STRT_DT, DIAG_STRT_TS_SK, \r\nCASE \r\nWHEN DIAG_END_DT = '1000-01-02'::\"DATETIME\" OR DIAG_END_DT > '2100-01-02'::\"DATETIME\" THEN NULL ELSE DIAG_END_DT \r\nEND AS DIAG_END_DT, DIAG_END_TS_SK\r\nFROM CUBESPRD.DIAG_FACT DF INNER JOIN CUBESPRD.DIAG_CD_DIM DCD ON DF.DIAG_CD_SK=DCD.DIAG_CD_SK INNER JOIN CUBESDEV.PTNT_DIM PD ON df.PTNT_SK=pd.PTNT_SK",
-        "Columns": [
-            {
-                "Name": "DIAG_SK",
-                "FriendlyName": "DIAG_SK",
-                "DataType": "long",
-                "Description": null,
-                "AllowNull": false,
-                "Length": -1,
-                "DbColumnName": "DIAG_SK"
-            },
-            {
-                "Name": "SRC_DIAG_SQNC",
-                "FriendlyName": "SRC_DIAG_SQNC",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "SRC_DIAG_SQNC"
-            },
-            {
-                "Name": "DIAG_CD_SK",
-                "FriendlyName": "DIAG_CD_SK",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "DIAG_CD_SK"
-            },
-            {
-                "Name": "PTNT_SK",
-                "FriendlyName": "PTNT_SK",
-                "DataType": "long",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "PTNT_SK"
-            },
-            {
-                "Name": "ENCNT_SK",
-                "FriendlyName": "ENCNT_SK",
-                "DataType": "long",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "ENCNT_SK"
-            },
-            {
-                "Name": "DEPT_SK",
-                "FriendlyName": "DEPT_SK",
-                "DataType": "long",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "DEPT_SK"
-            },
-            {
-                "Name": "CHRNC_IND",
-                "FriendlyName": "CHRNC_IND",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "CHRNC_IND"
-            },
-            {
-                "Name": "PRMY_DIAG_IND",
-                "FriendlyName": "PRMY_DIAG_IND",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "PRMY_DIAG_IND"
-            },
-            {
-                "Name": "SCND_DIAG_IND",
-                "FriendlyName": "SCND_DIAG_IND",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "SCND_DIAG_IND"
-            },
-            {
-                "Name": "ED_DIAG_IND",
-                "FriendlyName": "ED_DIAG_IND",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "ED_DIAG_IND"
-            },
-            {
-                "Name": "DIAG_STRT_DT",
-                "FriendlyName": "DIAG_STRT_DT",
-                "DataType": "dateTime",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "DIAG_STRT_DT"
-            },
-            {
-                "Name": "DIAG_END_DT",
-                "FriendlyName": "DIAG_END_DT",
-                "DataType": "dateTime",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "DIAG_END_DT"
-            },
-            {
-                "Name": "SRC_TYPE",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 50,
-                "DbColumnName": "SRC_TYPE"
-            },
-            {
-                "Name": "PRSNT_ON_ADMT_CD",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "PRSNT_ON_ADMT_CD"
-            },
-            {
-                "Name": "DIAG_STRT_TS_SK",
-                "FriendlyName": null,
-                "DataType": "long",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "DIAG_STRT_TS_SK"
-            },
-            {
-                "Name": "DIAG_END_TS_SK",
-                "FriendlyName": null,
-                "DataType": "long",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "DIAG_END_TS_SK"
-            }
-        ]
-    },
-    {
-        "Name": "LDW_PTNT_DIM",
-        "FriendlyName": "PatientDim",
-        "DbTableName": "PatientDim",
-        "QueryDefinition": "SELECT PTNT_SK, SRC_PTNT_ID, MPI_NUM \r\n       , \r\nCASE \r\nWHEN BRTH_TS < '01/01/1900' THEN NULL ELSE date(BRTH_TS) \r\nEND As BRTH_TS\r\n       , MRTL_STS_CDS\r\n       , MRTL_STS_DESC\r\n       , CITY\r\n       , CNTY_CDS , CNTY_DESC\r\n       , ST_PRV_CDS\r\n       , ST_PRV_NM , CRNT_PCP_PROVDR_SK\r\n       , \r\nCASE \r\nWHEN CNTRY_NM='US' THEN SUBSTR(PSTL_CDS,1,5)ELSE \r\nNULL END as PSTL_CDS\r\n       , CNTRY_CDS, CNTRY_NM\r\n       , HME_PH_AREA_CDS\r\n       , HME_PH_EXCHNG_CDS\r\n       , WRK_PH_AREA_CDS\r\n       , WRK_PH_EXCHNG_CDS\r\n       , CASE WHEN LIV_STS_CDS < 0 THEN NULL ELSE LIV_STS_CDS END AS LIV_STS_CDS\r\n       , LIV_STS_DESC\r\n       , Date(DTH_TS) As DTH_TS\r\n       , SEX_CDS, SEX_DESC\r\n       , PRMY_LANG_CDS\r\n       , PRMY_LANG_DESC\r\n       , PRMY_RACE_CDS\r\n       , PRMY_RACE_DESC\r\n       , SCND_RACE_CDS\r\n       , SCND_RACE_DESC\r\n       , THRD_RACE_CDS\r\n       , THRD_RACE_DESC\r\n       , FOURTH_RACE_CDS\r\n       , FOURTH_RACE_DESC\r\n       , FIFTH_RACE_CDS\r\n       , FIFTH_RACE_DESC\r\n       ,  \r\nCASE \r\nWHEN MULTI_RACIAL=0 THEN 'No' WHEN MULTI_RACIAL=1 THEN 'Yes' ELSE \r\nNULL END AS MULTI_RACIAL  ,\r\nETHNCTY_CDS\r\n       , ETHNCTY_DESC\r\n       , RELG_CDS\r\n       , RELG_DESC\r\n       , SMKE_STS_CDS\r\n       , SMKE_STS_DESC\r\n       , HI_LEVL_OF_EDU_CDS\r\n       , HI_LEVL_OF_EDU_DESC\r\n       , PRMY_PAYOR_CDS\r\n       , PRMY_PAYOR_NM\r\n       , PRMY_FNCL_CLASS_CDS\r\n       , PRMY_FNCL_CLASS_DESC      \r\n       , MTHR_PTNT_BABY_NUM   \r\n       , AGE_IN_YRS As Age, \r\nCASE \r\nWHEN (AGE_IN_YRS<0 \r\nOR AGE_IN_YRS> 120) THEN NULL ELSE AGE_IN_YRS \r\nEND AS AGE_FACT, \r\nCASE \r\nWHEN AGE_IN_YRS=0 THEN 0 \r\nWHEN (AGE_IN_YRS<0 \r\nOR AGE_IN_YRS> 120) THEN NULL ELSE Log(AGE_IN_YRS)\r\nEND As Age_Log, SYS_CRT_TS AS REG_TS, \r\nCASE \r\nWHEN BRTH_TS < '01/01/1900' OR BRTH_TS > SYS_CRT_TS THEN NULL ELSE DATE_PART('year', SYS_CRT_TS) - DATE_PART('year', BRTH_TS)\r\nEND AS AGE_AT_REG,\r\nCASE \r\nWHEN AVAIL_IND= 0 THEN 'NO' WHEN AVAIL_IND= 1 THEN 'YES' END AS AVAIL_IND\r\n, CASE WHEN CARLN_EMP_HLTH_PLN_IND = 0 THEN 'NO' WHEN CARLN_EMP_HLTH_PLN_IND= 1 THEN 'YES' END AS CARLN_EMP_HLTH_PLN_IND, ACTIVE\r\nFROM CUBESPRD.PTNT_DIM",
-        "Columns": [
-            {
-                "Name": "MPI_NUM",
-                "FriendlyName": "MPI_NUM",
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 80,
-                "DbColumnName": "MPI_NUM"
-            },
-            {
-                "Name": "BRTH_TS",
-                "FriendlyName": null,
-                "DataType": "dateTime",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "BRTH_TS"
-            },
-            {
-                "Name": "MRTL_STS_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "MRTL_STS_CDS"
-            },
-            {
-                "Name": "MRTL_STS_DESC",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "MRTL_STS_DESC"
-            },
-            {
-                "Name": "CITY",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 30,
-                "DbColumnName": "CITY"
-            },
-            {
-                "Name": "CNTY_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "CNTY_CDS"
-            },
-            {
-                "Name": "CNTY_DESC",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "CNTY_DESC"
-            },
-            {
-                "Name": "ST_PRV_CDS",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 50,
-                "DbColumnName": "ST_PRV_CDS"
-            },
-            {
-                "Name": "ST_PRV_NM",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "ST_PRV_NM"
-            },
-            {
-                "Name": "PSTL_CDS",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 5,
-                "DbColumnName": "PSTL_CDS"
-            },
-            {
-                "Name": "CNTRY_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "CNTRY_CDS"
-            },
-            {
-                "Name": "CNTRY_NM",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 50,
-                "DbColumnName": "CNTRY_NM"
-            },
-            {
-                "Name": "HME_PH_AREA_CDS",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 8,
-                "DbColumnName": "HME_PH_AREA_CDS"
-            },
-            {
-                "Name": "HME_PH_EXCHNG_CDS",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 3,
-                "DbColumnName": "HME_PH_EXCHNG_CDS"
-            },
-            {
-                "Name": "WRK_PH_AREA_CDS",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 8,
-                "DbColumnName": "WRK_PH_AREA_CDS"
-            },
-            {
-                "Name": "WRK_PH_EXCHNG_CDS",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 3,
-                "DbColumnName": "WRK_PH_EXCHNG_CDS"
-            },
-            {
-                "Name": "LIV_STS_DESC",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 254,
-                "DbColumnName": "LIV_STS_DESC"
-            },
-            {
-                "Name": "DTH_TS",
-                "FriendlyName": null,
-                "DataType": "dateTime",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "DTH_TS"
-            },
-            {
-                "Name": "SEX_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "SEX_CDS"
-            },
-            {
-                "Name": "SEX_DESC",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 254,
-                "DbColumnName": "SEX_DESC"
-            },
-            {
-                "Name": "PRMY_LANG_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "PRMY_LANG_CDS"
-            },
-            {
-                "Name": "PRMY_LANG_DESC",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 254,
-                "DbColumnName": "PRMY_LANG_DESC"
-            },
-            {
-                "Name": "PRMY_RACE_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "PRMY_RACE_CDS"
-            },
-            {
-                "Name": "PRMY_RACE_DESC",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 254,
-                "DbColumnName": "PRMY_RACE_DESC"
-            },
-            {
-                "Name": "SCND_RACE_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "SCND_RACE_CDS"
-            },
-            {
-                "Name": "SCND_RACE_DESC",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "SCND_RACE_DESC"
-            },
-            {
-                "Name": "THRD_RACE_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "THRD_RACE_CDS"
-            },
-            {
-                "Name": "THRD_RACE_DESC",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "THRD_RACE_DESC"
-            },
-            {
-                "Name": "FOURTH_RACE_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "FOURTH_RACE_CDS"
-            },
-            {
-                "Name": "FOURTH_RACE_DESC",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "FOURTH_RACE_DESC"
-            },
-            {
-                "Name": "FIFTH_RACE_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "FIFTH_RACE_CDS"
-            },
-            {
-                "Name": "FIFTH_RACE_DESC",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "FIFTH_RACE_DESC"
-            },
-            {
-                "Name": "ETHNCTY_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "ETHNCTY_CDS"
-            },
-            {
-                "Name": "ETHNCTY_DESC",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "ETHNCTY_DESC"
-            },
-            {
-                "Name": "RELG_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "RELG_CDS"
-            },
-            {
-                "Name": "RELG_DESC",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "RELG_DESC"
-            },
-            {
-                "Name": "SMKE_STS_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "SMKE_STS_CDS"
-            },
-            {
-                "Name": "SMKE_STS_DESC",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "SMKE_STS_DESC"
-            },
-            {
-                "Name": "HI_LEVL_OF_EDU_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "HI_LEVL_OF_EDU_CDS"
-            },
-            {
-                "Name": "HI_LEVL_OF_EDU_DESC",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "HI_LEVL_OF_EDU_DESC"
-            },
-            {
-                "Name": "PRMY_PAYOR_NM",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 254,
-                "DbColumnName": "PRMY_PAYOR_NM"
-            },
-            {
-                "Name": "PRMY_FNCL_CLASS_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "PRMY_FNCL_CLASS_CDS"
-            },
-            {
-                "Name": "PRMY_FNCL_CLASS_DESC",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "PRMY_FNCL_CLASS_DESC"
-            },
-            {
-                "Name": "MTHR_PTNT_BABY_NUM",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 80,
-                "DbColumnName": "MTHR_PTNT_BABY_NUM"
-            },
-            {
-                "Name": "AGE",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "AGE"
-            },
-            {
-                "Name": "REG_TS",
-                "FriendlyName": null,
-                "DataType": "dateTime",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "REG_TS"
-            },
-            {
-                "Name": "AGE_LOG",
-                "FriendlyName": null,
-                "DataType": "double",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "AGE_LOG"
-            },
-            {
-                "Name": "AVAIL_IND",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 3,
-                "DbColumnName": "AVAIL_IND"
-            },
-            {
-                "Name": "AGE_FACT",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "AGE_FACT"
-            },
-            {
-                "Name": "PRMY_PAYOR_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "PRMY_PAYOR_CDS"
-            },
-            {
-                "Name": "PTNT_SK",
-                "FriendlyName": null,
-                "DataType": "long",
-                "Description": null,
-                "AllowNull": false,
-                "Length": -1,
-                "DbColumnName": "PTNT_SK"
-            },
-            {
-                "Name": "SRC_PTNT_ID",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "SRC_PTNT_ID"
-            },
-            {
-                "Name": "AGE_AT_REG",
-                "FriendlyName": null,
-                "DataType": "long",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "AGE_AT_REG"
-            },
-            {
-                "Name": "MULTI_RACIAL",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 3,
-                "DbColumnName": "MULTI_RACIAL"
-            },
-            {
-                "Name": "CRNT_PCP_PROVDR_SK",
-                "FriendlyName": null,
-                "DataType": "long",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "CRNT_PCP_PROVDR_SK"
-            },
-            {
-                "Name": "CARLN_EMP_HLTH_PLN_IND",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 3,
-                "DbColumnName": "CARLN_EMP_HLTH_PLN_IND"
-            },
-            {
-                "Name": "LIV_STS_CDS",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "LIV_STS_CDS"
-            },
-            {
-                "Name": "ACTIVE",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 3,
-                "DbColumnName": "ACTIVE"
-            }
-        ]
-    },
-    {
         "Name": "LabComponentDim",
         "FriendlyName": "LabComponentDim",
         "DbTableName": "LabComponentDim",
@@ -10907,6 +10528,94 @@
         ]
     },
     {
+        "Name": "qps_Dim_Measure",
+        "FriendlyName": "MeasureDim",
+        "DbTableName": "MeasureDim",
+        "QueryDefinition": "SELECT     Measure_Dim_ID, Source_ID, Source_Measure_ID, Measure, Is_Active\r\nFROM        qps.Dim_Measure",
+        "Columns": [
+            {
+                "Name": "Measure_Dim_ID",
+                "FriendlyName": "Measure_Dim_ID",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": false,
+                "Length": -1,
+                "DbColumnName": "Measure_Dim_ID"
+            },
+            {
+                "Name": "Source_ID",
+                "FriendlyName": "Source_ID",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "Source_ID"
+            },
+            {
+                "Name": "Source_Measure_ID",
+                "FriendlyName": "Source_Measure_ID",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "Source_Measure_ID"
+            },
+            {
+                "Name": "Is_Active",
+                "FriendlyName": "Is_Active",
+                "DataType": "boolean",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "Is_Active"
+            },
+            {
+                "Name": "Measure",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 4000,
+                "DbColumnName": "Measure"
+            }
+        ]
+    },
+    {
+        "Name": "qps_Dim_Measure_Group",
+        "FriendlyName": "MeasureGroupDim",
+        "DbTableName": "MeasureGroupDim",
+        "QueryDefinition": "SELECT     Measure_Group_Dim_ID, Measure_Group_ID, Glossary_Link\r\nFROM        qps.Dim_Measure_Group",
+        "Columns": [
+            {
+                "Name": "Measure_Group_Dim_ID",
+                "FriendlyName": "Measure_Group_Dim_ID",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": false,
+                "Length": -1,
+                "DbColumnName": "Measure_Group_Dim_ID"
+            },
+            {
+                "Name": "Measure_Group_ID",
+                "FriendlyName": "Measure_Group_ID",
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 4000,
+                "DbColumnName": "Measure_Group_ID"
+            },
+            {
+                "Name": "Glossary_Link",
+                "FriendlyName": "Glossary_Link",
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 4000,
+                "DbColumnName": "Glossary_Link"
+            }
+        ]
+    },
+    {
         "Name": "MeasureMDFact",
         "FriendlyName": "MeasureMDFact",
         "DbTableName": "MeasureMDFact",
@@ -11115,6 +10824,32 @@
                 "AllowNull": true,
                 "Length": -1,
                 "DbColumnName": "LO_CDS"
+            }
+        ]
+    },
+    {
+        "Name": "QualityMeasureSourceDim",
+        "FriendlyName": "MeasureSourceDim",
+        "DbTableName": "MeasureSourceDim",
+        "QueryDefinition": "SELECT     Source_ID, Source_Name\r\nFROM        qps.Dim_Source",
+        "Columns": [
+            {
+                "Name": "Source_ID",
+                "FriendlyName": "Source_ID",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": false,
+                "Length": -1,
+                "DbColumnName": "Source_ID"
+            },
+            {
+                "Name": "Source_Name",
+                "FriendlyName": "Source_Name",
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 4000,
+                "DbColumnName": "Source_Name"
             }
         ]
     },
@@ -15861,6 +15596,536 @@
         ]
     },
     {
+        "Name": "LDW_PTNT_DIM",
+        "FriendlyName": "PatientDim",
+        "DbTableName": "PatientDim",
+        "QueryDefinition": "SELECT PTNT_SK, SRC_PTNT_ID, MPI_NUM \r\n       , \r\nCASE \r\nWHEN BRTH_TS < '01/01/1900' THEN NULL ELSE date(BRTH_TS) \r\nEND As BRTH_TS\r\n       , MRTL_STS_CDS\r\n       , MRTL_STS_DESC\r\n       , CITY\r\n       , CNTY_CDS , CNTY_DESC\r\n       , ST_PRV_CDS\r\n       , ST_PRV_NM , CRNT_PCP_PROVDR_SK\r\n       , \r\nCASE \r\nWHEN CNTRY_NM='US' THEN SUBSTR(PSTL_CDS,1,5)ELSE \r\nNULL END as PSTL_CDS\r\n       , CNTRY_CDS, CNTRY_NM\r\n       , HME_PH_AREA_CDS\r\n       , HME_PH_EXCHNG_CDS\r\n       , WRK_PH_AREA_CDS\r\n       , WRK_PH_EXCHNG_CDS\r\n       , CASE WHEN LIV_STS_CDS < 0 THEN NULL ELSE LIV_STS_CDS END AS LIV_STS_CDS\r\n       , LIV_STS_DESC\r\n       , Date(DTH_TS) As DTH_TS\r\n       , SEX_CDS, SEX_DESC\r\n       , PRMY_LANG_CDS\r\n       , PRMY_LANG_DESC\r\n       , PRMY_RACE_CDS\r\n       , PRMY_RACE_DESC\r\n       , SCND_RACE_CDS\r\n       , SCND_RACE_DESC\r\n       , THRD_RACE_CDS\r\n       , THRD_RACE_DESC\r\n       , FOURTH_RACE_CDS\r\n       , FOURTH_RACE_DESC\r\n       , FIFTH_RACE_CDS\r\n       , FIFTH_RACE_DESC\r\n       ,  \r\nCASE \r\nWHEN MULTI_RACIAL=0 THEN 'No' WHEN MULTI_RACIAL=1 THEN 'Yes' ELSE \r\nNULL END AS MULTI_RACIAL  ,\r\nETHNCTY_CDS\r\n       , ETHNCTY_DESC\r\n       , RELG_CDS\r\n       , RELG_DESC\r\n       , SMKE_STS_CDS\r\n       , SMKE_STS_DESC\r\n       , HI_LEVL_OF_EDU_CDS\r\n       , HI_LEVL_OF_EDU_DESC\r\n       , PRMY_PAYOR_CDS\r\n       , PRMY_PAYOR_NM\r\n       , PRMY_FNCL_CLASS_CDS\r\n       , PRMY_FNCL_CLASS_DESC      \r\n       , MTHR_PTNT_BABY_NUM   \r\n       , AGE_IN_YRS As Age, \r\nCASE \r\nWHEN (AGE_IN_YRS<0 \r\nOR AGE_IN_YRS> 120) THEN NULL ELSE AGE_IN_YRS \r\nEND AS AGE_FACT, \r\nCASE \r\nWHEN AGE_IN_YRS=0 THEN 0 \r\nWHEN (AGE_IN_YRS<0 \r\nOR AGE_IN_YRS> 120) THEN NULL ELSE Log(AGE_IN_YRS)\r\nEND As Age_Log, SYS_CRT_TS AS REG_TS, \r\nCASE \r\nWHEN BRTH_TS < '01/01/1900' OR BRTH_TS > SYS_CRT_TS THEN NULL ELSE DATE_PART('year', SYS_CRT_TS) - DATE_PART('year', BRTH_TS)\r\nEND AS AGE_AT_REG,\r\nCASE \r\nWHEN AVAIL_IND= 0 THEN 'NO' WHEN AVAIL_IND= 1 THEN 'YES' END AS AVAIL_IND\r\n, CASE WHEN CARLN_EMP_HLTH_PLN_IND = 0 THEN 'NO' WHEN CARLN_EMP_HLTH_PLN_IND= 1 THEN 'YES' END AS CARLN_EMP_HLTH_PLN_IND, ACTIVE\r\nFROM CUBESPRD.PTNT_DIM",
+        "Columns": [
+            {
+                "Name": "MPI_NUM",
+                "FriendlyName": "MPI_NUM",
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 80,
+                "DbColumnName": "MPI_NUM"
+            },
+            {
+                "Name": "BRTH_TS",
+                "FriendlyName": null,
+                "DataType": "dateTime",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "BRTH_TS"
+            },
+            {
+                "Name": "MRTL_STS_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "MRTL_STS_CDS"
+            },
+            {
+                "Name": "MRTL_STS_DESC",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "MRTL_STS_DESC"
+            },
+            {
+                "Name": "CITY",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 30,
+                "DbColumnName": "CITY"
+            },
+            {
+                "Name": "CNTY_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "CNTY_CDS"
+            },
+            {
+                "Name": "CNTY_DESC",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "CNTY_DESC"
+            },
+            {
+                "Name": "ST_PRV_CDS",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 50,
+                "DbColumnName": "ST_PRV_CDS"
+            },
+            {
+                "Name": "ST_PRV_NM",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "ST_PRV_NM"
+            },
+            {
+                "Name": "PSTL_CDS",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 5,
+                "DbColumnName": "PSTL_CDS"
+            },
+            {
+                "Name": "CNTRY_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "CNTRY_CDS"
+            },
+            {
+                "Name": "CNTRY_NM",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 50,
+                "DbColumnName": "CNTRY_NM"
+            },
+            {
+                "Name": "HME_PH_AREA_CDS",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 8,
+                "DbColumnName": "HME_PH_AREA_CDS"
+            },
+            {
+                "Name": "HME_PH_EXCHNG_CDS",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 3,
+                "DbColumnName": "HME_PH_EXCHNG_CDS"
+            },
+            {
+                "Name": "WRK_PH_AREA_CDS",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 8,
+                "DbColumnName": "WRK_PH_AREA_CDS"
+            },
+            {
+                "Name": "WRK_PH_EXCHNG_CDS",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 3,
+                "DbColumnName": "WRK_PH_EXCHNG_CDS"
+            },
+            {
+                "Name": "LIV_STS_DESC",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 254,
+                "DbColumnName": "LIV_STS_DESC"
+            },
+            {
+                "Name": "DTH_TS",
+                "FriendlyName": null,
+                "DataType": "dateTime",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "DTH_TS"
+            },
+            {
+                "Name": "SEX_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "SEX_CDS"
+            },
+            {
+                "Name": "SEX_DESC",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 254,
+                "DbColumnName": "SEX_DESC"
+            },
+            {
+                "Name": "PRMY_LANG_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "PRMY_LANG_CDS"
+            },
+            {
+                "Name": "PRMY_LANG_DESC",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 254,
+                "DbColumnName": "PRMY_LANG_DESC"
+            },
+            {
+                "Name": "PRMY_RACE_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "PRMY_RACE_CDS"
+            },
+            {
+                "Name": "PRMY_RACE_DESC",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 254,
+                "DbColumnName": "PRMY_RACE_DESC"
+            },
+            {
+                "Name": "SCND_RACE_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "SCND_RACE_CDS"
+            },
+            {
+                "Name": "SCND_RACE_DESC",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "SCND_RACE_DESC"
+            },
+            {
+                "Name": "THRD_RACE_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "THRD_RACE_CDS"
+            },
+            {
+                "Name": "THRD_RACE_DESC",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "THRD_RACE_DESC"
+            },
+            {
+                "Name": "FOURTH_RACE_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "FOURTH_RACE_CDS"
+            },
+            {
+                "Name": "FOURTH_RACE_DESC",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "FOURTH_RACE_DESC"
+            },
+            {
+                "Name": "FIFTH_RACE_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "FIFTH_RACE_CDS"
+            },
+            {
+                "Name": "FIFTH_RACE_DESC",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "FIFTH_RACE_DESC"
+            },
+            {
+                "Name": "ETHNCTY_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "ETHNCTY_CDS"
+            },
+            {
+                "Name": "ETHNCTY_DESC",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "ETHNCTY_DESC"
+            },
+            {
+                "Name": "RELG_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "RELG_CDS"
+            },
+            {
+                "Name": "RELG_DESC",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "RELG_DESC"
+            },
+            {
+                "Name": "SMKE_STS_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "SMKE_STS_CDS"
+            },
+            {
+                "Name": "SMKE_STS_DESC",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "SMKE_STS_DESC"
+            },
+            {
+                "Name": "HI_LEVL_OF_EDU_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "HI_LEVL_OF_EDU_CDS"
+            },
+            {
+                "Name": "HI_LEVL_OF_EDU_DESC",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "HI_LEVL_OF_EDU_DESC"
+            },
+            {
+                "Name": "PRMY_PAYOR_NM",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 254,
+                "DbColumnName": "PRMY_PAYOR_NM"
+            },
+            {
+                "Name": "PRMY_FNCL_CLASS_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "PRMY_FNCL_CLASS_CDS"
+            },
+            {
+                "Name": "PRMY_FNCL_CLASS_DESC",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "PRMY_FNCL_CLASS_DESC"
+            },
+            {
+                "Name": "MTHR_PTNT_BABY_NUM",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 80,
+                "DbColumnName": "MTHR_PTNT_BABY_NUM"
+            },
+            {
+                "Name": "AGE",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "AGE"
+            },
+            {
+                "Name": "REG_TS",
+                "FriendlyName": null,
+                "DataType": "dateTime",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "REG_TS"
+            },
+            {
+                "Name": "AGE_LOG",
+                "FriendlyName": null,
+                "DataType": "double",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "AGE_LOG"
+            },
+            {
+                "Name": "AVAIL_IND",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 3,
+                "DbColumnName": "AVAIL_IND"
+            },
+            {
+                "Name": "AGE_FACT",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "AGE_FACT"
+            },
+            {
+                "Name": "PRMY_PAYOR_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "PRMY_PAYOR_CDS"
+            },
+            {
+                "Name": "PTNT_SK",
+                "FriendlyName": null,
+                "DataType": "long",
+                "Description": null,
+                "AllowNull": false,
+                "Length": -1,
+                "DbColumnName": "PTNT_SK"
+            },
+            {
+                "Name": "SRC_PTNT_ID",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 255,
+                "DbColumnName": "SRC_PTNT_ID"
+            },
+            {
+                "Name": "AGE_AT_REG",
+                "FriendlyName": null,
+                "DataType": "long",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "AGE_AT_REG"
+            },
+            {
+                "Name": "MULTI_RACIAL",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 3,
+                "DbColumnName": "MULTI_RACIAL"
+            },
+            {
+                "Name": "CRNT_PCP_PROVDR_SK",
+                "FriendlyName": null,
+                "DataType": "long",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "CRNT_PCP_PROVDR_SK"
+            },
+            {
+                "Name": "CARLN_EMP_HLTH_PLN_IND",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 3,
+                "DbColumnName": "CARLN_EMP_HLTH_PLN_IND"
+            },
+            {
+                "Name": "LIV_STS_CDS",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "LIV_STS_CDS"
+            },
+            {
+                "Name": "ACTIVE",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 3,
+                "DbColumnName": "ACTIVE"
+            }
+        ]
+    },
+    {
         "Name": "PharmacyDim",
         "FriendlyName": "PharmacyDim",
         "DbTableName": "PharmacyDim",
@@ -16548,6 +16813,59 @@
         ]
     },
     {
+        "Name": "qps_Dim_Program",
+        "FriendlyName": "ProgramDim",
+        "DbTableName": "ProgramDim",
+        "QueryDefinition": "SELECT     Program_ID, Program_Name, Start_Date, End_Date, Is_Active\r\nFROM        qps.Dim_Program",
+        "Columns": [
+            {
+                "Name": "Start_Date",
+                "FriendlyName": "Start_Date",
+                "DataType": "dateTime",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "Start_Date"
+            },
+            {
+                "Name": "End_Date",
+                "FriendlyName": "End_Date",
+                "DataType": "dateTime",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "End_Date"
+            },
+            {
+                "Name": "Is_Active",
+                "FriendlyName": "Is_Active",
+                "DataType": "boolean",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "Is_Active"
+            },
+            {
+                "Name": "Program_ID",
+                "FriendlyName": null,
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": false,
+                "Length": -1,
+                "DbColumnName": "Program_ID"
+            },
+            {
+                "Name": "Program_Name",
+                "FriendlyName": null,
+                "DataType": "string",
+                "Description": null,
+                "AllowNull": true,
+                "Length": 4000,
+                "DbColumnName": "Program_Name"
+            }
+        ]
+    },
+    {
         "Name": "ProviderAffiliationDim",
         "FriendlyName": "ProviderAffiliationDim",
         "DbTableName": "ProviderAffiliationDim",
@@ -16994,32 +17312,6 @@
                 "AllowNull": true,
                 "Length": 254,
                 "DbColumnName": "PROVDR_TYPE_DESC"
-            }
-        ]
-    },
-    {
-        "Name": "QualityMeasureSourceDim",
-        "FriendlyName": "MeasureSourceDim",
-        "DbTableName": "MeasureSourceDim",
-        "QueryDefinition": "SELECT     Source_ID, Source_Name\r\nFROM        qps.Dim_Source",
-        "Columns": [
-            {
-                "Name": "Source_ID",
-                "FriendlyName": "Source_ID",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": false,
-                "Length": -1,
-                "DbColumnName": "Source_ID"
-            },
-            {
-                "Name": "Source_Name",
-                "FriendlyName": "Source_Name",
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 4000,
-                "DbColumnName": "Source_Name"
             }
         ]
     },
@@ -18507,6 +18799,59 @@
         ]
     },
     {
+        "Name": "DW_TM_OF_DY_DIM",
+        "FriendlyName": "TimeDim",
+        "DbTableName": "TimeDim",
+        "QueryDefinition": "SELECT TM_OF_DY_SK\r\n       , TM_OF_DY\r\n       , HR_OF_DY\r\n       , MN_OF_DY\r\n       , SCND_OF_DY\r\n\r\n  FROM EDW_PRD.DW.TM_OF_DY_DIM",
+        "Columns": [
+            {
+                "Name": "TM_OF_DY_SK",
+                "FriendlyName": "TM_OF_DY_SK",
+                "DataType": "long",
+                "Description": null,
+                "AllowNull": false,
+                "Length": -1,
+                "DbColumnName": "TM_OF_DY_SK"
+            },
+            {
+                "Name": "TM_OF_DY",
+                "FriendlyName": "TM_OF_DY",
+                "DataType": "duration",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "TM_OF_DY"
+            },
+            {
+                "Name": "HR_OF_DY",
+                "FriendlyName": "HR_OF_DY",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "HR_OF_DY"
+            },
+            {
+                "Name": "MN_OF_DY",
+                "FriendlyName": "MN_OF_DY",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "MN_OF_DY"
+            },
+            {
+                "Name": "SCND_OF_DY",
+                "FriendlyName": "SCND_OF_DY",
+                "DataType": "int",
+                "Description": null,
+                "AllowNull": true,
+                "Length": -1,
+                "DbColumnName": "SCND_OF_DY"
+            }
+        ]
+    },
+    {
         "Name": "UserDim",
         "FriendlyName": "UserDim",
         "DbTableName": "UserDim",
@@ -18582,351 +18927,6 @@
                 "AllowNull": true,
                 "Length": 254,
                 "DbColumnName": "SEX_DESC"
-            }
-        ]
-    },
-    {
-        "Name": "dbo_DIAG_BRIDGE",
-        "FriendlyName": "DiagnosisBridge",
-        "DbTableName": "DiagnosisBridge",
-        "QueryDefinition": "SELECT        DIAG_CD_SK, MSTR_DIAG_CD, DIAG_CD_DESC, ICD9_CD, ICD9_CD_LST, ICD10_CD, ICD10_CD_LST, DIAG_HIR_SK\r\nFROM            DIAG_CD_DIM",
-        "Columns": [
-            {
-                "Name": "DIAG_CD_SK",
-                "FriendlyName": "DIAG_CD_SK",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": false,
-                "Length": -1,
-                "DbColumnName": "DIAG_CD_SK"
-            },
-            {
-                "Name": "DIAG_CD_DESC",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "DIAG_CD_DESC"
-            },
-            {
-                "Name": "MSTR_DIAG_CD",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 50,
-                "DbColumnName": "MSTR_DIAG_CD"
-            },
-            {
-                "Name": "ICD9_CD",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 50,
-                "DbColumnName": "ICD9_CD"
-            },
-            {
-                "Name": "ICD9_CD_LST",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "ICD9_CD_LST"
-            },
-            {
-                "Name": "ICD10_CD",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 50,
-                "DbColumnName": "ICD10_CD"
-            },
-            {
-                "Name": "ICD10_CD_LST",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "ICD10_CD_LST"
-            },
-            {
-                "Name": "DIAG_HIR_SK",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "DIAG_HIR_SK"
-            }
-        ]
-    },
-    {
-        "Name": "dbo_DIAG_HYR_DIM",
-        "FriendlyName": "DiagnosisHierarchy",
-        "DbTableName": "DiagnosisHierarchy",
-        "QueryDefinition": "SELECT        DIAG_HIR_SK, DIAG_CLS_DESC, DIAG_PRN_SK\r\nFROM            DIAG_HIR_DIM",
-        "Columns": [
-            {
-                "Name": "DIAG_CLS_DESC",
-                "FriendlyName": "DIAG_CLS_DESC",
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 255,
-                "DbColumnName": "DIAG_CLS_DESC"
-            },
-            {
-                "Name": "DIAG_PRN_SK",
-                "FriendlyName": "DIAG_PRN_SK",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "DIAG_PRN_SK"
-            },
-            {
-                "Name": "DIAG_HIR_SK",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": false,
-                "Length": -1,
-                "DbColumnName": "DIAG_HIR_SK"
-            }
-        ]
-    },
-    {
-        "Name": "qps_DM_Quality",
-        "FriendlyName": "DM_Quality_Fact",
-        "DbTableName": "DM_Quality_Fact",
-        "QueryDefinition": "SELECT     Data_ID, LO_CDS, SRC_DEPT_ID, Truven_Indicator, Source_Source_Measure_ID, Source_Measure_Title, Frequency, [Date], Result\r\nFROM        qps.DM_Quality_Fact",
-        "Columns": [
-            {
-                "Name": "Data_ID",
-                "FriendlyName": "Data_ID",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": false,
-                "Length": -1,
-                "DbColumnName": "Data_ID"
-            },
-            {
-                "Name": "LO_CDS",
-                "FriendlyName": "LO_CDS",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "LO_CDS"
-            },
-            {
-                "Name": "SRC_DEPT_ID",
-                "FriendlyName": "SRC_DEPT_ID",
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 4000,
-                "DbColumnName": "SRC_DEPT_ID"
-            },
-            {
-                "Name": "Truven_Indicator",
-                "FriendlyName": "Truven_Indicator",
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 4000,
-                "DbColumnName": "Truven_Indicator"
-            },
-            {
-                "Name": "Source_Measure_Title",
-                "FriendlyName": "Source_Measure_Title",
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 4000,
-                "DbColumnName": "Source_Measure_Title"
-            },
-            {
-                "Name": "Frequency",
-                "FriendlyName": "Frequency",
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 4000,
-                "DbColumnName": "Frequency"
-            },
-            {
-                "Name": "Date",
-                "FriendlyName": "Date",
-                "DataType": "dateTime",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "Date"
-            },
-            {
-                "Name": "Result",
-                "FriendlyName": "Result",
-                "DataType": "decimal",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "Result"
-            },
-            {
-                "Name": "Source_Source_Measure_ID",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "Source_Source_Measure_ID"
-            }
-        ]
-    },
-    {
-        "Name": "qps_Dim_Measure",
-        "FriendlyName": "MeasureDim",
-        "DbTableName": "MeasureDim",
-        "QueryDefinition": "SELECT     Measure_Dim_ID, Source_ID, Source_Measure_ID, Measure, Is_Active\r\nFROM        qps.Dim_Measure",
-        "Columns": [
-            {
-                "Name": "Measure_Dim_ID",
-                "FriendlyName": "Measure_Dim_ID",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": false,
-                "Length": -1,
-                "DbColumnName": "Measure_Dim_ID"
-            },
-            {
-                "Name": "Source_ID",
-                "FriendlyName": "Source_ID",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "Source_ID"
-            },
-            {
-                "Name": "Source_Measure_ID",
-                "FriendlyName": "Source_Measure_ID",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "Source_Measure_ID"
-            },
-            {
-                "Name": "Is_Active",
-                "FriendlyName": "Is_Active",
-                "DataType": "boolean",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "Is_Active"
-            },
-            {
-                "Name": "Measure",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 4000,
-                "DbColumnName": "Measure"
-            }
-        ]
-    },
-    {
-        "Name": "qps_Dim_Measure_Group",
-        "FriendlyName": "MeasureGroupDim",
-        "DbTableName": "MeasureGroupDim",
-        "QueryDefinition": "SELECT     Measure_Group_Dim_ID, Measure_Group_ID, Glossary_Link\r\nFROM        qps.Dim_Measure_Group",
-        "Columns": [
-            {
-                "Name": "Measure_Group_Dim_ID",
-                "FriendlyName": "Measure_Group_Dim_ID",
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": false,
-                "Length": -1,
-                "DbColumnName": "Measure_Group_Dim_ID"
-            },
-            {
-                "Name": "Measure_Group_ID",
-                "FriendlyName": "Measure_Group_ID",
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 4000,
-                "DbColumnName": "Measure_Group_ID"
-            },
-            {
-                "Name": "Glossary_Link",
-                "FriendlyName": "Glossary_Link",
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 4000,
-                "DbColumnName": "Glossary_Link"
-            }
-        ]
-    },
-    {
-        "Name": "qps_Dim_Program",
-        "FriendlyName": "ProgramDim",
-        "DbTableName": "ProgramDim",
-        "QueryDefinition": "SELECT     Program_ID, Program_Name, Start_Date, End_Date, Is_Active\r\nFROM        qps.Dim_Program",
-        "Columns": [
-            {
-                "Name": "Start_Date",
-                "FriendlyName": "Start_Date",
-                "DataType": "dateTime",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "Start_Date"
-            },
-            {
-                "Name": "End_Date",
-                "FriendlyName": "End_Date",
-                "DataType": "dateTime",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "End_Date"
-            },
-            {
-                "Name": "Is_Active",
-                "FriendlyName": "Is_Active",
-                "DataType": "boolean",
-                "Description": null,
-                "AllowNull": true,
-                "Length": -1,
-                "DbColumnName": "Is_Active"
-            },
-            {
-                "Name": "Program_ID",
-                "FriendlyName": null,
-                "DataType": "int",
-                "Description": null,
-                "AllowNull": false,
-                "Length": -1,
-                "DbColumnName": "Program_ID"
-            },
-            {
-                "Name": "Program_Name",
-                "FriendlyName": null,
-                "DataType": "string",
-                "Description": null,
-                "AllowNull": true,
-                "Length": 4000,
-                "DbColumnName": "Program_Name"
             }
         ]
     }

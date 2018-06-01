@@ -10,15 +10,16 @@ drop table if exists CensusGeographicalAreaDim
 drop table if exists CensusMeasureFact
 drop table if exists CensusMeasureTypeDim
 drop table if exists CensusSourceDim
+drop table if exists qps_DM_Quality
 drop table if exists DRGDim
 drop table if exists DRGFact
 drop table if exists DRGSeqDim
 drop table if exists DRGTypeDim
 drop table if exists DW_CLNDR_DIM
-drop table if exists DW_ENCNT_DIM
-drop table if exists DW_ENCNT_FACT
-drop table if exists DW_TM_OF_DY_DIM
 drop table if exists DepartmentDim
+drop table if exists dbo_DIAG_BRIDGE
+drop table if exists LDW_DIAG_FACT
+drop table if exists dbo_DIAG_HYR_DIM
 drop table if exists DiagnosisPresentOnAdmit
 drop table if exists DiagnosisSourceDim
 drop table if exists EDVisitActivityLevelDim
@@ -29,7 +30,9 @@ drop table if exists EDVisitFinancialClass
 drop table if exists EDVisitMeansOfArrivalDim
 drop table if exists EncounterBillingClassDim
 drop table if exists EncounterDepartmentDim
+drop table if exists DW_ENCNT_DIM
 drop table if exists EncounterEncouterypeDim
+drop table if exists DW_ENCNT_FACT
 drop table if exists EncounterLevelofCareDim
 drop table if exists EncounterPatientStatusDim
 drop table if exists EncounterProductLineDim
@@ -41,8 +44,6 @@ drop table if exists InpatientDischargeDestinationDim
 drop table if exists InpatientDischargeDispositionDim
 drop table if exists InpatientFact
 drop table if exists InpatientPatientClassDim
-drop table if exists LDW_DIAG_FACT
-drop table if exists LDW_PTNT_DIM
 drop table if exists LabComponentDim
 drop table if exists LabComponentResultFact
 drop table if exists LabComponentResultFactLabStatusDim
@@ -60,10 +61,13 @@ drop table if exists LabTestOrderType
 drop table if exists LabTestSpecimenSourceDim
 drop table if exists LabTestSpecimenTypeDim
 drop table if exists LabTestVerificationStatusDim
+drop table if exists qps_Dim_Measure
+drop table if exists qps_Dim_Measure_Group
 drop table if exists MeasureMDFact
 drop table if exists MeasureMLFact
 drop table if exists MeasureQDFact
 drop table if exists MeasureQLFact
+drop table if exists QualityMeasureSourceDim
 drop table if exists MedicationAdministrationActionDim
 drop table if exists MedicationAdministrationFact
 drop table if exists MedicationAdministrationRouteDim
@@ -92,6 +96,7 @@ drop table if exists OutpatientCancellationReasonDim
 drop table if exists OutpatientDim
 drop table if exists OutpatientFact
 drop table if exists OutpatientFinancialClassDim
+drop table if exists LDW_PTNT_DIM
 drop table if exists PharmacyDim
 drop table if exists PharmacyPhysicalTypeDim
 drop table if exists ProcedureCategoryDim
@@ -107,6 +112,7 @@ drop table if exists ProcedureOrderStatusDim
 drop table if exists ProcedureOrderTypeDim
 drop table if exists ProcedureRevenueCodeDim
 drop table if exists ProcedureTypeDim
+drop table if exists qps_Dim_Program
 drop table if exists ProviderAffiliationDim
 drop table if exists ProviderClinicianTitleDim
 drop table if exists ProviderDim
@@ -116,7 +122,6 @@ drop table if exists ProviderPrimaryDepartmentDim
 drop table if exists ProviderPrimarySpecialtyDim
 drop table if exists ProviderReportingStructureDim
 drop table if exists ProviderTypeDim
-drop table if exists QualityMeasureSourceDim
 drop table if exists SugicalProcedureEventWoundClassDim
 drop table if exists SurgicalCaseClassDim
 drop table if exists SurgicalCaseDim
@@ -137,14 +142,9 @@ drop table if exists SurgicalSupplyUseFact
 drop table if exists SurgicalSupplyUseLogStatusDim
 drop table if exists SurgicalSupplyUseORServiceDim
 drop table if exists SurgicalSupplyVendorDim
+drop table if exists DW_TM_OF_DY_DIM
 drop table if exists UserDim
 drop table if exists UserGenderDim
-drop table if exists dbo_DIAG_BRIDGE
-drop table if exists dbo_DIAG_HYR_DIM
-drop table if exists qps_DM_Quality
-drop table if exists qps_Dim_Measure
-drop table if exists qps_Dim_Measure_Group
-drop table if exists qps_Dim_Program
 
 
 
@@ -189,6 +189,19 @@ create table CensusSourceDim(
 	SRC_YR varchar(50)   null,
 	SRC_ESTMTE_IN_YRS varchar(16)   null,
 	CONSTRAINT PK_CensusSourceDim_SRC_SK PRIMARY KEY CLUSTERED (SRC_SK)
+);
+
+
+create table qps_DM_Quality(
+	Data_ID int  not null,
+	LO_CDS int   null,
+	SRC_DEPT_ID varchar(4000)   null,
+	Truven_Indicator varchar(4000)   null,
+	Source_Measure_Title varchar(4000)   null,
+	Frequency varchar(4000)   null,
+	Date datetime   null,
+	Result numeric(18,2)   null,
+	Source_Source_Measure_ID int   null,
 );
 
 
@@ -277,48 +290,6 @@ create table DW_CLNDR_DIM(
 );
 
 
-create table DW_ENCNT_DIM(
-	ENCNT_SK bigint identity(1,1) not null,
-	SRC_ENCNT_ID varchar(255)   null,
-	PTNT_STS_CDS int   null,
-	ENCNT_TYPE_CDS int   null,
-	LEVL_OF_CARE_CDS int   null,
-	TRAUMA_IND varchar(3)   null,
-	PTNT_BSE_CLSS_CDS int   null,
-	AGE_YRS_AT_ENCNT int   null,
-	AGE_MNTHS_AT_ENCNT int   null,
-	AGE_DYS_AT_ENCNT int   null,
-	PRD_LINE_CDS int   null,
-	BILLING_CLASS_CDS int   null,
-	DEPT_CDS int   null,
-	CONSTRAINT PK_DW_ENCNT_DIM_ENCNT_SK PRIMARY KEY CLUSTERED (ENCNT_SK)
-);
-
-
-create table DW_ENCNT_FACT(
-	ENCNT_FACT_SK bigint identity(1,1) not null,
-	ENCNT_SK bigint   null,
-	PTNT_SK bigint   null,
-	DEPT_SK bigint   null,
-	AGE_YRS_AT_ENCNT int   null,
-	ENCNT_DT datetime   null,
-	AGE_MNTHS_AT_ENCNT int   null,
-	AGE_DYS_AT_ENCNT int   null,
-	ENCNT_WAIT_IN_DAYS int   null,
-	CONSTRAINT PK_DW_ENCNT_FACT_ENCNT_FACT_SK PRIMARY KEY CLUSTERED (ENCNT_FACT_SK)
-);
-
-
-create table DW_TM_OF_DY_DIM(
-	TM_OF_DY_SK bigint identity(1,1) not null,
-	TM_OF_DY time(0)   null,
-	HR_OF_DY int   null,
-	MN_OF_DY int   null,
-	SCND_OF_DY int   null,
-	CONSTRAINT PK_DW_TM_OF_DY_DIM_TM_OF_DY_SK PRIMARY KEY CLUSTERED (TM_OF_DY_SK)
-);
-
-
 create table DepartmentDim(
 	DEPT_SK bigint identity(1,1) not null,
 	SRC_DEPT_ID varchar(255)   null,
@@ -349,6 +320,47 @@ create table DepartmentDim(
 	LOC_TYPE_CDS int   null,
 	LOC_TYPE_DESC varchar(255)   null,
 	CONSTRAINT PK_DepartmentDim_DEPT_SK PRIMARY KEY CLUSTERED (DEPT_SK)
+);
+
+
+create table dbo_DIAG_BRIDGE(
+	DIAG_CD_SK int identity(1,1) not null,
+	DIAG_CD_DESC varchar(255)   null,
+	MSTR_DIAG_CD varchar(50)   null,
+	ICD9_CD varchar(50)   null,
+	ICD9_CD_LST varchar(255)   null,
+	ICD10_CD varchar(50)   null,
+	ICD10_CD_LST varchar(255)   null,
+	DIAG_HIR_SK int   null,
+	CONSTRAINT PK_dbo_DIAG_BRIDGE_DIAG_CD_SK PRIMARY KEY CLUSTERED (DIAG_CD_SK)
+);
+
+
+create table LDW_DIAG_FACT(
+	DIAG_SK bigint  not null,
+	SRC_DIAG_SQNC int   null,
+	DIAG_CD_SK int   null,
+	PTNT_SK bigint   null,
+	ENCNT_SK bigint   null,
+	DEPT_SK bigint   null,
+	CHRNC_IND int   null,
+	PRMY_DIAG_IND int   null,
+	SCND_DIAG_IND int   null,
+	ED_DIAG_IND int   null,
+	DIAG_STRT_DT datetime   null,
+	DIAG_END_DT datetime   null,
+	SRC_TYPE varchar(50)   null,
+	PRSNT_ON_ADMT_CD int   null,
+	DIAG_STRT_TS_SK bigint   null,
+	DIAG_END_TS_SK bigint   null,
+);
+
+
+create table dbo_DIAG_HYR_DIM(
+	DIAG_CLS_DESC varchar(255)   null,
+	DIAG_PRN_SK int   null,
+	DIAG_HIR_SK int identity(1,1) not null,
+	CONSTRAINT PK_dbo_DIAG_HYR_DIM_DIAG_HIR_SK PRIMARY KEY CLUSTERED (DIAG_HIR_SK)
 );
 
 
@@ -709,10 +721,42 @@ create table EncounterDepartmentDim(
 );
 
 
+create table DW_ENCNT_DIM(
+	ENCNT_SK bigint identity(1,1) not null,
+	SRC_ENCNT_ID varchar(255)   null,
+	PTNT_STS_CDS int   null,
+	ENCNT_TYPE_CDS int   null,
+	LEVL_OF_CARE_CDS int   null,
+	TRAUMA_IND varchar(3)   null,
+	PTNT_BSE_CLSS_CDS int   null,
+	AGE_YRS_AT_ENCNT int   null,
+	AGE_MNTHS_AT_ENCNT int   null,
+	AGE_DYS_AT_ENCNT int   null,
+	PRD_LINE_CDS int   null,
+	BILLING_CLASS_CDS int   null,
+	DEPT_CDS int   null,
+	CONSTRAINT PK_DW_ENCNT_DIM_ENCNT_SK PRIMARY KEY CLUSTERED (ENCNT_SK)
+);
+
+
 create table EncounterEncouterypeDim(
 	ENCNT_TYPE_CDS int identity(1,1) not null,
 	ENCNT_TYPE_DESC varchar(254)   null,
 	CONSTRAINT PK_EncounterEncouterypeDim_ENCNT_TYPE_CDS PRIMARY KEY CLUSTERED (ENCNT_TYPE_CDS)
+);
+
+
+create table DW_ENCNT_FACT(
+	ENCNT_FACT_SK bigint identity(1,1) not null,
+	ENCNT_SK bigint   null,
+	PTNT_SK bigint   null,
+	DEPT_SK bigint   null,
+	AGE_YRS_AT_ENCNT int   null,
+	ENCNT_DT datetime   null,
+	AGE_MNTHS_AT_ENCNT int   null,
+	AGE_DYS_AT_ENCNT int   null,
+	ENCNT_WAIT_IN_DAYS int   null,
+	CONSTRAINT PK_DW_ENCNT_FACT_ENCNT_FACT_SK PRIMARY KEY CLUSTERED (ENCNT_FACT_SK)
 );
 
 
@@ -1304,89 +1348,6 @@ create table InpatientPatientClassDim(
 );
 
 
-create table LDW_DIAG_FACT(
-	DIAG_SK bigint  not null,
-	SRC_DIAG_SQNC int   null,
-	DIAG_CD_SK int   null,
-	PTNT_SK bigint   null,
-	ENCNT_SK bigint   null,
-	DEPT_SK bigint   null,
-	CHRNC_IND int   null,
-	PRMY_DIAG_IND int   null,
-	SCND_DIAG_IND int   null,
-	ED_DIAG_IND int   null,
-	DIAG_STRT_DT datetime   null,
-	DIAG_END_DT datetime   null,
-	SRC_TYPE varchar(50)   null,
-	PRSNT_ON_ADMT_CD int   null,
-	DIAG_STRT_TS_SK bigint   null,
-	DIAG_END_TS_SK bigint   null,
-);
-
-
-create table LDW_PTNT_DIM(
-	MPI_NUM varchar(80)   null,
-	BRTH_TS datetime   null,
-	MRTL_STS_CDS int   null,
-	MRTL_STS_DESC varchar(255)   null,
-	CITY varchar(30)   null,
-	CNTY_CDS int   null,
-	CNTY_DESC varchar(255)   null,
-	ST_PRV_CDS varchar(50)   null,
-	ST_PRV_NM varchar(255)   null,
-	PSTL_CDS varchar(5)   null,
-	CNTRY_CDS int   null,
-	CNTRY_NM varchar(50)   null,
-	HME_PH_AREA_CDS varchar(8)   null,
-	HME_PH_EXCHNG_CDS varchar(3)   null,
-	WRK_PH_AREA_CDS varchar(8)   null,
-	WRK_PH_EXCHNG_CDS varchar(3)   null,
-	LIV_STS_DESC varchar(254)   null,
-	DTH_TS datetime   null,
-	SEX_CDS int   null,
-	SEX_DESC varchar(254)   null,
-	PRMY_LANG_CDS int   null,
-	PRMY_LANG_DESC varchar(254)   null,
-	PRMY_RACE_CDS int   null,
-	PRMY_RACE_DESC varchar(254)   null,
-	SCND_RACE_CDS int   null,
-	SCND_RACE_DESC varchar(255)   null,
-	THRD_RACE_CDS int   null,
-	THRD_RACE_DESC varchar(255)   null,
-	FOURTH_RACE_CDS int   null,
-	FOURTH_RACE_DESC varchar(255)   null,
-	FIFTH_RACE_CDS int   null,
-	FIFTH_RACE_DESC varchar(255)   null,
-	ETHNCTY_CDS int   null,
-	ETHNCTY_DESC varchar(255)   null,
-	RELG_CDS int   null,
-	RELG_DESC varchar(255)   null,
-	SMKE_STS_CDS int   null,
-	SMKE_STS_DESC varchar(255)   null,
-	HI_LEVL_OF_EDU_CDS int   null,
-	HI_LEVL_OF_EDU_DESC varchar(255)   null,
-	PRMY_PAYOR_NM varchar(254)   null,
-	PRMY_FNCL_CLASS_CDS int   null,
-	PRMY_FNCL_CLASS_DESC varchar(255)   null,
-	MTHR_PTNT_BABY_NUM varchar(80)   null,
-	AGE int   null,
-	REG_TS datetime   null,
-	AGE_LOG float   null,
-	AVAIL_IND varchar(3)   null,
-	AGE_FACT int   null,
-	PRMY_PAYOR_CDS int   null,
-	PTNT_SK bigint identity(1,1) not null,
-	SRC_PTNT_ID varchar(255)   null,
-	AGE_AT_REG bigint   null,
-	MULTI_RACIAL varchar(3)   null,
-	CRNT_PCP_PROVDR_SK bigint   null,
-	CARLN_EMP_HLTH_PLN_IND varchar(3)   null,
-	LIV_STS_CDS int   null,
-	ACTIVE varchar(3)   null,
-	CONSTRAINT PK_LDW_PTNT_DIM_PTNT_SK PRIMARY KEY CLUSTERED (PTNT_SK)
-);
-
-
 create table LabComponentDim(
 	CMPNT_SK bigint identity(1,1) not null,
 	COMP_NAME varchar(513)   null,
@@ -1581,6 +1542,23 @@ create table LabTestVerificationStatusDim(
 );
 
 
+create table qps_Dim_Measure(
+	Measure_Dim_ID int identity(1,1) not null,
+	Source_ID int   null,
+	Source_Measure_ID int   null,
+	Is_Active bit   null,
+	Measure varchar(4000)   null,
+	CONSTRAINT PK_qps_Dim_Measure_Measure_Dim_ID PRIMARY KEY CLUSTERED (Measure_Dim_ID)
+);
+
+
+create table qps_Dim_Measure_Group(
+	Measure_Group_Dim_ID int  not null,
+	Measure_Group_ID varchar(4000)   null,
+	Glossary_Link varchar(4000)   null,
+);
+
+
 create table MeasureMDFact(
 	Data_ID int  not null,
 	Measure_Dim_ID int   null,
@@ -1614,6 +1592,13 @@ create table MeasureQLFact(
 	Meaure_Quarter int   null,
 	Result numeric(18,2)   null,
 	LO_CDS int   null,
+);
+
+
+create table QualityMeasureSourceDim(
+	Source_ID int identity(1,1) not null,
+	Source_Name varchar(4000)   null,
+	CONSTRAINT PK_QualityMeasureSourceDim_Source_ID PRIMARY KEY CLUSTERED (Source_ID)
 );
 
 
@@ -2255,6 +2240,69 @@ create table OutpatientFinancialClassDim(
 );
 
 
+create table LDW_PTNT_DIM(
+	MPI_NUM varchar(80)   null,
+	BRTH_TS datetime   null,
+	MRTL_STS_CDS int   null,
+	MRTL_STS_DESC varchar(255)   null,
+	CITY varchar(30)   null,
+	CNTY_CDS int   null,
+	CNTY_DESC varchar(255)   null,
+	ST_PRV_CDS varchar(50)   null,
+	ST_PRV_NM varchar(255)   null,
+	PSTL_CDS varchar(5)   null,
+	CNTRY_CDS int   null,
+	CNTRY_NM varchar(50)   null,
+	HME_PH_AREA_CDS varchar(8)   null,
+	HME_PH_EXCHNG_CDS varchar(3)   null,
+	WRK_PH_AREA_CDS varchar(8)   null,
+	WRK_PH_EXCHNG_CDS varchar(3)   null,
+	LIV_STS_DESC varchar(254)   null,
+	DTH_TS datetime   null,
+	SEX_CDS int   null,
+	SEX_DESC varchar(254)   null,
+	PRMY_LANG_CDS int   null,
+	PRMY_LANG_DESC varchar(254)   null,
+	PRMY_RACE_CDS int   null,
+	PRMY_RACE_DESC varchar(254)   null,
+	SCND_RACE_CDS int   null,
+	SCND_RACE_DESC varchar(255)   null,
+	THRD_RACE_CDS int   null,
+	THRD_RACE_DESC varchar(255)   null,
+	FOURTH_RACE_CDS int   null,
+	FOURTH_RACE_DESC varchar(255)   null,
+	FIFTH_RACE_CDS int   null,
+	FIFTH_RACE_DESC varchar(255)   null,
+	ETHNCTY_CDS int   null,
+	ETHNCTY_DESC varchar(255)   null,
+	RELG_CDS int   null,
+	RELG_DESC varchar(255)   null,
+	SMKE_STS_CDS int   null,
+	SMKE_STS_DESC varchar(255)   null,
+	HI_LEVL_OF_EDU_CDS int   null,
+	HI_LEVL_OF_EDU_DESC varchar(255)   null,
+	PRMY_PAYOR_NM varchar(254)   null,
+	PRMY_FNCL_CLASS_CDS int   null,
+	PRMY_FNCL_CLASS_DESC varchar(255)   null,
+	MTHR_PTNT_BABY_NUM varchar(80)   null,
+	AGE int   null,
+	REG_TS datetime   null,
+	AGE_LOG float   null,
+	AVAIL_IND varchar(3)   null,
+	AGE_FACT int   null,
+	PRMY_PAYOR_CDS int   null,
+	PTNT_SK bigint identity(1,1) not null,
+	SRC_PTNT_ID varchar(255)   null,
+	AGE_AT_REG bigint   null,
+	MULTI_RACIAL varchar(3)   null,
+	CRNT_PCP_PROVDR_SK bigint   null,
+	CARLN_EMP_HLTH_PLN_IND varchar(3)   null,
+	LIV_STS_CDS int   null,
+	ACTIVE varchar(3)   null,
+	CONSTRAINT PK_LDW_PTNT_DIM_PTNT_SK PRIMARY KEY CLUSTERED (PTNT_SK)
+);
+
+
 create table PharmacyDim(
 	PHRM_SK bigint identity(1,1) not null,
 	SRC_PHRM_ID varchar(255)   null,
@@ -2392,6 +2440,15 @@ create table ProcedureTypeDim(
 );
 
 
+create table qps_Dim_Program(
+	Start_Date datetime   null,
+	End_Date datetime   null,
+	Is_Active bit   null,
+	Program_ID int  not null,
+	Program_Name varchar(4000)   null,
+);
+
+
 create table ProviderAffiliationDim(
 	INTN_EXT_CDS int identity(1,1) not null,
 	INTN_EXT_DESC varchar(254)   null,
@@ -2476,13 +2533,6 @@ create table ProviderTypeDim(
 	PROVDR_TYPE_CDS int identity(1,1) not null,
 	PROVDR_TYPE_DESC varchar(254)   null,
 	CONSTRAINT PK_ProviderTypeDim_PROVDR_TYPE_CDS PRIMARY KEY CLUSTERED (PROVDR_TYPE_CDS)
-);
-
-
-create table QualityMeasureSourceDim(
-	Source_ID int identity(1,1) not null,
-	Source_Name varchar(4000)   null,
-	CONSTRAINT PK_QualityMeasureSourceDim_Source_ID PRIMARY KEY CLUSTERED (Source_ID)
 );
 
 
@@ -2730,6 +2780,16 @@ create table SurgicalSupplyVendorDim(
 );
 
 
+create table DW_TM_OF_DY_DIM(
+	TM_OF_DY_SK bigint identity(1,1) not null,
+	TM_OF_DY time(0)   null,
+	HR_OF_DY int   null,
+	MN_OF_DY int   null,
+	SCND_OF_DY int   null,
+	CONSTRAINT PK_DW_TM_OF_DY_DIM_TM_OF_DY_SK PRIMARY KEY CLUSTERED (TM_OF_DY_SK)
+);
+
+
 create table UserDim(
 	USR_SK bigint identity(1,1) not null,
 	USER_NAME varchar(553)   null,
@@ -2744,66 +2804,6 @@ create table UserGenderDim(
 	SEX_CDS int identity(1,1) not null,
 	SEX_DESC varchar(254)   null,
 	CONSTRAINT PK_UserGenderDim_SEX_CDS PRIMARY KEY CLUSTERED (SEX_CDS)
-);
-
-
-create table dbo_DIAG_BRIDGE(
-	DIAG_CD_SK int identity(1,1) not null,
-	DIAG_CD_DESC varchar(255)   null,
-	MSTR_DIAG_CD varchar(50)   null,
-	ICD9_CD varchar(50)   null,
-	ICD9_CD_LST varchar(255)   null,
-	ICD10_CD varchar(50)   null,
-	ICD10_CD_LST varchar(255)   null,
-	DIAG_HIR_SK int   null,
-	CONSTRAINT PK_dbo_DIAG_BRIDGE_DIAG_CD_SK PRIMARY KEY CLUSTERED (DIAG_CD_SK)
-);
-
-
-create table dbo_DIAG_HYR_DIM(
-	DIAG_CLS_DESC varchar(255)   null,
-	DIAG_PRN_SK int   null,
-	DIAG_HIR_SK int identity(1,1) not null,
-	CONSTRAINT PK_dbo_DIAG_HYR_DIM_DIAG_HIR_SK PRIMARY KEY CLUSTERED (DIAG_HIR_SK)
-);
-
-
-create table qps_DM_Quality(
-	Data_ID int  not null,
-	LO_CDS int   null,
-	SRC_DEPT_ID varchar(4000)   null,
-	Truven_Indicator varchar(4000)   null,
-	Source_Measure_Title varchar(4000)   null,
-	Frequency varchar(4000)   null,
-	Date datetime   null,
-	Result numeric(18,2)   null,
-	Source_Source_Measure_ID int   null,
-);
-
-
-create table qps_Dim_Measure(
-	Measure_Dim_ID int identity(1,1) not null,
-	Source_ID int   null,
-	Source_Measure_ID int   null,
-	Is_Active bit   null,
-	Measure varchar(4000)   null,
-	CONSTRAINT PK_qps_Dim_Measure_Measure_Dim_ID PRIMARY KEY CLUSTERED (Measure_Dim_ID)
-);
-
-
-create table qps_Dim_Measure_Group(
-	Measure_Group_Dim_ID int  not null,
-	Measure_Group_ID varchar(4000)   null,
-	Glossary_Link varchar(4000)   null,
-);
-
-
-create table qps_Dim_Program(
-	Start_Date datetime   null,
-	End_Date datetime   null,
-	Is_Active bit   null,
-	Program_ID int  not null,
-	Program_Name varchar(4000)   null,
 );
 
 
