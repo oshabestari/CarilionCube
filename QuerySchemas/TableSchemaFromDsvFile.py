@@ -2,12 +2,13 @@ import untangle
 import collections
 import json
 
-obj = untangle.parse(r'C:\_car\CarilionCube\ContractCube\Carilion.dsv')
+obj = untangle.parse(r'..\ContractCube\Carilion.dsv')
 
 SSAS_DSV_TableDef = collections.namedtuple('SSAS_DSV_TableDef', ['Name', 'FriendlyName', 'DbTableName', 'QueryDefinition', 'Columns'])
 SSAS_DSV_ColumnDef = collections.namedtuple('SSAS_DSV_ColumnDef', ['Name', 'FriendlyName', 'DataType', 'Description', 'AllowNull', 'Length', 'DbColumnName'])
 SSAS_DSV_ForeignKeyDef = collections.namedtuple('SSAS_DSV_ForeignKeyDef', ['Name', 'Parent', 'Child', 'ParentKey', 'ChildKey', 'Description'])
 
+primary_keys = {}
 foreign_keys = []
 foreign_keys_asdict = []
 for xe in obj.DataSourceView.Schema.xs_schema.xs_annotation.xs_appinfo.msdata_Relationship:
@@ -16,6 +17,7 @@ for xe in obj.DataSourceView.Schema.xs_schema.xs_annotation.xs_appinfo.msdata_Re
         )
     foreign_keys.append(fkey)
     foreign_keys_asdict.append(fkey._asdict())
+    primary_keys[fkey.Parent] = fkey.ParentKey
     #print(fkey)
 
 foreign_keys.sort(key=lambda x: x.Name)
@@ -82,24 +84,82 @@ datatypes.sort()
 with open('./output/datatypes.txt', 'w') as f:
     f.write('\n'.join(datatypes))
 
+
 def encode_ssas_datatype_to_sql(c):
-    return ''
+    '''
+    Map the SSAS data types to the SQL data types.
+    Based on the data type currently in use.
+    '''
+    if c.DataType == 'boolean':
+        return 'bit'
+    elif c.DataType == 'dateTime':
+        return 'datetime'
+    elif c.DataType == 'decimal':
+        return 'numeric(18,2)'
+    elif c.DataType == 'double':
+        return 'float'
+    elif c.DataType == 'duration':
+        return 'time(0)'
+    elif c.DataType == 'int':
+        return 'int'
+    elif c.DataType == 'long':
+        return 'bigint'
+    elif c.DataType == 'currency':
+        return 'money'
+    elif c.DataType == 'short':
+        return 'smallint'
+    elif c.DataType == 'unsignedByte':
+        return 'tinyint'
+    elif c.DataType == 'string':
+        return str.format('varchar({0})', c.Length)
+    else:
+        raise Exception(str.format('Unhandled data type [{0}]. Needs to be mapped to a SQL data type.', c.DataType))
+
+def IsIdentityColumn(c, primary_key_column_name):
+    if c.DbColumnName == primary_key_column_name and c.DataType in ['long', 'int', 'short', 'unsignedByte']:
+        return True
+    else:
+        return False
 
 #Build SQL create statements
 sql = []
+sql.append('-- drop all foreign keys')
+sql.append('exec dbo.usp_DropAllForeignKeyConstraints')
+sql.append('\n\n\n')
+sql.append('-- drop table statements')
 for t in tables:
     sql.append(str.format("drop table if exists {0.Name}", t))
-sql.append('\n\n\n')
 
+sql.append('\n\n\n')
+sql.append('-- create table statements')
 for t in tables:
+    if t.Name in primary_keys.keys():
+        primary_key_column_name = primary_keys[t.Name]
+    else:
+        primary_key_column_name = None        
     sql.append(str.format("create table {0.Name}(", t))
     for c in t.Columns:
-        sql.append(str.format("\t{0.DbColumnName} {1} {2} null,", 
+        sql.append(str.format("\t{0.DbColumnName} {1} {2} {3} null,", 
             c,
-            'null' if c.AllowNull else '',
-            encode_ssas_datatype_to_sql(c)
+            encode_ssas_datatype_to_sql(c),
+            'identity(1,1)' if IsIdentityColumn(c, primary_key_column_name) else '',
+            'not' if not c.AllowNull or IsIdentityColumn(c, primary_key_column_name) else ''
             ))
-    sql.append('\n\n\n')
+    if primary_key_column_name != None:
+        sql.append(str.format('\tCONSTRAINT PK_{0.Name}_{1} PRIMARY KEY CLUSTERED ({1})', t, primary_key_column_name))
+    sql.append(');\n\n')
+
+
+sql.append('\n\n\n')
+sql.append('-- add foreign keys')
+for fk in foreign_keys:
+    if fk.Parent in primary_keys.keys() and fk.ParentKey == primary_keys[fk.Parent]:
+        sql.append(str.format("ALTER TABLE {0.Child} ADD CONSTRAINT [{0.Name}] FOREIGN KEY ({0.ChildKey}) "
+            "REFERENCES {0.Parent} ({0.ParentKey});", fk))
+
+with open('./output/create_src_tables.sql', 'w') as f:
+    for s in sql:
+        f.write(s + '\n')
 
 
 
