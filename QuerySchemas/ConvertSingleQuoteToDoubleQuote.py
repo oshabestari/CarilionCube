@@ -4,13 +4,13 @@ import re
 import sqlparse
 import format_sql as fsql
 
-with open('./queries.txt', 'r') as f:
+with open('./input/queries.txt', 'r') as f:
     content = f.readlines()
 # you may also want to remove whitespace characters like `\n` at the end of each line
 content = [x.strip() for x in content]
 
 
-with open('./queries.sql', 'w') as f:
+with open('./output/queries.sql', 'w') as f:
     for l in content:
         if 'set @xml=' in l:
             l = l.replace("set @xml='", '')
