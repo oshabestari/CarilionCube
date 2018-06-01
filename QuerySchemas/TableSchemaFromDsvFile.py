@@ -2,6 +2,8 @@ import untangle
 import collections
 import json
 
+create_tables_using_friendly_names = False
+
 obj = untangle.parse(r'..\ContractCube\Carilion.dsv')
 
 SSAS_DSV_TableDef = collections.namedtuple('SSAS_DSV_TableDef', ['Name', 'FriendlyName', 'DbTableName', 'QueryDefinition', 'Columns'])
@@ -64,6 +66,8 @@ for xe in obj.DataSourceView.Schema.xs_schema.xs_element.xs_complexType.xs_choic
     tables.append(tabdef)
     tables_asdict.append(tabdef_asdict._asdict())
     #print(tabdef)
+# tables.sort(key=lambda x: x.FriendlyName)
+# tables_asdict.sort(key=lambda x: x['FriendlyName'])
 tables.sort(key=lambda x: x.Name)
 tables_asdict.sort(key=lambda x: x['Name'])
 
@@ -84,6 +88,26 @@ datatypes.sort()
 with open('./output/datatypes.txt', 'w') as f:
     f.write('\n'.join(datatypes))
 
+
+def GetFriendlyTableName(o):
+    if isinstance(o, str):
+        if create_tables_using_friendly_names:
+            for t in tables:
+                if o == t:
+                    return t.FriendlyName
+            raise Exception(str.format('Could not find table with name [{0}]', o))
+        else:
+            return o
+    elif isinstance(o, SSAS_DSV_TableDef):
+        if create_tables_using_friendly_names:
+            return o.FriendlyName
+        else:
+            return t.Name
+    print('=======================ERROR=======================')
+    print(o)
+    print('=======================ERROR=======================')
+    raise Exception(str.format('Unhandled object type [{0}] type [{1}]', o, type(o)))
+        
 
 def encode_ssas_datatype_to_sql(c):
     '''
@@ -128,7 +152,7 @@ sql.append('exec dbo.usp_DropAllForeignKeyConstraints')
 sql.append('\n\n\n')
 sql.append('-- drop table statements')
 for t in tables:
-    sql.append(str.format("drop table if exists {0.Name}", t))
+    sql.append(str.format("drop table if exists {0}", GetFriendlyTableName(t.Name)))
 
 sql.append('\n\n\n')
 sql.append('-- create table statements')
@@ -137,7 +161,7 @@ for t in tables:
         primary_key_column_name = primary_keys[t.Name]
     else:
         primary_key_column_name = None        
-    sql.append(str.format("create table {0.Name}(", t))
+    sql.append(str.format("create table {0}(", GetFriendlyTableName(t.Name)))
     for c in t.Columns:
         sql.append(str.format("\t{0.DbColumnName} {1} {2} {3} null,", 
             c,
@@ -146,7 +170,7 @@ for t in tables:
             'not' if not c.AllowNull or IsIdentityColumn(c, primary_key_column_name) else ''
             ))
     if primary_key_column_name != None:
-        sql.append(str.format('\tCONSTRAINT PK_{0.Name}_{1} PRIMARY KEY CLUSTERED ({1})', t, primary_key_column_name))
+        sql.append(str.format('\tCONSTRAINT PK_{0}_{1} PRIMARY KEY CLUSTERED ({1})', GetFriendlyTableName(t.Name), primary_key_column_name))
     sql.append(');\n\n')
 
 
@@ -154,8 +178,8 @@ sql.append('\n\n\n')
 sql.append('-- add foreign keys')
 for fk in foreign_keys:
     if fk.Parent in primary_keys.keys() and fk.ParentKey == primary_keys[fk.Parent]:
-        sql.append(str.format("ALTER TABLE {0.Child} ADD CONSTRAINT [{0.Name}] FOREIGN KEY ({0.ChildKey}) "
-            "REFERENCES {0.Parent} ({0.ParentKey});", fk))
+        sql.append(str.format("ALTER TABLE {1} ADD CONSTRAINT [{0.Name}] FOREIGN KEY ({0.ChildKey}) "
+            "REFERENCES {2} ({0.ParentKey});", fk, GetFriendlyTableName(fk.Child), GetFriendlyTableName(fk.Parent)))
 
 with open('./output/create_src_tables.sql', 'w') as f:
     for s in sql:
