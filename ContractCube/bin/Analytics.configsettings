@@ -204,9 +204,6 @@
               <Partition>
                 <ID>Diagnosis New</ID>
               </Partition>
-              <Partition>
-                <ID>Diagnosis Old</ID>
-              </Partition>
             </Partitions>
           </MeasureGroup>
           <MeasureGroup>
@@ -215,9 +212,6 @@
               <Partition>
                 <ID>Diagnosis New</ID>
               </Partition>
-              <Partition>
-                <ID>Diagnosis Old</ID>
-              </Partition>
             </Partitions>
           </MeasureGroup>
           <MeasureGroup>
@@ -225,9 +219,6 @@
             <Partitions>
               <Partition>
                 <ID>Diagnosis New</ID>
-              </Partition>
-              <Partition>
-                <ID>Diagnosis Old</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
@@ -245,9 +236,6 @@
               <Partition>
                 <ID>DRG New</ID>
               </Partition>
-              <Partition>
-                <ID>DRG Old</ID>
-              </Partition>
             </Partitions>
           </MeasureGroup>
           <MeasureGroup>
@@ -255,9 +243,6 @@
             <Partitions>
               <Partition>
                 <ID>DRG New</ID>
-              </Partition>
-              <Partition>
-                <ID>DRG Old</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
@@ -267,9 +252,6 @@
               <Partition>
                 <ID>DRG New</ID>
               </Partition>
-              <Partition>
-                <ID>DRG Old</ID>
-              </Partition>
             </Partitions>
           </MeasureGroup>
           <MeasureGroup>
@@ -277,9 +259,6 @@
             <Partitions>
               <Partition>
                 <ID>ED Visit New</ID>
-              </Partition>
-              <Partition>
-                <ID>ED Visit Old</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
@@ -289,17 +268,11 @@
               <Partition>
                 <ID>ED VisitPatient New</ID>
               </Partition>
-              <Partition>
-                <ID>ED Visit-Patient Old</ID>
-              </Partition>
             </Partitions>
           </MeasureGroup>
           <MeasureGroup>
             <ID>Encounter Fact</ID>
             <Partitions>
-              <Partition>
-                <ID>Encounter Fact Old</ID>
-              </Partition>
               <Partition>
                 <ID>Encounter Fact New</ID>
               </Partition>
@@ -308,9 +281,6 @@
           <MeasureGroup>
             <ID>Encounter</ID>
             <Partitions>
-              <Partition>
-                <ID>Encounter Fact Old</ID>
-              </Partition>
               <Partition>
                 <ID>Encounter Fact New</ID>
               </Partition>
@@ -322,9 +292,6 @@
               <Partition>
                 <ID>Inpatient Fact</ID>
               </Partition>
-              <Partition>
-                <ID>Inpatient Old</ID>
-              </Partition>
             </Partitions>
           </MeasureGroup>
           <MeasureGroup>
@@ -332,9 +299,6 @@
             <Partitions>
               <Partition>
                 <ID>Inpatient Fact</ID>
-              </Partition>
-              <Partition>
-                <ID>Inpatient Old</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
@@ -344,9 +308,6 @@
               <Partition>
                 <ID>Lab Component Result Fact</ID>
               </Partition>
-              <Partition>
-                <ID>Lab Component Result Old</ID>
-              </Partition>
             </Partitions>
           </MeasureGroup>
           <MeasureGroup>
@@ -354,9 +315,6 @@
             <Partitions>
               <Partition>
                 <ID>Lab Component Result Fact</ID>
-              </Partition>
-              <Partition>
-                <ID>Lab Component Result Old</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
@@ -366,9 +324,6 @@
               <Partition>
                 <ID>Lab Component Result Fact</ID>
               </Partition>
-              <Partition>
-                <ID>Lab Component Result Old</ID>
-              </Partition>
             </Partitions>
           </MeasureGroup>
           <MeasureGroup>
@@ -376,9 +331,6 @@
             <Partitions>
               <Partition>
                 <ID>Lab Test Fact</ID>
-              </Partition>
-              <Partition>
-                <ID>Lab Test Old</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
@@ -388,9 +340,6 @@
               <Partition>
                 <ID>Lab Test Fact</ID>
               </Partition>
-              <Partition>
-                <ID>Lab Test Old</ID>
-              </Partition>
             </Partitions>
           </MeasureGroup>
           <MeasureGroup>
@@ -398,9 +347,6 @@
             <Partitions>
               <Partition>
                 <ID>Lab Test Fact</ID>
-              </Partition>
-              <Partition>
-                <ID>Lab Test Old</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
@@ -410,9 +356,6 @@
               <Partition>
                 <ID>Medication Administration - New</ID>
               </Partition>
-              <Partition>
-                <ID>Medication Administration Old</ID>
-              </Partition>
             </Partitions>
           </MeasureGroup>
           <MeasureGroup>
@@ -420,9 +363,6 @@
             <Partitions>
               <Partition>
                 <ID>Medication Administration - New</ID>
-              </Partition>
-              <Partition>
-                <ID>Medication Administration Old</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
@@ -432,9 +372,6 @@
               <Partition>
                 <ID>Medication Administration - New</ID>
               </Partition>
-              <Partition>
-                <ID>Medication Administration Old</ID>
-              </Partition>
             </Partitions>
           </MeasureGroup>
           <MeasureGroup>
@@ -442,9 +379,6 @@
             <Partitions>
               <Partition>
                 <ID>Medication Order New</ID>
-              </Partition>
-              <Partition>
-                <ID>Medication Order Old</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
@@ -454,9 +388,6 @@
               <Partition>
                 <ID>Medication Order New</ID>
               </Partition>
-              <Partition>
-                <ID>Medication Order Old</ID>
-              </Partition>
             </Partitions>
           </MeasureGroup>
           <MeasureGroup>
@@ -464,9 +395,6 @@
             <Partitions>
               <Partition>
                 <ID>Medication Order New</ID>
-              </Partition>
-              <Partition>
-                <ID>Medication Order Old</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
@@ -476,9 +404,6 @@
               <Partition>
                 <ID>Outpatient Fact</ID>
               </Partition>
-              <Partition>
-                <ID>Outpatient Old</ID>
-              </Partition>
             </Partitions>
           </MeasureGroup>
           <MeasureGroup>
@@ -486,9 +411,6 @@
             <Partitions>
               <Partition>
                 <ID>Outpatient Fact</ID>
-              </Partition>
-              <Partition>
-                <ID>Outpatient Old</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
@@ -506,9 +428,6 @@
               <Partition>
                 <ID>Procedure Order New</ID>
               </Partition>
-              <Partition>
-                <ID>Procedure Order Old</ID>
-              </Partition>
             </Partitions>
           </MeasureGroup>
           <MeasureGroup>
@@ -516,9 +435,6 @@
             <Partitions>
               <Partition>
                 <ID>Procedure Order New</ID>
-              </Partition>
-              <Partition>
-                <ID>Procedure Order Old</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
@@ -528,9 +444,6 @@
               <Partition>
                 <ID>Procedure Order New</ID>
               </Partition>
-              <Partition>
-                <ID>Procedure Order Old</ID>
-              </Partition>
             </Partitions>
           </MeasureGroup>
           <MeasureGroup>
@@ -538,9 +451,6 @@
             <Partitions>
               <Partition>
                 <ID>Surgical Case Fact</ID>
-              </Partition>
-              <Partition>
-                <ID>Surgical Case Old</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
@@ -550,9 +460,6 @@
               <Partition>
                 <ID>Surgical Procedure Event Fact</ID>
               </Partition>
-              <Partition>
-                <ID>Surgical Procedure Event Old</ID>
-              </Partition>
             </Partitions>
           </MeasureGroup>
           <MeasureGroup>
@@ -560,9 +467,6 @@
             <Partitions>
               <Partition>
                 <ID>Surgical Supply Use Fact</ID>
-              </Partition>
-              <Partition>
-                <ID>Surgical Supply Use Old</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
