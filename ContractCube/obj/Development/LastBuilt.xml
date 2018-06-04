@@ -49,29 +49,104 @@
       <b>78</b>
     </Hash>
   </Item>
-  <Item name="Carilion.dsv">
-    <Time>636634497176304634</Time>
+  <Item name="Analytics.partitions">
+    <Time>636634521297771872</Time>
     <Hash length="20">
-      <b>137</b>
-      <b>29</b>
-      <b>182</b>
-      <b>129</b>
-      <b>142</b>
+      <b>210</b>
+      <b>23</b>
+      <b>194</b>
+      <b>1</b>
+      <b>180</b>
+      <b>94</b>
+      <b>192</b>
+      <b>199</b>
+      <b>23</b>
+      <b>49</b>
+      <b>184</b>
+      <b>234</b>
+      <b>201</b>
       <b>120</b>
-      <b>22</b>
-      <b>242</b>
-      <b>30</b>
-      <b>32</b>
-      <b>193</b>
-      <b>123</b>
-      <b>244</b>
-      <b>61</b>
-      <b>181</b>
-      <b>190</b>
-      <b>55</b>
-      <b>65</b>
+      <b>84</b>
+      <b>212</b>
+      <b>153</b>
+      <b>94</b>
+      <b>96</b>
+      <b>20</b>
+    </Hash>
+  </Item>
+  <Item name="Outpatient.dim">
+    <Time>636631863520000000</Time>
+    <Hash length="20">
+      <b>91</b>
+      <b>203</b>
+      <b>42</b>
       <b>33</b>
-      <b>158</b>
+      <b>171</b>
+      <b>139</b>
+      <b>176</b>
+      <b>86</b>
+      <b>108</b>
+      <b>95</b>
+      <b>40</b>
+      <b>151</b>
+      <b>228</b>
+      <b>111</b>
+      <b>236</b>
+      <b>196</b>
+      <b>212</b>
+      <b>199</b>
+      <b>250</b>
+      <b>170</b>
+    </Hash>
+  </Item>
+  <Item name="Medication - Administration - Action.dim">
+    <Time>636329368920000000</Time>
+    <Hash length="20">
+      <b>115</b>
+      <b>138</b>
+      <b>169</b>
+      <b>88</b>
+      <b>57</b>
+      <b>113</b>
+      <b>48</b>
+      <b>150</b>
+      <b>97</b>
+      <b>185</b>
+      <b>122</b>
+      <b>200</b>
+      <b>179</b>
+      <b>111</b>
+      <b>18</b>
+      <b>181</b>
+      <b>13</b>
+      <b>245</b>
+      <b>144</b>
+      <b>88</b>
+    </Hash>
+  </Item>
+  <Item name="Analytics.cube">
+    <Time>636635775436725149</Time>
+    <Hash length="20">
+      <b>15</b>
+      <b>169</b>
+      <b>189</b>
+      <b>223</b>
+      <b>242</b>
+      <b>113</b>
+      <b>53</b>
+      <b>173</b>
+      <b>42</b>
+      <b>136</b>
+      <b>206</b>
+      <b>133</b>
+      <b>95</b>
+      <b>103</b>
+      <b>124</b>
+      <b>56</b>
+      <b>13</b>
+      <b>206</b>
+      <b>62</b>
+      <b>45</b>
     </Hash>
   </Item>
   <Item name="Census - Geographical Area.dim">
@@ -97,81 +172,6 @@
       <b>18</b>
       <b>64</b>
       <b>2</b>
-    </Hash>
-  </Item>
-  <Item name="Analytics.cube">
-    <Time>636634521297310594</Time>
-    <Hash length="20">
-      <b>55</b>
-      <b>10</b>
-      <b>216</b>
-      <b>89</b>
-      <b>125</b>
-      <b>243</b>
-      <b>54</b>
-      <b>241</b>
-      <b>151</b>
-      <b>91</b>
-      <b>218</b>
-      <b>217</b>
-      <b>116</b>
-      <b>79</b>
-      <b>217</b>
-      <b>173</b>
-      <b>133</b>
-      <b>136</b>
-      <b>155</b>
-      <b>222</b>
-    </Hash>
-  </Item>
-  <Item name="Surgical Procedure Event - Wound Class.dim">
-    <Time>636433659380000000</Time>
-    <Hash length="20">
-      <b>16</b>
-      <b>102</b>
-      <b>238</b>
-      <b>126</b>
-      <b>217</b>
-      <b>77</b>
-      <b>33</b>
-      <b>149</b>
-      <b>11</b>
-      <b>184</b>
-      <b>168</b>
-      <b>10</b>
-      <b>185</b>
-      <b>236</b>
-      <b>209</b>
-      <b>44</b>
-      <b>35</b>
-      <b>94</b>
-      <b>140</b>
-      <b>24</b>
-    </Hash>
-  </Item>
-  <Item name="Analytics.database">
-    <Time>636631863520000000</Time>
-    <Hash length="20">
-      <b>75</b>
-      <b>32</b>
-      <b>220</b>
-      <b>149</b>
-      <b>199</b>
-      <b>72</b>
-      <b>255</b>
-      <b>105</b>
-      <b>59</b>
-      <b>74</b>
-      <b>145</b>
-      <b>197</b>
-      <b>213</b>
-      <b>127</b>
-      <b>166</b>
-      <b>128</b>
-      <b>99</b>
-      <b>129</b>
-      <b>9</b>
-      <b>124</b>
     </Hash>
   </Item>
   <Item name="Surgical Supply Use - Log Status.dim">
@@ -222,31 +222,6 @@
       <b>215</b>
       <b>175</b>
       <b>148</b>
-    </Hash>
-  </Item>
-  <Item name="Procedure - Order Mode.dim">
-    <Time>636303581520000000</Time>
-    <Hash length="20">
-      <b>170</b>
-      <b>182</b>
-      <b>136</b>
-      <b>126</b>
-      <b>164</b>
-      <b>57</b>
-      <b>52</b>
-      <b>141</b>
-      <b>233</b>
-      <b>97</b>
-      <b>9</b>
-      <b>232</b>
-      <b>195</b>
-      <b>158</b>
-      <b>21</b>
-      <b>69</b>
-      <b>112</b>
-      <b>157</b>
-      <b>159</b>
-      <b>73</b>
     </Hash>
   </Item>
   <Item name="Procedure - Order Source.dim">
@@ -324,29 +299,29 @@
       <b>223</b>
     </Hash>
   </Item>
-  <Item name="Surgical Case.dim">
-    <Time>636433122440000000</Time>
+  <Item name="Surgical Procedure Event - Wound Class.dim">
+    <Time>636433659380000000</Time>
     <Hash length="20">
-      <b>205</b>
-      <b>39</b>
-      <b>52</b>
-      <b>169</b>
-      <b>46</b>
-      <b>232</b>
-      <b>127</b>
-      <b>187</b>
-      <b>132</b>
-      <b>110</b>
-      <b>38</b>
-      <b>151</b>
-      <b>122</b>
-      <b>160</b>
-      <b>14</b>
-      <b>243</b>
-      <b>198</b>
-      <b>21</b>
-      <b>60</b>
-      <b>178</b>
+      <b>16</b>
+      <b>102</b>
+      <b>238</b>
+      <b>126</b>
+      <b>217</b>
+      <b>77</b>
+      <b>33</b>
+      <b>149</b>
+      <b>11</b>
+      <b>184</b>
+      <b>168</b>
+      <b>10</b>
+      <b>185</b>
+      <b>236</b>
+      <b>209</b>
+      <b>44</b>
+      <b>35</b>
+      <b>94</b>
+      <b>140</b>
+      <b>24</b>
     </Hash>
   </Item>
   <Item name="Time.dim">
@@ -424,29 +399,29 @@
       <b>245</b>
     </Hash>
   </Item>
-  <Item name="Outpatient.dim">
+  <Item name="User.dim">
     <Time>636631863520000000</Time>
     <Hash length="20">
-      <b>91</b>
-      <b>203</b>
-      <b>42</b>
-      <b>33</b>
-      <b>171</b>
-      <b>139</b>
-      <b>176</b>
-      <b>86</b>
-      <b>108</b>
-      <b>95</b>
-      <b>40</b>
-      <b>151</b>
-      <b>228</b>
       <b>111</b>
-      <b>236</b>
-      <b>196</b>
-      <b>212</b>
-      <b>199</b>
-      <b>250</b>
+      <b>227</b>
+      <b>126</b>
+      <b>120</b>
+      <b>107</b>
+      <b>58</b>
+      <b>80</b>
+      <b>21</b>
+      <b>2</b>
       <b>170</b>
+      <b>86</b>
+      <b>86</b>
+      <b>193</b>
+      <b>181</b>
+      <b>231</b>
+      <b>133</b>
+      <b>38</b>
+      <b>187</b>
+      <b>76</b>
+      <b>104</b>
     </Hash>
   </Item>
   <Item name="Procedure - Order Priority.dim">
@@ -474,29 +449,29 @@
       <b>169</b>
     </Hash>
   </Item>
-  <Item name="Census.partitions">
-    <Time>636321094360000000</Time>
+  <Item name="Date.dim">
+    <Time>636631863520000000</Time>
     <Hash length="20">
-      <b>81</b>
-      <b>84</b>
-      <b>16</b>
-      <b>56</b>
-      <b>13</b>
-      <b>181</b>
-      <b>184</b>
-      <b>5</b>
-      <b>88</b>
-      <b>83</b>
-      <b>123</b>
-      <b>235</b>
-      <b>192</b>
-      <b>139</b>
-      <b>174</b>
-      <b>217</b>
-      <b>185</b>
+      <b>47</b>
+      <b>46</b>
+      <b>8</b>
+      <b>221</b>
+      <b>138</b>
+      <b>78</b>
+      <b>226</b>
+      <b>35</b>
+      <b>194</b>
+      <b>197</b>
+      <b>177</b>
       <b>144</b>
-      <b>119</b>
-      <b>98</b>
+      <b>46</b>
+      <b>22</b>
+      <b>203</b>
+      <b>83</b>
+      <b>224</b>
+      <b>226</b>
+      <b>183</b>
+      <b>118</b>
     </Hash>
   </Item>
   <Item name="Census - Measure Type.dim">
@@ -549,6 +524,31 @@
       <b>68</b>
     </Hash>
   </Item>
+  <Item name="Provider.dim">
+    <Time>636631863520000000</Time>
+    <Hash length="20">
+      <b>87</b>
+      <b>133</b>
+      <b>139</b>
+      <b>247</b>
+      <b>140</b>
+      <b>188</b>
+      <b>193</b>
+      <b>192</b>
+      <b>156</b>
+      <b>195</b>
+      <b>172</b>
+      <b>167</b>
+      <b>180</b>
+      <b>235</b>
+      <b>175</b>
+      <b>209</b>
+      <b>213</b>
+      <b>156</b>
+      <b>188</b>
+      <b>231</b>
+    </Hash>
+  </Item>
   <Item name="Surgical Procedure Event - Procedure Site.dim">
     <Time>636433122440000000</Time>
     <Hash length="20">
@@ -574,29 +574,29 @@
       <b>132</b>
     </Hash>
   </Item>
-  <Item name="User.dim">
-    <Time>636631863520000000</Time>
+  <Item name="Diagnosis Hierarchy.dim">
+    <Time>636284360880000000</Time>
     <Hash length="20">
-      <b>111</b>
-      <b>227</b>
-      <b>126</b>
-      <b>120</b>
-      <b>107</b>
-      <b>58</b>
-      <b>80</b>
-      <b>21</b>
-      <b>2</b>
-      <b>170</b>
-      <b>86</b>
-      <b>86</b>
-      <b>193</b>
-      <b>181</b>
-      <b>231</b>
-      <b>133</b>
-      <b>38</b>
-      <b>187</b>
-      <b>76</b>
-      <b>104</b>
+      <b>191</b>
+      <b>184</b>
+      <b>151</b>
+      <b>175</b>
+      <b>210</b>
+      <b>199</b>
+      <b>60</b>
+      <b>192</b>
+      <b>163</b>
+      <b>164</b>
+      <b>157</b>
+      <b>122</b>
+      <b>180</b>
+      <b>145</b>
+      <b>250</b>
+      <b>94</b>
+      <b>238</b>
+      <b>237</b>
+      <b>134</b>
+      <b>109</b>
     </Hash>
   </Item>
   <Item name="Program.dim">
@@ -625,7 +625,7 @@
     </Hash>
   </Item>
   <Item name="Binary.dim">
-    <Time>636631863520000000</Time>
+    <Time>636635772598742167</Time>
     <Hash length="20">
       <b>239</b>
       <b>232</b>
@@ -699,54 +699,29 @@
       <b>188</b>
     </Hash>
   </Item>
-  <Item name="Date.dim">
-    <Time>636631863520000000</Time>
+  <Item name="DRG.dim">
+    <Time>636466187840000000</Time>
     <Hash length="20">
-      <b>47</b>
-      <b>46</b>
-      <b>8</b>
-      <b>221</b>
-      <b>138</b>
-      <b>78</b>
-      <b>226</b>
-      <b>35</b>
-      <b>194</b>
-      <b>197</b>
-      <b>177</b>
-      <b>144</b>
-      <b>46</b>
-      <b>22</b>
-      <b>203</b>
+      <b>44</b>
+      <b>13</b>
+      <b>184</b>
+      <b>15</b>
+      <b>24</b>
+      <b>25</b>
+      <b>112</b>
       <b>83</b>
-      <b>224</b>
-      <b>226</b>
-      <b>183</b>
-      <b>118</b>
-    </Hash>
-  </Item>
-  <Item name="Patient.dim">
-    <Time>636631863520000000</Time>
-    <Hash length="20">
-      <b>242</b>
-      <b>193</b>
-      <b>70</b>
-      <b>14</b>
-      <b>53</b>
-      <b>182</b>
-      <b>158</b>
+      <b>126</b>
+      <b>83</b>
+      <b>227</b>
+      <b>85</b>
+      <b>179</b>
+      <b>100</b>
+      <b>196</b>
       <b>124</b>
-      <b>156</b>
-      <b>59</b>
-      <b>145</b>
-      <b>32</b>
-      <b>6</b>
-      <b>186</b>
-      <b>124</b>
-      <b>7</b>
-      <b>233</b>
-      <b>110</b>
-      <b>174</b>
-      <b>30</b>
+      <b>84</b>
+      <b>130</b>
+      <b>213</b>
+      <b>27</b>
     </Hash>
   </Item>
   <Item name="Lab Component Result - Lab Status.dim">
@@ -774,29 +749,54 @@
       <b>3</b>
     </Hash>
   </Item>
-  <Item name="Provider.dim">
-    <Time>636631863520000000</Time>
+  <Item name="Census.partitions">
+    <Time>636321094360000000</Time>
     <Hash length="20">
-      <b>87</b>
-      <b>133</b>
-      <b>139</b>
-      <b>247</b>
-      <b>140</b>
-      <b>188</b>
-      <b>193</b>
-      <b>192</b>
-      <b>156</b>
-      <b>195</b>
-      <b>172</b>
-      <b>167</b>
-      <b>180</b>
+      <b>81</b>
+      <b>84</b>
+      <b>16</b>
+      <b>56</b>
+      <b>13</b>
+      <b>181</b>
+      <b>184</b>
+      <b>5</b>
+      <b>88</b>
+      <b>83</b>
+      <b>123</b>
       <b>235</b>
-      <b>175</b>
-      <b>209</b>
-      <b>213</b>
-      <b>156</b>
-      <b>188</b>
-      <b>231</b>
+      <b>192</b>
+      <b>139</b>
+      <b>174</b>
+      <b>217</b>
+      <b>185</b>
+      <b>144</b>
+      <b>119</b>
+      <b>98</b>
+    </Hash>
+  </Item>
+  <Item name="Procedure - Order Mode.dim">
+    <Time>636303581520000000</Time>
+    <Hash length="20">
+      <b>170</b>
+      <b>182</b>
+      <b>136</b>
+      <b>126</b>
+      <b>164</b>
+      <b>57</b>
+      <b>52</b>
+      <b>141</b>
+      <b>233</b>
+      <b>97</b>
+      <b>9</b>
+      <b>232</b>
+      <b>195</b>
+      <b>158</b>
+      <b>21</b>
+      <b>69</b>
+      <b>112</b>
+      <b>157</b>
+      <b>159</b>
+      <b>73</b>
     </Hash>
   </Item>
   <Item name="Procedure - Order Class.dim">
@@ -824,54 +824,54 @@
       <b>93</b>
     </Hash>
   </Item>
-  <Item name="Census.cube">
-    <Time>636634486915948276</Time>
+  <Item name="Measure.dim">
+    <Time>636516931220000000</Time>
     <Hash length="20">
-      <b>207</b>
-      <b>78</b>
-      <b>28</b>
-      <b>165</b>
-      <b>4</b>
-      <b>221</b>
-      <b>108</b>
-      <b>253</b>
-      <b>84</b>
-      <b>201</b>
-      <b>221</b>
-      <b>1</b>
-      <b>192</b>
-      <b>32</b>
-      <b>59</b>
-      <b>135</b>
-      <b>243</b>
-      <b>8</b>
-      <b>82</b>
-      <b>135</b>
+      <b>131</b>
+      <b>181</b>
+      <b>44</b>
+      <b>81</b>
+      <b>210</b>
+      <b>159</b>
+      <b>218</b>
+      <b>88</b>
+      <b>157</b>
+      <b>73</b>
+      <b>130</b>
+      <b>51</b>
+      <b>231</b>
+      <b>215</b>
+      <b>13</b>
+      <b>33</b>
+      <b>244</b>
+      <b>136</b>
+      <b>94</b>
+      <b>233</b>
     </Hash>
   </Item>
-  <Item name="Surgical Supply.dim">
-    <Time>636437793620000000</Time>
+  <Item name="Analytics.database">
+    <Time>636631863520000000</Time>
     <Hash length="20">
-      <b>95</b>
-      <b>209</b>
-      <b>109</b>
-      <b>101</b>
-      <b>246</b>
-      <b>71</b>
-      <b>102</b>
-      <b>184</b>
-      <b>151</b>
-      <b>138</b>
-      <b>131</b>
-      <b>151</b>
-      <b>132</b>
-      <b>130</b>
-      <b>53</b>
-      <b>251</b>
-      <b>8</b>
-      <b>204</b>
-      <b>33</b>
-      <b>35</b>
+      <b>75</b>
+      <b>32</b>
+      <b>220</b>
+      <b>149</b>
+      <b>199</b>
+      <b>72</b>
+      <b>255</b>
+      <b>105</b>
+      <b>59</b>
+      <b>74</b>
+      <b>145</b>
+      <b>197</b>
+      <b>213</b>
+      <b>127</b>
+      <b>166</b>
+      <b>128</b>
+      <b>99</b>
+      <b>129</b>
+      <b>9</b>
+      <b>124</b>
     </Hash>
   </Item>
   <Item name="Procedure - Order Set.dim">
@@ -924,54 +924,29 @@
       <b>52</b>
     </Hash>
   </Item>
-  <Item name="Diagnosis Hierarchy.dim">
-    <Time>636284360880000000</Time>
+  <Item name="Carilion.dsv">
+    <Time>636634497176304634</Time>
     <Hash length="20">
-      <b>191</b>
-      <b>184</b>
-      <b>151</b>
-      <b>175</b>
-      <b>210</b>
-      <b>199</b>
-      <b>60</b>
-      <b>192</b>
-      <b>163</b>
-      <b>164</b>
-      <b>157</b>
-      <b>122</b>
-      <b>180</b>
-      <b>145</b>
-      <b>250</b>
-      <b>94</b>
-      <b>238</b>
-      <b>237</b>
-      <b>134</b>
-      <b>109</b>
-    </Hash>
-  </Item>
-  <Item name="Measure.dim">
-    <Time>636516931220000000</Time>
-    <Hash length="20">
-      <b>131</b>
-      <b>181</b>
-      <b>44</b>
-      <b>81</b>
-      <b>210</b>
-      <b>159</b>
-      <b>218</b>
-      <b>88</b>
-      <b>157</b>
-      <b>73</b>
-      <b>130</b>
-      <b>51</b>
-      <b>231</b>
-      <b>215</b>
-      <b>13</b>
-      <b>33</b>
+      <b>137</b>
+      <b>29</b>
+      <b>182</b>
+      <b>129</b>
+      <b>142</b>
+      <b>120</b>
+      <b>22</b>
+      <b>242</b>
+      <b>30</b>
+      <b>32</b>
+      <b>193</b>
+      <b>123</b>
       <b>244</b>
-      <b>136</b>
-      <b>94</b>
-      <b>233</b>
+      <b>61</b>
+      <b>181</b>
+      <b>190</b>
+      <b>55</b>
+      <b>65</b>
+      <b>33</b>
+      <b>158</b>
     </Hash>
   </Item>
   <Item name="Lab.dim">
@@ -999,31 +974,6 @@
       <b>73</b>
     </Hash>
   </Item>
-  <Item name="Analytics.partitions">
-    <Time>636634521297771872</Time>
-    <Hash length="20">
-      <b>210</b>
-      <b>23</b>
-      <b>194</b>
-      <b>1</b>
-      <b>180</b>
-      <b>94</b>
-      <b>192</b>
-      <b>199</b>
-      <b>23</b>
-      <b>49</b>
-      <b>184</b>
-      <b>234</b>
-      <b>201</b>
-      <b>120</b>
-      <b>84</b>
-      <b>212</b>
-      <b>153</b>
-      <b>94</b>
-      <b>96</b>
-      <b>20</b>
-    </Hash>
-  </Item>
   <Item name="Lab Component Result - Result Flag.dim">
     <Time>636381206880000000</Time>
     <Hash length="20">
@@ -1049,54 +999,29 @@
       <b>6</b>
     </Hash>
   </Item>
-  <Item name="DRG - Sequence.dim">
-    <Time>636291722080000000</Time>
+  <Item name="Diagnosis - Present On Admit.dim">
+    <Time>636332602540000000</Time>
     <Hash length="20">
-      <b>55</b>
-      <b>230</b>
-      <b>211</b>
-      <b>212</b>
-      <b>241</b>
-      <b>191</b>
-      <b>104</b>
-      <b>126</b>
-      <b>192</b>
-      <b>13</b>
-      <b>238</b>
-      <b>67</b>
-      <b>131</b>
-      <b>67</b>
-      <b>60</b>
-      <b>185</b>
-      <b>110</b>
-      <b>93</b>
-      <b>30</b>
-      <b>68</b>
-    </Hash>
-  </Item>
-  <Item name="Medication - Administration - Action.dim">
-    <Time>636329368920000000</Time>
-    <Hash length="20">
-      <b>115</b>
-      <b>138</b>
+      <b>69</b>
+      <b>37</b>
+      <b>194</b>
       <b>169</b>
-      <b>88</b>
-      <b>57</b>
-      <b>113</b>
-      <b>48</b>
-      <b>150</b>
-      <b>97</b>
-      <b>185</b>
-      <b>122</b>
-      <b>200</b>
-      <b>179</b>
-      <b>111</b>
-      <b>18</b>
-      <b>181</b>
-      <b>13</b>
-      <b>245</b>
-      <b>144</b>
-      <b>88</b>
+      <b>124</b>
+      <b>248</b>
+      <b>81</b>
+      <b>91</b>
+      <b>153</b>
+      <b>66</b>
+      <b>15</b>
+      <b>154</b>
+      <b>28</b>
+      <b>132</b>
+      <b>7</b>
+      <b>71</b>
+      <b>166</b>
+      <b>69</b>
+      <b>11</b>
+      <b>100</b>
     </Hash>
   </Item>
   <Item name="Procedure.dim">
@@ -1147,6 +1072,31 @@
       <b>28</b>
       <b>195</b>
       <b>54</b>
+    </Hash>
+  </Item>
+  <Item name="Patient.dim">
+    <Time>636631863520000000</Time>
+    <Hash length="20">
+      <b>242</b>
+      <b>193</b>
+      <b>70</b>
+      <b>14</b>
+      <b>53</b>
+      <b>182</b>
+      <b>158</b>
+      <b>124</b>
+      <b>156</b>
+      <b>59</b>
+      <b>145</b>
+      <b>32</b>
+      <b>6</b>
+      <b>186</b>
+      <b>124</b>
+      <b>7</b>
+      <b>233</b>
+      <b>110</b>
+      <b>174</b>
+      <b>30</b>
     </Hash>
   </Item>
   <Item name="Census - Source.dim">
@@ -1274,6 +1224,31 @@
       <b>214</b>
     </Hash>
   </Item>
+  <Item name="DRG - Sequence.dim">
+    <Time>636291722080000000</Time>
+    <Hash length="20">
+      <b>55</b>
+      <b>230</b>
+      <b>211</b>
+      <b>212</b>
+      <b>241</b>
+      <b>191</b>
+      <b>104</b>
+      <b>126</b>
+      <b>192</b>
+      <b>13</b>
+      <b>238</b>
+      <b>67</b>
+      <b>131</b>
+      <b>67</b>
+      <b>60</b>
+      <b>185</b>
+      <b>110</b>
+      <b>93</b>
+      <b>30</b>
+      <b>68</b>
+    </Hash>
+  </Item>
   <Item name="Surgical Supply Use - OR Service.dim">
     <Time>636433571300000000</Time>
     <Hash length="20">
@@ -1297,6 +1272,31 @@
       <b>65</b>
       <b>68</b>
       <b>199</b>
+    </Hash>
+  </Item>
+  <Item name="Surgical Case.dim">
+    <Time>636433122440000000</Time>
+    <Hash length="20">
+      <b>205</b>
+      <b>39</b>
+      <b>52</b>
+      <b>169</b>
+      <b>46</b>
+      <b>232</b>
+      <b>127</b>
+      <b>187</b>
+      <b>132</b>
+      <b>110</b>
+      <b>38</b>
+      <b>151</b>
+      <b>122</b>
+      <b>160</b>
+      <b>14</b>
+      <b>243</b>
+      <b>198</b>
+      <b>21</b>
+      <b>60</b>
+      <b>178</b>
     </Hash>
   </Item>
   <Item name="Surgical Procedure Event - Service.dim">
@@ -1349,31 +1349,6 @@
       <b>75</b>
     </Hash>
   </Item>
-  <Item name="DRG.dim">
-    <Time>636466187840000000</Time>
-    <Hash length="20">
-      <b>44</b>
-      <b>13</b>
-      <b>184</b>
-      <b>15</b>
-      <b>24</b>
-      <b>25</b>
-      <b>112</b>
-      <b>83</b>
-      <b>126</b>
-      <b>83</b>
-      <b>227</b>
-      <b>85</b>
-      <b>179</b>
-      <b>100</b>
-      <b>196</b>
-      <b>124</b>
-      <b>84</b>
-      <b>130</b>
-      <b>213</b>
-      <b>27</b>
-    </Hash>
-  </Item>
   <Item name="Department.dim">
     <Time>636623329840000000</Time>
     <Hash length="20">
@@ -1399,29 +1374,54 @@
       <b>96</b>
     </Hash>
   </Item>
-  <Item name="Diagnosis - Present On Admit.dim">
-    <Time>636332602540000000</Time>
+  <Item name="Surgical Supply.dim">
+    <Time>636437793620000000</Time>
     <Hash length="20">
-      <b>69</b>
-      <b>37</b>
-      <b>194</b>
-      <b>169</b>
-      <b>124</b>
-      <b>248</b>
-      <b>81</b>
-      <b>91</b>
-      <b>153</b>
-      <b>66</b>
-      <b>15</b>
-      <b>154</b>
-      <b>28</b>
-      <b>132</b>
-      <b>7</b>
+      <b>95</b>
+      <b>209</b>
+      <b>109</b>
+      <b>101</b>
+      <b>246</b>
       <b>71</b>
-      <b>166</b>
-      <b>69</b>
-      <b>11</b>
-      <b>100</b>
+      <b>102</b>
+      <b>184</b>
+      <b>151</b>
+      <b>138</b>
+      <b>131</b>
+      <b>151</b>
+      <b>132</b>
+      <b>130</b>
+      <b>53</b>
+      <b>251</b>
+      <b>8</b>
+      <b>204</b>
+      <b>33</b>
+      <b>35</b>
+    </Hash>
+  </Item>
+  <Item name="Census.cube">
+    <Time>636634486915948276</Time>
+    <Hash length="20">
+      <b>207</b>
+      <b>78</b>
+      <b>28</b>
+      <b>165</b>
+      <b>4</b>
+      <b>221</b>
+      <b>108</b>
+      <b>253</b>
+      <b>84</b>
+      <b>201</b>
+      <b>221</b>
+      <b>1</b>
+      <b>192</b>
+      <b>32</b>
+      <b>59</b>
+      <b>135</b>
+      <b>243</b>
+      <b>8</b>
+      <b>82</b>
+      <b>135</b>
     </Hash>
   </Item>
 </Infos>
