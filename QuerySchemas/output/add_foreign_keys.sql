@@ -4,6 +4,12 @@ go
 
 
 
+-- drop all foreign keys
+exec dbo.usp_DropAllForeignKeyConstraints
+
+
+
+
 -- add foreign keys
 ALTER TABLE CensusMeasureFact ADD CONSTRAINT [CensusMeasureFact-CensusGeographicalAreaDim] FOREIGN KEY (GEO_AREA_SK) REFERENCES CensusGeographicalAreaDim (GEO_AREA_SK);
 ALTER TABLE CensusMeasureFact ADD CONSTRAINT [CensusMeasureFact-CensusMeasureTypeDim] FOREIGN KEY (MSR_TYPE_SK) REFERENCES CensusMeasureTypeDim (MSR_TYPE_SK);

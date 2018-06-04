@@ -197,11 +197,27 @@ sql_add_fkeys = []
 sql_add_fkeys.append('use carilion_dw')
 sql_add_fkeys.append('go')
 sql_add_fkeys.append('\n\n\n')
+sql_add_fkeys.append('-- drop all foreign keys')
+sql_add_fkeys.append('exec dbo.usp_DropAllForeignKeyConstraints')
+sql_add_fkeys.append('\n\n\n')
 sql_add_fkeys.append('-- add foreign keys')
 for fk in foreign_keys:
     if fk.Parent in primary_keys.keys() and fk.ParentKey == primary_keys[fk.Parent]:
         sql_add_fkeys.append(str.format("ALTER TABLE {1} ADD CONSTRAINT [{0.Name}] FOREIGN KEY ({0.ChildKey}) "
             "REFERENCES {2} ({0.ParentKey});", fk, GetFriendlyTableName(fk.Child), GetFriendlyTableName(fk.Parent)))
+
+
+sql_update = []
+sql_update.append('use carilion_dw')
+sql_update.append('go')
+sql_update.append('\n\n\n')
+sql_update.append('-- fix foreign keys that are not mapped to the primary key')
+for fk in foreign_keys:
+    if fk.Parent in primary_keys.keys() and fk.ParentKey != primary_keys[fk.Parent]:
+        # sql_update.append(str.format("ALTER TABLE {1} ADD CONSTRAINT [{0.Name}] FOREIGN KEY ({0.ChildKey}) "
+        #     "REFERENCES {2} ({0.ParentKey});", fk, GetFriendlyTableName(fk.Child), GetFriendlyTableName(fk.Parent)))
+        print('')
+
 
 with open('./output/drop_tables.sql', 'w') as f:
     for s in sql_drop_tables:

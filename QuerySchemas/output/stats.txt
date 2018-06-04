@@ -4,4 +4,4 @@ stats_num_foreign_keys: 371
 stats_num_primary_keys: 118
 stats_sql_lines_drop_tables: 147
 stats_sql_lines_create_tables: 2381
-stats_sql_lines_add_foreign_keys: 367
+stats_sql_lines_add_foreign_keys: 370
