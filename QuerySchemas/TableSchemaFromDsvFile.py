@@ -3,8 +3,17 @@ import collections
 import json
 
 create_tables_using_friendly_names = True
+stats_num_tables = None
+stats_num_columns = None
+stats_num_foreign_keys = None
+stats_num_primary_keys = 0
+stats_sql_lines_drop_tables = None
+stats_sql_lines_create_tables = None
+stats_sql_lines_add_foreign_keys = None
 
-obj = untangle.parse(r'..\ContractCube\Carilion.dsv')
+
+
+obj = untangle.parse(r'..\..\Contract_r\Carilion.dsv')
 
 SSAS_DSV_TableDef = collections.namedtuple('SSAS_DSV_TableDef', ['Name', 'FriendlyName', 'DbTableName', 'QueryDefinition', 'Columns'])
 SSAS_DSV_ColumnDef = collections.namedtuple('SSAS_DSV_ColumnDef', ['Name', 'FriendlyName', 'DataType', 'Description', 'AllowNull', 'Length', 'DbColumnName'])
@@ -146,19 +155,23 @@ def IsIdentityColumn(c, primary_key_column_name):
         return False
 
 #Build SQL create statements
-sql = []
-sql.append('use carilion_dw')
-sql.append('go')
-sql.append('\n\n\n')
-sql.append('-- drop all foreign keys')
-sql.append('exec dbo.usp_DropAllForeignKeyConstraints')
-sql.append('\n\n\n')
-sql.append('-- drop table statements')
+sql_drop_tables = []
+sql_drop_tables.append('use carilion_dw')
+sql_drop_tables.append('go')
+sql_drop_tables.append('\n\n\n')
+sql_drop_tables.append('-- drop all foreign keys')
+sql_drop_tables.append('exec dbo.usp_DropAllForeignKeyConstraints')
+sql_drop_tables.append('\n\n\n')
+sql_drop_tables.append('-- drop table statements')
 for t in tables:
-    sql.append(str.format("drop table if exists {0}", GetFriendlyTableName(t.Name)))
+    sql_drop_tables.append(str.format("drop table if exists {0}", GetFriendlyTableName(t.Name)))
 
-sql.append('\n\n\n')
-sql.append('-- create table statements')
+
+sql_create_tables = []
+sql_create_tables.append('use carilion_dw')
+sql_create_tables.append('go')
+sql_create_tables.append('\n\n\n')
+sql_create_tables.append('-- create table statements')
 for t in tables:
     # if 'LabTestFact' in [t.Name, t.FriendlyName]:
     #     print('break')
@@ -166,30 +179,57 @@ for t in tables:
         primary_key_column_name = primary_keys[t.Name]
     else:
         primary_key_column_name = None        
-    sql.append(str.format("create table {0}(", GetFriendlyTableName(t.Name)))
+    sql_create_tables.append(str.format("create table {0}(", GetFriendlyTableName(t.Name)))
     for c in t.Columns:
-        sql.append(str.format("\t{0.DbColumnName} {1} {2} {3} null,", 
+        sql_create_tables.append(str.format("\t{0.DbColumnName} {1} {2} {3} null,", 
             c,
             encode_ssas_datatype_to_sql(c),
             'identity(1,1)' if IsIdentityColumn(c, primary_key_column_name) else '',
             'not' if not c.AllowNull or IsIdentityColumn(c, primary_key_column_name) else ''
             ))
     if primary_key_column_name != None:
-        sql.append(str.format('\tCONSTRAINT PK_{0}_{1} PRIMARY KEY CLUSTERED ({1})', GetFriendlyTableName(t.Name), primary_key_column_name))
-    sql.append(');\n\n')
+        sql_create_tables.append(str.format('\tCONSTRAINT PK_{0}_{1} PRIMARY KEY CLUSTERED ({1})', GetFriendlyTableName(t.Name), primary_key_column_name))
+        stats_num_primary_keys += 1
+    sql_create_tables.append(');\n\n')
 
 
-sql.append('\n\n\n')
-sql.append('-- add foreign keys')
+sql_add_fkeys = []
+sql_add_fkeys.append('use carilion_dw')
+sql_add_fkeys.append('go')
+sql_add_fkeys.append('\n\n\n')
+sql_add_fkeys.append('-- add foreign keys')
 for fk in foreign_keys:
     if fk.Parent in primary_keys.keys() and fk.ParentKey == primary_keys[fk.Parent]:
-        sql.append(str.format("ALTER TABLE {1} ADD CONSTRAINT [{0.Name}] FOREIGN KEY ({0.ChildKey}) "
+        sql_add_fkeys.append(str.format("ALTER TABLE {1} ADD CONSTRAINT [{0.Name}] FOREIGN KEY ({0.ChildKey}) "
             "REFERENCES {2} ({0.ParentKey});", fk, GetFriendlyTableName(fk.Child), GetFriendlyTableName(fk.Parent)))
 
+with open('./output/drop_tables.sql', 'w') as f:
+    for s in sql_drop_tables:
+        f.write(s + '\n')
+
 with open('./output/create_src_tables.sql', 'w') as f:
-    for s in sql:
+    for s in sql_create_tables:
+        f.write(s + '\n')
+
+with open('./output/add_foreign_keys.sql', 'w') as f:
+    for s in sql_add_fkeys:
         f.write(s + '\n')
 
 
+stats_num_tables = len(tables)
+stats_num_columns = sum([len(t.Columns) for t in tables])
+stats_num_foreign_keys = len(foreign_keys)
+stats_sql_lines_drop_tables = len(sql_drop_tables)
+stats_sql_lines_create_tables = len(sql_create_tables)
+stats_sql_lines_add_foreign_keys = len(sql_add_fkeys)
 
+
+with open('./output/stats.txt', 'w') as f:
+    f.write(str.format('{0}: {1}\n', 'stats_num_tables', stats_num_tables))
+    f.write(str.format('{0}: {1}\n', 'stats_num_columns', stats_num_columns))
+    f.write(str.format('{0}: {1}\n', 'stats_num_foreign_keys', stats_num_foreign_keys))
+    f.write(str.format('{0}: {1}\n', 'stats_num_primary_keys', stats_num_primary_keys))
+    f.write(str.format('{0}: {1}\n', 'stats_sql_lines_drop_tables', stats_sql_lines_drop_tables))
+    f.write(str.format('{0}: {1}\n', 'stats_sql_lines_create_tables', stats_sql_lines_create_tables))
+    f.write(str.format('{0}: {1}\n', 'stats_sql_lines_add_foreign_keys', stats_sql_lines_add_foreign_keys))
 
