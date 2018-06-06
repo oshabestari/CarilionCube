@@ -22,14 +22,45 @@ Fiscal year - Oct - Sept
 
 provider dim
 userid -attribute - use to create role based security
-
 just their patients
 if head of dept, also see their subordinate Drs patients
+
+
 
 when pulling meds prescribed by Dr, the amount returned by class is ok, but by drug name their are too many rows. Especially if they are head of Dept
 because it also pulls in the drugs prescribed by their subordinates. Need to limit the queries to just the [Provider - UserID]
 Medication - Pharmacological Class
 Medication - Generic Name
+
+
+
+MDX - Percentage of Total  - exclude  [...- Growth from Same Period Previous Year]
+
+role security:
+provider dim and user dim
+OMid - get article from him
+
+
+ratio of medications / encounter add to [Medication Order]
+lab orders / encounter add to [Lab Order]
+
+
+slice medications and lab orders by DRG dimension - modify dimension usage
+
+linked server data anay=lytics
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
