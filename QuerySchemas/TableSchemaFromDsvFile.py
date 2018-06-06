@@ -1,6 +1,7 @@
 import untangle
 import collections
 import json
+import operator
 
 create_tables_using_friendly_names = True
 stats_num_tables = None
@@ -207,16 +208,17 @@ for fk in foreign_keys:
             "REFERENCES {2} ({0.ParentKey});", fk, GetFriendlyTableName(fk.Child), GetFriendlyTableName(fk.Parent)))
 
 
+foreign_keys.sort(key=lambda fk: (GetFriendlyTableName(fk.Parent), fk.ParentKey, GetFriendlyTableName(fk.Child), fk.ChildKey))
 sql_update = []
 sql_update.append('use carilion_dw')
 sql_update.append('go')
 sql_update.append('\n\n\n')
 sql_update.append('-- fix foreign keys that are not mapped to the primary key')
 for fk in foreign_keys:
-    if fk.Parent in primary_keys.keys() and fk.ParentKey != primary_keys[fk.Parent]:
-        # sql_update.append(str.format("ALTER TABLE {1} ADD CONSTRAINT [{0.Name}] FOREIGN KEY ({0.ChildKey}) "
-        #     "REFERENCES {2} ({0.ParentKey});", fk, GetFriendlyTableName(fk.Child), GetFriendlyTableName(fk.Parent)))
-        print('')
+    #if fk.Parent in primary_keys.keys() and fk.ParentKey != primary_keys[fk.Parent]:
+    sql_update.append(str.format("exec dbo.usp_FixForeignKeys '{0}', '{1}', '{2}', '{3}', '{4}', '{5}'", 
+        'dbo', GetFriendlyTableName(fk.Parent), fk.ParentKey, 'dbo', GetFriendlyTableName(fk.Child), fk.ChildKey))
+sql_update.append('\n\n\n')
 
 
 with open('./output/drop_tables.sql', 'w') as f:
@@ -229,6 +231,10 @@ with open('./output/create_src_tables.sql', 'w') as f:
 
 with open('./output/add_foreign_keys.sql', 'w') as f:
     for s in sql_add_fkeys:
+        f.write(s + '\n')
+
+with open('./output/fix_foreign_keys.sql', 'w') as f:
+    for s in sql_update:
         f.write(s + '\n')
 
 
