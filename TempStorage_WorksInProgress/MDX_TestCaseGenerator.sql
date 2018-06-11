@@ -1,8 +1,12 @@
 USE carilion_dw
 go
 
+
+alter PROC dbo.usp_MeasureGenerator_TestQueries
+as
+
 DECLARE @template NVARCHAR(max) = 
-'
+N'
 select
 {
 <<measures>>
@@ -16,6 +20,23 @@ from
 
 DROP TABLE IF EXISTS #dim_cardinality
 DROP TABLE IF EXISTS #measures_dimensions
+DROP TABLE IF EXISTS #measures
+
+
+SELECT DISTINCT
+    m.cube_name
+    ,m.measure_unique_name
+INTO #measures
+FROM
+    dbo.tblCube_Measures m
+where
+    m.cube_name = N'analytics'
+    AND (
+        m.measure_name LIKE N'%count'
+        OR m.measure_name LIKE N'%percentage of total'
+    )
+
+--   SELECT * FROM #measures
 
 ;WITH cte AS
 (
@@ -26,12 +47,9 @@ DROP TABLE IF EXISTS #measures_dimensions
         ,COUNT(DISTINCT u.measure_unique_name) AS cnt
     FROM
         dbo.tblCube_Usage_Between_Dimensions_And_Facts u
-    where
-        u.cube_name = 'analytics'
-        AND (
-            u.measure_name LIKE '%count'
-            OR u.measure_name LIKE '%percentage of total'
-        )
+        JOIN #measures m
+            ON m.cube_name = u.cube_name
+                AND m.measure_unique_name = u.measure_unique_name
     GROUP BY
         u.cube_name
         ,u.dimension_unique_name
@@ -64,12 +82,9 @@ ORDER BY
         JOIN dbo.tblCube_Usage_Between_Dimensions_And_Facts u
             ON u.cube_name = dc.cube_name
                 AND dc.dimension_unique_name = u.dimension_unique_name
-    where
-        u.cube_name = 'analytics'
-        AND (
-            u.measure_name LIKE '%count'
-            OR u.measure_name LIKE '%percentage of total'
-        )
+        JOIN #measures m
+            ON m.cube_name = u.cube_name
+                AND m.measure_unique_name = u.measure_unique_name
     GROUP BY
          u.cube_name
         ,u.measuregroup_name
@@ -100,9 +115,9 @@ ORDER by
 
 
 SELECT
-    REPLACE(REPLACE(REPLACE(@template, '<<cube_name>>', md.cube_name),
-        '<<dimension>>', md.dimension_unique_name),
-        '<<measures>>', STRING_AGG(md.measure_unique_name, ',' + CHAR(13) + CHAR(10)) 
+    REPLACE(REPLACE(REPLACE(@template, N'<<cube_name>>', md.cube_name),
+        N'<<dimension>>', md.dimension_unique_name),
+        N'<<measures>>', STRING_AGG(CAST(md.measure_unique_name AS NVARCHAR(MAX)), N',' + NCHAR(13) + NCHAR(10)) 
             WITHIN GROUP(ORDER BY md.measure_unique_name))
 FROM
     #measures_dimensions md
