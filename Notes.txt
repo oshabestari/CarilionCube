@@ -47,7 +47,7 @@ lab orders / encounter add to [Lab Order]
 
 slice medications and lab orders by DRG dimension - modify dimension usage
 
-linked server data anay=lytics
+linked server data analytics
 
 
 
