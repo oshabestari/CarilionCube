@@ -29023,6 +29023,25 @@ VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Surgical Supply Use';
 
 
 
+CREATE MEMBER CURRENTCUBE.[Measures].[Ratio Lab Order to Encounter]
+ AS 
+IIF([Measures].[Lab Order - Encounter - Unique Count] = 0, 
+    null,
+	[Measures].[Lab Order - Count]/[Measures].[Lab Order - Encounter - Unique Count]
+    )
+,FORMAT_STRING = "#,##0.0000", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Lab Order';
+
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Ratio Medication to Encounter]
+ AS 
+IIF([Measures].[Medication Order - Encounter - Unique Count] = 0, 
+    null,
+	[Measures].[Medication Order - Count]/[Measures].[Medication Order - Encounter - Unique Count]
+    )
+,FORMAT_STRING = "#,##0.0000", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Order';
 
 </Text>
         </Command>
