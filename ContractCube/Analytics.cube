@@ -21356,6 +21356,10 @@
           <CubeDimensionID>Medication</CubeDimensionID>
           <MeasureGroupID>Medication Order Fact</MeasureGroupID>
         </Dimension>
+        <Dimension xsi:type="ManyToManyMeasureGroupDimension" dwd:design-time-name="7e5fa6a9-5c88-4eb8-a12f-42e8e3c9443f">
+          <CubeDimensionID>DRG</CubeDimensionID>
+          <MeasureGroupID>DRG Fact</MeasureGroupID>
+        </Dimension>
       </Dimensions>
       <Partitions />
     </MeasureGroup>
@@ -21812,6 +21816,10 @@
         <Dimension xsi:type="ManyToManyMeasureGroupDimension" dwd:design-time-name="3ae3bd0e-ff5a-421f-ad38-4015e1c2d271">
           <CubeDimensionID>Medication</CubeDimensionID>
           <MeasureGroupID>Medication Order Fact</MeasureGroupID>
+        </Dimension>
+        <Dimension xsi:type="ManyToManyMeasureGroupDimension" dwd:design-time-name="48f9c5c2-aa89-491c-a722-009d8ac5b937">
+          <CubeDimensionID>DRG</CubeDimensionID>
+          <MeasureGroupID>DRG Fact</MeasureGroupID>
         </Dimension>
       </Dimensions>
       <Partitions />
@@ -22274,6 +22282,10 @@
           <CubeDimensionID>CHRNC IND</CubeDimensionID>
           <MeasureGroupID>Diagnosis Fact</MeasureGroupID>
         </Dimension>
+        <Dimension xsi:type="ManyToManyMeasureGroupDimension" dwd:design-time-name="39a8a744-5316-48a5-991e-99ee9cbb594c">
+          <CubeDimensionID>DRG</CubeDimensionID>
+          <MeasureGroupID>DRG Fact</MeasureGroupID>
+        </Dimension>
       </Dimensions>
       <Partitions />
     </MeasureGroup>
@@ -22684,6 +22696,10 @@
           <CubeDimensionID>ED Visit</CubeDimensionID>
           <MeasureGroupID>ED Visit Fact</MeasureGroupID>
         </Dimension>
+        <Dimension xsi:type="ManyToManyMeasureGroupDimension" dwd:design-time-name="3231cea4-0359-45d1-b7ef-496876d41136">
+          <CubeDimensionID>DRG</CubeDimensionID>
+          <MeasureGroupID>DRG Fact</MeasureGroupID>
+        </Dimension>
       </Dimensions>
       <Partitions />
     </MeasureGroup>
@@ -23067,6 +23083,10 @@
         <Dimension xsi:type="ManyToManyMeasureGroupDimension" dwd:design-time-name="f22fd898-5ebd-4c26-9b92-e5a5d97d921b">
           <CubeDimensionID>ED Visit</CubeDimensionID>
           <MeasureGroupID>ED Visit Fact</MeasureGroupID>
+        </Dimension>
+        <Dimension xsi:type="ManyToManyMeasureGroupDimension" dwd:design-time-name="e866fb59-3a57-42b9-86d5-ee7071ec0517">
+          <CubeDimensionID>DRG</CubeDimensionID>
+          <MeasureGroupID>DRG Fact</MeasureGroupID>
         </Dimension>
       </Dimensions>
       <Partitions />
@@ -23455,6 +23475,10 @@
         <Dimension xsi:type="ManyToManyMeasureGroupDimension" dwd:design-time-name="cb41505e-db3d-47b4-b6da-8b44c0cb6bed">
           <CubeDimensionID>CHRNC IND</CubeDimensionID>
           <MeasureGroupID>Diagnosis Fact</MeasureGroupID>
+        </Dimension>
+        <Dimension xsi:type="ManyToManyMeasureGroupDimension" dwd:design-time-name="75a15d96-b224-4f43-b2d5-590bba23e214">
+          <CubeDimensionID>DRG</CubeDimensionID>
+          <MeasureGroupID>DRG Fact</MeasureGroupID>
         </Dimension>
       </Dimensions>
       <Partitions />
@@ -27785,7 +27809,9 @@ CREATE MEMBER CURRENTCUBE.[Measures].[Diagnosis - Count - Growth from Same Perio
         )
 ), 
 FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Diagnosis';        
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Diagnosis';  
+
+      
 CREATE MEMBER CURRENTCUBE.[Measures].[DRG - Count - Growth from Same Period Previous Year]
  AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[DRG - Count])) = 0 , NULL,
     IIF ([Measures].[DRG - Count] = 0, NULL,
@@ -27799,7 +27825,9 @@ CREATE MEMBER CURRENTCUBE.[Measures].[DRG - Count - Growth from Same Period Prev
         )
 ), 
 FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'DRG';                
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'DRG';    
+
+            
 CREATE MEMBER CURRENTCUBE.[Measures].[Encounter - Count - Growth from Same Period Previous Year]
  AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Encounter - Count])) = 0 , NULL,
     IIF ([Measures].[Encounter - Count] = 0, NULL,
@@ -27813,23 +27841,33 @@ CREATE MEMBER CURRENTCUBE.[Measures].[Encounter - Count - Growth from Same Perio
         )
 ), 
 FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Encounter';                                                                  
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Encounter'; 
+
+                                                                 
 CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Age on Admission in Years - Arithmetic Average]
  AS IIF ([Measures].[Inpatient - Age on Admission in Years - Count] = 0 , NULL,ROUND([Inpatient - Age on Admission in Years - Sum]/[Inpatient - Age on Admission in Years - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';                                                                 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';   
+
+                                                              
 CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Age on Admission in Years - Geometric Average]
  AS IIF ([Measures].[Inpatient - Age on Admission in Years - Count] = 0 , NULL,ROUND(10 ^ ([Inpatient - Age on Admission in Years Log - Sum]/[Inpatient - Age on Admission in Years - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';                                                                
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';    
+
+                                                            
 CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Fractional LOS in Hours - Arithmetic Average]
  AS IIF ([Measures].[Inpatient - Fractional LOS in Hours - Count] = 0 , NULL,ROUND([Inpatient - Fractional LOS in Hours - Sum]/[Inpatient - Fractional LOS in Hours - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';                                                                
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';  
+
+                                                              
 CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Fractional LOS in Hours - Geometric Average]
  AS IIF ([Measures].[Inpatient - Fractional LOS in Hours - Count] = 0 , NULL,ROUND(10 ^ ([Inpatient - Fractional LOS in Hours Log - Sum]/[Inpatient - Fractional LOS in Hours - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';                                                                
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';   
+
+                                                             
 CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - LOS in Days - Arithmetic Average]
  AS IIF ([Measures].[Inpatient - LOS in Days - Count] = 0 , NULL,ROUND([Inpatient - LOS in Days - Sum]/[Inpatient - LOS in Days - Count],2)), 
 FORMAT_STRING = "#,##0.00;-#,##0.00", 
@@ -27851,7 +27889,9 @@ CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Count - Growth from Same Perio
         )
 ), 
 FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';                                             
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';   
+
+                                          
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Count - Growth from Same Period Previous Year]
  AS IIF ((PARALLELPERIOD([Date - ED Visit - ED Discharge].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - ED Visit - ED Discharge].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[ED Visit - Count])) = 0  , NULL,
     IIF ([Measures].[ED Visit - Count] = 0, NULL,
@@ -27865,159 +27905,237 @@ CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Count - Growth from Same Period
         )
 ), 
 FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';      
+
+      
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Patient Arrival to Registration Completed in Minutes - Sum]/[ED Visit - Patient Arrival to Registration Completed in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                             
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';      
+
+                                       
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Patient Arrival to Registration Completed in Minutes Log - Sum]/[ED Visit - Patient Arrival to Registration Completed in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                             
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';     
+
+                                        
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Patient Arrival to Triage Start in Minutes - Sum]/[ED Visit - Patient Arrival to Triage Start in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                             
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';     
+
+                                        
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Patient Arrival to Triage Start in Minutes Log - Sum]/[ED Visit - Patient Arrival to Triage Start in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                             
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';      
+
+                                       
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Triage Start to Triage Complete in Minutes - Sum]/[ED Visit - Triage Start to Triage Complete in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                             
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';      
+
+                                       
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Triage Start to Triage Complete in Minutes Log - Sum]/[ED Visit - Triage Start to Triage Complete in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                             
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';     
+
+                                        
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Triage Start to Patient Roomed in Minutes - Sum]/[ED Visit - Triage Start to Patient Roomed in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                             
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';      
+
+                                       
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Triage Start to Patient Roomed in Minutes Log - Sum]/[ED Visit - Triage Start to Patient Roomed in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                             
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';    
+
+                                         
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Bed Request to Patient Roomed in Minutes - Sum]/[ED Visit - Bed Request to Patient Roomed in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';      
+
+                                      
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Bed Request to Patient Roomed in Minutes Log - Sum]/[ED Visit - Bed Request to Patient Roomed in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';    
+
+                                        
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Triage Complete to Patient Roomed in Minutes - Sum]/[ED Visit - Triage Complete to Patient Roomed in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Triage Complete to Patient Roomed in Minutes Log - Sum]/[ED Visit - Triage Complete to Patient Roomed in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Sum]/[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Triage Complete to Attending Provider Assigned in Minutes Log - Sum]/[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Sum]/[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Patient Roomed to Attending Provider Assigned in Minutes Log - Sum]/[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Attending Provider Assigned to Disposition in Minutes - Sum]/[ED Visit - Attending Provider Assigned to Disposition in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geomotric Average]
  AS IIF ([Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Attending Provider Assigned to Disposition in Minutes Log - Sum]/[ED Visit - Attending Provider Assigned to Disposition in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Disposition to ED Discharge in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Disposition to ED Discharge in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Disposition to ED Discharge in Minutes - Sum]/[ED Visit - Disposition to ED Discharge in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Disposition to ED Discharge in Minutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Disposition to ED Discharge in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Disposition to ED Discharge in Minutes Log - Sum]/[ED Visit - Disposition to ED Discharge in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Advance Directive Printed to ED Discharge in Minutes - Sum]/[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Advance Directive Printedc to ED Discharge in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Advance Directive Printed to ED Discharge in Minutes Log - Sum]/[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Patient Arrival to Lab Ordered in Minutes - Sum]/[ED Visit - Patient Arrival to Lab Ordered in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Patient Arrival to Lab Ordered in Minutes Log - Sum]/[ED Visit - Patient Arrival to Lab Ordered in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Count] = 0 , NULL,ROUND([ED Visit - Lab Ordered to Lab Completed in Miinutes - Sum]/[ED Visit - Lab Ordered to Lab Completed in Miinutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Lab Ordered to Lab Completed in Miinutes Log - Sum]/[ED Visit - Lab Ordered to Lab Completed in Miinutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Lab Completed to Provider Reviewed in Minutes - Sum]/[ED Visit - Lab Completed to Provider Reviewed in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Lab Completed to Provider Reviewed in Minutes Log - Sum]/[ED Visit - Lab Completed to Provider Reviewed in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Patient Arrival to Image Ordered in Minutes - Sum]/[ED Visit - Patient Arrival to Image Ordered in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Patient Arrival to Image Ordered in Minutes Log - Sum]/[ED Visit - Patient Arrival to Image Ordered in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Image Ordered to Image Completed in Minutes - Sum]/[ED Visit - Image Ordered to Image Completed in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Image Ordered to Image Completed in Minutes Log - Sum]/[ED Visit - Image Ordered to Image Completed in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Image Completed to Provider Reviewed in Minutes - Sum]/[ED Visit - Image Completed to Provider Reviewed in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Image Completed to Provider Reviewed in Minutes Log - Sum]/[ED Visit - Image Completed to Provider Reviewed in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Patient Arrival to Discharge in Minutes - Sum]/[ED Visit - Patient Arrival to Discharge in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Geometric Average]
  AS IIF ([Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Patient Arrival to Discharge in Minutes Log - Sum]/[ED Visit - Patient Arrival to Discharge in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Glasgow Coma Scale - Arithmetic Average]
  AS IIF ([Measures].[ED Visit - Glasgow Coma Scale - Count] = 0 , NULL,ROUND([ED Visit - Glasgow Coma Scale - Sum]/[ED Visit - Glasgow Coma Scale - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';                                            
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Glasgow Coma Scale - Geometric Average]
  AS IIF ([Measures].[ED Visit - Glasgow Coma Scale - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Glasgow Coma Scale Log - Sum]/[ED Visit - Glasgow Coma Scale - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';       
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Lab Component Result - Count - Growth from Same Period Previous Year]
  AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Lab Component Result - Count])) = 0  , NULL,
     IIF ([Measures].[Lab Component Result - Count] = 0, NULL,
@@ -28031,7 +28149,9 @@ CREATE MEMBER CURRENTCUBE.[Measures].[Lab Component Result - Count - Growth from
         )
 ), 
 FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Lab Component Result';       
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Lab Component Result';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Lab Order - Count - Growth from Same Period Previous Year]
  AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Lab Order - Count])) = 0  , NULL,
     IIF ([Measures].[Lab Order - Count] = 0, NULL,
@@ -28045,7 +28165,7 @@ CREATE MEMBER CURRENTCUBE.[Measures].[Lab Order - Count - Growth from Same Perio
         )
 ), 
 FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Lab Order'; 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Lab Order';
 
 
 CREATE MEMBER CURRENTCUBE.[Measures].[Medication Administration - Count - Growth from Same Period Previous Year]
@@ -28061,7 +28181,9 @@ CREATE MEMBER CURRENTCUBE.[Measures].[Medication Administration - Count - Growth
         )
 ), 
 FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Administration';        
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Administration';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order - Count - Growth from Same Period Previous Year]
  AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Medication Order - Count])) = 0  , NULL,
     IIF ([Measures].[Medication Order - Count] = 0, NULL,
@@ -28075,13 +28197,19 @@ CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order - Count - Growth from Sam
         )
 ), 
 FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Order';                              
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Order';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order Quantity - Sum]
  AS NULL , 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Order';                    
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Order';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order Quantity - Arithmetic Average]
  AS NULL , 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Order';           
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Order';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Outptient - Count - Growth from Same Period Previous Year]
  AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Outpatient - Count])) = 0  , NULL,
     IIF ([Measures].[Outpatient - Count] = 0, NULL,
@@ -28095,23 +28223,33 @@ CREATE MEMBER CURRENTCUBE.[Measures].[Outptient - Count - Growth from Same Perio
         )
 ), 
 FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Outpatient';      
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Outpatient';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Outpatient - Appointment Length in Minutes - Arithmetic Average]
  AS IIF ([Measures].[Outpatient - Appointment Length in Minutes - Count] = 0 , NULL,ROUND([Outpatient - Appointment Length in Minutes - Sum]/[Outpatient - Appointment Length in Minutes - Count],0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Outpatient';                                                       
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Outpatient';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Outpatient - Appointment Length in Minutes - Geometric Average]
  AS IIF ([Measures].[Outpatient - Appointment Length in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([Outpatient - Appointment Length in Minutes Log - Sum]/[Outpatient - Appointment Length in Minutes - Count]),0)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Outpatient';      
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Outpatient';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Patient - Age in Years - Arithmetic Average]
  AS IIF ([Measures].[Patient - Age in Years - Count] = 0 , NULL,ROUND([Patient - Age in Years - Sum]/[Patient - Age in Years - Count],1)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Patient';                                                                     
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Patient';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Patient - Age in Years - Geometric Average]
  AS IIF ([Measures].[Patient - Age in Years - Count] = 0 , NULL,ROUND(10 ^ ([Measures].[Patient - Age in Years Log - Sum]/ [Measures].[Patient - Age in Years - Count]),1)), 
 FORMAT_STRING = "#,##0;-#,##0", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Patient';        
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Patient';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Procedure Order - Count - Growth from Same Period Previous Year]
  AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Procedure Order - Count])) = 0  , NULL,
     IIF ([Measures].[Procedure Order - Count] = 0, NULL,
@@ -28125,7 +28263,9 @@ CREATE MEMBER CURRENTCUBE.[Measures].[Procedure Order - Count - Growth from Same
         )
 ), 
 FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Procedure Order';      
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Procedure Order';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Surgical Case - Count - Growth from Same Period Previous Year]
  AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Surgical Case - Count])) = 0  , NULL,
     IIF ([Measures].[Surgical Case - Count] = 0, NULL,
@@ -28139,7 +28279,9 @@ CREATE MEMBER CURRENTCUBE.[Measures].[Surgical Case - Count - Growth from Same P
         )
 ), 
 FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Surgical Case';      
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Surgical Case';
+
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Surgical Procedure Event - Count - Growth from Same Period Previous Year]
  AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1,[Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Surgical Procedure Event - Count])) = 0  , NULL,
     IIF ([Measures].[Surgical Procedure Event - Count] = 0, NULL,
@@ -28153,7 +28295,8 @@ CREATE MEMBER CURRENTCUBE.[Measures].[Surgical Procedure Event - Count - Growth 
         )
 ), 
 FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Surgical Procedure Event';      
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Surgical Procedure Event';
+
 
 CREATE MEMBER CURRENTCUBE.[Measures].[Surgical Supply Use - Count - Growth from Same Period Previous Year]
  AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Surgical Supply Use - Count])) = 0  , NULL,
@@ -28168,8 +28311,7 @@ CREATE MEMBER CURRENTCUBE.[Measures].[Surgical Supply Use - Count - Growth from 
         )
 ), 
 FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Surgical Supply Use';                             
-
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Surgical Supply Use';
 
 
 SCOPE(DESCENDANTS([Medication].[Medication - Name],,AFTER));                    
