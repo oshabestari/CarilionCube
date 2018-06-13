@@ -1,0 +1,566 @@
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Sum]/([Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes Log - Sum]/([Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Sum]/([Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes Log - Sum]/([Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Sum]/([Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Bed Request to Patient Roomed in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Bed Request to Patient Roomed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Bed Request to Patient Roomed in Minutes Log - Sum]/([Measures].[ED Visit - Bed Request to Patient Roomed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Disposition to ED Discharge in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Disposition to ED Discharge in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Disposition to ED Discharge in Minutes - Sum]/([Measures].[ED Visit - Disposition to ED Discharge in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Disposition to ED Discharge in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Disposition to ED Discharge in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Disposition to ED Discharge in Minutes Log - Sum]/([Measures].[ED Visit - Disposition to ED Discharge in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Glasgow Coma Scale - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Glasgow Coma Scale - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Glasgow Coma Scale - Sum]/([Measures].[ED Visit - Glasgow Coma Scale - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Glasgow Coma Scale Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Glasgow Coma Scale Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Glasgow Coma Scale Log - Sum]/([Measures].[ED Visit - Glasgow Coma Scale Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Sum]/([Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes Log - Sum]/([Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Sum]/([Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Ordered to Image Completed in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Image Ordered to Image Completed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Image Ordered to Image Completed in Minutes Log - Sum]/([Measures].[ED Visit - Image Ordered to Image Completed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Sum]/([Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes Log - Sum]/([Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Sum]/([Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes Log - Sum]/([Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Sum]/([Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Discharge in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Discharge in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Discharge in Minutes Log - Sum]/([Measures].[ED Visit - Patient Arrival to Discharge in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Sum]/([Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes Log - Sum]/([Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Sum]/([Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes Log - Sum]/([Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Sum]/([Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes Log - Sum]/([Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Sum]/([Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Triage Start in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Triage Start in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Triage Start in Minutes Log - Sum]/([Measures].[ED Visit - Patient Arrival to Triage Start in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Sum]/([Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes Log - Sum]/([Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Sum]/([Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes Log - Sum]/([Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Sum]/([Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes Log - Sum]/([Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Sum]/([Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Patient Roomed in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Triage Start to Patient Roomed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Triage Start to Patient Roomed in Minutes Log - Sum]/([Measures].[ED Visit - Triage Start to Patient Roomed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Sum]/([Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Triage Complete in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Triage Start to Triage Complete in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Triage Start to Triage Complete in Minutes Log - Sum]/([Measures].[ED Visit - Triage Start to Triage Complete in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Fractional LOS in Hours - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[Inpatient - Fractional LOS in Hours - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Inpatient - Fractional LOS in Hours - Sum]/([Measures].[Inpatient - Fractional LOS in Hours - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Fractional LOS in Hours Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[Inpatient - Fractional LOS in Hours Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Inpatient - Fractional LOS in Hours Log - Sum]/([Measures].[Inpatient - Fractional LOS in Hours Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - LOS in Days - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[Inpatient - LOS in Days - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Inpatient - LOS in Days - Sum]/([Measures].[Inpatient - LOS in Days - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - LOS in Days Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[Inpatient - LOS in Days Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Inpatient - LOS in Days Log - Sum]/([Measures].[Inpatient - LOS in Days Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order Quantity - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[Medication Order Quantity - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Medication Order Quantity - Sum]/([Measures].[Medication Order Quantity - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Order';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[Outpatient - Appointment Length in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[Outpatient - Appointment Length in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Outpatient - Appointment Length in Minutes - Sum]/([Measures].[Outpatient - Appointment Length in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Outpatient';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[Outpatient - Appointment Length in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[Outpatient - Appointment Length in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Outpatient - Appointment Length in Minutes Log - Sum]/([Measures].[Outpatient - Appointment Length in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Outpatient';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[Patient - Age in Years - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[Patient - Age in Years - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Patient - Age in Years - Sum]/([Measures].[Patient - Age in Years - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Patient';
+
+
+
+/* Procedurally generated code via sproc dbo.usp_MeasureGenerator_PercentageOfTotal_For_Sum */
+CREATE MEMBER CURRENTCUBE.[Measures].[Patient - Age in Years Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[Patient - Age in Years Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Patient - Age in Years Log - Sum]/([Measures].[Patient - Age in Years Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING = "Percent", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Patient';
+
+
