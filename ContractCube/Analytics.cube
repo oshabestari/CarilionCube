@@ -12358,8 +12358,8 @@
     <CubePermission dwd:design-time-name="20898111-eade-4056-872b-2379edd2f9c4">
       <ID>CubePermission</ID>
       <Name>CubePermission</Name>
-      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
-      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <CreatedTimestamp>0001-01-01T08:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T08:00:00Z</LastSchemaUpdate>
       <RoleID>Role</RoleID>
       <ReadDefinition>Basic</ReadDefinition>
       <Read>Allowed</Read>
@@ -12372,6 +12372,7 @@
             <AttributePermission dwd:design-time-name="02e10c96-6aa6-4dd7-b8d8-36bdb316afde">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Inpatient - Hospital Admission].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
@@ -12385,6 +12386,7 @@
             <AttributePermission dwd:design-time-name="4352452a-2c17-4ea2-8a1e-ed91f74f7040">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Inpatient - Hospital Discharge].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
@@ -12395,6 +12397,10 @@
             <AttributePermission dwd:design-time-name="9e1da8e8-ed97-4f95-9615-755adc693b5f">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Lab Order - Authorizing].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
+            </AttributePermission>
+            <AttributePermission dwd:design-time-name="229805d8-1ff2-472a-99be-6b3d0efb503d">
+              <AttributeID>PROVDR SK</AttributeID>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
@@ -12405,6 +12411,10 @@
             <AttributePermission dwd:design-time-name="7581cbbc-7285-4369-abec-f4cc8b9b064a">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Medication Order - Authorized By].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
+            </AttributePermission>
+            <AttributePermission dwd:design-time-name="fbc405ff-12aa-4603-b5ff-70a3b3f9e5ff">
+              <AttributeID>PROVDR SK</AttributeID>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
@@ -12415,6 +12425,10 @@
             <AttributePermission dwd:design-time-name="d4a7ec06-7027-4784-8ec1-2433e83d2c0b">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Medication Order - Ordered By].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
+            </AttributePermission>
+            <AttributePermission dwd:design-time-name="c769edc9-fc5c-438c-b904-1ec74438eb59">
+              <AttributeID>PROVDR SK</AttributeID>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
@@ -12425,6 +12439,10 @@
             <AttributePermission dwd:design-time-name="2dc583ab-987b-47f5-9a1e-260ade0f4876">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Outpatient - Fourth].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
+            </AttributePermission>
+            <AttributePermission dwd:design-time-name="243b35e9-6da0-4267-afdd-1e9d89e2f030">
+              <AttributeID>PROVDR SK</AttributeID>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
@@ -12435,6 +12453,10 @@
             <AttributePermission dwd:design-time-name="6bc62bb7-40df-44ea-96fb-a43e87bb756b">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Outpatient - Primary].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
+            </AttributePermission>
+            <AttributePermission dwd:design-time-name="79026ce1-7884-40fd-a5b2-eae1d846e463">
+              <AttributeID>PROVDR SK</AttributeID>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
@@ -12445,6 +12467,10 @@
             <AttributePermission dwd:design-time-name="19736188-29c3-42a9-8b02-142ab000e8dd">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Outpatient - Second].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
+            </AttributePermission>
+            <AttributePermission dwd:design-time-name="9f42e22e-9ecb-469c-bbb3-739c7a58e738">
+              <AttributeID>PROVDR SK</AttributeID>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
@@ -12455,6 +12481,10 @@
             <AttributePermission dwd:design-time-name="63ef901c-3733-4f33-a838-d2371c4306a8">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Outpatient - Third].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
+            </AttributePermission>
+            <AttributePermission dwd:design-time-name="42cb10ca-509e-49e3-a844-f636deade9e8">
+              <AttributeID>PROVDR SK</AttributeID>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
@@ -12465,6 +12495,10 @@
             <AttributePermission dwd:design-time-name="59d10d73-a632-4450-8c79-076ab4a2db53">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Patient - PCP].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
+            </AttributePermission>
+            <AttributePermission dwd:design-time-name="ced475a5-5372-489c-8235-c13e91b761ac">
+              <AttributeID>PROVDR SK</AttributeID>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
@@ -12475,6 +12509,10 @@
             <AttributePermission dwd:design-time-name="7a25ccff-5dfd-45a7-ab37-bac9adf4d900">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Procedure Order - Authorized By].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
+            </AttributePermission>
+            <AttributePermission dwd:design-time-name="a0ac5d2f-95b5-4a7d-8c3b-80b748015ddd">
+              <AttributeID>PROVDR SK</AttributeID>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
@@ -12485,6 +12523,10 @@
             <AttributePermission dwd:design-time-name="7b9907dc-c036-4f60-ad9e-90c7363cc253">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Procedure Order - Ordered By].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
+            </AttributePermission>
+            <AttributePermission dwd:design-time-name="3bc11f72-266a-4b60-b545-974dba80b8dc">
+              <AttributeID>PROVDR SK</AttributeID>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
@@ -12495,6 +12537,10 @@
             <AttributePermission dwd:design-time-name="6b3aca28-9b80-48f0-a7cf-cc69f6486c86">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Surgical Case - Anesthesiologist].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
+            </AttributePermission>
+            <AttributePermission dwd:design-time-name="da2471ac-4028-44b3-b15b-8ab7777c67e9">
+              <AttributeID>PROVDR SK</AttributeID>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
@@ -12505,6 +12551,10 @@
             <AttributePermission dwd:design-time-name="f2962b64-d005-4964-9bfc-541f63eeed53">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Surgical Case - Primary].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
+            </AttributePermission>
+            <AttributePermission dwd:design-time-name="8fa99237-fe3a-46d6-ba6f-29c4f3fa2b8e">
+              <AttributeID>PROVDR SK</AttributeID>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
@@ -12515,6 +12565,10 @@
             <AttributePermission dwd:design-time-name="e659ad6f-aba4-4529-aed3-08c69de4a708">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Surgical Procedure Event - Primary Surgeon].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
+            </AttributePermission>
+            <AttributePermission dwd:design-time-name="18b1140f-b312-409a-99a1-7b06a7bbce03">
+              <AttributeID>PROVDR SK</AttributeID>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
@@ -12525,6 +12579,10 @@
             <AttributePermission dwd:design-time-name="5478d67c-cdeb-4259-8244-1473a3d1cea7">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Surgical Procedure Event - Secondary Surgeon].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
+            </AttributePermission>
+            <AttributePermission dwd:design-time-name="14118881-ab8f-4cc3-8573-8a124ddbc1ac">
+              <AttributeID>PROVDR SK</AttributeID>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
@@ -12535,6 +12593,10 @@
             <AttributePermission dwd:design-time-name="a805485f-5a16-40df-9b90-13ab8afbafbf">
               <AttributeID>LDAP USR</AttributeID>
               <AllowedSet>{StrToMember("[Provider - Surgical Procedure Event - Tertiary Surgeon].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+              <VisualTotals>1</VisualTotals>
+            </AttributePermission>
+            <AttributePermission dwd:design-time-name="8889318f-8edc-4c63-9d08-72ef5b2acd65">
+              <AttributeID>PROVDR SK</AttributeID>
             </AttributePermission>
           </AttributePermissions>
         </DimensionPermission>
