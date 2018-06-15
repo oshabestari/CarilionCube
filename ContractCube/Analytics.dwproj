@@ -242,6 +242,12 @@
       <FullPath>Carilion.dsv</FullPath>
     </ProjectItem>
   </DataSourceViews>
+  <Roles>
+    <ProjectItem>
+      <Name>DynamicRoles.role</Name>
+      <FullPath>DynamicRoles.role</FullPath>
+    </ProjectItem>
+  </Roles>
   <Configurations>
     <Configuration>
       <Name>Development</Name>

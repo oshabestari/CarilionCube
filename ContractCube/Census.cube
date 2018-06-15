@@ -1,8 +1,8 @@
 ﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="6aa88dd2-9da6-49e7-9322-474975060442" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>Census</ID>
   <Name>Census</Name>
-  <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
-  <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+  <CreatedTimestamp>0001-01-01T08:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T08:00:00Z</LastSchemaUpdate>
   <Annotations>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
@@ -159,7 +159,7 @@
       <Value>75</Value>
     </Annotation>
   </Annotations>
-  <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+  <LastProcessed>0001-01-01T08:00:00Z</LastProcessed>
   <State>Unprocessed</State>
   <Dimensions>
     <Dimension dwd:design-time-name="daa35d19-5cc2-41e2-9ebe-6e51de264926">
@@ -202,13 +202,25 @@
       </Attributes>
     </Dimension>
   </Dimensions>
+  <CubePermissions>
+    <CubePermission dwd:design-time-name="78dc839c-0c7c-43ad-805f-686af5136c21">
+      <ID>CubePermission</ID>
+      <Name>CubePermission</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <RoleID>Role</RoleID>
+      <ReadDefinition>Basic</ReadDefinition>
+      <Read>Allowed</Read>
+      <ReadSourceData>Allowed</ReadSourceData>
+    </CubePermission>
+  </CubePermissions>
   <MeasureGroups>
     <MeasureGroup dwd:design-time-name="f0252b3b-7c5e-479c-ac2c-c2c57d97cb96">
       <ID>Census Measure Fact</ID>
       <Name>Census Measures</Name>
-      <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
-      <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
-      <LastProcessed>0001-01-01T05:00:00Z</LastProcessed>
+      <CreatedTimestamp>0001-01-01T08:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T08:00:00Z</LastSchemaUpdate>
+      <LastProcessed>0001-01-01T08:00:00Z</LastProcessed>
       <State>Unprocessed</State>
       <Measures>
         <Measure dwd:design-time-name="e1f07218-a41c-4f92-9000-7b57934fde4b">
@@ -341,8 +353,8 @@
     <MdxScript dwd:design-time-name="7e33e7d4-a370-4b45-9c66-00d2a1ed6f2b">
       <ID>MdxScript</ID>
       <Name>MdxScript</Name>
-      <CreatedTimestamp>0001-01-01T05:00:00Z</CreatedTimestamp>
-      <LastSchemaUpdate>0001-01-01T05:00:00Z</LastSchemaUpdate>
+      <CreatedTimestamp>0001-01-01T08:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T08:00:00Z</LastSchemaUpdate>
       <Commands>
         <Command>
           <Text>/*

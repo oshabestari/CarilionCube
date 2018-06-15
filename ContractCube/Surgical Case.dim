@@ -1,64 +1,112 @@
-﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="02c39195-77a0-4bad-92b7-61591bc74e02" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>Surgical Case Dim</ID>
   <Name>Surgical Case</Name>
   <CreatedTimestamp>2017-09-27T18:52:28.92Z</CreatedTimestamp>
   <LastSchemaUpdate>2017-09-27T18:58:09.133333Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
   <LastProcessed>2017-10-10T14:30:43.353333Z</LastProcessed>
   <State>Processed</State>
-  <Source xsi:type="DataSourceViewBinding">
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="2f01711a-9de5-463f-a5bb-e424ff1d778b">
     <DataSourceViewID>Carilion</DataSourceViewID>
   </Source>
   <UnknownMember>Visible</UnknownMember>
-  <ErrorConfiguration>
+  <ErrorConfiguration dwd:design-time-name="330b5c68-cfa6-4c59-9b47-4ae4fd332941">
     <KeyNotFound>ReportAndStop</KeyNotFound>
     <KeyDuplicate>ReportAndStop</KeyDuplicate>
     <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
   </ErrorConfiguration>
   <CurrentStorageMode>Molap</CurrentStorageMode>
+  <DimensionPermissions>
+    <DimensionPermission dwd:design-time-name="dae2bf6a-428f-477b-ab17-f5bb58a59c09">
+      <ID>DimensionPermission</ID>
+      <Name>DimensionPermission</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <RoleID>Role</RoleID>
+      <ReadDefinition>Allowed</ReadDefinition>
+      <Read>Allowed</Read>
+    </DimensionPermission>
+  </DimensionPermissions>
   <Language>1033</Language>
   <Collation>Latin1_General_CI_AS</Collation>
   <UnknownMemberName>Unknown</UnknownMemberName>
   <Attributes>
-    <Attribute>
+    <Attribute dwd:design-time-name="f92c7401-8ca0-4fd1-b00d-f422cc0117aa">
       <ID>CASE SK</ID>
       <Name>Surgical Case</Name>
       <Usage>Key</Usage>
       <KeyColumns>
-        <KeyColumn>
+        <KeyColumn dwd:design-time-name="16a80fc0-3783-4bbc-87fa-956c8e5f22f4">
           <DataType>BigInt</DataType>
           <NullProcessing>UnknownMember</NullProcessing>
-          <Source xsi:type="ColumnBinding">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d6c32be8-81b9-46f6-bcb9-0ebb72955ec4">
             <TableID>SurgicalCaseDim</TableID>
             <ColumnID>CASE_SK</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
-      <NameColumn>
+      <NameColumn dwd:design-time-name="978b577f-3e14-4d6c-a0aa-117de8f4a728">
         <DataType>WChar</DataType>
         <NullProcessing>ZeroOrBlank</NullProcessing>
-        <Source xsi:type="ColumnBinding">
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="e3d11ef3-1372-40a8-9982-94acd70f6fb0">
           <TableID>SurgicalCaseDim</TableID>
           <ColumnID>CASE_SK</ColumnID>
         </Source>
       </NameColumn>
       <AttributeRelationships>
-        <AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="e8c4c772-1c25-458a-bf84-0be666e9160d">
           <AttributeID>PRMY SRVC CDS</AttributeID>
           <Name>Surgical Case - Primary Service</Name>
         </AttributeRelationship>
-        <AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="c611418a-c319-4729-8104-8cd24111052b">
           <AttributeID>PRCDR LEVL CDS</AttributeID>
           <Name>Surgical Case - Procedure Level</Name>
         </AttributeRelationship>
-        <AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="910e1576-ccb4-4867-8bd1-51c119a9c11b">
           <AttributeID>CL CDS</AttributeID>
           <Name>Surgical Case - Class</Name>
         </AttributeRelationship>
-        <AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="6510a7a9-0cce-42f3-a4a6-93d482e93f86">
           <AttributeID>SRG PTNT CLASS CDS</AttributeID>
           <Name>Surgical Case - Patient Class</Name>
         </AttributeRelationship>
-        <AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4c46d88c-f307-4ab4-9424-a39b41ff4bcf">
           <AttributeID>PRMY ANSTH TYPE CDS</AttributeID>
           <Name>Surgical Case - Primary Anesthesia Type</Name>
         </AttributeRelationship>
@@ -68,23 +116,23 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute>
+    <Attribute dwd:design-time-name="59c1bba1-1b9e-4f31-bbb3-d97f8169664c">
       <ID>PRMY SRVC CDS</ID>
       <Name>Surgical Case - Primary Service</Name>
       <KeyColumns>
-        <KeyColumn>
+        <KeyColumn dwd:design-time-name="457f2e21-4142-4339-bb2e-39452808d587">
           <DataType>Integer</DataType>
           <NullProcessing>UnknownMember</NullProcessing>
-          <Source xsi:type="ColumnBinding">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="2333bbb4-e72d-452d-abcd-6ec281737520">
             <TableID>SurgicalCasePrimaryServiceDim</TableID>
             <ColumnID>PRMY_SRVC_CDS</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
-      <NameColumn>
+      <NameColumn dwd:design-time-name="e1aa7950-bdf7-4016-be53-30debcebc9e0">
         <DataType>WChar</DataType>
         <DataSize>254</DataSize>
-        <Source xsi:type="ColumnBinding">
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="a7330b84-7f6d-4d14-b527-33c4a8d8ae35">
           <TableID>SurgicalCasePrimaryServiceDim</TableID>
           <ColumnID>PRMY_SRVC_DESC</ColumnID>
         </Source>
@@ -93,23 +141,23 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute>
+    <Attribute dwd:design-time-name="bc3497ec-ce9d-4acf-bb62-2a388f298ed4">
       <ID>PRCDR LEVL CDS</ID>
       <Name>Surgical Case - Procedure Level</Name>
       <KeyColumns>
-        <KeyColumn>
+        <KeyColumn dwd:design-time-name="1001164d-6d9d-444f-a2c2-2a4b5f366a2b">
           <DataType>Integer</DataType>
           <NullProcessing>UnknownMember</NullProcessing>
-          <Source xsi:type="ColumnBinding">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7e08ea44-2887-42ee-bb32-1ded90247da8">
             <TableID>SurgicalCaseProcedureLevelDim</TableID>
             <ColumnID>PRCDR_LEVL_CDS</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
-      <NameColumn>
+      <NameColumn dwd:design-time-name="b0b5a6e7-d108-4675-89db-a92b2079e17d">
         <DataType>WChar</DataType>
         <DataSize>254</DataSize>
-        <Source xsi:type="ColumnBinding">
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="79b05bba-2fdc-40ec-afba-a5181ae4530c">
           <TableID>SurgicalCaseProcedureLevelDim</TableID>
           <ColumnID>PRCDR_LEVL_DESC</ColumnID>
         </Source>
@@ -118,23 +166,23 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute>
+    <Attribute dwd:design-time-name="68a0f2e9-a2b8-417b-afd3-8b8abf216744">
       <ID>CL CDS</ID>
       <Name>Surgical Case - Class</Name>
       <KeyColumns>
-        <KeyColumn>
+        <KeyColumn dwd:design-time-name="d45d8124-cb11-4111-89c2-dcb461f8e4e9">
           <DataType>Integer</DataType>
           <NullProcessing>UnknownMember</NullProcessing>
-          <Source xsi:type="ColumnBinding">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="0f18b666-dc0c-4b67-9350-509d193a895b">
             <TableID>SurgicalCaseClassDim</TableID>
             <ColumnID>CL_CDS</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
-      <NameColumn>
+      <NameColumn dwd:design-time-name="ac7277dc-e160-4819-98d1-b4987b60f06b">
         <DataType>WChar</DataType>
         <DataSize>254</DataSize>
-        <Source xsi:type="ColumnBinding">
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="40d6ecae-305f-4eec-a588-71388380d391">
           <TableID>SurgicalCaseClassDim</TableID>
           <ColumnID>CL_DESC</ColumnID>
         </Source>
@@ -143,23 +191,23 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute>
+    <Attribute dwd:design-time-name="e7681973-3b23-4479-a290-39627e403c8d">
       <ID>SRG PTNT CLASS CDS</ID>
       <Name>Surgical Case - Patient Class</Name>
       <KeyColumns>
-        <KeyColumn>
+        <KeyColumn dwd:design-time-name="c4b3eaea-d4e5-45eb-b61f-28bbfbe6440d">
           <DataType>Integer</DataType>
           <NullProcessing>UnknownMember</NullProcessing>
-          <Source xsi:type="ColumnBinding">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="297ad665-577d-4db3-920f-2d796d2cbb51">
             <TableID>SurgicalCasePatientClassDim</TableID>
             <ColumnID>SRG_PTNT_CLASS_CDS</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
-      <NameColumn>
+      <NameColumn dwd:design-time-name="684a2a0a-7fc4-49b1-9b2f-ba6956427817">
         <DataType>WChar</DataType>
         <DataSize>254</DataSize>
-        <Source xsi:type="ColumnBinding">
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="525fd409-2445-4c2e-a7bd-1ddb042cf817">
           <TableID>SurgicalCasePatientClassDim</TableID>
           <ColumnID>SRG_PTNT_CLASS_DESC</ColumnID>
         </Source>
@@ -168,23 +216,23 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute>
+    <Attribute dwd:design-time-name="2414267c-a402-4f74-aa78-300c32a94237">
       <ID>PRMY ANSTH TYPE CDS</ID>
       <Name>Surgical Case - Primary Anesthesia Type</Name>
       <KeyColumns>
-        <KeyColumn>
+        <KeyColumn dwd:design-time-name="5e8bd1d2-ff05-4b66-8777-2af4da17865a">
           <DataType>Integer</DataType>
           <NullProcessing>UnknownMember</NullProcessing>
-          <Source xsi:type="ColumnBinding">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4e202a92-b22e-4701-b714-c93a8d1fbe04">
             <TableID>SurgicalCasePrimaryAnesthesiaTypeDim</TableID>
             <ColumnID>PRMY_ANSTH_TYPE_CDS</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
-      <NameColumn>
+      <NameColumn dwd:design-time-name="6ec93c83-d2b4-4cd5-b1e2-1040fbf984bf">
         <DataType>WChar</DataType>
         <DataSize>254</DataSize>
-        <Source xsi:type="ColumnBinding">
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="d4df5638-7189-4b7a-b9f6-9bb7fc11c14a">
           <TableID>SurgicalCasePrimaryAnesthesiaTypeDim</TableID>
           <ColumnID>PRMY_ANSTH_TYPE_DESC</ColumnID>
         </Source>
@@ -194,12 +242,12 @@
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
   </Attributes>
-  <ProactiveCaching>
+  <ProactiveCaching dwd:design-time-name="f95cd66b-beaa-4b9a-a75d-c578c8705c67">
     <SilenceInterval>-PT1S</SilenceInterval>
     <Latency>-PT1S</Latency>
     <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
     <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
-    <Source xsi:type="ProactiveCachingInheritedBinding" />
+    <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="39b7eb60-ff30-405d-89f4-bda06b4493b7" />
   </ProactiveCaching>
   <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
 </Dimension>

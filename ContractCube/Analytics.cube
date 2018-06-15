@@ -12354,6 +12354,193 @@
       </Attributes>
     </Dimension>
   </Dimensions>
+  <CubePermissions>
+    <CubePermission dwd:design-time-name="20898111-eade-4056-872b-2379edd2f9c4">
+      <ID>CubePermission</ID>
+      <Name>CubePermission</Name>
+      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <RoleID>Role</RoleID>
+      <ReadDefinition>Basic</ReadDefinition>
+      <Read>Allowed</Read>
+      <ReadSourceData>Allowed</ReadSourceData>
+      <DimensionPermissions>
+        <DimensionPermission dwd:design-time-name="efac1149-083a-457b-b924-9b35f3fae2a1">
+          <CubeDimensionID>HSPTL ADMT PROVDR SK</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="02e10c96-6aa6-4dd7-b8d8-36bdb316afde">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Inpatient - Hospital Admission].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+        <DimensionPermission dwd:design-time-name="ffcc7a06-6aac-4acd-881c-a1149daf8bc5">
+          <CubeDimensionID>HSPTL DSCRG PROVDR SK</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="974c90a3-85df-4991-8a03-4567a7e7e592">
+              <AttributeID>PROVDR SK</AttributeID>
+            </AttributePermission>
+            <AttributePermission dwd:design-time-name="4352452a-2c17-4ea2-8a1e-ed91f74f7040">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Inpatient - Hospital Discharge].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+        <DimensionPermission dwd:design-time-name="27577663-32d5-4d98-b16c-b3b02329fd41">
+          <CubeDimensionID>Provider 2</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="9e1da8e8-ed97-4f95-9615-755adc693b5f">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Lab Order - Authorizing].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+        <DimensionPermission dwd:design-time-name="c8489d80-72f4-4069-a005-0310370b80d5">
+          <CubeDimensionID>AUTH BY PROVDR SK</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="7581cbbc-7285-4369-abec-f4cc8b9b064a">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Medication Order - Authorized By].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+        <DimensionPermission dwd:design-time-name="15edd1f2-205c-4e43-9ee3-5a15200dfe83">
+          <CubeDimensionID>ORDRD BY PROVDR SK</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="d4a7ec06-7027-4784-8ec1-2433e83d2c0b">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Medication Order - Ordered By].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+        <DimensionPermission dwd:design-time-name="5896e2f6-d97d-4546-9432-d7ba3ba52955">
+          <CubeDimensionID>FRTH VST PRVDR</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="2dc583ab-987b-47f5-9a1e-260ade0f4876">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Outpatient - Fourth].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+        <DimensionPermission dwd:design-time-name="0a0a3ce8-a955-4cc6-8c2b-22d74e3f57f7">
+          <CubeDimensionID>PRMY VST PRVDR</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="6bc62bb7-40df-44ea-96fb-a43e87bb756b">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Outpatient - Primary].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+        <DimensionPermission dwd:design-time-name="2733ec45-9c5b-4b9f-b036-bce792ddc26b">
+          <CubeDimensionID>SCND VST PRVDR</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="19736188-29c3-42a9-8b02-142ab000e8dd">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Outpatient - Second].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+        <DimensionPermission dwd:design-time-name="dee55ac9-65c8-48ab-9adf-aade36c5bd59">
+          <CubeDimensionID>THRD VST PRVDR</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="63ef901c-3733-4f33-a838-d2371c4306a8">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Outpatient - Third].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+        <DimensionPermission dwd:design-time-name="1ea5fc46-ea18-402c-b1eb-88f4b54c9e3b">
+          <CubeDimensionID>Provider</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="59d10d73-a632-4450-8c79-076ab4a2db53">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Patient - PCP].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+        <DimensionPermission dwd:design-time-name="8dfc92f5-6f30-46ef-8408-23a2fe1ee1ca">
+          <CubeDimensionID>Provider 1 1</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="7a25ccff-5dfd-45a7-ab37-bac9adf4d900">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Procedure Order - Authorized By].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+        <DimensionPermission dwd:design-time-name="853000d3-d7bb-4aff-9c16-fdcf128a6416">
+          <CubeDimensionID>Provider 1</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="7b9907dc-c036-4f60-ad9e-90c7363cc253">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Procedure Order - Ordered By].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+        <DimensionPermission dwd:design-time-name="ccd5a9cd-f188-42a6-9e97-f57f2990f106">
+          <CubeDimensionID>ANSTHGIST PROVDR SK</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="6b3aca28-9b80-48f0-a7cf-cc69f6486c86">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Surgical Case - Anesthesiologist].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+        <DimensionPermission dwd:design-time-name="c6c4443b-e240-4d01-be50-4056d22ed8d8">
+          <CubeDimensionID>PRMY PROVDR SK</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="f2962b64-d005-4964-9bfc-541f63eeed53">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Surgical Case - Primary].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+        <DimensionPermission dwd:design-time-name="3a108108-9aa9-4d16-96d0-71ef9680e4f3">
+          <CubeDimensionID>PRMY PROVDR SURGEON SK</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="e659ad6f-aba4-4529-aed3-08c69de4a708">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Surgical Procedure Event - Primary Surgeon].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+        <DimensionPermission dwd:design-time-name="55716e30-fac4-4db5-9952-c2a9f22afdc0">
+          <CubeDimensionID>SCND PROVDR SURGEON SK</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="5478d67c-cdeb-4259-8244-1473a3d1cea7">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Surgical Procedure Event - Secondary Surgeon].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+        <DimensionPermission dwd:design-time-name="271bbadd-563e-4574-8f16-d0b49b9e562f">
+          <CubeDimensionID>THRD PROVDR SURGEON SK</CubeDimensionID>
+          <Read>Allowed</Read>
+          <AttributePermissions>
+            <AttributePermission dwd:design-time-name="a805485f-5a16-40df-9b90-13ab8afbafbf">
+              <AttributeID>LDAP USR</AttributeID>
+              <AllowedSet>{StrToMember("[Provider - Surgical Procedure Event - Tertiary Surgeon].[Provider - UserID].&amp;[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}</AllowedSet>
+            </AttributePermission>
+          </AttributePermissions>
+        </DimensionPermission>
+      </DimensionPermissions>
+    </CubePermission>
+  </CubePermissions>
   <MeasureGroups>
     <MeasureGroup dwd:design-time-name="6ffe957a-883c-4df4-912a-089ab8035128">
       <ID>Measure MD Fact</ID>
