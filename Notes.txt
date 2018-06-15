@@ -50,9 +50,12 @@ slice medications and lab orders by DRG dimension - modify dimension usage
 linked server data analytics
 
 
+Add ratios compared to previous year same interval.
+ratio of medications / encounter add to [Medication Order]
+lab orders / encounter add to [Lab Order]
 
 
-
+Add the more measures
 
 
 
