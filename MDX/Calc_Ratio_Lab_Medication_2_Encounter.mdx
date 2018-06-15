@@ -1,0 +1,21 @@
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Ratio Lab Order to Encounter]
+ AS 
+IIF([Measures].[Encounter - Count] = 0, 
+    null,
+	[Measures].[Lab Order - Count]/[Measures].[Encounter - Count]
+    )
+,FORMAT_STRING = "#,##0.0000", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Lab Order';
+
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Ratio Medication to Encounter]
+ AS 
+IIF([Measures].[Encounter - Count] = 0, 
+    null,
+	[Measures].[Medication Order - Count]/[Measures].[Encounter - Count]
+    )
+,FORMAT_STRING = "#,##0.0000", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Order';
+
