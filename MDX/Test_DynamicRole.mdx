@@ -1,0 +1,59 @@
+
+
+select
+{ [Measures].[Diagnosis - Count] } on 0,
+{
+(
+[Provider - Inpatient - Hospital Admission].[Provider - UserID].children
+,[Provider - Inpatient - Hospital Discharge].[Provider - UserID].children
+,[Provider - Lab Order - Authorizing].[Provider - UserID].children
+,[Provider - Medication Order - Authorized By].[Provider - UserID].children
+)
+} on 1
+from
+	Analytics
+
+
+select
+{ [Measures].[Diagnosis - Count] } on 0,
+{
+(
+[Provider - Medication Order - Ordered By].[Provider - UserID].children
+,[Provider - Outpatient - Fourth].[Provider - UserID].children
+,[Provider - Outpatient - Primary].[Provider - UserID].children
+,[Provider - Outpatient - Second].[Provider - UserID].children
+)
+} on 1
+from
+	Analytics
+
+
+select
+{ [Measures].[Diagnosis - Count] } on 0,
+{
+(
+[Provider - Outpatient - Third].[Provider - UserID].children
+,[Provider - Patient - PCP].[Provider - UserID].children
+,[Provider - Procedure Order - Authorized By].[Provider - UserID].children
+,[Provider - Procedure Order - Ordered By].[Provider - UserID].children
+)
+} on 1
+from
+	Analytics
+
+
+
+select
+{ [Measures].[Diagnosis - Count] } on 0,
+{
+(
+[Provider - Surgical Case - Anesthesiologist].[Provider - UserID].children
+,[Provider - Surgical Case - Primary].[Provider - UserID].children
+,[Provider - Surgical Procedure Event - Primary Surgeon].[Provider - UserID].children
+,[Provider - Surgical Procedure Event - Secondary Surgeon].[Provider - UserID].children
+,[Provider - Surgical Procedure Event - Tertiary Surgeon].[Provider - UserID].children
+)
+} on 1
+from
+	Analytics
+
