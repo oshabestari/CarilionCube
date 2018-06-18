@@ -79,11 +79,15 @@ VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';
 CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - LOS in Days - Arithmetic Average]
  AS IIF ([Measures].[Inpatient - LOS in Days - Count] = 0 , NULL,ROUND([Inpatient - LOS in Days - Sum]/[Inpatient - LOS in Days - Count],2)), 
 FORMAT_STRING = "#,##0.00;-#,##0.00", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';                                                                
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';   
+
+                                                             
 CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - LOS in Days - Geometric Average]
  AS IIF ([Measures].[Inpatient - LOS in Days - Count] = 0 , NULL,ROUND(10 ^ ([Inpatient - LOS in Days Log - Sum]/[Inpatient - LOS in Days - Count]),2)), 
 FORMAT_STRING = "#,##0.00;-#,##0.00", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';                                                       
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';     
+
+                                                  
 CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Count - Growth from Same Period Previous Year]
  AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Inpatient - Count])) = 0  , NULL,
     IIF ([Measures].[Inpatient - Count] = 0, NULL,
