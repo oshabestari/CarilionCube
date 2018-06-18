@@ -58,6 +58,27 @@ lab orders / encounter add to [Lab Order]
 Add the more measures
 
 
+Add LDAP_USER in UserDim. Keep it hidden. Can LDAP_USER be hidden and still referenced?
+
+Cube modifications: will be told by Shea
+
+NUmber of tests in an outpatient setting.
+
+tests by encounter by provider
+
+tests in outpatient encounter 
+
+lab tests by total number of encounters sliced by department
+
+extract DSV file data and upload to SQL so it can be queried along with cube metadata
+Also parse the dimension in addition to the DSV files
+
+
+
+
+
+
+
 
 
 
