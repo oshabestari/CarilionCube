@@ -57,3 +57,56 @@ select
 from
 	Analytics
 
+
+select
+{ [Measures].[Lab Order - Count] } on 0,
+{
+(
+[Provider - Patient - PCP].[Provider - UserID].children
+,[User - Lab Order - Collecting].[User - UserID].children
+)
+} on 1
+from
+	Analytics
+
+
+
+select
+{ [Measures].[Lab Order - Count] } on 0,
+{
+(
+--[Provider - Patient - PCP].[Provider - UserID].children
+[User - Lab Order - Collecting].[User - UserID].children,
+[User - Lab Order - Collecting].[User - Name].children
+--[User - Lab Order - Collecting].[User - Name].&[cklenovo\SSAS_USER01],
+--[User - Lab Order - Collecting].[User - Name].&[cklenovo\SSAS_USER02]
+)
+} on 1
+from
+	Analytics
+
+
+select
+{ [Measures].[Lab Order - Count] } on 0,
+{
+(
+	 --[Provider - Patient - PCP].[Provider - UserID].children
+	 --[User - Lab Order - Collecting].[User - UserID].children
+	//StrToMember("[User - Lab Order - Collecting].[User - UserID].&[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")
+	//[User - Lab Order - Collecting].[User - UserID].&[cklenovo\SSAS_USER01]
+	//[User - Lab Order - Collecting].[User - UserID].children
+	{StrToMember("[User - Lab Order - Last Correcting].[User - UserID].&[" + iif(isempty(customdata()) = True, username(), customdata()) + "]")}
+	//,[User - Lab Order - First Correcting].[User - UserID].children
+//	,[User - Lab Order - First Final Verifing].[User - UserID].children
+//	,[User - Lab Order - First Verifing].[User - UserID].children
+//	,[User - Lab Order - Last Correcting].[User - UserID].children
+//	,[User - Lab Order - Last Final Verifing].[User - UserID].children
+)
+} on 1
+from
+	Analytics
+
+
+
+
+
