@@ -2,6 +2,7 @@ import untangle
 import collections
 import json
 import operator
+import os
 
 create_tables_using_friendly_names = True
 stats_num_tables = None
@@ -11,6 +12,14 @@ stats_num_primary_keys = 0
 stats_sql_lines_drop_tables = None
 stats_sql_lines_create_tables = None
 stats_sql_lines_add_foreign_keys = None
+
+cube_visualstudio_path = r'..\..\Contract_r'
+
+dimension_files = [os.path.join(cube_visualstudio_path, f) for f in os.listdir(r'..\..\Contract_r') if f.lower().endswith(r'.dim') and os.path.isfile(os.path.join(cube_visualstudio_path, f))]
+
+for f in dimension_files:
+    obj = untangle.parse(f)
+    
 
 
 
