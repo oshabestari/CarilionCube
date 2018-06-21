@@ -1,0 +1,297 @@
+
+//
+/*Returns the value of the last sibling among the descendants of a specific member at a specified level.*/
+CREATE MEMBER CURRENTCUBE.[Measures].[Closing Period Balance]
+AS Aggregate
+(
+  ClosingPeriod
+  ( 
+	 [<<Target Dimension>>].[<<Target Hierarchy>>].[<<Target Level>>],
+     [<<Target Dimension>>].[<<Target Hierarchy>>].[<<Member>>]
+  ),
+  [Measures].[<<Target Measure>>]
+)
+
+// This calculation returns the value of the last sibling of the specified
+// member among the descendants of a specific member at a specified level.
+			,
+FORMAT_STRING = "Standard";
+
+//
+/*Returns the average value of a member over a specified time interval.*/
+CREATE MEMBER CURRENTCUBE.[Measures].[Moving Average]
+AS Avg
+(
+   [<<Target Dimension>>].[<<Target Hierarchy>>].CurrentMember.Lag(<<Periods to Lag>>) : 
+   [<<Target Dimension>>].[<<Target Hierarchy>>].CurrentMember, 
+   [Measures].[<<Target Measure>>]
+)
+
+// This calculation returns the average value of a member over the specified time interval.
+			,
+FORMAT_STRING = "Standard";
+
+//
+/*Returns the value of the first sibling among the descendants of a specified member at a specified level.*/
+CREATE MEMBER CURRENTCUBE.[Measures].[Opening Period Balance]
+AS Aggregate
+(
+  OpeningPeriod
+  ( 
+	 [<<Target Dimension>>].[<<Target Hierarchy>>].[<<Target Level>>],
+     [<<Target Dimension>>].[<<Target Hierarchy>>].[<<Member>>]
+  ),
+  [Measures].[<<Target Measure>>]
+)
+
+// This calculation returns the value of the first sibling of the specified
+// member among the descendants of a specific member at a specified level.
+			,
+FORMAT_STRING = "Standard";
+
+//
+/*Compares the value of a numeric expression in one period, typically the current period, to a previous period.*/
+CREATE MEMBER CURRENTCUBE.[Measures].[Period over Period]
+AS Case
+// Test for current coordinate being on (All) member.
+When [<<Target Dimension>>].[<<Target Hierarchy>>].CurrentMember.Level Is
+     [<<Target Dimension>>].[<<Target Hierarchy>>].[(All)]
+
+Then "NA"
+
+Else ( [<<Target Dimension>>].[<<Target Hierarchy>>].CurrentMember,
+	   [Measures].[<<Target Measure>>] ) 
+	 -
+     ( 
+       ParallelPeriod
+       (
+          [<<Target Dimension>>].[<<Target Hierarchy>>].[<<Target Level>>],
+          <<Number of Periods>>,
+	      [<<Target Dimension>>].[<<Target Hierarchy>>].CurrentMember
+       ),
+       [Measures].[<<Target Measure>>] 
+     )
+End
+
+// This expression evaluates the difference between the value of the numeric
+// expression in the previous period and that of the current period.
+			,
+FORMAT_STRING = "Standard";
+
+//
+/*Compares the value of a numeric expression in one period to a previous period, as a percentage of the previous period’s value.*/
+CREATE MEMBER CURRENTCUBE.[Measures].[Period over Period Growth]
+AS Case
+// Test for current coordinate being on (All) member.
+When [<<Target Dimension>>].[<<Target Hierarchy>>].CurrentMember.Level Is
+     [<<Target Dimension>>].[<<Target Hierarchy>>].[(All)]
+
+Then "NA"
+
+// Test to avoid division by zero.
+When IsEmpty
+     (
+       ( 
+         ParallelPeriod
+         (
+            [<<Target Dimension>>].[<<Target Hierarchy>>].[<<Target Level>>],
+            <<Number of Periods>>,
+		    [<<Target Dimension>>].[<<Target Hierarchy>>].CurrentMember
+         ),
+         [Measures].[<<Target Measure>>] 
+        )
+     ) 
+Then Null
+
+Else ( 
+       ( [<<Target Dimension>>].[<<Target Hierarchy>>].CurrentMember,
+	     [Measures].[<<Target Measure>>] ) 
+	   -
+       ( 
+         ParallelPeriod
+         (
+            [<<Target Dimension>>].[<<Target Hierarchy>>].[<<Target Level>>],
+            <<Number of Periods>>,
+	        [<<Target Dimension>>].[<<Target Hierarchy>>].CurrentMember
+         ),
+         [Measures].[<<Target Measure>>] 
+       ) 
+	 )
+	 /
+     ( 
+       ParallelPeriod
+       (
+          [<<Target Dimension>>].[<<Target Hierarchy>>].[<<Target Level>>],
+          <<Number of Periods>>,
+	      [<<Target Dimension>>].[<<Target Hierarchy>>].CurrentMember
+       ),
+       [Measures].[<<Target Measure>>] 
+     )
+End
+
+// This expression evaluates the difference between the value of the numeric
+// expression in the previous period and that of the current period, as a
+// percentage of the previous period's value.
+			,
+FORMAT_STRING = "Percent";
+
+//
+/*Returns the aggregate of a numeric expression from the start of a specified period to the current period.*/
+CREATE MEMBER CURRENTCUBE.[Measures].[Periods to Date]
+AS Aggregate
+(
+  PeriodsToDate
+  (
+     [<<Target Dimension>>].[<<Target Hierarchy>>].[<<Target Level>>],
+	 [<<Target Dimension>>].[<<Target Hierarchy>>].CurrentMember
+  ),
+  [Measures].[<<Target Measure>>]
+)
+
+// This expression will return the aggregated value of the target
+// measure over the specified time periods, beginning with the 
+// first member of the target level, and ending with the current member.
+			,
+FORMAT_STRING = "Standard";
+
+//
+/*Shows the age, typically in days, of an enterprise's accounts receivable and the average time that it takes to transform receivables into cash.*/
+CREATE MEMBER CURRENTCUBE.[Measures].[Days Sales Outstanding (DSO)]
+AS <<Receivables at Periods End>> / <<Sales Credited within Period>> *
+<<Number of Days in Period>>
+			,
+FORMAT_STRING = "Standard";
+
+//
+/*Defines a measure of economic performance that is based on the enterprise’s net profits less a deduction for the consumption of capital.*/
+CREATE MEMBER CURRENTCUBE.[Measures].[Economic Value Added (EVA)]
+AS <<Net operating Profit after tax>> – 
+( <<Capital>> * <<Cost of Capital>> )
+			,
+FORMAT_STRING = "Standard";
+
+//
+/*Calculates the difference between the net sales revenue and the cost of goods sold.*/
+CREATE MEMBER CURRENTCUBE.[Measures].[Gross Profit]
+AS <<Net Sales>> - <<Cost of Goods Sold>> 				
+			,
+FORMAT_STRING = "Standard";
+
+//
+/*Calculates the difference between net sales and the cost of goods sold, expressed as a percentage of net sales.*/
+CREATE MEMBER CURRENTCUBE.[Measures].[Gross Profit Margin]
+AS <<Net Sales>> - <<Cost of Goods Sold>>
+/
+<<Net Sales>>
+			,
+FORMAT_STRING = "Standard";
+
+//
+/*Divides net income by net sales. Net profit margin is also known as operating margin.*/
+CREATE MEMBER CURRENTCUBE.[Measures].[Net Profit Margin]
+AS <<Net Income>> / <<Net Sales>>
+			,
+FORMAT_STRING = "Percent";
+
+//
+/*Returns a specified number of items from the topmost members of a specified set.*/
+CREATE SET CURRENTCUBE.[Top N Count]
+AS TopCount
+(
+   <<Set>>,
+   <<Count>>,
+   <<Numeric Expression>>
+)
+
+// This expression will return a specified number of items from the
+// topmost members of a specified set.
+
+// The TopCount function always breaks the hierarchy.			
+			;
+
+//
+/*Sorts a set, and then returns the specified number of bottommost members whose cumulative total is at least the specified percentage.*/
+CREATE SET CURRENTCUBE.[Bottom N Percent]
+AS BottomPercent
+(
+   <<Set>>,
+   <<Percentage>>,
+   <<Numeric Expression>>
+)
+
+// This expression will sort the set and return the specified number
+// of bottommost members whose cumulative total is at least the specified percentage.
+
+// The BottomPercent function always breaks the hierarchy.
+			;
+
+//
+/*Returns the rank of a specified tuple within a specified set, with the rank determined by the value of a specified numeric expression.*/
+CREATE MEMBER CURRENTCUBE.[Measures].[Rank by Value]
+AS Rank
+(
+   [<<Dimension>>].[<<Hierarchy>>].CurrentMember,
+   <<Ranking Set>>,
+   <<Numeric Ranking Expression>>
+)
+
+// Returns the rank of the tuple within the set,  
+// with the rank determined by the value of a specified numeric expression.
+			,
+FORMAT_STRING = "Standard";
+
+//
+/*Returns the rank of a specified tuple within a specified set, where the rank is based on the position of the tuple within the set.*/
+CREATE MEMBER CURRENTCUBE.[Measures].[Rank by Position]
+AS Rank
+(
+   [<<Dimension>>].[<<Hierarchy>>].CurrentMember,
+   <<Ranking Set>>
+)
+
+// Returns the rank of the tuple within the set, 
+// where the rank is based on the position of the tuple within the set.
+			,
+FORMAT_STRING = "Standard";
+
+//
+/*Calculates the ratio of a specific member's value to that of the member’s parent.*/
+CREATE MEMBER CURRENTCUBE.[Measures].[Percentage of Parent]
+AS Case
+// Test to avoid division by zero.
+When IsEmpty
+     ( 
+        [Measures].[<<Target Measure>>] 
+     ) 
+Then Null
+
+// Test for current coordinate being on the (All) member.
+When [<<Target Dimension>>].[<<Target Hierarchy>>].CurrentMember.Level Is
+     [<<Target Dimension>>].[<<Target Hierarchy>>].[(All)]
+Then 1
+
+Else ( [<<Target Dimension>>].[<<Target Hierarchy>>].CurrentMember,
+       [Measures].[<<Target Measure>>] ) 
+     /
+     ( [<<Target Dimension>>].[<<Target Hierarchy>>].CurrentMember.Parent,
+       [Measures].[<<Target Measure>>] )
+
+End
+			,
+FORMAT_STRING = "Percent";
+
+//
+/*Filters the members of one attribute based on existence with the value of another attribute in the same dimension.*/
+CREATE MEMBER CURRENTCUBE.[Measures].[Filter by Attribute Value]
+AS Exists
+(
+   [<<Target Dimension>>].[<<Target Attribute Hierarchy>>].[<<Target Level>>].Members,
+   [<<Target Dimension>>].[<<Filter Attribute Hierarchy>>].[<<Attribute Member>>]
+)
+
+// This expression will return the subset of target attribute hierarchy members that
+// exist with the specified member of the filter attribute hierarchy.
+			,
+FORMAT_STRING = "Standard";
+
+
