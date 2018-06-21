@@ -261,3 +261,4 @@ __pycache__/
 *.pyc
 QuerySchemas/.vscode/
 QuerySchemas/QuerySchemas.code-workspace
+DW_backup_via_scripts/_output.txt
