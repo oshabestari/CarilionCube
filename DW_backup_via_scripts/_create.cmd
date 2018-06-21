@@ -1,3 +1,4 @@
+copy nul > _output.txt
 sqlcmd -S localhost -i carilion_dw.Database.sql -o _output.txt
 sqlcmd -S localhost -i dbo.BinaryDim.Table.sql -o _output.txt
 sqlcmd -S localhost -i dbo.CensusGeographicalAreaDim.Table.sql -o _output.txt
