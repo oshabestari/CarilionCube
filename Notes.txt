@@ -68,14 +68,18 @@ tests by encounter by provider
 
 tests in outpatient encounter 
 
-lab tests by total number of encounters sliced by department
+lab orders by total number of encounters sliced by department
 
 extract DSV file data and upload to SQL so it can be queried along with cube metadata
 Also parse the dimension in addition to the DSV files
 
 
+lab order count / encounter - count 
+sliced by:
+Provider - Lab Order - Authorizing
+Date - Encounter
 
-
+by location, Department
 
 
 
