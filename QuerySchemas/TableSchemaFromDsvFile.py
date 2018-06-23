@@ -18,8 +18,8 @@ cube_visualstudio_path = r'..\..\Contract_r'
 SSAS_DSV_TableDef = collections.namedtuple('SSAS_DSV_TableDef', ['Name', 'FriendlyName', 'DbTableName', 'QueryDefinition', 'Columns'])
 SSAS_DSV_ColumnDef = collections.namedtuple('SSAS_DSV_ColumnDef', ['Name', 'FriendlyName', 'DataType', 'Description', 'AllowNull', 'Length', 'DbColumnName'])
 SSAS_DSV_ForeignKeyDef = collections.namedtuple('SSAS_DSV_ForeignKeyDef', ['Name', 'Parent', 'Child', 'ParentKey', 'ChildKey', 'Description'])
-SSAS_DIM_TableDef = collections.namedtuple('SSAS_DIM_TableDef', ['ID', 'Name', 'FileName', 'UnknownMember', 'Columns', 'KeyColumns', 'Type', 'ErrorConfiguration', 'Hierarchies'])
-SSAS_DIM_ColumnDef = collections.namedtuple('SSAS_DIM_ColumnDef', ['ID', 'Name', 'Usage', 'OrderBy', 'IsKeyColumn', 'KeyColumns', 'NameColumn_DataType', 'NameColumn_DataSize', 'NameColumn_TableName', 'NameColumn_ColumnName'])
+SSAS_DIM_TableDef = collections.namedtuple('SSAS_DIM_TableDef', ['ID', 'Name', 'FileName', 'UnknownMember', 'UnknownMemberName', 'Columns', 'Type', 'ErrorConfiguration', 'Hierarchies'])
+SSAS_DIM_ColumnDef = collections.namedtuple('SSAS_DIM_ColumnDef', ['ID', 'Name', 'Usage', 'OrderBy', 'IsKeyColumn', 'KeyColumns', 'NameColumn_DataType', 'NameColumn_DataSize', 'NameColumn_NullProcessing', 'NameColumn_TableName', 'NameColumn_ColumnName'])
 SSAS_DIM_KeyColumnDef = collections.namedtuple('SSAS_DIM_KeyColumnDef', ['DataType', 'TableId', 'ColumnID'])
 SSAS_DIM_HierarchyDef = collections.namedtuple('SSAS_DIM_HierarchyDef', ['ID', 'Name', 'Levels'])
 SSAS_DIM_LevelDef = collections.namedtuple('SSAS_DIM_LevelDef', ['ID', 'Name', 'ColumnName'])
@@ -28,21 +28,24 @@ SSAS_DIM_LevelDef = collections.namedtuple('SSAS_DIM_LevelDef', ['ID', 'Name', '
 def ParseDimensionFiles(dimension_files: []):
     dim_tables_asdict = collections.OrderedDict()
     for f in dimension_files:
+        #print(os.path.join(cube_visualstudio_path, f))
         obj = untangle.parse( os.path.join(cube_visualstudio_path, f) )
 
         dim_table_def_asdict = collections.OrderedDict()
         dim_table_def_asdict['ID'] = obj.Dimension.ID.cdata
         dim_table_def_asdict['Name'] = obj.Dimension.Name.cdata
         dim_table_def_asdict['FileName'] = f
-        dim_table_def_asdict['UnknownMember'] = obj.Dimension.UnknownMember.cdata if obj.Dimension.get_attribute('UnknownMember') != None else None
+        dim_table_def_asdict['UnknownMember'] = obj.Dimension.UnknownMember.cdata if obj.Dimension.__hasattribute__('UnknownMember') else 'None'
+        dim_table_def_asdict['UnknownMemberName'] = obj.Dimension.UnknownMemberName.cdata if obj.Dimension.__hasattribute__('UnknownMemberName') else None
 
+        dim_columns_asdict = collections.OrderedDict()
         for c in obj.Dimension.Attributes.Attribute:
             dim_column_def_asdict = collections.OrderedDict()
             dim_column_def_asdict['ID'] = c.ID.cdata
             dim_column_def_asdict['Name'] = c.Name.cdata
-            dim_column_def_asdict['Usage'] = obj.Dimension.Usage.cdata if obj.Dimension.get_attribute('Usage') != None else None
-            dim_column_def_asdict['OrderBy'] = obj.Dimension.OrderBy.cdata if obj.Dimension.get_attribute('OrderBy') != None else None
-            dim_column_def_asdict['IsKeyColumn'] = False if dim_column_def_asdict['Usage'] == None else dim_column_def_asdict['Usage'].lower() == 'key'
+            dim_column_def_asdict['Usage'] = c.Usage.cdata if c.__hasattribute__('Usage') else 'Regular'
+            dim_column_def_asdict['OrderBy'] = c.OrderBy.cdata if c.__hasattribute__('OrderBy') else 'Name'
+            dim_column_def_asdict['IsKeyColumn'] =(dim_column_def_asdict['Usage'] == 'Key')
             
             dim_keycolumns_def = []
             for kc in c.KeyColumns.KeyColumn:
@@ -55,21 +58,28 @@ def ParseDimensionFiles(dimension_files: []):
 
             dim_column_def_asdict['NameColumn_DataType'] = None
             dim_column_def_asdict['NameColumn_DataSize'] = None
+            dim_column_def_asdict['NameColumn_NullProcessing'] = None
             dim_column_def_asdict['NameColumn_TableName'] = None
             dim_column_def_asdict['NameColumn_ColumnName'] = None
             for nc in c.get_elements('NameColumn'):
-                dim_column_def_asdict['NameColumn_DataType'] = nc.DataType.cdata
-                dim_column_def_asdict['NameColumn_DataSize'] = nc.DataSize.cdata
+                dim_column_def_asdict['NameColumn_DataType'] = nc.DataType.cdata if nc.__hasattribute__('DataType') else None
+                dim_column_def_asdict['NameColumn_DataSize'] = nc.DataSize.cdata if nc.__hasattribute__('DataSize') else None
+                dim_column_def_asdict['NameColumn_NullProcessing'] = nc.NullProcessing.cdata if nc.__hasattribute__('NullProcessing') else None
                 dim_column_def_asdict['NameColumn_TableName'] = nc.Source.TableID.cdata
                 dim_column_def_asdict['NameColumn_ColumnName'] = nc.Source.ColumnID.cdata
             
-            dim_column_def_asdict['Type'] = obj.Dimension.Type.cdata if obj.Dimension.get_attribute('Type') != None else None
+            dim_columns_asdict[ dim_column_def_asdict['ID'] ] = dim_column_def_asdict
+
+        dim_table_def_asdict['Columns'] = dim_columns_asdict
+
+        dim_column_def_asdict['Type'] = obj.Dimension.Type.cdata if obj.Dimension.__hasattribute__('Type') else None
 
         errorconfigs = collections.OrderedDict()
         for ec in obj.Dimension.ErrorConfiguration.children:
             errorconfigs[ec._name] = ec.cdata
         dim_table_def_asdict['ErrorConfiguration'] = errorconfigs
 
+        dim_hierachy_def_asdict = None
         for hs in obj.Dimension.get_elements('Hierarchies'):
             for h in hs.Hierarchy:
                 dim_hierachy_def_asdict = collections.OrderedDict()
@@ -79,11 +89,11 @@ def ParseDimensionFiles(dimension_files: []):
                     dim_hierachy_def_asdict[id] = dim_level_def_asdict
         dim_table_def_asdict['Hierarchies'] = dim_hierachy_def_asdict
 
-        dim_tables_asdict[ dim_table_def_asdict['ID'] ] = dim_table_def_asdict
+        dim_tables_asdict[f] = dim_table_def_asdict
 
     return dim_tables_asdict
 
-dimension_files = [cube_visualstudio_path for f in os.listdir(cube_visualstudio_path) if f.lower().endswith(r'.dim') and os.path.isfile(os.path.join(cube_visualstudio_path, f))]
+dimension_files = [f for f in os.listdir(cube_visualstudio_path) if f.lower().endswith(r'.dim') and os.path.isfile(os.path.join(cube_visualstudio_path, f))]
 dimension_files.sort()
 #dimension_files = ['date.dim']
 
@@ -155,6 +165,9 @@ tables_asdict.sort(key=lambda x: x['FriendlyName'])
 
 with open('./output/tables.json', 'w') as f:
     json.dump(tables_asdict, fp=f, indent=4)
+
+with open('./output/dimensions.json', 'w') as f:
+    json.dump(dim_tables_asdict, fp=f, indent=4)
 
 with open('./output/foreignkeys.json', 'w') as f:
     json.dump(foreign_keys_asdict, fp=f, indent=4)
