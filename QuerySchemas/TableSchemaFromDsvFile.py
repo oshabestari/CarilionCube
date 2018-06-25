@@ -3,6 +3,7 @@ import collections
 import json
 import operator
 import os
+import csv
 
 create_tables_using_friendly_names = True
 stats_num_tables = None
@@ -13,25 +14,33 @@ stats_sql_lines_drop_tables = None
 stats_sql_lines_create_tables = None
 stats_sql_lines_add_foreign_keys = None
 
-cube_visualstudio_path = r'..\..\Contract_r'
+cube_visualstudio_path = os.path.join('..', '..', 'Contract_r')
+output_folder = os.path.join('.', 'output')
 
-SSAS_DSV_TableDef = collections.namedtuple('SSAS_DSV_TableDef', ['Name', 'FriendlyName', 'DbTableName', 'QueryDefinition', 'Columns'])
-SSAS_DSV_ColumnDef = collections.namedtuple('SSAS_DSV_ColumnDef', ['Name', 'FriendlyName', 'DataType', 'Description', 'AllowNull', 'Length', 'DbColumnName'])
+SSAS_DSV_TableDef = collections.namedtuple('SSAS_DSV_TableDef', ['dsv_table_id', 'Name', 'FriendlyName', 'DbTableName', 'QueryDefinition', 'Columns'])
+SSAS_DSV_ColumnDef = collections.namedtuple('SSAS_DSV_ColumnDef', ['dsv_column_id', 'dsv_table_id', 'Name', 'FriendlyName', 'DataType', 'Description', 'AllowNull', 'Length', 'DbColumnName'])
 SSAS_DSV_ForeignKeyDef = collections.namedtuple('SSAS_DSV_ForeignKeyDef', ['Name', 'Parent', 'Child', 'ParentKey', 'ChildKey', 'Description'])
-SSAS_DIM_TableDef = collections.namedtuple('SSAS_DIM_TableDef', ['ID', 'Name', 'FileName', 'UnknownMember', 'UnknownMemberName', 'Columns', 'Type', 'ErrorConfiguration', 'Hierarchies'])
-SSAS_DIM_ColumnDef = collections.namedtuple('SSAS_DIM_ColumnDef', ['ID', 'Name', 'Usage', 'OrderBy', 'IsKeyColumn', 'KeyColumns', 'NameColumn_DataType', 'NameColumn_DataSize', 'NameColumn_NullProcessing', 'NameColumn_TableName', 'NameColumn_ColumnName'])
-SSAS_DIM_KeyColumnDef = collections.namedtuple('SSAS_DIM_KeyColumnDef', ['DataType', 'TableId', 'ColumnID'])
-SSAS_DIM_HierarchyDef = collections.namedtuple('SSAS_DIM_HierarchyDef', ['ID', 'Name', 'Levels'])
-SSAS_DIM_LevelDef = collections.namedtuple('SSAS_DIM_LevelDef', ['ID', 'Name', 'ColumnName'])
+
+SSAS_DIM_TableDef = collections.namedtuple('SSAS_DIM_TableDef', ['dim_table_id', 'ID', 'Name', 'FileName', 'UnknownMember', 'UnknownMemberName', 'Columns', 'Type', 'ErrorConfiguration', 'Hierarchies'])
+SSAS_DIM_ErrorConfigurationDef = collections.namedtuple('SSAS_DIM_ErrorConfigurationDef', ['dim_table_id', 'Name', 'Value'])
+SSAS_DIM_ColumnDef = collections.namedtuple('SSAS_DIM_ColumnDef', ['dim_column_id', 'dim_table_id', 'ID', 'Name', 'Usage', 'OrderBy', 'IsKeyColumn', 'KeyColumns', 'NameColumn_DataType', 'NameColumn_DataSize', 'NameColumn_NullProcessing', 'NameColumn_TableName', 'NameColumn_ColumnName'])
+SSAS_DIM_KeyColumnDef = collections.namedtuple('SSAS_DIM_KeyColumnDef', ['dim_column_id', 'sort_order', 'DataType', 'TableId', 'ColumnID'])
+SSAS_DIM_HierarchyDef = collections.namedtuple('SSAS_DIM_HierarchyDef', ['dim_hierarchy_id', 'dim_table_id', 'sort_order', 'ID', 'Name', 'Levels'])
+SSAS_DIM_LevelDef = collections.namedtuple('SSAS_DIM_LevelDef', ['dim_hierarchy_id', 'sort_order', 'ID', 'Name', 'ColumnName'])
 
 
-def ParseDimensionFiles(dimension_files: []):
+def ParseDimensionFiles(folder_path, dimension_files: []):
+    dim_table_id = 0
+    dim_column_id = 0
+    dim_hierarchy_id = 0
     dim_tables_asdict = collections.OrderedDict()
     for f in dimension_files:
-        #print(os.path.join(cube_visualstudio_path, f))
-        obj = untangle.parse( os.path.join(cube_visualstudio_path, f) )
+        obj = untangle.parse(os.path.join(folder_path, f))
+
+        dim_table_id += 1
 
         dim_table_def_asdict = collections.OrderedDict()
+        dim_table_def_asdict['dim_table_id'] = dim_table_id
         dim_table_def_asdict['ID'] = obj.Dimension.ID.cdata
         dim_table_def_asdict['Name'] = obj.Dimension.Name.cdata
         dim_table_def_asdict['FileName'] = f
@@ -40,7 +49,10 @@ def ParseDimensionFiles(dimension_files: []):
 
         dim_columns_asdict = collections.OrderedDict()
         for c in obj.Dimension.Attributes.Attribute:
+            dim_column_id += 1
             dim_column_def_asdict = collections.OrderedDict()
+            dim_column_def_asdict['dim_column_id'] = dim_column_id
+            dim_column_def_asdict['dim_table_id'] = dim_table_id
             dim_column_def_asdict['ID'] = c.ID.cdata
             dim_column_def_asdict['Name'] = c.Name.cdata
             dim_column_def_asdict['Usage'] = c.Usage.cdata if c.__hasattribute__('Usage') else 'Regular'
@@ -48,8 +60,12 @@ def ParseDimensionFiles(dimension_files: []):
             dim_column_def_asdict['IsKeyColumn'] =(dim_column_def_asdict['Usage'] == 'Key')
             
             dim_keycolumns_def = []
+            sort_order = 0
             for kc in c.KeyColumns.KeyColumn:
+                sort_order += 1
                 dim_keycolumn_def_asdict = collections.OrderedDict()
+                dim_keycolumn_def_asdict['dim_column_id'] = dim_column_id
+                dim_keycolumn_def_asdict['sort_order'] = sort_order
                 dim_keycolumn_def_asdict['DataType'] = kc.DataType.cdata
                 dim_keycolumn_def_asdict['TableID'] = kc.Source.TableID.cdata
                 dim_keycolumn_def_asdict['ColumnID'] = kc.Source.ColumnID.cdata
@@ -74,20 +90,37 @@ def ParseDimensionFiles(dimension_files: []):
 
         dim_column_def_asdict['Type'] = obj.Dimension.Type.cdata if obj.Dimension.__hasattribute__('Type') else None
 
-        errorconfigs = collections.OrderedDict()
+        errorconfigs = []
         for ec in obj.Dimension.ErrorConfiguration.children:
-            errorconfigs[ec._name] = ec.cdata
+            errorconfig = collections.OrderedDict()
+            errorconfig['dim_table_id'] = dim_table_id
+            errorconfig['Name'] = ec._name
+            errorconfig['Value'] = ec.cdata
+            errorconfigs.append(errorconfig)
         dim_table_def_asdict['ErrorConfiguration'] = errorconfigs
 
-        dim_hierachy_def_asdict = None
+        hierarchies = []
         for hs in obj.Dimension.get_elements('Hierarchies'):
+            h_sort_order = 0
             for h in hs.Hierarchy:
+                h_sort_order += 1
+                dim_hierarchy_id += 1
                 dim_hierachy_def_asdict = collections.OrderedDict()
+                dim_hierachy_def_asdict['dim_hierarchy_id'] = dim_hierarchy_id
+                dim_hierachy_def_asdict['dim_table_id'] = dim_table_id
+                dim_hierachy_def_asdict['sort_order'] = sort_order
+                dim_hierachy_def_asdict['ID'] = h.ID.cdata
+                dim_hierachy_def_asdict['Name'] = h.Name.cdata
+                l_sort_order = 0
+                levels = []
                 for l in h.Levels.Level:
-                    id = l.ID.cdata
-                    dim_level_def_asdict = collections.OrderedDict([('ID', id), ('Name', l.Name.cdata), ('ColumnName', l.SourceAttributeID.cdata)])    
-                    dim_hierachy_def_asdict[id] = dim_level_def_asdict
-        dim_table_def_asdict['Hierarchies'] = dim_hierachy_def_asdict
+                    l_sort_order += 1
+                    dim_level_def_asdict = collections.OrderedDict([('dim_hierarchy_id', dim_hierarchy_id), ('sort_order', sort_order), 
+                        ('ID', l.ID.cdata), ('Name', l.Name.cdata), ('ColumnName', l.SourceAttributeID.cdata)])    
+                    levels.append(dim_level_def_asdict)
+                dim_hierachy_def_asdict['Levels'] = levels
+                hierarchies.append(dim_hierachy_def_asdict)
+        dim_table_def_asdict['Hierarchies'] = hierarchies
 
         dim_tables_asdict[f] = dim_table_def_asdict
 
@@ -97,9 +130,9 @@ dimension_files = [f for f in os.listdir(cube_visualstudio_path) if f.lower().en
 dimension_files.sort()
 #dimension_files = ['date.dim']
 
-dim_tables_asdict = ParseDimensionFiles(dimension_files)
+dim_tables_asdict = ParseDimensionFiles(cube_visualstudio_path, dimension_files)
 
-obj = untangle.parse( '\\'.join([cube_visualstudio_path, r'Carilion.dsv']) ) 
+obj = untangle.parse( os.path.join(cube_visualstudio_path, 'Carilion.dsv') ) 
 
 primary_keys = {}
 foreign_keys = []
@@ -118,7 +151,10 @@ foreign_keys_asdict.sort(key=lambda x: x['Name'])
 
 tables = []
 tables_asdict = []
+dsv_table_id = 0
+dsv_column_id = 0
 for xe in obj.DataSourceView.Schema.xs_schema.xs_element.xs_complexType.xs_choice.xs_element:
+    dsv_table_id += 1
     cols = []
     cols_asdict = []
     for xcol in xe.xs_complexType.xs_sequence.xs_element:
@@ -138,7 +174,9 @@ for xe in obj.DataSourceView.Schema.xs_schema.xs_element.xs_complexType.xs_choic
         # omit the leading "xs:"
         xDataType = xDataType[3:]
 
-        col_def = SSAS_DSV_ColumnDef(Name=xcol['name'], FriendlyName=xcol['msprop:FriendlyName'], DataType=xDataType, 
+        dsv_column_id += 1
+        col_def = SSAS_DSV_ColumnDef(dsv_column_id=dsv_column_id, dsv_table_id=dsv_table_id, Name=xcol['name'], 
+            FriendlyName=xcol['msprop:FriendlyName'], DataType=xDataType, 
             Description=xDescription, AllowNull=xAllowNull, Length=xLength, DbColumnName=xcol['msprop:DbColumnName']
             )
 
@@ -147,11 +185,11 @@ for xe in obj.DataSourceView.Schema.xs_schema.xs_element.xs_complexType.xs_choic
         #print(col_def)
 
     tabdef = SSAS_DSV_TableDef(
-        Name=xe['name'], FriendlyName=xe['msprop:FriendlyName'], DbTableName=xe['msprop:DbTableName'],
+        dsv_table_id=dsv_table_id, Name=xe['name'], FriendlyName=xe['msprop:FriendlyName'], DbTableName=xe['msprop:DbTableName'],
         QueryDefinition=xe['msprop:QueryDefinition'], Columns=cols
         )
     tabdef_asdict = SSAS_DSV_TableDef(
-        Name=tabdef.Name, FriendlyName=tabdef.FriendlyName, DbTableName=tabdef.DbTableName,
+        dsv_table_id=dsv_table_id, Name=tabdef.Name, FriendlyName=tabdef.FriendlyName, DbTableName=tabdef.DbTableName,
         QueryDefinition=tabdef.QueryDefinition, Columns=cols_asdict
         )
     tables.append(tabdef)
@@ -163,13 +201,13 @@ tables_asdict.sort(key=lambda x: x['FriendlyName'])
 # tables_asdict.sort(key=lambda x: x['Name'])
 
 
-with open('./output/tables.json', 'w') as f:
+with open(os.path.join(output_folder, 'tables.json'), 'w') as f:
     json.dump(tables_asdict, fp=f, indent=4)
 
-with open('./output/dimensions.json', 'w') as f:
+with open(os.path.join(output_folder, 'dimensions.json'), 'w') as f:
     json.dump(dim_tables_asdict, fp=f, indent=4)
 
-with open('./output/foreignkeys.json', 'w') as f:
+with open(os.path.join(output_folder, 'foreignkeys.json'), 'w') as f:
     json.dump(foreign_keys_asdict, fp=f, indent=4)
 
 
@@ -179,7 +217,7 @@ for t in tables:
         datatypes.add(c.DataType)
 datatypes = list(datatypes)
 datatypes.sort()
-with open('./output/datatypes.txt', 'w') as f:
+with open(os.path.join(output_folder, 'datatypes.txt'), 'w') as f:
     f.write('\n'.join(datatypes))
 
 
@@ -305,19 +343,19 @@ for fk in foreign_keys:
 sql_update.append('\n\n\n')
 
 
-with open('./output/drop_tables.sql', 'w') as f:
+with open(os.path.join(output_folder, 'drop_tables.sql'), 'w') as f:
     for s in sql_drop_tables:
         f.write(s + '\n')
 
-with open('./output/create_src_tables.sql', 'w') as f:
+with open(os.path.join(output_folder, 'create_src_tables.sql'), 'w') as f:
     for s in sql_create_tables:
         f.write(s + '\n')
 
-with open('./output/add_foreign_keys.sql', 'w') as f:
+with open(os.path.join(output_folder, 'add_foreign_keys.sql'), 'w') as f:
     for s in sql_add_fkeys:
         f.write(s + '\n')
 
-with open('./output/fix_foreign_keys.sql', 'w') as f:
+with open(os.path.join(output_folder, 'fix_foreign_keys.sql'), 'w') as f:
     for s in sql_update:
         f.write(s + '\n')
 
@@ -330,7 +368,7 @@ stats_sql_lines_create_tables = len(sql_create_tables)
 stats_sql_lines_add_foreign_keys = len(sql_add_fkeys)
 
 
-with open('./output/stats.txt', 'w') as f:
+with open(os.path.join(output_folder, 'stats.txt'), 'w') as f:
     f.write(str.format('{0}: {1}\n', 'stats_num_tables', stats_num_tables))
     f.write(str.format('{0}: {1}\n', 'stats_num_columns', stats_num_columns))
     f.write(str.format('{0}: {1}\n', 'stats_num_foreign_keys', stats_num_foreign_keys))
@@ -338,4 +376,97 @@ with open('./output/stats.txt', 'w') as f:
     f.write(str.format('{0}: {1}\n', 'stats_sql_lines_drop_tables', stats_sql_lines_drop_tables))
     f.write(str.format('{0}: {1}\n', 'stats_sql_lines_create_tables', stats_sql_lines_create_tables))
     f.write(str.format('{0}: {1}\n', 'stats_sql_lines_add_foreign_keys', stats_sql_lines_add_foreign_keys))
+
+
+def WriteToCsv_DimensionTables_Helper(dim_tables_asdict, csv_tables, csv_error_configs, csv_columns, csv_key_columns, csv_hierarchies, csv_levels):
+    for tk, tv in dim_tables_asdict.items():
+        csv_tables.writerow(tv)
+
+        for ec in tv['ErrorConfiguration']:
+            csv_error_configs.writerow(ec)
+
+        for ck, cv in tv['Columns'].items():
+            csv_columns.writerow(cv)
+            for k in cv['KeyColumns']:
+                csv_key_columns.writerow(k)
+        
+        for h in tv['Hierarchies']:
+            csv_hierarchies.writerow(h)
+            for l in h['Levels']:
+                csv_levels.writerow(l)
+
+
+def enumerable_diffs(ea, eb):
+    return [a for a in ea if a not in eb]
+
+
+def WriteToCsv_DimensionTables(dim_tables_asdict, output_folder):
+    with open(os.path.join(output_folder, 'dim_tables.csv'), 'w') as ftables:
+        with open(os.path.join(output_folder, 'dim_error_configs.csv'), 'w') as ferror_configs:
+            with open(os.path.join(output_folder, 'dim_columns.csv'), 'w') as fcolumns:
+                with open(os.path.join(output_folder, 'dim_key_columns.csv'), 'w') as fkey_columns:
+                    with open(os.path.join(output_folder, 'dim_hierarchies.csv'), 'w') as fhierarchies:
+                        with open(os.path.join(output_folder, 'dim_levels.csv'), 'w') as flevels:
+
+                            fields = enumerable_diffs(SSAS_DIM_TableDef._fields, ['Columns', 'ErrorConfiguration', 'Hierarchies'])
+                            csv_tables = csv.DictWriter(ftables, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+                            csv_tables.writeheader()
+                            
+                            fields = SSAS_DIM_ErrorConfigurationDef._fields
+                            csv_error_configs = csv.DictWriter(ferror_configs, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+                            csv_error_configs.writeheader()
+                            
+                            fields = enumerable_diffs(SSAS_DIM_ColumnDef._fields, ['KeyColumns'])
+                            csv_columns = csv.DictWriter(fcolumns, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+                            csv_columns.writeheader()
+                            
+                            fields = SSAS_DIM_KeyColumnDef._fields
+                            csv_key_columns = csv.DictWriter(fkey_columns, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+                            csv_key_columns.writeheader()
+                            
+                            fields = enumerable_diffs(SSAS_DIM_HierarchyDef._fields, ['Levels'])
+                            csv_hierarchies = csv.DictWriter(fhierarchies, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+                            csv_hierarchies.writeheader()
+                            
+                            fields = SSAS_DIM_LevelDef._fields
+                            csv_levels = csv.DictWriter(flevels, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+                            csv_levels.writeheader()
+
+                            WriteToCsv_DimensionTables_Helper(dim_tables_asdict, csv_tables, csv_error_configs, csv_columns, 
+                                csv_key_columns, csv_hierarchies, csv_levels)
+
+
+WriteToCsv_DimensionTables(dim_tables_asdict, output_folder)
+
+
+def WriteToCsv_DsvTables_Helper(tables_asdict, foreign_keys_asdict, csv_tables, csv_columns, csv_foreign_keys):
+    for fk in foreign_keys_asdict:
+        csv_foreign_keys.writerow(fk)
+
+    for t in tables_asdict:
+        csv_tables.writerow(t)
+        for c in t['Columns']:
+            csv_columns.writerow(c)
+
+
+def WriteToCsv_DsvTables(tables_asdict, foreign_keys_asdict, output_folder):
+    with open(os.path.join(output_folder, 'dsv_tables.csv'), 'w') as ftables:
+        with open(os.path.join(output_folder, 'dsv_columns.csv'), 'w') as fcolumns:
+            with open(os.path.join(output_folder, 'dsv_foreign_keys.csv'), 'w') as fforeign_keys:
+                fields = enumerable_diffs(SSAS_DSV_TableDef._fields, ['Columns'])
+                csv_tables = csv.DictWriter(ftables, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+                csv_tables.writeheader()
+                
+                fields = SSAS_DSV_ColumnDef._fields
+                csv_columns = csv.DictWriter(fcolumns, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+                csv_columns.writeheader()
+                
+                fields = SSAS_DSV_ForeignKeyDef._fields
+                csv_foreign_keys = csv.DictWriter(fforeign_keys, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+                csv_foreign_keys.writeheader()
+
+                WriteToCsv_DsvTables_Helper(tables_asdict, foreign_keys_asdict, csv_tables, csv_columns, csv_foreign_keys)
+
+
+WriteToCsv_DsvTables(tables_asdict, foreign_keys_asdict, output_folder)
 
