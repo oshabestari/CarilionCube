@@ -164,13 +164,13 @@ for xe in obj.DataSourceView.Schema.xs_schema.xs_element.xs_complexType.xs_choic
     cols_asdict = []
     for xcol in xe.xs_complexType.xs_sequence.xs_element:
         xDescription = None
-        xAllowNull = False
+        xAllowNull = 0
         xLength = -1
         xDataType = None
         if xcol.get_attribute('msprop:Description') != None:
             xdescription = xcol['msprop:Description']
         if xcol.get_attribute('minOccurs') != None:
-            xAllowNull = True
+            xAllowNull = 1
         if xcol.get_attribute('type') != None:
             xDataType = xcol['type']
         else:
@@ -313,7 +313,7 @@ for t in tables:
             c,
             encode_ssas_datatype_to_sql(c),
             'identity(1,1)' if IsIdentityColumn(c, primary_key_column_name) else '',
-            'not' if not c.AllowNull or IsIdentityColumn(c, primary_key_column_name) else ''
+            'not' if c.AllowNull == 0 or IsIdentityColumn(c, primary_key_column_name) else ''
             ))
     if primary_key_column_name != None:
         sql_create_tables.append(str.format('\tCONSTRAINT PK_{0}_{1} PRIMARY KEY CLUSTERED ({1})', GetFriendlyTableName(t.Name), primary_key_column_name))
@@ -520,35 +520,56 @@ def WriteToCsv_DimensionTables(dim_tables_asdict, output_folder):
 WriteToCsv_DimensionTables(dim_tables_asdict, output_folder)
 
 
-def WriteToCsv_DsvTables_Helper(tables_asdict, foreign_keys_asdict, csv_tables, csv_columns, csv_foreign_keys):
+def WriteToCsvSql_DsvTables_Helper(tables_asdict, foreign_keys_asdict, 
+    ftables, fcolumns, fforeign_keys,
+    ftables_sql, fcolumns_sql, fforeign_keys_sql
+    ):
+
+    fields = enumerable_diffs(SSAS_DSV_TableDef._fields, ['Columns'])
+    csv_tables = csv.DictWriter(ftables, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+    csv_tables.writeheader()
+    sql_tables = SqlDictWriter(ftables_sql, fields, extrasaction='ignore', dialect='sql_values')
+    sql_tables.writeheader('[dbo].[tblVS_dsv_tables]')
+    
+    fields = SSAS_DSV_ColumnDef._fields
+    csv_columns = csv.DictWriter(fcolumns, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+    csv_columns.writeheader()
+    sql_columns = SqlDictWriter(fcolumns_sql, fields, extrasaction='ignore', dialect='sql_values')
+    sql_columns.writeheader('[dbo].[tblVS_dsv_columns]')
+    
+    fields = SSAS_DSV_ForeignKeyDef._fields
+    csv_foreign_keys = csv.DictWriter(fforeign_keys, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+    csv_foreign_keys.writeheader()
+    sql_foreign_keys = SqlDictWriter(fforeign_keys_sql, fields, extrasaction='ignore', dialect='sql_values')
+    sql_foreign_keys.writeheader('[dbo].[tblVS_dsv_foreign_keys]')
+
     for fk in foreign_keys_asdict:
         csv_foreign_keys.writerow(fk)
+        sql_foreign_keys.writerow(fk)
 
     for t in tables_asdict:
         csv_tables.writerow(t)
+        sql_tables.writerow(t)
         for c in t['Columns']:
             csv_columns.writerow(c)
+            sql_columns.writerow(c)
 
 
-def WriteToCsv_DsvTables(tables_asdict, foreign_keys_asdict, output_folder):
+def WriteToCsvSql_DsvTables(tables_asdict, foreign_keys_asdict, output_folder):
     with open(os.path.join(output_folder, 'dsv_tables.csv'), 'w') as ftables:
         with open(os.path.join(output_folder, 'dsv_columns.csv'), 'w') as fcolumns:
             with open(os.path.join(output_folder, 'dsv_foreign_keys.csv'), 'w') as fforeign_keys:
-                fields = enumerable_diffs(SSAS_DSV_TableDef._fields, ['Columns'])
-                csv_tables = csv.DictWriter(ftables, fields, extrasaction='ignore', dialect=csv.unix_dialect)
-                csv_tables.writeheader()
-                
-                fields = SSAS_DSV_ColumnDef._fields
-                csv_columns = csv.DictWriter(fcolumns, fields, extrasaction='ignore', dialect=csv.unix_dialect)
-                csv_columns.writeheader()
-                
-                fields = SSAS_DSV_ForeignKeyDef._fields
-                csv_foreign_keys = csv.DictWriter(fforeign_keys, fields, extrasaction='ignore', dialect=csv.unix_dialect)
-                csv_foreign_keys.writeheader()
 
-                WriteToCsv_DsvTables_Helper(tables_asdict, foreign_keys_asdict, csv_tables, csv_columns, csv_foreign_keys)
+                with open(os.path.join(output_folder, 'dsv_tables.sql'), 'w') as ftables_sql:
+                    with open(os.path.join(output_folder, 'dsv_columns.sql'), 'w') as fcolumns_sql:
+                        with open(os.path.join(output_folder, 'dsv_foreign_keys.sql'), 'w') as fforeign_keys_sql:
+
+                            WriteToCsvSql_DsvTables_Helper(tables_asdict, foreign_keys_asdict, 
+                                ftables, fcolumns, fforeign_keys,
+                                ftables_sql, fcolumns_sql, fforeign_keys_sql
+                                )
 
 
-WriteToCsv_DsvTables(tables_asdict, foreign_keys_asdict, output_folder)
+WriteToCsvSql_DsvTables(tables_asdict, foreign_keys_asdict, output_folder)
 
 
