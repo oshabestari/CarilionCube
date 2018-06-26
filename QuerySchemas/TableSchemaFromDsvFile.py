@@ -4,6 +4,11 @@ import json
 import operator
 import os
 import csv
+import io
+
+def enumerable_diffs(ea, eb):
+    return [a for a in ea if a not in eb]
+
 
 create_tables_using_friendly_names = True
 stats_num_tables = None
@@ -57,7 +62,7 @@ def ParseDimensionFiles(folder_path, dimension_files: []):
             dim_column_def_asdict['Name'] = c.Name.cdata
             dim_column_def_asdict['Usage'] = c.Usage.cdata if c.__hasattribute__('Usage') else 'Regular'
             dim_column_def_asdict['OrderBy'] = c.OrderBy.cdata if c.__hasattribute__('OrderBy') else 'Name'
-            dim_column_def_asdict['IsKeyColumn'] =(dim_column_def_asdict['Usage'] == 'Key')
+            dim_column_def_asdict['IsKeyColumn'] =(1 if dim_column_def_asdict['Usage'] == 'Key' else 0)
             
             dim_keycolumns_def = []
             sort_order = 0
@@ -378,26 +383,117 @@ with open(os.path.join(output_folder, 'stats.txt'), 'w') as f:
     f.write(str.format('{0}: {1}\n', 'stats_sql_lines_add_foreign_keys', stats_sql_lines_add_foreign_keys))
 
 
-def WriteToCsv_DimensionTables_Helper(dim_tables_asdict, csv_tables, csv_error_configs, csv_columns, csv_key_columns, csv_hierarchies, csv_levels):
+class SqlDictWriter:
+    _is_first = True
+    _dictwriter = None
+    _f = None
+    _dialect = None
+    _membuf = None
+    _lineterminator = '\n'
+
+    def __init__(self, f, fieldnames, restval="", extrasaction="raise",
+                 dialect="excel", *args, **kwds):
+        self._membuf = io.StringIO()
+        self._dictwriter = csv.DictWriter(self._membuf, fieldnames, restval, extrasaction, dialect, *args, **kwds)
+        self._f = f
+        self._dialect = csv.get_dialect(dialect)
+
+    def writeheader(self, table_name):
+        header = str.format('truncate table {0}{1}', table_name, self._lineterminator)
+        self._f.write(header)
+
+        header = str.format('insert into {0}({1}) values{2}', 
+            table_name, 
+            ', '.join(['[' + x + ']' for x in self._dictwriter.fieldnames]),
+            self._lineterminator
+            )
+        self._f.write(header)
+
+    def writerow(self, rowdict):
+        self._membuf.seek(io.SEEK_SET)
+        self._membuf.truncate()
+        self._dictwriter.writerow(rowdict)
+        if self._is_first:
+            self._f.write('(' + self._membuf.getvalue() + ')' + self._lineterminator)
+        else:
+            self._f.write(',(' + self._membuf.getvalue() + ')' + self._lineterminator)
+        self._is_first = False
+
+
+csv.register_dialect('sql_values', 
+    delimiter = ',',
+    skipinitialspace = 0,
+    doublequote = 1,
+    quoting = csv.QUOTE_NONNUMERIC,
+    quotechar = "'",
+    lineterminator = '',
+    escapechar = None
+    )
+
+
+def WriteToCsvSql_DimensionTables_Helper(dim_tables_asdict, 
+    ftables, ferror_configs, fcolumns, fkey_columns, fhierarchies, flevels, 
+    ftables_sql, ferror_configs_sql, fcolumns_sql, fkey_columns_sql, fhierarchies_sql, flevels_sql
+    ):
+
+    fields = enumerable_diffs(SSAS_DIM_TableDef._fields, ['Columns', 'ErrorConfiguration', 'Hierarchies'])
+    csv_tables = csv.DictWriter(ftables, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+    csv_tables.writeheader()
+    sql_tables = SqlDictWriter(ftables_sql, fields, extrasaction='ignore', dialect='sql_values')
+    sql_tables.writeheader('[dbo].[tblVS_dim_tables]')
+    
+    fields = SSAS_DIM_ErrorConfigurationDef._fields
+    csv_error_configs = csv.DictWriter(ferror_configs, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+    csv_error_configs.writeheader()
+    sql_error_configs = SqlDictWriter(ferror_configs_sql, fields, extrasaction='ignore', dialect='sql_values')
+    sql_error_configs.writeheader('[dbo].[tblVS_dim_error_configs]')
+    
+    fields = enumerable_diffs(SSAS_DIM_ColumnDef._fields, ['KeyColumns'])
+    csv_columns = csv.DictWriter(fcolumns, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+    csv_columns.writeheader()
+    sql_columns = SqlDictWriter(fcolumns_sql, fields, extrasaction='ignore', dialect='sql_values')
+    sql_columns.writeheader('[dbo].[tblVS_dim_columns]')
+    
+    fields = SSAS_DIM_KeyColumnDef._fields
+    csv_key_columns = csv.DictWriter(fkey_columns, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+    csv_key_columns.writeheader()
+    sql_key_columns = SqlDictWriter(fkey_columns_sql, fields, extrasaction='ignore', dialect='sql_values')
+    sql_key_columns.writeheader('[dbo].[tblVS_dim_key_columns]')
+    
+    fields = enumerable_diffs(SSAS_DIM_HierarchyDef._fields, ['Levels'])
+    csv_hierarchies = csv.DictWriter(fhierarchies, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+    csv_hierarchies.writeheader()
+    sql_hierarchies = SqlDictWriter(fhierarchies_sql, fields, extrasaction='ignore', dialect='sql_values')
+    sql_hierarchies.writeheader('[dbo].[tblVS_dim_hierarchies]')
+    
+    fields = SSAS_DIM_LevelDef._fields
+    csv_levels = csv.DictWriter(flevels, fields, extrasaction='ignore', dialect=csv.unix_dialect)
+    csv_levels.writeheader()
+    sql_levels = SqlDictWriter(flevels_sql, fields, extrasaction='ignore', dialect='sql_values')
+    sql_levels.writeheader('[dbo].[tblVS_dim_levels]')
+
+
     for tk, tv in dim_tables_asdict.items():
         csv_tables.writerow(tv)
+        sql_tables.writerow(tv)
 
         for ec in tv['ErrorConfiguration']:
             csv_error_configs.writerow(ec)
+            sql_error_configs.writerow(ec)
 
         for ck, cv in tv['Columns'].items():
             csv_columns.writerow(cv)
+            sql_columns.writerow(cv)
             for k in cv['KeyColumns']:
                 csv_key_columns.writerow(k)
+                sql_key_columns.writerow(k)
         
         for h in tv['Hierarchies']:
             csv_hierarchies.writerow(h)
+            sql_hierarchies.writerow(h)
             for l in h['Levels']:
                 csv_levels.writerow(l)
-
-
-def enumerable_diffs(ea, eb):
-    return [a for a in ea if a not in eb]
+                sql_levels.writerow(l)
 
 
 def WriteToCsv_DimensionTables(dim_tables_asdict, output_folder):
@@ -408,32 +504,17 @@ def WriteToCsv_DimensionTables(dim_tables_asdict, output_folder):
                     with open(os.path.join(output_folder, 'dim_hierarchies.csv'), 'w') as fhierarchies:
                         with open(os.path.join(output_folder, 'dim_levels.csv'), 'w') as flevels:
 
-                            fields = enumerable_diffs(SSAS_DIM_TableDef._fields, ['Columns', 'ErrorConfiguration', 'Hierarchies'])
-                            csv_tables = csv.DictWriter(ftables, fields, extrasaction='ignore', dialect=csv.unix_dialect)
-                            csv_tables.writeheader()
-                            
-                            fields = SSAS_DIM_ErrorConfigurationDef._fields
-                            csv_error_configs = csv.DictWriter(ferror_configs, fields, extrasaction='ignore', dialect=csv.unix_dialect)
-                            csv_error_configs.writeheader()
-                            
-                            fields = enumerable_diffs(SSAS_DIM_ColumnDef._fields, ['KeyColumns'])
-                            csv_columns = csv.DictWriter(fcolumns, fields, extrasaction='ignore', dialect=csv.unix_dialect)
-                            csv_columns.writeheader()
-                            
-                            fields = SSAS_DIM_KeyColumnDef._fields
-                            csv_key_columns = csv.DictWriter(fkey_columns, fields, extrasaction='ignore', dialect=csv.unix_dialect)
-                            csv_key_columns.writeheader()
-                            
-                            fields = enumerable_diffs(SSAS_DIM_HierarchyDef._fields, ['Levels'])
-                            csv_hierarchies = csv.DictWriter(fhierarchies, fields, extrasaction='ignore', dialect=csv.unix_dialect)
-                            csv_hierarchies.writeheader()
-                            
-                            fields = SSAS_DIM_LevelDef._fields
-                            csv_levels = csv.DictWriter(flevels, fields, extrasaction='ignore', dialect=csv.unix_dialect)
-                            csv_levels.writeheader()
+                            with open(os.path.join(output_folder, 'dim_tables.sql'), 'w') as ftables_sql:
+                                with open(os.path.join(output_folder, 'dim_error_configs.sql'), 'w') as ferror_configs_sql:
+                                    with open(os.path.join(output_folder, 'dim_columns.sql'), 'w') as fcolumns_sql:
+                                        with open(os.path.join(output_folder, 'dim_key_columns.sql'), 'w') as fkey_columns_sql:
+                                            with open(os.path.join(output_folder, 'dim_hierarchies.sql'), 'w') as fhierarchies_sql:
+                                                with open(os.path.join(output_folder, 'dim_levels.sql'), 'w') as flevels_sql:
 
-                            WriteToCsv_DimensionTables_Helper(dim_tables_asdict, csv_tables, csv_error_configs, csv_columns, 
-                                csv_key_columns, csv_hierarchies, csv_levels)
+                                                     WriteToCsvSql_DimensionTables_Helper(dim_tables_asdict, 
+                                                        ftables, ferror_configs, fcolumns, fkey_columns, fhierarchies, flevels, 
+                                                        ftables_sql, ferror_configs_sql, fcolumns_sql, fkey_columns_sql, fhierarchies_sql, flevels_sql
+                                                        )
 
 
 WriteToCsv_DimensionTables(dim_tables_asdict, output_folder)
@@ -469,4 +550,5 @@ def WriteToCsv_DsvTables(tables_asdict, foreign_keys_asdict, output_folder):
 
 
 WriteToCsv_DsvTables(tables_asdict, foreign_keys_asdict, output_folder)
+
 
