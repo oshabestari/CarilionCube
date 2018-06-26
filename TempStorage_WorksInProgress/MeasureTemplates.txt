@@ -280,6 +280,36 @@ End
 			,
 FORMAT_STRING = "Percent";
 
+
+
+//
+/*Calculates the ratio of a specific member's value to the value of all members.*/
+CREATE MEMBER CURRENTCUBE.[Measures].[Percentage of Total]
+AS Case
+// Test to avoid division by zero.
+When IsEmpty
+     ( 
+        [Measures].[<<Target Measure>>] 
+     ) 
+Then Null
+
+Else ( [<<Target Dimension>>].[<<Target Hierarchy>>].CurrentMember,
+       [Measures].[<<Target Measure>>] ) 
+     /
+     ( 
+	   // The Root function returns the (All) value for the target dimension.
+       Root		
+       ( 
+          [<<Target Dimension>>] 
+        ), 
+        [Measures].[<<Target Measure>>] 
+     )
+
+End
+			,
+FORMAT_STRING = "Percent";
+
+
 //
 /*Filters the members of one attribute based on existence with the value of another attribute in the same dimension.*/
 CREATE MEMBER CURRENTCUBE.[Measures].[Filter by Attribute Value]
