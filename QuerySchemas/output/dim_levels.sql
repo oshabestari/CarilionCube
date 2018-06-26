@@ -1,4 +1,5 @@
 truncate table [dbo].[tblVS_dim_levels]
+
 insert into [dbo].[tblVS_dim_levels]([dim_hierarchy_id], [sort_order], [ID], [Name], [ColumnName]) values
 (1,1,'Year','Year','YR NUM')
 ,(1,1,'Quarter','Quarter','YR AND QTR NUM')

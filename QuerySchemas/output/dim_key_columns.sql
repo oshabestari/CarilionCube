@@ -1,4 +1,5 @@
 truncate table [dbo].[tblVS_dim_key_columns]
+
 insert into [dbo].[tblVS_dim_key_columns]([dim_column_id], [sort_order], [DataType], [TableId], [ColumnID]) values
 (1,1,'Integer','','Binary_CD')
 ,(2,1,'Integer','','GEO_AREA_SK')

@@ -1,4 +1,5 @@
 truncate table [dbo].[tblVS_dsv_tables]
+
 insert into [dbo].[tblVS_dsv_tables]([dsv_table_id], [Name], [FriendlyName], [DbTableName], [QueryDefinition]) values
 (38,'BinaryDim','BinaryDim','BinaryDim','SELECT        *
 FROM            (VALUES (0, ''No''), (1, ''Yes''), (-1, ''Not Applicable'')) AS Colors(Binary_CD, Binary_Desc)')

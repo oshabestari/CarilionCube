@@ -1,4 +1,5 @@
 truncate table [dbo].[tblVS_dim_tables]
+
 insert into [dbo].[tblVS_dim_tables]([dim_table_id], [ID], [Name], [FileName], [UnknownMember], [UnknownMemberName], [Type]) values
 (1,'Binary','Binary','Binary.dim','Visible','','')
 ,(2,'Census - Geographical Area','Census - Geographical Area','Census - Geographical Area.dim','None','','')

@@ -1,4 +1,5 @@
 truncate table [dbo].[tblVS_dsv_foreign_keys]
+
 insert into [dbo].[tblVS_dsv_foreign_keys]([Name], [Parent], [Child], [ParentKey], [ChildKey], [Description]) values
 ('CensusMeasureFact-CensusGeographicalAreaDim','CensusGeographicalAreaDim','CensusMeasureFact','GEO_AREA_SK','GEO_AREA_SK','')
 ,('CensusMeasureFact-CensusMeasureTypeDim','CensusMeasureTypeDim','CensusMeasureFact','MSR_TYPE_SK','MSR_TYPE_SK','')

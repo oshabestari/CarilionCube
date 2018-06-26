@@ -1,4 +1,5 @@
 truncate table [dbo].[tblVS_dsv_columns]
+
 insert into [dbo].[tblVS_dsv_columns]([dsv_column_id], [dsv_table_id], [Name], [FriendlyName], [DataType], [Description], [AllowNull], [Length], [DbColumnName]) values
 (1419,38,'Binary_CD','Binary_CD','int','',0,-1,'Binary_CD')
 ,(1420,38,'Binary_Desc','Binary_Desc','string','',1,14,'Binary_Desc')
@@ -1000,7 +1001,9 @@ insert into [dbo].[tblVS_dsv_columns]([dsv_column_id], [dsv_table_id], [Name], [
 ,(656,7,'HSPTL_ADMT_DT','','dateTime','',1,-1,'HSPTL_ADMT_DT')
 ,(657,7,'HSPTL_ADMT_TS_SK','','long','',1,-1,'HSPTL_ADMT_TS_SK')
 ,(658,7,'HSPTL_DSCRG_DT','','dateTime','',1,-1,'HSPTL_DSCRG_DT')
-,(659,7,'HSPTL_DSCRG_TS_SK','','long','',1,-1,'HSPTL_DSCRG_TS_SK')
+
+insert into [dbo].[tblVS_dsv_columns]([dsv_column_id], [dsv_table_id], [Name], [FriendlyName], [DataType], [Description], [AllowNull], [Length], [DbColumnName]) values
+(659,7,'HSPTL_DSCRG_TS_SK','','long','',1,-1,'HSPTL_DSCRG_TS_SK')
 ,(660,7,'AGE_YRS_AT_CLNC_INPTNT_ADMT_LOG','','double','',1,-1,'AGE_YRS_AT_CLNC_INPTNT_ADMT_LOG')
 ,(661,7,'LOS_DYS_CLNC_INPTNT_LOG','','double','',1,-1,'LOS_DYS_CLNC_INPTNT_LOG')
 ,(662,7,'LOS_HRS_CLNC_INPTNT_LOG','','double','',1,-1,'LOS_HRS_CLNC_INPTNT_LOG')

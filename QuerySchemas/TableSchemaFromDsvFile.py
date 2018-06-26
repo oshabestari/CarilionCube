@@ -390,7 +390,11 @@ class SqlDictWriter:
     _dialect = None
     _membuf = None
     _lineterminator = '\n'
-
+    _num_lines_written = 0
+    # SQL server allows for 1000 values in the INSERT statement. So we need to keep track
+    _rewrite_header_at_line = 1000
+    _table_name = None
+    
     def __init__(self, f, fieldnames, restval="", extrasaction="raise",
                  dialect="excel", *args, **kwds):
         self._membuf = io.StringIO()
@@ -399,25 +403,41 @@ class SqlDictWriter:
         self._dialect = csv.get_dialect(dialect)
 
     def writeheader(self, table_name):
-        header = str.format('truncate table {0}{1}', table_name, self._lineterminator)
-        self._f.write(header)
+        self._membuf.seek(io.SEEK_SET)
+        self._membuf.truncate()
+
+        if table_name != None:
+            self._table_name = table_name
+
+        if self._num_lines_written == 0:
+            header = str.format('truncate table {0}{1}{1}', self._table_name, self._lineterminator)
+            self._f.write(header)
 
         header = str.format('insert into {0}({1}) values{2}', 
-            table_name, 
+            self._table_name, 
             ', '.join(['[' + x + ']' for x in self._dictwriter.fieldnames]),
             self._lineterminator
             )
         self._f.write(header)
 
+
     def writerow(self, rowdict):
+        if self._num_lines_written > 0 and (self._num_lines_written % self._rewrite_header_at_line == 0):
+            self._f.write(self._lineterminator)
+            self.writeheader(None)
+            self._is_first = True
+
         self._membuf.seek(io.SEEK_SET)
         self._membuf.truncate()
+
         self._dictwriter.writerow(rowdict)
         if self._is_first:
             self._f.write('(' + self._membuf.getvalue() + ')' + self._lineterminator)
         else:
             self._f.write(',(' + self._membuf.getvalue() + ')' + self._lineterminator)
         self._is_first = False
+
+        self._num_lines_written += 1
 
 
 csv.register_dialect('sql_values', 

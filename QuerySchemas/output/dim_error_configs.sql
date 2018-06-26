@@ -1,4 +1,5 @@
 truncate table [dbo].[tblVS_dim_error_configs]
+
 insert into [dbo].[tblVS_dim_error_configs]([dim_table_id], [Name], [Value]) values
 (1,'KeyNotFound','ReportAndStop')
 ,(1,'KeyDuplicate','ReportAndStop')
