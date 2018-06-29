@@ -1,0 +1,79 @@
+
+// Simple example
+select
+{
+	( [Measures].[Lab Order - Count], [Provider - Lab Order - Authorizing].[Provider - UserID].&[cklenovo\carlos] ),
+	// Including [Provider - Patient - PCP] casuses the error: Members, tuples or sets must use the same hierarchies in the  function. 
+	//( [Measures].[Lab Order - Count], [Provider - Patient - PCP].[Provider - UserID].&[cklenovo\carlos] ),
+	( [Measures].[Lab Order - Count], [User - Lab Order - Collecting].[User - UserID].&[cklenovo\carlos] ),
+	( [Measures].[Lab Order - Count], [User - Lab Order - First Correcting].[User - UserID].&[cklenovo\carlos] ),
+	( [Measures].[Lab Order - Count], [User - Lab Order - First Final Verifing].[User - UserID].&[cklenovo\carlos] ),
+	( [Measures].[Lab Order - Count], [User - Lab Order - First Verifing].[User - UserID].&[cklenovo\carlos] ),
+	( [Measures].[Lab Order - Count], [User - Lab Order - Last Correcting].[User - UserID].&[cklenovo\carlos] ),
+	( [Measures].[Lab Order - Count], [User - Lab Order - Last Final Verifing].[User - UserID].&[cklenovo\carlos] )
+
+} on 0
+from
+	Analytics
+
+
+// More complex example using dynamic filtering
+select
+non empty { [Measures].[Lab Order - Count] } on 0,
+non empty {
+	//[Date - Lab Order - Collected].[Fiscal Year - Quarter - Month - Date].[Fiscal Quarter].members
+	[Date - Lab Order - Collected].[Date - Day of Week].members
+} on 1
+from
+	Analytics
+where
+	(
+		{
+			( StrToMember("[Provider - Lab Order - Authorizing].[Provider - UserID].&[" + iif(isempty(customdata()) = True, username(), customdata()) + "]") ),
+			( StrToMember("[User - Lab Order - Collecting].[User - UserID].&[" + iif(isempty(customdata()) = True, username(), customdata()) + "]") ),
+			( StrToMember("[User - Lab Order - First Correcting].[User - UserID].&[" + iif(isempty(customdata()) = True, username(), customdata()) + "]") ),
+			( StrToMember("[User - Lab Order - First Final Verifing].[User - UserID].&[" + iif(isempty(customdata()) = True, username(), customdata()) + "]") ),
+			( StrToMember("[User - Lab Order - First Verifing].[User - UserID].&[" + iif(isempty(customdata()) = True, username(), customdata()) + "]") ),
+			( StrToMember("[User - Lab Order - Last Correcting].[User - UserID].&[" + iif(isempty(customdata()) = True, username(), customdata()) + "]") ),
+			( StrToMember("[User - Lab Order - Last Final Verifing].[User - UserID].&[" + iif(isempty(customdata()) = True, username(), customdata()) + "]") )
+		}
+	)
+
+
+
+/*
+// SQL test query
+
+SELECT
+    COUNT(DISTINCT f.LAB_TST_FACT_SK)
+    ,COUNT(DISTINCT f.COLL_TM_MNT)
+    ,COUNT(*)
+FROM
+    dbo.LabTestFact f
+    LEFT JOIN dbo.ProviderDim p
+        ON p.LDAP_USR = 'cklenovo\carlos'
+            AND (
+                p.PROVDR_SK = f.AUTH_PROVDR_SK
+            )
+    LEFT JOIN dbo.UserDim u
+        ON u.LDAP_USR = 'cklenovo\carlos'
+            AND (
+                u.USR_SK = f.CLCT_USR_SK
+                OR u.USR_SK = f.FRST_FNL_VRFY_USR_SK
+                OR u.USR_SK = f.FRST_VRFY_USR_SK
+                OR u.USR_SK = f.LST_FNL_VRFY_USR_SK
+                OR u.USR_SK = f.FRST_CORR_USR_SK
+                OR u.USR_SK = f.LST_CORR_USR_SK
+            )
+WHERE
+    p.PROVDR_SK IS NOT NULL
+    OR u.USR_SK IS NOT NULL
+
+
+*/
+
+
+
+
+
+
