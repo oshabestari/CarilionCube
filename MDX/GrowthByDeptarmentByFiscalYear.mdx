@@ -1,0 +1,78 @@
+//***********************************************************************************
+// This code filters by the **FISCAL** year and displays the **FISCAL** year
+//  Performs the filtering on ROWS
+//***********************************************************************************
+with MEMBER [Measures].[Department Key] AS 
+[Department].[Department].currentMember.PROPERTIES("KEY0")
+SELECT
+{ 
+[Measures].[Outpatient - Count],
+[Measures].[Outpatient - Count - Growth from Same Fiscal Period Previous Year - By - Date - Encounter],
+[Measures].[Department Key] 
+} ON COLUMNS, 
+NON EMPTY { 
+(
+[Department].[Department].children * 
+// We can omit the [Department - Name] because the "NAME" value for [Department] is DepartmentDim.DEPT_NM (WChar) same as [Department].[Department - Name]
+//[Department].[Department - Name].[Department - Name].ALLMEMBERS * 
+[Outpatient].[Outpatient - Appointment Status].[Outpatient - Appointment Status].ALLMEMBERS * 
+StrToMember("[Date - Encounter].[Date - Fiscal Year].&["+Format(year(now()) + iif(month(now()) >= 10, 1, 0), "####")+"]")
+) } ON ROWS FROM 
+analytics
+CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+//***********************************************************************************
+// This code filters by the **FISCAL** year and displays the **CALENDAR** year
+//  Performs the filtering using the WHERE clause
+//***********************************************************************************
+with MEMBER [Measures].[Department Key] AS 
+[Department].[Department].currentMember.PROPERTIES("KEY0")
+SELECT
+{ 
+[Measures].[Outpatient - Count],
+[Measures].[Outpatient - Count - Growth from Same Fiscal Period Previous Year - By - Date - Encounter],
+[Measures].[Department Key] 
+} ON COLUMNS, 
+NON EMPTY { 
+(
+[Department].[Department].children * 
+// We can omit the [Department - Name] because the "NAME" value for [Department] is DepartmentDim.DEPT_NM (WChar) same as [Department].[Department - Name]
+//[Department].[Department - Name].[Department - Name].ALLMEMBERS * 
+[Outpatient].[Outpatient - Appointment Status].[Outpatient - Appointment Status].ALLMEMBERS * 
+[Date - Encounter].[Date - Year].[Date - Year].ALLMEMBERS 
+//* [Date - Encounter].[Date - Month].[Date - Month].ALLMEMBERS 
+) } ON ROWS FROM 
+analytics
+where
+( StrToMember("[Date - Encounter].[Date - Fiscal Year].&["+Format(year(now()) + iif(month(now()) >= 10, 1, 0), "####")+"]") )
+//( SELECT ( { StrToMember("[Date - Encounter].[Date - Fiscal Year].&["+Format(year(now()) + iif(month(now()) >= 10, 1, 0), "####")+"]") } ) ON COLUMNS FROM [Analytics]) WHERE ( StrToMember("[Date - Encounter].[Date - Fiscal Year].&["+Format(year(now()) + iif(month(now()) >= 10, 1, 0), "####")+"]") ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+
+//***********************************************************************************
+// This code filters by the **FISCAL** year and displays the **CALENDAR** year
+//  Performs the filtering using a SUBSELECT query
+//***********************************************************************************
+with MEMBER [Measures].[Department Key] AS 
+[Department].[Department].currentMember.PROPERTIES("KEY0")
+SELECT
+{ 
+[Measures].[Outpatient - Count],
+[Measures].[Outpatient - Count - Growth from Same Fiscal Period Previous Year - By - Date - Encounter],
+[Measures].[Department Key] 
+} ON COLUMNS, 
+NON EMPTY { 
+(
+[Department].[Department].children * 
+// We can omit the [Department - Name] because the "NAME" value for [Department] is DepartmentDim.DEPT_NM (WChar) same as [Department].[Department - Name]
+//[Department].[Department - Name].[Department - Name].ALLMEMBERS * 
+[Outpatient].[Outpatient - Appointment Status].[Outpatient - Appointment Status].ALLMEMBERS * 
+[Date - Encounter].[Date - Year].[Date - Year].ALLMEMBERS 
+//* [Date - Encounter].[Date - Month].[Date - Month].ALLMEMBERS 
+) } ON ROWS FROM 
+( SELECT ( { StrToMember("[Date - Encounter].[Date - Fiscal Year].&["+Format(year(now()) + iif(month(now()) >= 10, 1, 0), "####")+"]") } ) ON COLUMNS FROM [Analytics]) WHERE ( StrToMember("[Date - Encounter].[Date - Fiscal Year].&["+Format(year(now()) + iif(month(now()) >= 10, 1, 0), "####")+"]") )
+CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
