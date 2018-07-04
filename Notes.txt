@@ -82,12 +82,65 @@ Date - Encounter
 by location, Department
 
 
+% of total
+current fiscal
+growth same fiscal year
+Cancellation reason
+by department
+by current fiscal year
+by date encounter
 
 
 
+growth prev fiscal year
+
+sproc percent and growth over prev fiscal
+
+outpatient\
+
+how many medication orders have been made by provider
+apointment status is completed
+combining medication in outpatient fact or encounter fact
+inpatient - cannot tie 1-to-1 to provider (total num inpatient admissions that this provider has made a prescription use fact medication-Encounter)
+
+opoid and scanned is MDX
+
+
+provider and fiscal date cuts denomiator. numerator cut by everything
+
+
+Use authorizing provider
+
+
+scanned medication by scanned performed
+sliced by user dimension user 
+
+administration date - rate of change over time
+
+ 
 
 
 
+sprocs create a table with measures
+sort by measure name
+sproc to write code to a file
+add section tags
+names with and without square brackets
+
+files named 
+Fiscal date
+sort by name of measures
+diagnosis - date
+drg - by discharge inpatient
+ed visit - arrival date 
+encounter - encounter date
+inpatient - discharge
+lab component/lab order by date lab order - ordered
+medication adminstration by performed date
+medication order - date medication order
+outpatient by encounter date
+procedure by procedure ordered
+surgery by date surgery
 
 
 
