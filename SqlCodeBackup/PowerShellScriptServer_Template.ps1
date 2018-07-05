@@ -39,7 +39,7 @@ foreach ($ScriptThis in $ServerObjects | where {!($_.IsSystemObject)})
     $scriptr.Options.ScriptDrops = $False
     $scriptr.Options.IncludeHeaders = $False
     $scriptr.Options.ToFileOnly = $True
-    $scriptr.Options.Indexes = $False
+    $scriptr.Options.Indexes = $True
     $scriptr.Options.Permissions = $True
     $scriptr.Options.WithDependencies = $False
     $scriptr.Options.ScriptOwner = $False
@@ -54,7 +54,7 @@ foreach ($ScriptThis in $ServerObjects | where {!($_.IsSystemObject)})
     $ScriptDrop.Options.ScriptDrops = $True
     $ScriptDrop.Options.IncludeHeaders = $False
     $ScriptDrop.Options.ToFileOnly = $True
-    $ScriptDrop.Options.Indexes = $False
+    $ScriptDrop.Options.Indexes = $True
     $ScriptDrop.Options.WithDependencies = $False
     $ScriptDrop.Options.ScriptOwner = $False
     $scriptDrop.Options.NoCollation = $True
@@ -121,7 +121,7 @@ foreach ($db in $databases | where-object {$dbs -contains $_.name  })
         $scriptr.Options.ScriptDrops = $False
         $scriptr.Options.IncludeHeaders = $False
         $scriptr.Options.ToFileOnly = $True
-        $scriptr.Options.Indexes = $False
+        $scriptr.Options.Indexes = $True
         $scriptr.Options.Permissions = $True
         $scriptr.Options.WithDependencies = $False
         $scriptr.Options.ScriptOwner = $False
@@ -136,7 +136,7 @@ foreach ($db in $databases | where-object {$dbs -contains $_.name  })
         $ScriptDrop.Options.ScriptDrops = $True
         $ScriptDrop.Options.IncludeHeaders = $False
         $ScriptDrop.Options.ToFileOnly = $True
-        $ScriptDrop.Options.Indexes = $False
+        $ScriptDrop.Options.Indexes = $True
         $ScriptDrop.Options.WithDependencies = $False
         $scriptDrop.Options.ScriptOwner = $False
         $scriptDrop.Options.NoCollation = $True
