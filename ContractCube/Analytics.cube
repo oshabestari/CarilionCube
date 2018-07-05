@@ -8,7 +8,7 @@
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="466" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="55059" scrolltop="75450" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="12002" y="15558" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="466" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="55059" scrolltop="75450" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="21802" y="15558" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
               <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
             </font>
@@ -28045,52 +28045,6 @@ If the CALCULATE command is deleted or modified, the data within the cube is aff
 You should edit this command only if you manually specify how the cube is aggregated.
 */
 CALCULATE;                                                                      
-CREATE MEMBER CURRENTCUBE.[Measures].[Diagnosis - Count - Growth from Same Period Previous Year]
- AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Diagnosis - Count])) = 0  , NULL,
-    IIF ([Measures].[Diagnosis - Count] = 0, NULL,
-            (
-            [Measures].[Diagnosis - Count] - 
-            (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Diagnosis - Count])
-                            )
-            )
-            / (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Diagnosis - Count])
-            )
-        )
-), 
-FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Diagnosis';  
-
-      
-CREATE MEMBER CURRENTCUBE.[Measures].[DRG - Count - Growth from Same Period Previous Year]
- AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[DRG - Count])) = 0 , NULL,
-    IIF ([Measures].[DRG - Count] = 0, NULL,
-            (
-            [Measures].[DRG - Count] - 
-            (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[DRG - Count])
-                            )
-            )
-            / (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[DRG - Count])
-            )
-        )
-), 
-FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'DRG';    
-
-            
-CREATE MEMBER CURRENTCUBE.[Measures].[Encounter - Count - Growth from Same Period Previous Year]
- AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Encounter - Count])) = 0 , NULL,
-    IIF ([Measures].[Encounter - Count] = 0, NULL,
-            (
-            [Measures].[Encounter - Count] - 
-            (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Encounter - Count])
-                            )
-            )
-            / (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Encounter - Count])
-            )
-        )
-), 
-FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Encounter'; 
 
                                                                  
 CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Age on Admission in Years - Arithmetic Average]
@@ -28120,41 +28074,13 @@ VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';
 CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - LOS in Days - Arithmetic Average]
  AS IIF ([Measures].[Inpatient - LOS in Days - Count] = 0 , NULL,ROUND([Inpatient - LOS in Days - Sum]/[Inpatient - LOS in Days - Count],2)), 
 FORMAT_STRING = "#,##0.00;-#,##0.00", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';                                                                
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';                                         
+
+                       
 CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - LOS in Days - Geometric Average]
  AS IIF ([Measures].[Inpatient - LOS in Days - Count] = 0 , NULL,ROUND(10 ^ ([Inpatient - LOS in Days Log - Sum]/[Inpatient - LOS in Days - Count]),2)), 
 FORMAT_STRING = "#,##0.00;-#,##0.00", 
 VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';                                                       
-CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Count - Growth from Same Period Previous Year]
- AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Inpatient - Count])) = 0  , NULL,
-    IIF ([Measures].[Inpatient - Count] = 0, NULL,
-            (
-            [Measures].[Inpatient - Count] - 
-            (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Inpatient - Count])
-                            )
-            )
-            / (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Inpatient - Count])
-            )
-        )
-), 
-FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';   
-
-                                          
-CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Count - Growth from Same Period Previous Year]
- AS IIF ((PARALLELPERIOD([Date - ED Visit - ED Discharge].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - ED Visit - ED Discharge].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[ED Visit - Count])) = 0  , NULL,
-    IIF ([Measures].[ED Visit - Count] = 0, NULL,
-            (
-            [Measures].[ED Visit - Count] - 
-            (PARALLELPERIOD([Date - ED Visit - ED Discharge].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - ED Visit - ED Discharge].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[ED Visit - Count])
-                            )
-            )
-            / (PARALLELPERIOD([Date - ED Visit - ED Discharge].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - ED Visit - ED Discharge].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[ED Visit - Count])
-            )
-        )
-), 
-FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';      
 
       
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Arithmetic Average]
@@ -28385,70 +28311,6 @@ FORMAT_STRING = "#,##0;-#,##0",
 VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
 
 
-CREATE MEMBER CURRENTCUBE.[Measures].[Lab Component Result - Count - Growth from Same Period Previous Year]
- AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Lab Component Result - Count])) = 0  , NULL,
-    IIF ([Measures].[Lab Component Result - Count] = 0, NULL,
-            (
-            [Measures].[Lab Component Result - Count] - 
-            (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1,[Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Lab Component Result - Count])
-                            )
-            )
-            / (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Lab Component Result - Count])
-            )
-        )
-), 
-FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Lab Component Result';
-
-
-CREATE MEMBER CURRENTCUBE.[Measures].[Lab Order - Count - Growth from Same Period Previous Year]
- AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Lab Order - Count])) = 0  , NULL,
-    IIF ([Measures].[Lab Order - Count] = 0, NULL,
-            (
-            [Measures].[Lab Order - Count] - 
-            (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Lab Order - Count])
-                            )
-            )
-            / (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Lab Order - Count])
-            )
-        )
-), 
-FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Lab Order';
-
-
-CREATE MEMBER CURRENTCUBE.[Measures].[Medication Administration - Count - Growth from Same Period Previous Year]
- AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Medication Administration - Count])) = 0  , NULL,
-    IIF ([Measures].[Medication Administration - Count] = 0, NULL,
-            (
-            [Measures].[Medication Administration - Count] - 
-            (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Medication Administration - Count])
-                            )
-            )
-            / (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Medication Administration - Count])
-            )
-        )
-), 
-FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Administration';
-
-
-CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order - Count - Growth from Same Period Previous Year]
- AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Medication Order - Count])) = 0  , NULL,
-    IIF ([Measures].[Medication Order - Count] = 0, NULL,
-            (
-            [Measures].[Medication Order - Count] - 
-            (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1,[Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Medication Order - Count])
-                            )
-            )
-            / (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Medication Order - Count])
-            )
-        )
-), 
-FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Order';
-
-
 CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order Quantity - Sum]
  AS NULL , 
 VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Order';
@@ -28457,22 +28319,6 @@ VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Order';
 CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order Quantity - Arithmetic Average]
  AS NULL , 
 VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Order';
-
-
-CREATE MEMBER CURRENTCUBE.[Measures].[Outptient - Count - Growth from Same Period Previous Year]
- AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Outpatient - Count])) = 0  , NULL,
-    IIF ([Measures].[Outpatient - Count] = 0, NULL,
-            (
-            [Measures].[Outpatient - Count] - 
-            (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1,[Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Outpatient - Count])
-                            )
-            )
-            / (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Outpatient - Count])
-            )
-        )
-), 
-FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Outpatient';
 
 
 CREATE MEMBER CURRENTCUBE.[Measures].[Outpatient - Appointment Length in Minutes - Arithmetic Average]
@@ -28499,73 +28345,10 @@ FORMAT_STRING = "#,##0;-#,##0",
 VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Patient';
 
 
-CREATE MEMBER CURRENTCUBE.[Measures].[Procedure Order - Count - Growth from Same Period Previous Year]
- AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Procedure Order - Count])) = 0  , NULL,
-    IIF ([Measures].[Procedure Order - Count] = 0, NULL,
-            (
-            [Measures].[Procedure Order - Count] - 
-            (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Procedure Order - Count])
-                            )
-            )
-            / (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Procedure Order - Count])
-            )
-        )
-), 
-FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Procedure Order';
-
-
-CREATE MEMBER CURRENTCUBE.[Measures].[Surgical Case - Count - Growth from Same Period Previous Year]
- AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Surgical Case - Count])) = 0  , NULL,
-    IIF ([Measures].[Surgical Case - Count] = 0, NULL,
-            (
-            [Measures].[Surgical Case - Count] - 
-            (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Surgical Case - Count])
-                            )
-            )
-            / (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Surgical Case - Count])
-            )
-        )
-), 
-FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Surgical Case';
-
-
-CREATE MEMBER CURRENTCUBE.[Measures].[Surgical Procedure Event - Count - Growth from Same Period Previous Year]
- AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1,[Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Surgical Procedure Event - Count])) = 0  , NULL,
-    IIF ([Measures].[Surgical Procedure Event - Count] = 0, NULL,
-            (
-            [Measures].[Surgical Procedure Event - Count] - 
-            (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Surgical Procedure Event - Count])
-                            )
-            )
-            / (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Surgical Procedure Event - Count])
-            )
-        )
-), 
-FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Surgical Procedure Event';
-
-
-CREATE MEMBER CURRENTCUBE.[Measures].[Surgical Supply Use - Count - Growth from Same Period Previous Year]
- AS IIF ((PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Surgical Supply Use - Count])) = 0  , NULL,
-    IIF ([Measures].[Surgical Supply Use - Count] = 0, NULL,
-            (
-            [Measures].[Surgical Supply Use - Count] - 
-            (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Surgical Supply Use - Count])
-                            )
-            )
-            / (PARALLELPERIOD([Date - Encounter].[Year -  Quarter -  Month -   Date].[Year], 1, [Date - Encounter].[Year -  Quarter -  Month -   Date].CurrentMember) , ([Measures].[Surgical Supply Use - Count])
-            )
-        )
-), 
-FORMAT_STRING = "Percent", 
-VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Surgical Supply Use';
-
-
 SCOPE(DESCENDANTS([Medication].[Medication - Name],,AFTER));                    
  [Measures].[Medication Order Quantity - Sum]  = ([Measures].[Medication Order Quantity - Total]);                    
 END SCOPE;                     
+
 
 SCOPE(DESCENDANTS([Medication].[Medication - Name],,AFTER));                    
  [Measures].[Medication Order Quantity - Arithmetic Average]  = IIF ([Measures].[Medication Order Quantity - Count]=0,NULL,([Measures].[Medication Order Quantity - Sum]/[Medication Order Quantity - Count]));                    

@@ -8,9 +8,9 @@
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="16" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-13726" scrolltop="-5000" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="75" x="29104" y="16272" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="16" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-13726" scrolltop="-5000" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="75" x="21802" y="15558" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
-              <ddsxmlobjectstreamwrapper binary="01000000900144420100065461686f6d61" />
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
             </font>
             <mouseicon>
               <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
@@ -19,7 +19,7 @@
           <layoutmanager>
             <ddsxmlobj />
           </layoutmanager>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="CensusMeasureFact" left="712" top="4340" logicalid="8" controlid="1" masterid="0" hint1="0" hint2="0" width="3307" height="3572" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="CensusMeasureFact" left="712" top="4340" logicalid="8" controlid="1" masterid="0" hint1="0" hint2="0" width="3307" height="3572" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobjectstreaminitwrapper binary="000c0000eb0c0000f40d0000" />
             </control>
@@ -30,7 +30,7 @@
             </layoutobject>
             <shape groupshapeid="0" groupnode="0" />
           </ddscontrol>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="CensusSourceDim" left="6419" top="4763" logicalid="9" controlid="2" masterid="0" hint1="0" hint2="0" width="4313" height="2725" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="CensusSourceDim" left="6419" top="4763" logicalid="9" controlid="2" masterid="0" hint1="0" hint2="0" width="4313" height="2725" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobjectstreaminitwrapper binary="000c0000d9100000a50a0000" />
             </control>
@@ -41,7 +41,7 @@
             </layoutobject>
             <shape groupshapeid="0" groupnode="0" />
           </ddscontrol>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="CensusGeographicalAreaDim" left="236" top="10312" logicalid="10" controlid="3" masterid="0" hint1="0" hint2="0" width="4260" height="2302" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="CensusGeographicalAreaDim" left="236" top="10312" logicalid="10" controlid="3" masterid="0" hint1="0" hint2="0" width="4260" height="2302" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobjectstreaminitwrapper binary="000c0000a4100000fe080000" />
             </control>
@@ -92,7 +92,7 @@
               <point x="4019" y="6126" />
             </connector>
           </ddscontrol>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="CensusMeasureTypeDim" left="20" top="0" logicalid="13" controlid="6" masterid="0" hint1="0" hint2="0" width="4692" height="1940" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="CensusMeasureTypeDim" left="20" top="0" logicalid="13" controlid="6" masterid="0" hint1="0" hint2="0" width="4692" height="1940" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobjectstreaminitwrapper binary="000c00005412000094070000" />
             </control>
@@ -206,8 +206,8 @@
     <CubePermission dwd:design-time-name="78dc839c-0c7c-43ad-805f-686af5136c21">
       <ID>CubePermission</ID>
       <Name>CubePermission</Name>
-      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
-      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <CreatedTimestamp>0001-01-01T08:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T08:00:00Z</LastSchemaUpdate>
       <RoleID>Role</RoleID>
       <ReadDefinition>Basic</ReadDefinition>
       <Read>Allowed</Read>
@@ -225,7 +225,7 @@
       <Measures>
         <Measure dwd:design-time-name="e1f07218-a41c-4f92-9000-7b57934fde4b">
           <ID>Census Measure Fact Count</ID>
-          <Name>Census Measure  - Count</Name>
+          <Name>Census Measure - Count</Name>
           <AggregateFunction>Count</AggregateFunction>
           <Source dwd:design-time-name="080c03ac-db02-4089-ac7b-79d10f951407">
             <DataType>Integer</DataType>
@@ -238,7 +238,7 @@
         </Measure>
         <Measure dwd:design-time-name="d82b7483-749e-4804-abf3-0f9fc938c0ee">
           <ID>MSR FLT VAL</ID>
-          <Name>Census Measure  - Sum</Name>
+          <Name>Census Measure - Sum</Name>
           <Source dwd:design-time-name="e50d5abd-7995-4f34-a019-bff0fcb5a554">
             <DataType>Double</DataType>
             <Source xsi:type="ColumnBinding" dwd:design-time-name="745b3b41-0733-491a-814b-cd6218b58862">
@@ -262,7 +262,7 @@
         </Measure>
         <Measure dwd:design-time-name="a2ae42ca-6558-41b3-a04c-cd0cf12c4fe2">
           <ID>Minimum MSR FLT VAL</ID>
-          <Name>Census Measure  - Min</Name>
+          <Name>Census Measure - Min</Name>
           <AggregateFunction>Min</AggregateFunction>
           <Source dwd:design-time-name="ca706d8f-f868-4f9e-a1fe-fc85c5c1ce4d">
             <DataType>Double</DataType>
@@ -274,7 +274,7 @@
         </Measure>
         <Measure dwd:design-time-name="f4ad6fdd-e53b-4d5e-8c68-1b36b50dc87b">
           <ID>Maximum MSR FLT VAL</ID>
-          <Name>Census Measure  - Max</Name>
+          <Name>Census Measure - Max</Name>
           <AggregateFunction>Max</AggregateFunction>
           <Source dwd:design-time-name="6bdb9901-ac1c-4c87-948e-4d6c588cef67">
             <DataType>Double</DataType>
@@ -387,14 +387,14 @@ SCOPE ([Census Measure - Geometric Average]);
     END SCOPE;     
 END SCOPE;    
 
-SCOPE ([Census Measure  - Min]);     
+SCOPE ([Census Measure - Min]);     
     SCOPE(ASCENDANTS([Census - Measure Type].[Census - Measure Type]));     
         THIS =
             NULL;     
     END SCOPE;     
 END SCOPE;  
 
-SCOPE ([Census Measure  - Max]);     
+SCOPE ([Census Measure - Max]);     
     SCOPE(ASCENDANTS([Census - Measure Type].[Census - Measure Type]));     
         THIS =
             NULL;     
