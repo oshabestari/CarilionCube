@@ -8,7 +8,7 @@
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="20" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="1075" scrolltop="1156" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="75" x="11557" y="15600" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="20" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="1075" scrolltop="1156" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="75" x="11557" y="15558" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
               <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
             </font>
@@ -19,7 +19,7 @@
           <layoutmanager>
             <ddsxmlobj />
           </layoutmanager>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="OutpatientCancellationReasonDim" left="6613" top="14484" logicalid="10" controlid="1" masterid="0" hint1="0" hint2="0" width="3466" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="OutpatientCancellationReasonDim" left="6613" top="14484" logicalid="10" controlid="1" masterid="0" hint1="0" hint2="0" width="3466" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobjectstreaminitwrapper binary="000c00008a0d000057070000" />
             </control>
@@ -30,7 +30,7 @@
             </layoutobject>
             <shape groupshapeid="0" groupnode="0" />
           </ddscontrol>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="OutpatientDim" left="6018" top="7242" logicalid="11" controlid="2" masterid="0" hint1="0" hint2="0" width="5857" height="6394" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="OutpatientDim" left="6018" top="7242" logicalid="11" controlid="2" masterid="0" hint1="0" hint2="0" width="5857" height="6394" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobjectstreaminitwrapper binary="000c0000e1160000fa180000" />
             </control>
@@ -41,7 +41,7 @@
             </layoutobject>
             <shape groupshapeid="0" groupnode="0" />
           </ddscontrol>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="EncounterDim" left="6296" top="0" logicalid="12" controlid="3" masterid="0" hint1="0" hint2="0" width="4101" height="4842" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="EncounterDim" left="6296" top="0" logicalid="12" controlid="3" masterid="0" hint1="0" hint2="0" width="4101" height="4842" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobjectstreaminitwrapper binary="000c000005100000ea120000" />
             </control>
@@ -52,7 +52,7 @@
             </layoutobject>
             <shape groupshapeid="0" groupnode="0" />
           </ddscontrol>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="OutpatientFinancialClassDim" left="13075" top="8723" logicalid="13" controlid="4" masterid="0" hint1="0" hint2="0" width="4471" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="OutpatientFinancialClassDim" left="13075" top="8723" logicalid="13" controlid="4" masterid="0" hint1="0" hint2="0" width="4471" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobjectstreaminitwrapper binary="000c00007711000057070000" />
             </control>
@@ -123,7 +123,7 @@
               <point x="11875" y="9339" />
             </connector>
           </ddscontrol>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge.3" tooltip="OutpatientAppointmentStatusDim" left="20" top="8723" logicalid="17" controlid="8" masterid="0" hint1="0" hint2="0" width="3598" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="OutpatientAppointmentStatusDim" left="20" top="8723" logicalid="17" controlid="8" masterid="0" hint1="0" hint2="0" width="3598" height="1879" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobjectstreaminitwrapper binary="000c00000e0e000057070000" />
             </control>
@@ -237,8 +237,8 @@
     <DimensionPermission dwd:design-time-name="d2dd6b11-10da-4816-a954-1f728ad873d5">
       <ID>DimensionPermission</ID>
       <Name>DimensionPermission</Name>
-      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
-      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <CreatedTimestamp>0001-01-01T08:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T08:00:00Z</LastSchemaUpdate>
       <RoleID>Role</RoleID>
       <ReadDefinition>Allowed</ReadDefinition>
       <Read>Allowed</Read>
@@ -1888,7 +1888,7 @@
     </Attribute>
     <Attribute dwd:design-time-name="9c6d0ae2-c442-46fb-bf34-e3f380ae1760">
       <ID>AS CAHPS OSC 4</ID>
-      <Name>Outpatient - AS - Facility-Staff -  Cleanliness of Facility</Name>
+      <Name>Outpatient - AS - Facility-Staff - Cleanliness of Facility</Name>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="42323837-613f-446b-9cea-3339cc96148a">
           <DataType>Integer</DataType>
@@ -2642,7 +2642,7 @@
     </Attribute>
     <Attribute dwd:design-time-name="41ce5646-27ad-4161-a9ff-3293ef0c8632">
       <ID>UC ANALYSIS B1 CDS</ID>
-      <Name>Outpatient - UC - Nurses -  Courtesy of the Nurses</Name>
+      <Name>Outpatient - UC - Nurses - Courtesy of the Nurses</Name>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="b5c2d427-6b89-4f5e-b125-54c0d822245b">
           <DataType>Integer</DataType>
@@ -2668,7 +2668,7 @@
     </Attribute>
     <Attribute dwd:design-time-name="3fb9b896-0cda-4e22-95ad-7beffb82bb99">
       <ID>UC ANALYSIS B3 CDS</ID>
-      <Name>Outpatient - UC - Nurses -  Attention to  Needs</Name>
+      <Name>Outpatient - UC - Nurses - Attention to Needs</Name>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="0fd49649-584a-4caa-bcb8-22523f273b3e">
           <DataType>Integer</DataType>
@@ -2746,7 +2746,7 @@
     </Attribute>
     <Attribute dwd:design-time-name="312b49c1-d4d5-47d0-aef8-f3da5bc39c94">
       <ID>UC ANALYSIS B61 CDS</ID>
-      <Name>Outpatient - UC - Nurses -  Took Time to Listen</Name>
+      <Name>Outpatient - UC - Nurses - Took Time to Listen</Name>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="f28a9082-9860-4921-8888-dccd0da827f9">
           <DataType>Integer</DataType>
@@ -3316,7 +3316,7 @@
     </Attribute>
     <Attribute dwd:design-time-name="052e0f4c-018d-4358-b253-d7c051ddb927">
       <ID>MD ANALYSIS A1 CDS</ID>
-      <Name>Outpatient - MD - Access - Ease of  Scheduling Appointment</Name>
+      <Name>Outpatient - MD - Access - Ease of Scheduling Appointment</Name>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="d1f2c800-c88d-4d80-afe0-ccdbf0d363d5">
           <DataType>Integer</DataType>
@@ -4607,7 +4607,7 @@
     </Attribute>
     <Attribute dwd:design-time-name="479c3a83-e901-4299-9080-41b8d10ff252">
       <ID>MD CAHPS CG 27CL CDS</ID>
-      <Name>Outpatient - MD - Clerks and Receptionists  - Helpfulness</Name>
+      <Name>Outpatient - MD - Clerks and Receptionists - Helpfulness</Name>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="5ec9aa20-6b81-40d4-bac9-a588d710fc36">
           <DataType>Integer</DataType>
@@ -4633,7 +4633,7 @@
     </Attribute>
     <Attribute dwd:design-time-name="deba95fb-2955-41cd-a369-c3ea4bf47b0c">
       <ID>MD CAHPS CG 28CL CDS</ID>
-      <Name>Outpatient - MD - Clerks and Receptionists  - Courtesy-Respect</Name>
+      <Name>Outpatient - MD - Clerks and Receptionists - Courtesy-Respect</Name>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="e9112b55-ad9c-4866-b6c5-e27168bb9525">
           <DataType>Integer</DataType>

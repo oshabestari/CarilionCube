@@ -8,7 +8,7 @@
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="29" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="6100" scrolltop="23353" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="12848" y="15558" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="24" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="6100" scrolltop="23353" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="18182" y="15558" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
               <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
             </font>
@@ -85,7 +85,7 @@
             </layoutobject>
             <shape groupshapeid="0" groupnode="0" />
           </ddscontrol>
-          <ddscontrol controlprogid="MSDDS.Polyline" left="6041" top="31025" logicalid="24" controlid="13" masterid="0" hint1="0" hint2="0" width="799" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="MSDDS.Polyline" left="6041" top="31025" logicalid="18" controlid="7" masterid="0" hint1="0" hint2="0" width="799" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobj>
                 <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
@@ -105,7 +105,7 @@
               <point x="6390" y="31325" />
             </connector>
           </ddscontrol>
-          <ddscontrol controlprogid="MSDDS.Polyline" left="12148" top="15387" logicalid="25" controlid="14" masterid="0" hint1="0" hint2="0" width="3000" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="MSDDS.Polyline" left="12148" top="15387" logicalid="19" controlid="8" masterid="0" hint1="0" hint2="0" width="3000" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobj>
                 <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
@@ -125,7 +125,7 @@
               <point x="12448" y="15787" />
             </connector>
           </ddscontrol>
-          <ddscontrol controlprogid="MSDDS.Polyline" left="10223" top="31025" logicalid="26" controlid="15" masterid="0" hint1="0" hint2="0" width="867" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="MSDDS.Polyline" left="10223" top="31025" logicalid="20" controlid="9" masterid="0" hint1="0" hint2="0" width="867" height="3200" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobj>
                 <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
@@ -145,7 +145,7 @@
               <point x="10790" y="31325" />
             </connector>
           </ddscontrol>
-          <ddscontrol controlprogid="MSDDS.Polyline" left="7091" top="-1550" logicalid="27" controlid="16" masterid="0" hint1="0" hint2="0" width="799" height="3199" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="MSDDS.Polyline" left="7091" top="-1550" logicalid="21" controlid="10" masterid="0" hint1="0" hint2="0" width="799" height="3199" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobj>
                 <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
@@ -163,7 +163,7 @@
               <point x="7490" y="1349" />
             </connector>
           </ddscontrol>
-          <ddscontrol controlprogid="MSDDS.Polyline" left="3133" top="15387" logicalid="28" controlid="17" masterid="0" hint1="0" hint2="0" width="3000" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="MSDDS.Polyline" left="3133" top="15387" logicalid="22" controlid="11" masterid="0" hint1="0" hint2="0" width="3000" height="799" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobj>
                 <polyline endtypedst="6" endtypesrc="3" usercolor="0" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
@@ -419,8 +419,8 @@
     <DimensionPermission dwd:design-time-name="a2e0e929-0161-4de7-a690-11c9c1813123">
       <ID>DimensionPermission</ID>
       <Name>DimensionPermission</Name>
-      <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
-      <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+      <CreatedTimestamp>0001-01-01T08:00:00Z</CreatedTimestamp>
+      <LastSchemaUpdate>0001-01-01T08:00:00Z</LastSchemaUpdate>
       <RoleID>Role</RoleID>
       <ReadDefinition>Allowed</ReadDefinition>
       <Read>Allowed</Read>
@@ -2950,7 +2950,7 @@
     </Attribute>
     <Attribute dwd:design-time-name="0c474ff2-e343-465b-a0d7-eba4ee2e302f">
       <ID>IQI6 PTCA VOL</ID>
-      <Name>Inpatient - IQI-06  - Percutaneous Coronary Intervention (PCI)</Name>
+      <Name>Inpatient - IQI-06 - Percutaneous Coronary Intervention (PCI)</Name>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="d4704dbf-37e8-4674-8421-07e3e850f040">
           <DataType>WChar</DataType>
@@ -3289,7 +3289,7 @@
     </Attribute>
     <Attribute dwd:design-time-name="8dc1b0fa-0530-403c-8cef-669fb7c6137f">
       <ID>IQI20 PNEUMONIA MORT</ID>
-      <Name>Inpatient - IQI-20 -  Pneumonia Mortality</Name>
+      <Name>Inpatient - IQI-20 - Pneumonia Mortality</Name>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="82f7a102-bc52-47dd-918c-aa98fe8b8ca0">
           <DataType>WChar</DataType>
@@ -3419,7 +3419,7 @@
     </Attribute>
     <Attribute dwd:design-time-name="637924ed-2240-40ae-be0d-415cedd3dc5b">
       <ID>IQI25 BILATERAL CARDIAC CATH</ID>
-      <Name>Inpatient - IQI-25 -  Bilateral Cardiac Catheterization</Name>
+      <Name>Inpatient - IQI-25 - Bilateral Cardiac Catheterization</Name>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="290c6fa2-ecfa-4b82-92e8-d01c01aae963">
           <DataType>WChar</DataType>
@@ -5597,7 +5597,7 @@
     </Attribute>
     <Attribute dwd:design-time-name="e74cbd48-89d1-4556-946b-290c4e8457d4">
       <ID>VTE 6</ID>
-      <Name>Inpatient - VTE-6 -  	Hospital Acquired Potentially-Preventable Venous Thromboembolism</Name>
+      <Name>Inpatient - VTE-6 - Hospital Acquired Potentially-Preventable Venous Thromboembolism</Name>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="134cc341-261f-48d4-a234-170c1a456832">
           <DataType>WChar</DataType>
@@ -6078,7 +6078,7 @@
     </Attribute>
     <Attribute dwd:design-time-name="c961c609-2e64-4abb-8d1e-7c66724acc0a">
       <ID>IN CAHPS CMS 21</ID>
-      <Name>Inpatient - IN - Left Hospital  - Staff Talk With You About Help When You Left</Name>
+      <Name>Inpatient - IN - Left Hospital - Staff Talk With You About Help When You Left</Name>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="7611da0b-ad5d-4405-9c84-a3f7265b662b">
           <DataType>Integer</DataType>
@@ -6104,7 +6104,7 @@
     </Attribute>
     <Attribute dwd:design-time-name="f83acae6-54f9-4fac-af6a-7fdfffb47d53">
       <ID>IN CAHPS CMS 22</ID>
-      <Name>Inpatient - IN - Left Hospital  - Staff Discuss Symptoms- Problems to Look For</Name>
+      <Name>Inpatient - IN - Left Hospital - Staff Discuss Symptoms- Problems to Look For</Name>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="9e87eccf-e0b5-4399-8ecf-d5365a8865cf">
           <DataType>Integer</DataType>
@@ -6718,7 +6718,7 @@
     </Attribute>
     <Attribute dwd:design-time-name="dd44970f-bc3b-4d3a-9157-d005f2f2a398">
       <ID>IN ANALYSIS A1</ID>
-      <Name>Inpatient - IN - Admission - Speed of  Process</Name>
+      <Name>Inpatient - IN - Admission - Speed of Process</Name>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="9832d64f-4316-46ef-8d0a-98485aeccbc3">
           <DataType>Integer</DataType>
@@ -7738,7 +7738,7 @@
     </Attribute>
     <Attribute dwd:design-time-name="eca5f7b3-1b2e-4295-96b6-b5b50c8397f3">
       <ID>IN ANALYSIS R3</ID>
-      <Name>Inpatient - IN - Room - Courtesy of  Environmental Staff</Name>
+      <Name>Inpatient - IN - Room - Courtesy of Environmental Staff</Name>
       <KeyColumns>
         <KeyColumn dwd:design-time-name="804664bd-abd2-4793-8dd4-929d558a52e0">
           <DataType>Integer</DataType>

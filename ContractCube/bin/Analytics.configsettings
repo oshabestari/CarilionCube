@@ -164,6 +164,19 @@
     </Dimensions>
     <Cubes>
       <Cube>
+        <ID>Census</ID>
+        <MeasureGroups>
+          <MeasureGroup>
+            <ID>Census Measure Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Census Measure Fact</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+        </MeasureGroups>
+      </Cube>
+      <Cube>
         <ID>Analytics</ID>
         <MeasureGroups>
           <MeasureGroup>
@@ -467,19 +480,6 @@
             <Partitions>
               <Partition>
                 <ID>Surgical Supply Use Fact</ID>
-              </Partition>
-            </Partitions>
-          </MeasureGroup>
-        </MeasureGroups>
-      </Cube>
-      <Cube>
-        <ID>Census</ID>
-        <MeasureGroups>
-          <MeasureGroup>
-            <ID>Census Measure Fact</ID>
-            <Partitions>
-              <Partition>
-                <ID>Census Measure Fact</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
