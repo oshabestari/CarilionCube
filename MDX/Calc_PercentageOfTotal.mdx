@@ -71,6 +71,22 @@ IIF(([Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Sum]/([Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes Log - Sum]/([Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Arithmetic Average - Percentage Of Total]
  AS 
 IIF(([Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Arithmetic Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
@@ -95,6 +111,22 @@ IIF(([Measures].[ED Visit - Attending Provider Assigned to Disposition in Minute
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Sum]/([Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes Log - Sum]/([Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Arithmetic Average - Percentage Of Total]
  AS 
 IIF(([Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Arithmetic Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
@@ -116,6 +148,22 @@ CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Bed Request to Patient Roomed i
 IIF(([Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
      null,
      [Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Geometric Average]/([Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Sum]/([Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Bed Request to Patient Roomed in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Bed Request to Patient Roomed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Bed Request to Patient Roomed in Minutes Log - Sum]/([Measures].[ED Visit - Bed Request to Patient Roomed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
@@ -151,6 +199,22 @@ IIF(([Measures].[ED Visit - Disposition to ED Discharge in Minutes - Geometric A
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Disposition to ED Discharge in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Disposition to ED Discharge in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Disposition to ED Discharge in Minutes - Sum]/([Measures].[ED Visit - Disposition to ED Discharge in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Disposition to ED Discharge in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Disposition to ED Discharge in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Disposition to ED Discharge in Minutes Log - Sum]/([Measures].[ED Visit - Disposition to ED Discharge in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Glasgow Coma Scale - Arithmetic Average - Percentage Of Total]
  AS 
 IIF(([Measures].[ED Visit - Glasgow Coma Scale - Arithmetic Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
@@ -172,6 +236,22 @@ CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Glasgow Coma Scale - Geometric 
 IIF(([Measures].[ED Visit - Glasgow Coma Scale - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
      null,
      [Measures].[ED Visit - Glasgow Coma Scale - Geometric Average]/([Measures].[ED Visit - Glasgow Coma Scale - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Glasgow Coma Scale - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Glasgow Coma Scale - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Glasgow Coma Scale - Sum]/([Measures].[ED Visit - Glasgow Coma Scale - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Glasgow Coma Scale Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Glasgow Coma Scale Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Glasgow Coma Scale Log - Sum]/([Measures].[ED Visit - Glasgow Coma Scale Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
@@ -199,6 +279,22 @@ IIF(([Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Ge
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Sum]/([Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes Log - Sum]/([Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Arithmetic Average - Percentage Of Total]
  AS 
 IIF(([Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Arithmetic Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
@@ -220,6 +316,22 @@ CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Ordered to Image Complete
 IIF(([Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
      null,
      [Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Geometric Average]/([Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Sum]/([Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Ordered to Image Completed in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Image Ordered to Image Completed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Image Ordered to Image Completed in Minutes Log - Sum]/([Measures].[ED Visit - Image Ordered to Image Completed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
@@ -247,6 +359,22 @@ IIF(([Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Geom
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Sum]/([Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes Log - Sum]/([Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Count - Percentage Of Total]
  AS 
 IIF(([Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Count], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
@@ -263,11 +391,27 @@ IIF(([Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Geometric
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Sum]/([Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes - Arithmetic Average - Percentage Of Total]
  AS 
 IIF(([Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes - Arithmetic Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
      null,
      [Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes - Arithmetic Average]/([Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes - Arithmetic Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes Log - Sum]/([Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
@@ -295,6 +439,22 @@ IIF(([Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Geometric 
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Sum]/([Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Discharge in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Discharge in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Discharge in Minutes Log - Sum]/([Measures].[ED Visit - Patient Arrival to Discharge in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Arithmetic Average - Percentage Of Total]
  AS 
 IIF(([Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Arithmetic Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
@@ -316,6 +476,22 @@ CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Image Ordere
 IIF(([Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
      null,
      [Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Geometric Average]/([Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Sum]/([Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes Log - Sum]/([Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
@@ -343,6 +519,22 @@ IIF(([Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Geometri
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Sum]/([Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes Log - Sum]/([Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Arithmetic Average - Percentage Of Total]
  AS 
 IIF(([Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Arithmetic Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
@@ -364,6 +556,22 @@ CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Registration
 IIF(([Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
      null,
      [Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Geometric Average]/([Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Sum]/([Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes Log - Sum]/([Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
@@ -391,6 +599,22 @@ IIF(([Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Geometr
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Sum]/([Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Triage Start in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Arrival to Triage Start in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Arrival to Triage Start in Minutes Log - Sum]/([Measures].[ED Visit - Patient Arrival to Triage Start in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Arithmetic Average - Percentage Of Total]
  AS 
 IIF(([Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Arithmetic Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
@@ -412,6 +636,22 @@ CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Roomed to Attending Pro
 IIF(([Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
      null,
      [Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Geometric Average]/([Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Sum]/([Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes Log - Sum]/([Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
@@ -447,6 +687,22 @@ IIF(([Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Mi
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Sum]/([Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes Log - Sum]/([Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Arithmetic Average - Percentage Of Total]
  AS 
 IIF(([Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Arithmetic Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
@@ -468,6 +724,22 @@ CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Patient Room
 IIF(([Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
      null,
      [Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Geometric Average]/([Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Sum]/([Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes Log - Sum]/([Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
@@ -495,6 +767,22 @@ IIF(([Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Geometri
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Sum]/([Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Patient Roomed in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Triage Start to Patient Roomed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Triage Start to Patient Roomed in Minutes Log - Sum]/([Measures].[ED Visit - Triage Start to Patient Roomed in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
 CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Arithmetic Average - Percentage Of Total]
  AS 
 IIF(([Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Arithmetic Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
@@ -516,6 +804,22 @@ CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Triage Complete
 IIF(([Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
      null,
      [Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Geometric Average]/([Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Sum]/([Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Triage Complete in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[ED Visit - Triage Start to Triage Complete in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[ED Visit - Triage Start to Triage Complete in Minutes Log - Sum]/([Measures].[ED Visit - Triage Start to Triage Complete in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
@@ -567,6 +871,14 @@ IIF(([Measures].[Inpatient - Fractional LOS in Hours - Arithmetic Average], Axis
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
 
+CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Fractional LOS in Hours - Count - Percentage Of Total]
+ AS 
+IIF(([Measures].[Inpatient - Fractional LOS in Hours - Count], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Inpatient - Fractional LOS in Hours - Count]/([Measures].[Inpatient - Fractional LOS in Hours - Count], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Fractional LOS in Hours - Geometric Average - Percentage Of Total]
  AS 
 IIF(([Measures].[Inpatient - Fractional LOS in Hours - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
@@ -575,11 +887,35 @@ IIF(([Measures].[Inpatient - Fractional LOS in Hours - Geometric Average], Axis(
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
 
+CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Fractional LOS in Hours - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[Inpatient - Fractional LOS in Hours - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Inpatient - Fractional LOS in Hours - Sum]/([Measures].[Inpatient - Fractional LOS in Hours - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Fractional LOS in Hours Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[Inpatient - Fractional LOS in Hours Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Inpatient - Fractional LOS in Hours Log - Sum]/([Measures].[Inpatient - Fractional LOS in Hours Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - LOS in Days - Arithmetic Average - Percentage Of Total]
  AS 
 IIF(([Measures].[Inpatient - LOS in Days - Arithmetic Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
      null,
      [Measures].[Inpatient - LOS in Days - Arithmetic Average]/([Measures].[Inpatient - LOS in Days - Arithmetic Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - LOS in Days - Count - Percentage Of Total]
+ AS 
+IIF(([Measures].[Inpatient - LOS in Days - Count], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Inpatient - LOS in Days - Count]/([Measures].[Inpatient - LOS in Days - Count], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
 
@@ -596,6 +932,14 @@ CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - LOS in Days - Sum - Percentage
 IIF(([Measures].[Inpatient - LOS in Days - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
      null,
      [Measures].[Inpatient - LOS in Days - Sum]/([Measures].[Inpatient - LOS in Days - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - LOS in Days Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[Inpatient - LOS in Days Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Inpatient - LOS in Days Log - Sum]/([Measures].[Inpatient - LOS in Days Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
 
@@ -743,11 +1087,27 @@ IIF(([Measures].[Medication Order Quantity - Arithmetic Average], Axis(1).Item(0
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Order';
 
+CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order Quantity - Count - Percentage Of Total]
+ AS 
+IIF(([Measures].[Medication Order Quantity - Count], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Medication Order Quantity - Count]/([Measures].[Medication Order Quantity - Count], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Order';
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order Quantity - Sum - Percentage Of Total]
  AS 
 IIF(([Measures].[Medication Order Quantity - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
      null,
      [Measures].[Medication Order Quantity - Sum]/([Measures].[Medication Order Quantity - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Order';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order Quantity - Total - Percentage Of Total]
+ AS 
+IIF(([Measures].[Medication Order Quantity - Total], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Medication Order Quantity - Total]/([Measures].[Medication Order Quantity - Total], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Order';
 
@@ -759,11 +1119,35 @@ IIF(([Measures].[Outpatient - Appointment Length in Minutes - Arithmetic Average
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Outpatient';
 
+CREATE MEMBER CURRENTCUBE.[Measures].[Outpatient - Appointment Length in Minutes - Count - Percentage Of Total]
+ AS 
+IIF(([Measures].[Outpatient - Appointment Length in Minutes - Count], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Outpatient - Appointment Length in Minutes - Count]/([Measures].[Outpatient - Appointment Length in Minutes - Count], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Outpatient';
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Outpatient - Appointment Length in Minutes - Geometric Average - Percentage Of Total]
  AS 
 IIF(([Measures].[Outpatient - Appointment Length in Minutes - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
      null,
      [Measures].[Outpatient - Appointment Length in Minutes - Geometric Average]/([Measures].[Outpatient - Appointment Length in Minutes - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Outpatient';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Outpatient - Appointment Length in Minutes - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[Outpatient - Appointment Length in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Outpatient - Appointment Length in Minutes - Sum]/([Measures].[Outpatient - Appointment Length in Minutes - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Outpatient';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Outpatient - Appointment Length in Minutes Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[Outpatient - Appointment Length in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Outpatient - Appointment Length in Minutes Log - Sum]/([Measures].[Outpatient - Appointment Length in Minutes Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Outpatient';
 
@@ -791,11 +1175,35 @@ IIF(([Measures].[Patient - Age in Years - Arithmetic Average], Axis(1).Item(0).I
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Patient';
 
+CREATE MEMBER CURRENTCUBE.[Measures].[Patient - Age in Years - Count - Percentage Of Total]
+ AS 
+IIF(([Measures].[Patient - Age in Years - Count], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Patient - Age in Years - Count]/([Measures].[Patient - Age in Years - Count], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Patient';
+
 CREATE MEMBER CURRENTCUBE.[Measures].[Patient - Age in Years - Geometric Average - Percentage Of Total]
  AS 
 IIF(([Measures].[Patient - Age in Years - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
      null,
      [Measures].[Patient - Age in Years - Geometric Average]/([Measures].[Patient - Age in Years - Geometric Average], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Patient';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Patient - Age in Years - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[Patient - Age in Years - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Patient - Age in Years - Sum]/([Measures].[Patient - Age in Years - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Patient';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Patient - Age in Years Log - Sum - Percentage Of Total]
+ AS 
+IIF(([Measures].[Patient - Age in Years Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Patient - Age in Years Log - Sum]/([Measures].[Patient - Age in Years Log - Sum], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
     )
 ,VISIBLE=1, DISPLAY_FOLDER='Percentage Of Total', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Patient';
 
