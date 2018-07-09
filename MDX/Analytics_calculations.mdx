@@ -1,0 +1,318 @@
+/*
+The CALCULATE command controls the aggregation of leaf cells in the cube.
+If the CALCULATE command is deleted or modified, the data within the cube is affected.
+You should edit this command only if you manually specify how the cube is aggregated.
+*/
+CALCULATE;                                                                      
+
+                                                                 
+CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Age on Admission in Years - Arithmetic Average]
+ AS IIF ([Measures].[Inpatient - Age on Admission in Years - Count] = 0 , NULL,ROUND([Inpatient - Age on Admission in Years - Sum]/[Inpatient - Age on Admission in Years - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';   
+
+                                                              
+CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Age on Admission in Years - Geometric Average]
+ AS IIF ([Measures].[Inpatient - Age on Admission in Years - Count] = 0 , NULL,ROUND(10 ^ ([Inpatient - Age on Admission in Years Log - Sum]/[Inpatient - Age on Admission in Years - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';    
+
+                                                            
+CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Fractional LOS in Hours - Arithmetic Average]
+ AS IIF ([Measures].[Inpatient - Fractional LOS in Hours - Count] = 0 , NULL,ROUND([Inpatient - Fractional LOS in Hours - Sum]/[Inpatient - Fractional LOS in Hours - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';  
+
+                                                              
+CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Fractional LOS in Hours - Geometric Average]
+ AS IIF ([Measures].[Inpatient - Fractional LOS in Hours - Count] = 0 , NULL,ROUND(10 ^ ([Inpatient - Fractional LOS in Hours Log - Sum]/[Inpatient - Fractional LOS in Hours - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';   
+
+                                                             
+CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - LOS in Days - Arithmetic Average]
+ AS IIF ([Measures].[Inpatient - LOS in Days - Count] = 0 , NULL,ROUND([Inpatient - LOS in Days - Sum]/[Inpatient - LOS in Days - Count],2)), 
+FORMAT_STRING = "#,##0.00;-#,##0.00", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';                                         
+
+                       
+CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - LOS in Days - Geometric Average]
+ AS IIF ([Measures].[Inpatient - LOS in Days - Count] = 0 , NULL,ROUND(10 ^ ([Inpatient - LOS in Days Log - Sum]/[Inpatient - LOS in Days - Count]),2)), 
+FORMAT_STRING = "#,##0.00;-#,##0.00", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Inpatient';                                                       
+
+      
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Patient Arrival to Registration Completed in Minutes - Sum]/[ED Visit - Patient Arrival to Registration Completed in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';      
+
+                                       
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Patient Arrival to Registration Completed in Minutes Log - Sum]/[ED Visit - Patient Arrival to Registration Completed in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';     
+
+                                        
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Patient Arrival to Triage Start in Minutes - Sum]/[ED Visit - Patient Arrival to Triage Start in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';     
+
+                                        
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Patient Arrival to Triage Start in Minutes Log - Sum]/[ED Visit - Patient Arrival to Triage Start in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';      
+
+                                       
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Triage Start to Triage Complete in Minutes - Sum]/[ED Visit - Triage Start to Triage Complete in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';      
+
+                                       
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Triage Start to Triage Complete in Minutes Log - Sum]/[ED Visit - Triage Start to Triage Complete in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';     
+
+                                        
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Triage Start to Patient Roomed in Minutes - Sum]/[ED Visit - Triage Start to Patient Roomed in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';      
+
+                                       
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Triage Start to Patient Roomed in Minutes Log - Sum]/[ED Visit - Triage Start to Patient Roomed in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';    
+
+                                         
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Bed Request to Patient Roomed in Minutes - Sum]/[ED Visit - Bed Request to Patient Roomed in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';      
+
+                                      
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Bed Request to Patient Roomed in Minutes Log - Sum]/[ED Visit - Bed Request to Patient Roomed in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';    
+
+                                        
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Triage Complete to Patient Roomed in Minutes - Sum]/[ED Visit - Triage Complete to Patient Roomed in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Triage Complete to Patient Roomed in Minutes Log - Sum]/[ED Visit - Triage Complete to Patient Roomed in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Sum]/[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Triage Complete to Attending Provider Assigned in Minutes Log - Sum]/[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Sum]/[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Patient Roomed to Attending Provider Assigned in Minutes Log - Sum]/[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Attending Provider Assigned to Disposition in Minutes - Sum]/[ED Visit - Attending Provider Assigned to Disposition in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geomotric Average]
+ AS IIF ([Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Attending Provider Assigned to Disposition in Minutes Log - Sum]/[ED Visit - Attending Provider Assigned to Disposition in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Disposition to ED Discharge in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Disposition to ED Discharge in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Disposition to ED Discharge in Minutes - Sum]/[ED Visit - Disposition to ED Discharge in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Disposition to ED Discharge in Minutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Disposition to ED Discharge in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Disposition to ED Discharge in Minutes Log - Sum]/[ED Visit - Disposition to ED Discharge in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Advance Directive Printed to ED Discharge in Minutes - Sum]/[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Advance Directive Printedc to ED Discharge in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Advance Directive Printed to ED Discharge in Minutes Log - Sum]/[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Patient Arrival to Lab Ordered in Minutes - Sum]/[ED Visit - Patient Arrival to Lab Ordered in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Patient Arrival to Lab Ordered in Minutes Log - Sum]/[ED Visit - Patient Arrival to Lab Ordered in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Count] = 0 , NULL,ROUND([ED Visit - Lab Ordered to Lab Completed in Miinutes - Sum]/[ED Visit - Lab Ordered to Lab Completed in Miinutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Lab Ordered to Lab Completed in Miinutes Log - Sum]/[ED Visit - Lab Ordered to Lab Completed in Miinutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Lab Completed to Provider Reviewed in Minutes - Sum]/[ED Visit - Lab Completed to Provider Reviewed in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Lab Completed to Provider Reviewed in Minutes Log - Sum]/[ED Visit - Lab Completed to Provider Reviewed in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Patient Arrival to Image Ordered in Minutes - Sum]/[ED Visit - Patient Arrival to Image Ordered in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Patient Arrival to Image Ordered in Minutes Log - Sum]/[ED Visit - Patient Arrival to Image Ordered in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Image Ordered to Image Completed in Minutes - Sum]/[ED Visit - Image Ordered to Image Completed in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Image Ordered to Image Completed in Minutes Log - Sum]/[ED Visit - Image Ordered to Image Completed in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Image Completed to Provider Reviewed in Minutes - Sum]/[ED Visit - Image Completed to Provider Reviewed in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Image Completed to Provider Reviewed in Minutes Log - Sum]/[ED Visit - Image Completed to Provider Reviewed in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Count] = 0 , NULL,ROUND([ED Visit - Patient Arrival to Discharge in Minutes - Sum]/[ED Visit - Patient Arrival to Discharge in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Patient Arrival to Discharge in Minutes Log - Sum]/[ED Visit - Patient Arrival to Discharge in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Glasgow Coma Scale - Arithmetic Average]
+ AS IIF ([Measures].[ED Visit - Glasgow Coma Scale - Count] = 0 , NULL,ROUND([ED Visit - Glasgow Coma Scale - Sum]/[ED Visit - Glasgow Coma Scale - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[ED Visit - Glasgow Coma Scale - Geometric Average]
+ AS IIF ([Measures].[ED Visit - Glasgow Coma Scale - Count] = 0 , NULL,ROUND(10 ^ ([ED Visit - Glasgow Coma Scale Log - Sum]/[ED Visit - Glasgow Coma Scale - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'ED Visit';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order Quantity - Sum]
+ AS NULL , 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Order';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order Quantity - Arithmetic Average]
+ AS NULL , 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Medication Order';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Outpatient - Appointment Length in Minutes - Arithmetic Average]
+ AS IIF ([Measures].[Outpatient - Appointment Length in Minutes - Count] = 0 , NULL,ROUND([Outpatient - Appointment Length in Minutes - Sum]/[Outpatient - Appointment Length in Minutes - Count],0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Outpatient';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Outpatient - Appointment Length in Minutes - Geometric Average]
+ AS IIF ([Measures].[Outpatient - Appointment Length in Minutes - Count] = 0 , NULL,ROUND(10 ^ ([Outpatient - Appointment Length in Minutes Log - Sum]/[Outpatient - Appointment Length in Minutes - Count]),0)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Outpatient';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Patient - Age in Years - Arithmetic Average]
+ AS IIF ([Measures].[Patient - Age in Years - Count] = 0 , NULL,ROUND([Patient - Age in Years - Sum]/[Patient - Age in Years - Count],1)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Patient';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Patient - Age in Years - Geometric Average]
+ AS IIF ([Measures].[Patient - Age in Years - Count] = 0 , NULL,ROUND(10 ^ ([Measures].[Patient - Age in Years Log - Sum]/ [Measures].[Patient - Age in Years - Count]),1)), 
+FORMAT_STRING = "#,##0;-#,##0", 
+VISIBLE = 1 ,  ASSOCIATED_MEASURE_GROUP = 'Patient';
+
+
+SCOPE(DESCENDANTS([Medication].[Medication - Name],,AFTER));                    
+ [Measures].[Medication Order Quantity - Sum]  = ([Measures].[Medication Order Quantity - Total]);                    
+END SCOPE;                     
+
+
+SCOPE(DESCENDANTS([Medication].[Medication - Name],,AFTER));                    
+ [Measures].[Medication Order Quantity - Arithmetic Average]  = IIF ([Measures].[Medication Order Quantity - Count]=0,NULL,([Measures].[Medication Order Quantity - Sum]/[Medication Order Quantity - Count]));                    
+END SCOPE; 
+
+
+
+
