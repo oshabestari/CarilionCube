@@ -1,0 +1,59 @@
+
+create static set Analytics.CompletedEncounter as
+{
+	(
+		[Encounter].[Encounter - Base Class].&[1],				-- EMERGENCY
+		except(
+			[ED Visit].[ED Visit - Disposition].children,
+			{
+				 [ED Visit].[ED Visit - Disposition].&[1]		--ADMIT
+				,[ED Visit].[ED Visit - Disposition].&[2]		--AMA
+				,[ED Visit].[ED Visit - Disposition].&[3]		--DECEASED
+				,[ED Visit].[ED Visit - Disposition].&[4]		--DISCHARGED
+				,[ED Visit].[ED Visit - Disposition].&[5]		--ED OBSERVATION
+				,[ED Visit].[ED Visit - Disposition].&[6]		--LWBS AFTER TRIAGE
+				,[ED Visit].[ED Visit - Disposition].&[7]		--LWBS BEFORE TRIAGE
+				,[ED Visit].[ED Visit - Disposition].&[8]		--SEND TO L&D
+				,[ED Visit].[ED Visit - Disposition].&[9]		--TRANSFER TO ANOTHER FACILITY
+				,[ED Visit].[ED Visit - Disposition].&[10]		--Unknown
+			}
+		),
+		[Date - Inpatient - Discharge].[Date].[All],
+		[Outpatient].[Outpatient - Appointment Status].[All]
+	),
+	(
+		[Encounter].[Encounter - Base Class].&[2],				-- INPATIENT
+		[ED Visit].[ED Visit - Disposition].[All],
+		except([Date - Inpatient - Discharge].[Date].children, {[Date - Inpatient - Discharge].[Date].UNKNOWNMEMBER}),
+		[Outpatient].[Outpatient - Appointment Status].[All]
+	),
+	(
+		[Encounter].[Encounter - Base Class].&[3],				-- OTHER
+		[ED Visit].[ED Visit - Disposition].[All],
+		[Date - Inpatient - Discharge].[Date].[All],
+		[Outpatient].[Outpatient - Appointment Status].[All]
+	),
+	(
+		[Encounter].[Encounter - Base Class].&[4],				-- OUTPATIENT
+		[ED Visit].[ED Visit - Disposition].[All],
+		[Date - Inpatient - Discharge].[Date].[All],
+		[Outpatient].[Outpatient - Appointment Status].&[1]		-- COMPLETED
+	)
+}
+
+
+select
+{ 
+[Measures].[Medication Order - Count]
+} on 0
+from
+	(select CompletedEncounter on 0 from Analytics)
+
+
+select
+{ 
+[Measures].[Medication Order - Count]
+} on 0
+from
+	Analytics
+

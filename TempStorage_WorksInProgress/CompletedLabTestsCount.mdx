@@ -1,0 +1,86 @@
+
+
+
+with member
+[Measures].[Lab Order Quantity Per Encounter] AS 
+iif(
+	(
+		[Measures].[Lab Order - Encounter - Unique Count], 
+		(
+			[Provider - Lab Order - Authorizing].[Provider - UserID].CurrentMember
+			,[Date - Lab Order - Ordered].[Fiscal Year - Quarter - Month - Date].CurrentMember 
+		)
+	) = 0,
+	null,
+	[Measures].[Lab Order - Count] / 
+	( 
+		[Measures].[Lab Order - Encounter - Unique Count], 
+		(
+			[Provider - Lab Order - Authorizing].[Provider - UserID].CurrentMember
+			,[Date - Lab Order - Ordered].[Fiscal Year - Quarter - Month - Date].CurrentMember 
+		)
+	)
+)
+
+member [Measures].[Growth Lab Order Quantity Per Encounter from Same Period Previous Year] AS 
+IIF ((PARALLELPERIOD([Date - Lab Order - Ordered].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Lab Order - Ordered].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Lab Order Quantity Per Encounter])) = 0  , NULL,
+    IIF ([Measures].[Lab Order Quantity Per Encounter] = 0, NULL,
+            (
+            [Measures].[Lab Order Quantity Per Encounter] - 
+            (PARALLELPERIOD([Date - Lab Order - Ordered].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Lab Order - Ordered].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Lab Order Quantity Per Encounter])
+                            )
+            )
+            / (PARALLELPERIOD([Date - Lab Order - Ordered].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Lab Order - Ordered].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Lab Order Quantity Per Encounter])
+            )
+        )
+)
+
+MEMBER [Measures].[Lab Order Percentage Of Total]
+ AS 
+IIF(
+	(
+		[Measures].[Lab Order Quantity Per Encounter], 
+		(
+			[Provider - Lab Order - Authorizing].[Provider - UserID].CurrentMember.Parent,
+			[Date - Lab Order - Ordered].[Date - Month].CurrentMember.Parent
+		)
+	) = 0, 
+	null,
+	[Measures].[Lab Order Quantity Per Encounter]
+	/(
+		[Measures].[Lab Order Quantity Per Encounter], 
+		(
+			[Provider - Lab Order - Authorizing].[Provider - UserID].CurrentMember.Parent,
+			[Date - Lab Order - Ordered].[Date - Month].CurrentMember.Parent
+		)
+	)
+)
+
+
+SELECT 
+{
+[Measures].[Lab Order - Count]
+,[Measures].[Lab Order - Encounter - Unique Count]
+,[Measures].[Lab Order Quantity Per Encounter]
+,[Measures].[Growth Lab Order Quantity Per Encounter from Same Period Previous Year]
+,[Measures].[Lab Order Percentage Of Total]
+} on 0
+, non empty 
+{
+(
+[Provider - Lab Order - Authorizing].[Provider - UserID].children
+,[Date - Lab Order - Ordered].[Date - Month].children
+)
+} ON 1
+FROM 
+	[Analytics] 
+WHERE 
+(
+-- Need completed encounter filter
+-- Need opoid filter
+[Lab Order].[Lab Order - Verification Status].&[2], -- COMPLETED
+-- Automatically get current fiscal
+[Date - Lab Order - Ordered].[Date - Fiscal Year].&[2018]
+)
+
+

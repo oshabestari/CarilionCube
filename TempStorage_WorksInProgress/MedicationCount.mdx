@@ -1,0 +1,85 @@
+
+
+
+with member
+[Measures].[Medication Order Quantity Per Encounter] AS 
+iif(
+	(
+		[Measures].[Medication Order - Encounter - Unique Count], 
+		(
+			[Provider - Medication Order - Authorized By].[Provider - UserID].CurrentMember
+			,[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].CurrentMember 
+		)
+	) = 0,
+	null,
+	[Measures].[Medication Order Quantity - Total] / 
+	( 
+		[Measures].[Medication Order - Encounter - Unique Count], 
+		(
+			[Provider - Medication Order - Authorized By].[Provider - UserID].CurrentMember
+			,[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].CurrentMember 
+		)
+	)
+)
+
+member [Measures].[Growth Medication Order Quantity Per Encounter from Same Period Previous Year] AS 
+IIF ((PARALLELPERIOD([Date - Medication Order].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Medication Order].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Medication Order Quantity Per Encounter])) = 0  , NULL,
+    IIF ([Measures].[Medication Order Quantity Per Encounter] = 0, NULL,
+            (
+            [Measures].[Medication Order Quantity Per Encounter] - 
+            (PARALLELPERIOD([Date - Medication Order].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Medication Order].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Medication Order Quantity Per Encounter])
+                            )
+            )
+            / (PARALLELPERIOD([Date - Medication Order].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Medication Order].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Medication Order Quantity Per Encounter])
+            )
+        )
+) 
+
+MEMBER [Measures].[Medication Order Percentage Of Total]
+ AS 
+IIF(
+	(
+		[Measures].[Medication Order Quantity Per Encounter], 
+		(
+			[Provider - Medication Order - Authorized By].[Provider - UserID].CurrentMember.Parent,
+			[Date - Medication Order].[Date - Month].CurrentMember.Parent
+		)
+	) = 0, 
+	null,
+	[Measures].[Medication Order Quantity Per Encounter]
+	/(
+		[Measures].[Medication Order Quantity Per Encounter], 
+		(
+			[Provider - Medication Order - Authorized By].[Provider - UserID].CurrentMember.Parent,
+			[Date - Medication Order].[Date - Month].CurrentMember.Parent
+		)
+	)
+)
+
+SELECT 
+{
+[Measures].[Medication Order Quantity - Total]
+,[Measures].[Medication Order - Encounter - Unique Count]
+,[Measures].[Medication Order Quantity Per Encounter]
+,[Measures].[Medication Order Quantity - Total - Percentage Of Total]
+,[Measures].[Medication Order Percentage Of Total]
+} on 0
+, non empty 
+{
+(
+[Provider - Medication Order - Authorized By].[Provider - UserID].children
+,[Date - Medication Order].[Date - Month].children
+)
+} ON 1
+FROM 
+	[Analytics] 
+WHERE 
+(
+-- Need completed encounter filter
+-- Need opoid filter
+[Medication - Order].[Medication Order - Class].[All],
+-- Automatically get current fiscal
+[Date - Medication Order].[Date - Fiscal Year].&[2018]
+)
+
+
