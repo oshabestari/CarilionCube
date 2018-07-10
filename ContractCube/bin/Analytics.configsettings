@@ -84,9 +84,6 @@
         <ID>MedicationOrder</ID>
       </Dimension>
       <Dimension>
-        <ID>Medication</ID>
-      </Dimension>
-      <Dimension>
         <ID>Outpatient</ID>
       </Dimension>
       <Dimension>
@@ -161,21 +158,11 @@
       <Dimension>
         <ID>User Dim</ID>
       </Dimension>
+      <Dimension>
+        <ID>Medication</ID>
+      </Dimension>
     </Dimensions>
     <Cubes>
-      <Cube>
-        <ID>Census</ID>
-        <MeasureGroups>
-          <MeasureGroup>
-            <ID>Census Measure Fact</ID>
-            <Partitions>
-              <Partition>
-                <ID>Census Measure Fact</ID>
-              </Partition>
-            </Partitions>
-          </MeasureGroup>
-        </MeasureGroups>
-      </Cube>
       <Cube>
         <ID>Analytics</ID>
         <MeasureGroups>
@@ -480,6 +467,19 @@
             <Partitions>
               <Partition>
                 <ID>Surgical Supply Use Fact</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
+        </MeasureGroups>
+      </Cube>
+      <Cube>
+        <ID>Census</ID>
+        <MeasureGroups>
+          <MeasureGroup>
+            <ID>Census Measure Fact</ID>
+            <Partitions>
+              <Partition>
+                <ID>Census Measure Fact</ID>
               </Partition>
             </Partitions>
           </MeasureGroup>
