@@ -143,6 +143,105 @@ procedure by procedure ordered
 surgery by date surgery
 
 
+Write to file
+
+
+Calculated Measures
+	Medication count, percentage of total, growth over past fiscal / number of completed encounters 
+	Completed lab tests count, percentage of total, growth over past fiscal / number of completed encounters
+MDX
+	Opioid Medication count, percentage of total, growth over past fiscal / number of completed encounters by authorized provider by month for the current fiscal year
+	Scanned administered medication and total administered medications that should be scanned by administered user by month for the current fiscal year
+
+
+What is the completed encounter filter?
+	Inpatient = everyone is included or [Date – Inpatient – Discharge] is populated
+	Outpatient = Appointment Status = "Completed"
+		PRESENT
+		CANCELED
+		HH INCOMPLETE
+		NO SHOW
+		ARRIVED
+		LEFT WITHOUT SEEN
+		SCHEDULED
+		Unknown
+	ED - Visit - [ED Visit].[ED Visit - Disposition] Exclude these items:
+		ADMIT
+		AMA
+		DECEASED
+		DISCHARGED
+		ED OBSERVATION
+		LWBS AFTER TRIAGE
+		LWBS BEFORE TRIAGE
+		SEND TO L&D
+		TRANSFER TO ANOTHER FACILITY
+		Unknown
+
+		LEFT BEFORE TREATMENT COMPLETE - include this one
+		
+	Encounter - [Encounter].[Encounter - Base Class] = ""
+		EMERGENCY
+		INPATIENT
+		OTHER
+		OUTPATIENT
+
+ 
+	
+
+Scanned administered medication?
+	[Medication Administration - Medication Scan Performed] = "Yes"
+
+
+total administered medications that should be scanned?
+	[Medication Administration - Medication Scan Required].[Indicator] = "Yes"
+
+Opioid filer? use [Medication - Opioid Substance Indicator]
+	[Medication].[Medication - Drug Enforcement Agency Class] = 
+		C-II HIGH ABUSE POTENTIAL
+		C-III MODERATE DEPENDENCE
+
+		FYI (Do no filter on this)
+			C-IV LIMITED DEPENDENCE
+			C-V LIMITED ABUSE POTENTIAL
+			UNDETERMINABLE
+			Unknown
+			
+	[Medication].[Medication - Generic Name] = 
+		MD.GNRC_NM like ''%TRAMADOL%'' 
+		or MD.GNRC_NM like ''%CODEINE%''
+
+
+
+
+Completed lab tests filter?
+	[Lab Order].[Lab Order - Verification Status] = "completed" 
+		CANCELED
+		COMPLETED
+		RESULTED
+		SENT
+		Unknown
+ 
+	
+
+Will these new measures be hidden or visible? visible
+
+
+
+
+Always include count, unique count
+Percentage of total
+	exclude: “Log – Sum”, Min, Max, Avg
+Percent Rank
+	Include: Sum, Min, Max, Avg 
+	exclude: "log sum"
+% Growth
+	include: "sum"
+	exclude: “Log – Sum”, Min, Max, Avg
+
+
+
+
+
 
 
 
