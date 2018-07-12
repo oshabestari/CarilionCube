@@ -85,7 +85,8 @@ WHERE
 -- Need opoid filter
 --[Medication].[Medication - Opioid Substance Indicator].&[Yes],
 -- Automatically get current fiscal
-[Date - Medication Order].[Date - Fiscal Year].&[2018]
+--[Date - Medication Order].[Date - Fiscal Year].&[2018]
+StrToMember("[Date - Medication Order].[Date - Fiscal Year].&["+Format(year(now()) + iif(month(now()) >= 10, 1, 0), "####")+"]")
 )
 
 

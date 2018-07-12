@@ -80,7 +80,8 @@ WHERE
 -- Need opoid filter
 [Lab Order].[Lab Order - Verification Status].&[2], -- COMPLETED
 -- Automatically get current fiscal
-[Date - Lab Order - Ordered].[Date - Fiscal Year].&[2018]
+--[Date - Lab Order - Ordered].[Date - Fiscal Year].&[2018]
+StrToMember("[Date - Lab Order - Ordered].[Date - Fiscal Year].&["+Format(year(now()) + iif(month(now()) >= 10, 1, 0), "####")+"]")
 )
 
 

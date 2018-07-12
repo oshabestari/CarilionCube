@@ -36,7 +36,7 @@ foreach ($ScriptThis in $ServerObjects | where {!($_.IsSystemObject)})
     $scriptr.Options.AllowSystemObjects = $False
     $scriptr.Options.ClusteredIndexes = $True
     $scriptr.Options.DriAll = $True
-    $scriptr.Options.ScriptDrops = $False
+    $scriptr.Options.ScriptDrops = $True
     $scriptr.Options.IncludeHeaders = $False
     $scriptr.Options.ToFileOnly = $True
     $scriptr.Options.Indexes = $True

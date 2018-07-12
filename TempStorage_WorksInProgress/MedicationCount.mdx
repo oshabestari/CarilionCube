@@ -1,26 +1,48 @@
 
 
 
-with member
-[Measures].[Medication Order Quantity Per Encounter] AS 
-iif(
-	(
-		[Measures].[Medication Order - Encounter - Unique Count], 
-		(
-			[Provider - Medication Order - Authorized By].[Provider - UserID].CurrentMember
-			,[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].CurrentMember 
-		)
-	) = 0,
-	null,
-	[Measures].[Medication Order Quantity - Total] / 
-	( 
-		[Measures].[Medication Order - Encounter - Unique Count], 
-		(
-			[Provider - Medication Order - Authorized By].[Provider - UserID].CurrentMember
-			,[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].CurrentMember 
-		)
+with 
+
+member [Measures].[Medication Order Quantity Per Encounter] AS 
+//iif(
+//	(
+//		[Measures].[Medication Order - Encounter - Unique Count], 
+//		(
+//			[Provider - Medication Order - Authorized By].[Provider - UserID].CurrentMember
+//			,[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].CurrentMember 
+//		)
+//	) = 0,
+//	null,
+//	[Measures].[Medication Order Quantity - Total] / 
+//	(
+//		//descendants([Provider - Medication Order - Authorized By].[Provider - UserID].[All]
+//		descendants([Provider - Medication Order - Authorized By].[Provider - UserID],, SELF_AND_AFTER)
+//		//,[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].[All] 
+//	)
+//	,
+//)
+//	sum( 
+//		{(
+//			[Provider - Medication Order - Authorized By].[Provider - UserID].currentmember
+//			,[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].currentmember 
+//			,[Department].[Department - Name].[All]
+//
+//			//descendants([Provider - Medication Order - Authorized By].[Provider - UserID].[All],, AFTER)
+//			//,descendants([Date - Medication Order].[Fiscal Year - Quarter - Month - Date].hierarchy,, AFTER)
+//		)},
+//		[Measures].[Medication Order - Encounter - Unique Count]
+//	)
+	filter( 
+		//(
+			existing([Provider - Medication Order - Authorized By].[Provider - UserID].[Provider - UserID])
+			//,[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].Children
+			//,[Department].[Department - Name].[All]
+
+			//descendants([Provider - Medication Order - Authorized By].[Provider - UserID].[All],, AFTER)
+			//,descendants([Date - Medication Order].[Fiscal Year - Quarter - Month - Date].hierarchy,, AFTER)
+		//)
+		,[Measures].[Medication Order - Encounter - Unique Count] > 0
 	)
-)
 
 member [Measures].[Growth Medication Order Quantity Per Encounter from Same Period Previous Year] AS 
 IIF ((PARALLELPERIOD([Date - Medication Order].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Medication Order].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Medication Order Quantity Per Encounter])) = 0  , NULL,
@@ -61,25 +83,28 @@ SELECT
 [Measures].[Medication Order Quantity - Total]
 ,[Measures].[Medication Order - Encounter - Unique Count]
 ,[Measures].[Medication Order Quantity Per Encounter]
-,[Measures].[Medication Order Quantity - Total - Percentage Of Total]
-,[Measures].[Medication Order Percentage Of Total]
+//,[Measures].[Medication Order Quantity - Total - Percentage Of Total]
+//,[Measures].[Medication Order Percentage Of Total]
 } on 0
 , non empty 
 {
 (
-[Provider - Medication Order - Authorized By].[Provider - UserID].children
-,[Date - Medication Order].[Date - Month].children
+		//descendants([Provider - Medication Order - Authorized By].[Provider - UserID].hierarchy,, AFTER)
+
+[Provider - Medication Order - Authorized By].[Provider - UserID].&[cklenovo\SSAS_USER03]
+,[Date - Medication Order].[Date - Month].&[201406]
+,[Department].[Department - Name].children
 )
 } ON 1
 FROM 
 	[Analytics] 
-WHERE 
-(
--- Need completed encounter filter
--- Need opoid filter
-[Medication - Order].[Medication Order - Class].[All],
--- Automatically get current fiscal
-[Date - Medication Order].[Date - Fiscal Year].&[2018]
-)
-
-
+//WHERE 
+//(
+//-- Need completed encounter filter
+//-- Need opoid filter
+////[Medication - Order].[Medication Order - Class].[All],
+//-- Automatically get current fiscal
+//[Date - Medication Order].[Date - Fiscal Year].&[2018]
+//)
+//
+//
