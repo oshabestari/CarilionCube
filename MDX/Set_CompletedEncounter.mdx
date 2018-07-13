@@ -1,46 +1,45 @@
 
-CREATE SET CURRENTCUBE.[CompletedEncounter]
- AS {
+create static set Analytics.CompletedEncounter as
+{
 	(
-		[Encounter].[Encounter - Base Class].&[1],				-- EMERGENCY
+		[Encounter].[Encounter - Base Class].&[3],				-- EMERGENCY
 		except(
 			[ED Visit].[ED Visit - Disposition].children,
 			{
-				 [ED Visit].[ED Visit - Disposition].&[1]		--ADMIT
-				,[ED Visit].[ED Visit - Disposition].&[2]		--AMA
-				,[ED Visit].[ED Visit - Disposition].&[3]		--DECEASED
-				,[ED Visit].[ED Visit - Disposition].&[4]		--DISCHARGED
-				,[ED Visit].[ED Visit - Disposition].&[5]		--ED OBSERVATION
-				,[ED Visit].[ED Visit - Disposition].&[6]		--LWBS AFTER TRIAGE
-				,[ED Visit].[ED Visit - Disposition].&[7]		--LWBS BEFORE TRIAGE
-				,[ED Visit].[ED Visit - Disposition].&[8]		--SEND TO L&D
-				,[ED Visit].[ED Visit - Disposition].&[9]		--TRANSFER TO ANOTHER FACILITY
-				,[ED Visit].[ED Visit - Disposition].&[10]		--Unknown
+				 [ED Visit].[ED Visit - Disposition].&[3]					--ADMIT
+				,[ED Visit].[ED Visit - Disposition].&[4]					--AMA
+				,[ED Visit].[ED Visit - Disposition].&[8]					--DECEASED
+				,[ED Visit].[ED Visit - Disposition].&[1]					--DISCHARGED
+				,[ED Visit].[ED Visit - Disposition].&[11]					--ED OBSERVATION
+				,[ED Visit].[ED Visit - Disposition].&[7]					--LWBS AFTER TRIAGE
+				,[ED Visit].[ED Visit - Disposition].&[6]					--LWBS BEFORE TRIAGE
+				,[ED Visit].[ED Visit - Disposition].&[9]					--SEND TO L&D
+				,[ED Visit].[ED Visit - Disposition].&[2]					--TRANSFER TO ANOTHER FACILITY
+				,[ED Visit].[ED Visit - Disposition].[All].UNKNOWNMEMBER	--Unknown
 			}
 		),
 		[Date - Inpatient - Discharge].[Date].[All],
 		[Outpatient].[Outpatient - Appointment Status].[All]
 	),
 	(
-		[Encounter].[Encounter - Base Class].&[2],				-- INPATIENT
+		[Encounter].[Encounter - Base Class].&[1],				-- INPATIENT
 		[ED Visit].[ED Visit - Disposition].[All],
 		except([Date - Inpatient - Discharge].[Date].children, {[Date - Inpatient - Discharge].[Date].UNKNOWNMEMBER}),
 		[Outpatient].[Outpatient - Appointment Status].[All]
 	),
 	(
-		[Encounter].[Encounter - Base Class].&[3],				-- OTHER
+		[Encounter].[Encounter - Base Class].&[4],				-- OTHER
 		[ED Visit].[ED Visit - Disposition].[All],
 		[Date - Inpatient - Discharge].[Date].[All],
 		[Outpatient].[Outpatient - Appointment Status].[All]
 	),
 	(
-		[Encounter].[Encounter - Base Class].&[4],				-- OUTPATIENT
+		[Encounter].[Encounter - Base Class].&[2],				-- OUTPATIENT
 		[ED Visit].[ED Visit - Disposition].[All],
 		[Date - Inpatient - Discharge].[Date].[All],
-		[Outpatient].[Outpatient - Appointment Status].&[1]		-- COMPLETED
+		[Outpatient].[Outpatient - Appointment Status].&[1260906]		-- COMPLETED
 	)
-} ;    
-
+}
 
 
 select
@@ -57,6 +56,3 @@ select
 } on 0
 from
 	Analytics
-
-
-
