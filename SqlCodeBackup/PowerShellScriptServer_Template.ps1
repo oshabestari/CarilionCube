@@ -13,7 +13,7 @@ $SMOserver = New-Object -TypeName Microsoft.SqlServer.Management.Smo.Server -Arg
 $databases = $SMOserver.Databases
 $BaseSavePath = "C:\_car\CarilionCube\SqlCodeBackup\PowerShell_" + $sql_server + "\"
 ### $BaseSavePath = "C:\Backup\PowerShell_Results\"
-$dbs = "carilion_dw"
+$dbs = "CubeMetaData"
 
 
 #Remove existing objects.

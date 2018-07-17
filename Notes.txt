@@ -136,7 +136,7 @@ ed visit - arrival date
 encounter - encounter date
 inpatient - discharge
 lab component/lab order by date lab order - ordered
-medication adminstration by performed date
+medication administration by performed date
 medication order - date medication order
 outpatient by encounter date
 procedure by procedure ordered
