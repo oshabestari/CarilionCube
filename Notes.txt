@@ -177,7 +177,7 @@ What is the completed encounter filter?
 		TRANSFER TO ANOTHER FACILITY
 		Unknown
 
-		LEFT BEFORE TREATMENT COMPLETE - include this one
+		LEFT BEFORE TREATMENT COMPLETE - &[10] - include this one
 		
 	Encounter - [Encounter].[Encounter - Base Class] = ""
 		EMERGENCY
@@ -240,6 +240,11 @@ Percent Rank
 
 
 
+Rank - exclude measure == null
+percent 4 decimal places
+measures
+vs load 
+write other measures to programatically 
 
 
 
