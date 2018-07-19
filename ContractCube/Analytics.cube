@@ -8,7 +8,7 @@
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="466" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="55059" scrolltop="75450" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="10901" y="15558" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="466" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="55059" scrolltop="75450" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="31962" y="21273" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
               <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
             </font>
@@ -9123,7 +9123,7 @@
     </Dimension>
     <Dimension dwd:design-time-name="e725fe88-51e7-421d-968c-48cc0fc0c359">
       <ID>MDCTN SCANNED AT ADMN IND</ID>
-      <Name>Medication Administration - Medication Scan Performed</Name>
+      <Name>Medication - Administration - Medication Scan Performed</Name>
       <DimensionID>Binary</DimensionID>
       <Attributes>
         <Attribute dwd:design-time-name="334d0a83-19b8-4a46-9ee1-ade1fd3c6f1c">
@@ -9133,7 +9133,7 @@
     </Dimension>
     <Dimension dwd:design-time-name="317785b6-7c76-4b9e-b079-ef99f8c905bb">
       <ID>MDCTN REQ SCAN AT ADMN IND</ID>
-      <Name>Medication Administration - Medication Scan Required</Name>
+      <Name>Medication - Administration - Medication Scan Required</Name>
       <DimensionID>Binary</DimensionID>
       <Attributes>
         <Attribute dwd:design-time-name="495c0123-2fa2-474e-a9e3-09ead31443f1">
@@ -9143,7 +9143,7 @@
     </Dimension>
     <Dimension dwd:design-time-name="9075b6b5-27c7-4507-a095-877855fa957a">
       <ID>PTNT SCANNED AT ADMN IND</ID>
-      <Name>Medication Administration - Patient Scan Performed</Name>
+      <Name>Medication - Administration - Patient Scan Performed</Name>
       <DimensionID>Binary</DimensionID>
       <Attributes>
         <Attribute dwd:design-time-name="0ca32985-9e97-4020-9790-5a3613eaa3fe">
@@ -9153,7 +9153,7 @@
     </Dimension>
     <Dimension dwd:design-time-name="02bfbe4e-6596-4bc0-a0e2-93e058a3d05f">
       <ID>PTNT REQ SCAN AT ADMN IND</ID>
-      <Name>Medication Administration - Patient Scan Required</Name>
+      <Name>Medication - Administration - Patient Scan Required</Name>
       <DimensionID>Binary</DimensionID>
       <Attributes>
         <Attribute dwd:design-time-name="4fb2ed48-4894-4dab-b05b-5a4093018bf9">
@@ -28045,49 +28045,6 @@ You should edit this command only if you manually specify how the cube is aggreg
 */
 CALCULATE;                                                                        
 
-
-CREATE SET CURRENTCUBE.[Completed Encounter]
- AS {
-	(
-		[Encounter].[Encounter - Base Class].&amp;[1],				-- EMERGENCY
-		except(
-			[ED Visit].[ED Visit - Disposition].children,
-			{
-				 [ED Visit].[ED Visit - Disposition].&amp;[1]		--ADMIT
-				,[ED Visit].[ED Visit - Disposition].&amp;[2]		--AMA
-				,[ED Visit].[ED Visit - Disposition].&amp;[3]		--DECEASED
-				,[ED Visit].[ED Visit - Disposition].&amp;[4]		--DISCHARGED
-				,[ED Visit].[ED Visit - Disposition].&amp;[5]		--ED OBSERVATION
-				,[ED Visit].[ED Visit - Disposition].&amp;[6]		--LWBS AFTER TRIAGE
-				,[ED Visit].[ED Visit - Disposition].&amp;[7]		--LWBS BEFORE TRIAGE
-				,[ED Visit].[ED Visit - Disposition].&amp;[8]		--SEND TO L&amp;D
-				,[ED Visit].[ED Visit - Disposition].&amp;[9]		--TRANSFER TO ANOTHER FACILITY
-				,[ED Visit].[ED Visit - Disposition].&amp;[10]		--Unknown
-			}
-		),
-		[Date - Inpatient - Discharge].[Date].[All],
-		[Outpatient].[Outpatient - Appointment Status].[All]
-	),
-	(
-		[Encounter].[Encounter - Base Class].&amp;[2],				-- INPATIENT
-		[ED Visit].[ED Visit - Disposition].[All],
-		except([Date - Inpatient - Discharge].[Date].children, {[Date - Inpatient - Discharge].[Date].UNKNOWNMEMBER}),
-		[Outpatient].[Outpatient - Appointment Status].[All]
-	),
-	(
-		[Encounter].[Encounter - Base Class].&amp;[3],				-- OTHER
-		[ED Visit].[ED Visit - Disposition].[All],
-		[Date - Inpatient - Discharge].[Date].[All],
-		[Outpatient].[Outpatient - Appointment Status].[All]
-	),
-	(
-		[Encounter].[Encounter - Base Class].&amp;[4],				-- OUTPATIENT
-		[ED Visit].[ED Visit - Disposition].[All],
-		[Date - Inpatient - Discharge].[Date].[All],
-		[Outpatient].[Outpatient - Appointment Status].&amp;[1]		-- COMPLETED
-	)
-}, DISPLAY_FOLDER = 'Static Sets';     
-
                                                                  
 CREATE MEMBER CURRENTCUBE.[Measures].[Inpatient - Age on Admission in Years - Arithmetic Average]
  AS IIF ([Measures].[Inpatient - Age on Admission in Years - Count] = 0 , NULL,ROUND([Inpatient - Age on Admission in Years - Sum]/[Inpatient - Age on Admission in Years - Count],0)), 
@@ -28394,7 +28351,44 @@ END SCOPE;
 
 SCOPE(DESCENDANTS([Medication].[Medication - Name],,AFTER));                      
  [Measures].[Medication Order Quantity - Arithmetic Average]  = IIF ([Measures].[Medication Order Quantity - Count]=0,NULL,([Measures].[Medication Order Quantity - Sum]/[Medication Order Quantity - Count]));                      
-END SCOPE; </Text>
+END SCOPE; 
+
+
+
+create member CURRENTCUBE.[Measures].[Diagnosis - Count - Percent Rank Excluding Null All] as
+IIF(isempty([Measures].[Diagnosis - Count])
+    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Diagnosis - Count])) &lt;= 1
+	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
+	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
+	NULL,
+	1.0 - (
+		RANK(
+			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
+			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
+			[Measures].[Diagnosis - Count]
+		) - 1.0
+	) / (
+		count(
+			(
+				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
+				[Measures].[Diagnosis - Count]
+			)
+		) - 1.0
+	)
+)
+,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Diagnosis';
+
+
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Diagnosis - Encounter - Unique Count - Percentage Of Total]
+ AS 
+IIF(([Measures].[Diagnosis - Encounter - Unique Count], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Diagnosis - Encounter - Unique Count]/([Measures].[Diagnosis - Encounter - Unique Count], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,VISIBLE=1, FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Diagnosis - Encounter';
+</Text>
         </Command>
       </Commands>
     </MdxScript>

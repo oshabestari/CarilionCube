@@ -3,124 +3,6 @@
 
 with 
 member [Measures].[Medication Order - Encounter - Unique Count - No Slice] AS 
-(
-	( 
-		Root([Date - Birth]),
-		Root([Date - Death]),
-		Root([Date - Encounter]),
-		Root([Date - Medication Order - Discontinued]),
-		Root([Date - Medication Order - End]),
-		Root([Date - Medication Order - Start]),
-		[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].currentmember,
-		Root([Date - Registration]),
-		Root([Department]),
-		Root([DRG]),
-		[ED Visit].[ED Visit - Disposition].&[10],				-- LEFT BEFORE TREATMENT COMPLETE
-		[Encounter].[Encounter - Base Class].&[3],				-- EMERGENCY
-		Root([Inpatient]),
-		Root([Medication - Order]),
-		Root([Medication - Pharmacy]),
-		Root([Medication]),
-		Root([Outpatient]),
-		Root([Patient]),
-		[Provider - Medication Order - Authorized By].[Provider - UserID].CurrentMember,
-		Root([Provider - Medication Order - Ordered By]),
-		Root([Provider - Patient - PCP]),
-		Root([Time - Medication Order - Discontinued]),
-		Root([Time - Medication Order - End]),
-		Root([Time - Medication Order - Start]),
-		Root([Time - Medication Order]),
-		Root([User - Medication Order - Ordered By])
-	),
-	( 
-		Root([Date - Birth]),
-		Root([Date - Death]),
-		Root([Date - Encounter]),
-		Root([Date - Medication Order - Discontinued]),
-		Root([Date - Medication Order - End]),
-		Root([Date - Medication Order - Start]),
-		[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].currentmember,
-		Root([Date - Registration]),
-		Root([Department]),
-		Root([DRG]),
-		Root([ED Visit]),
-		[Encounter].[Encounter - Base Class].&[1],				-- INPATIENT
-		Root([Inpatient]),
-		Root([Medication - Order]),
-		Root([Medication - Pharmacy]),
-		Root([Medication]),
-		Root([Outpatient]),
-		Root([Patient]),
-		[Provider - Medication Order - Authorized By].[Provider - UserID].CurrentMember,
-		Root([Provider - Medication Order - Ordered By]),
-		Root([Provider - Patient - PCP]),
-		Root([Time - Medication Order - Discontinued]),
-		Root([Time - Medication Order - End]),
-		Root([Time - Medication Order - Start]),
-		Root([Time - Medication Order]),
-		Root([User - Medication Order - Ordered By])
-	),
-	( 
-		Root([Date - Birth]),
-		Root([Date - Death]),
-		Root([Date - Encounter]),
-		Root([Date - Medication Order - Discontinued]),
-		Root([Date - Medication Order - End]),
-		Root([Date - Medication Order - Start]),
-		[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].currentmember,
-		Root([Date - Registration]),
-		Root([Department]),
-		Root([DRG]),
-		Root([ED Visit]),
-		[Encounter].[Encounter - Base Class].&[4],				-- OTHER
-		Root([Inpatient]),
-		Root([Medication - Order]),
-		Root([Medication - Pharmacy]),
-		Root([Medication]),
-		Root([Outpatient]),
-		Root([Patient]),
-		[Provider - Medication Order - Authorized By].[Provider - UserID].CurrentMember,
-		Root([Provider - Medication Order - Ordered By]),
-		Root([Provider - Patient - PCP]),
-		Root([Time - Medication Order - Discontinued]),
-		Root([Time - Medication Order - End]),
-		Root([Time - Medication Order - Start]),
-		Root([Time - Medication Order]),
-		Root([User - Medication Order - Ordered By])
-	),
-	( 
-		Root([Date - Birth]),
-		Root([Date - Death]),
-		Root([Date - Encounter]),
-		Root([Date - Medication Order - Discontinued]),
-		Root([Date - Medication Order - End]),
-		Root([Date - Medication Order - Start]),
-		[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].currentmember,
-		Root([Date - Registration]),
-		Root([Department]),
-		Root([DRG]),
-		Root([ED Visit]),
-		[Encounter].[Encounter - Base Class].&[2],				-- OUTPATIENT
-		Root([Inpatient]),
-		Root([Medication - Order]),
-		Root([Medication - Pharmacy]),
-		Root([Medication]),
-		[Outpatient].[Outpatient - Appointment Status].&[1260906],		-- COMPLETED
-		Root([Patient]),
-		[Provider - Medication Order - Authorized By].[Provider - UserID].CurrentMember,
-		Root([Provider - Medication Order - Ordered By]),
-		Root([Provider - Patient - PCP]),
-		Root([Time - Medication Order - Discontinued]),
-		Root([Time - Medication Order - End]),
-		Root([Time - Medication Order - Start]),
-		Root([Time - Medication Order]),
-		Root([User - Medication Order - Ordered By])
-	),
-	[Measures].[Medication Order - Encounter - Unique Count]
-)
-
-
-member [Measures].[Medication Order - Encounter - Unique Count - Test] AS 
 ( 
 	(
 		Root([Date - Birth]),
@@ -135,7 +17,7 @@ member [Measures].[Medication Order - Encounter - Unique Count - Test] AS
 		Root([Department]),
 		Root([DRG]),
 		Root([ED Visit]),
-		Root([Encounter]),
+		[Encounter].[Encounter - Completed Indicator].&[Yes],
 		Root([Inpatient]),
 		Root([Medication - Order]),
 		Root([Medication - Pharmacy]),
@@ -199,7 +81,6 @@ SELECT
 {
 [Measures].[Medication Order Quantity - Total]
 ,[Measures].[Medication Order - Encounter - Unique Count]
-,[Measures].[Medication Order - Encounter - Unique Count - Test]
 ,[Measures].[Medication Order - Encounter - Unique Count - No Slice]
 ,[Measures].[Medication Order Quantity Per Unique Encounter]
 //,[Measures].[Medication Order Quantity - Total - Percentage Of Total]

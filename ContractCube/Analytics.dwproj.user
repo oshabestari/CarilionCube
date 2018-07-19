@@ -15,7 +15,7 @@
             <Name>EDW</Name>
           </ConfigurationSetting>
         </UserPasswords>
-        <TargetServer>localhost\ssas_dim</TargetServer>
+        <TargetServer>localhost\sql2016</TargetServer>
         <TargetDatabase>Analytics</TargetDatabase>
         <StartObject>
           <ObjectId></ObjectId>
