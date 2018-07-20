@@ -12250,6 +12250,9 @@
         <Attribute dwd:design-time-name="de0d4db7-a736-438e-b047-7c8654906fea">
           <AttributeID>USER NAME</AttributeID>
         </Attribute>
+        <Attribute dwd:design-time-name="6ffa9af5-dfec-41a1-8306-350ec503305b">
+          <AttributeID>LDAP USR</AttributeID>
+        </Attribute>
       </Attributes>
     </Dimension>
     <Dimension dwd:design-time-name="1654a2f7-40cf-4dfb-8d8c-5549ec27801a">
@@ -12265,6 +12268,9 @@
         </Attribute>
         <Attribute dwd:design-time-name="3af3be29-82b3-4514-a54e-d6f8b61cbf8f">
           <AttributeID>USER NAME</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="f763e629-bf7e-49bd-bf26-74f73d10c65f">
+          <AttributeID>LDAP USR</AttributeID>
         </Attribute>
       </Attributes>
     </Dimension>
@@ -12282,6 +12288,9 @@
         <Attribute dwd:design-time-name="21a63f8b-761d-4f5b-b631-9d56dd3bf061">
           <AttributeID>USER NAME</AttributeID>
         </Attribute>
+        <Attribute dwd:design-time-name="9769e85f-9a8a-4299-a111-cf5dd98e2ffd">
+          <AttributeID>LDAP USR</AttributeID>
+        </Attribute>
       </Attributes>
     </Dimension>
     <Dimension dwd:design-time-name="71b68f57-4cfc-44c4-800c-d40e1a9bd966">
@@ -12297,6 +12306,9 @@
         </Attribute>
         <Attribute dwd:design-time-name="512f45df-4d1a-45b6-8b90-bea5191a8860">
           <AttributeID>USER NAME</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="35f6a605-3499-45da-a5d3-939b3ea51954">
+          <AttributeID>LDAP USR</AttributeID>
         </Attribute>
       </Attributes>
     </Dimension>
@@ -12314,6 +12326,9 @@
         <Attribute dwd:design-time-name="804f3d35-bf56-4ed5-96a3-623542098136">
           <AttributeID>USER NAME</AttributeID>
         </Attribute>
+        <Attribute dwd:design-time-name="9153e960-1f35-4c57-874b-95d52c312f6a">
+          <AttributeID>LDAP USR</AttributeID>
+        </Attribute>
       </Attributes>
     </Dimension>
     <Dimension dwd:design-time-name="b3918548-0c81-4393-bef7-fbabcec51057">
@@ -12329,6 +12344,9 @@
         </Attribute>
         <Attribute dwd:design-time-name="8ecd0f70-5183-44ce-9425-921b91791805">
           <AttributeID>USER NAME</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="d5f59ac4-ea56-4ccd-ba1e-b1e2d72e241a">
+          <AttributeID>LDAP USR</AttributeID>
         </Attribute>
       </Attributes>
     </Dimension>
@@ -12346,6 +12364,9 @@
         <Attribute dwd:design-time-name="80c61df8-3ff4-4f2b-ad37-88ef9065124d">
           <AttributeID>USER NAME</AttributeID>
         </Attribute>
+        <Attribute dwd:design-time-name="5e0b263f-9174-46de-90de-5b085a989202">
+          <AttributeID>LDAP USR</AttributeID>
+        </Attribute>
       </Attributes>
     </Dimension>
     <Dimension dwd:design-time-name="b98011c1-21e9-4e98-91fa-5f7757e3c356">
@@ -12362,6 +12383,9 @@
         <Attribute dwd:design-time-name="09297e03-f21a-40e6-a266-f650e3cedefc">
           <AttributeID>USER NAME</AttributeID>
         </Attribute>
+        <Attribute dwd:design-time-name="efb409ef-c94e-45d2-b9ef-69406c0faa72">
+          <AttributeID>LDAP USR</AttributeID>
+        </Attribute>
       </Attributes>
     </Dimension>
     <Dimension dwd:design-time-name="318bd2a4-92db-49b4-ae8a-23e408c2599e">
@@ -12377,6 +12401,9 @@
         </Attribute>
         <Attribute dwd:design-time-name="cc10ca66-a1ca-4523-9cbc-618708e49d7f">
           <AttributeID>USER NAME</AttributeID>
+        </Attribute>
+        <Attribute dwd:design-time-name="917ba0fb-df6d-40d5-a0c2-83040422e5a0">
+          <AttributeID>LDAP USR</AttributeID>
         </Attribute>
       </Attributes>
     </Dimension>
