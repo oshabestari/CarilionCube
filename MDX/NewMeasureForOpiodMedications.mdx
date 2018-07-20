@@ -32,20 +32,20 @@ CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order - Completed Encounter - U
 	)
 	,[Measures].[Medication Order - Encounter - Unique Count]
 )
-,VISIBLE=1, FORMAT_STRING='#,##0', ASSOCIATED_MEASURE_GROUP='Medication Order';
+,VISIBLE=0, FORMAT_STRING='#,##0', ASSOCIATED_MEASURE_GROUP='Medication Order';
 
 
 CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order - Encounter - Unique Count - Per Completed Encounter] AS 
 iif([Measures].[Medication Order - Completed Encounter - Unique Count - Not Sliceable] = 0,
 	null,
-	[Measures].[Medication Order Quantity - Total] / [Measures].[Medication Order - Completed Encounter - Unique Count - Not Sliceable]
+	[Measures].[Medication Order Quantity - Sum] / [Measures].[Medication Order - Completed Encounter - Unique Count - Not Sliceable]
 )
-,VISIBLE=1, FORMAT_STRING='#,##0.00', ASSOCIATED_MEASURE_GROUP='Medication Order';
+,VISIBLE=0, FORMAT_STRING='#,##0.00', ASSOCIATED_MEASURE_GROUP='Medication Order';
 
 
 CREATE MEMBER CURRENTCUBE.[Measures].[Lab Order - Count - Completed] AS 
 ([Lab Order].[Lab Order - Verification Status].&[2], [Measures].[Lab Order - Count])  -- 2 = COMPLETED
-,VISIBLE=1, FORMAT_STRING='#,##0', ASSOCIATED_MEASURE_GROUP='Lab Order';
+,VISIBLE=0, FORMAT_STRING='#,##0', ASSOCIATED_MEASURE_GROUP='Lab Order';
 
 
 CREATE MEMBER CURRENTCUBE.[Measures].[Lab Order - Count - Completed - Per Completed Encounter] AS 
@@ -53,28 +53,28 @@ iif([Measures].[Medication Order - Completed Encounter - Unique Count - Not Slic
 	null,
 	[Measures].[Lab Order - Count - Completed] / [Measures].[Medication Order - Completed Encounter - Unique Count - Not Sliceable]
 )
-,VISIBLE=1, FORMAT_STRING='#,##0.00', ASSOCIATED_MEASURE_GROUP='Medication Order';
+,VISIBLE=0, FORMAT_STRING='#,##0.00', ASSOCIATED_MEASURE_GROUP='Medication Order';
 
 
-CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order Quantity - Opiod - Total] AS 
+CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order Quantity - Opiod - Sum] AS 
 ([Medication].[Medication - Opioid Indicator].&[YES], [Measures].[Medication Order Quantity - Total])
-,VISIBLE=1, FORMAT_STRING='#,##0', ASSOCIATED_MEASURE_GROUP='Lab Order';
+,VISIBLE=0, FORMAT_STRING='#,##0', ASSOCIATED_MEASURE_GROUP='Lab Order';
 
 
-CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order Quantity - Opiod - Total - Per Completed Encounter] AS 
+CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order Quantity - Opiod - Sum - Per Completed Encounter] AS 
 iif([Measures].[Medication Order - Completed Encounter - Unique Count - Not Sliceable] = 0,
 	null,
-	[Measures].[Medication Order Quantity - Opiod - Total] / [Measures].[Medication Order - Completed Encounter - Unique Count - Not Sliceable]
+	[Measures].[Medication Order Quantity - Opiod - Sum] / [Measures].[Medication Order - Completed Encounter - Unique Count - Not Sliceable]
 )
-,VISIBLE=1, FORMAT_STRING='#,##0.00', ASSOCIATED_MEASURE_GROUP='Medication Order';
+,VISIBLE=0, FORMAT_STRING='#,##0.00', ASSOCIATED_MEASURE_GROUP='Medication Order';
 
 
 CREATE MEMBER CURRENTCUBE.[Measures].[Medication Administration - Count - Medication Scan Performed] AS 
 ([Medication - Administration - Medication Scan Performed].[Indicator].&[1], /* Yes */ [Measures].[Medication Administration - Count])
-,VISIBLE=1, FORMAT_STRING='#,##0.00', ASSOCIATED_MEASURE_GROUP='Medication Order';
+,VISIBLE=0, FORMAT_STRING='#,##0.00', ASSOCIATED_MEASURE_GROUP='Medication Order';
 
 
 CREATE MEMBER CURRENTCUBE.[Measures].[Medication Administration - Count - Medication Scan Required] AS 
 ([Medication - Administration - Medication Scan Required].[Indicator].&[1], /* Yes */ [Measures].[Medication Administration - Count])
-,VISIBLE=1, FORMAT_STRING='#,##0.00', ASSOCIATED_MEASURE_GROUP='Medication Order';
+,VISIBLE=0, FORMAT_STRING='#,##0.00', ASSOCIATED_MEASURE_GROUP='Medication Order';
 
