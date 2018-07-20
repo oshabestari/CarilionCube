@@ -1,0 +1,43 @@
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order - Completed Encounter - Unique Count - Not Sliceable] AS 
+( 
+	(
+		Root([Date - Birth]),
+		Root([Date - Death]),
+		Root([Date - Encounter]),
+		Root([Date - Medication Order - Discontinued]),
+		Root([Date - Medication Order - End]),
+		Root([Date - Medication Order - Start]),
+		[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].currentmember,
+		Root([Date - Registration]),
+		Root([Department]),
+		Root([DRG]),
+		Root([ED Visit]),
+		[Encounter].[Encounter - Completed Indicator].&[Yes],
+		Root([Inpatient]),
+		Root([Medication - Order]),
+		Root([Medication - Pharmacy]),
+		Root([Medication]),
+		Root([Outpatient]),
+		Root([Patient]),
+		[Provider - Medication Order - Authorized By].[Provider - UserID].currentmember,
+		Root([Provider - Medication Order - Ordered By]),
+		Root([Provider - Patient - PCP]),
+		Root([Time - Medication Order - Discontinued]),
+		Root([Time - Medication Order - End]),
+		Root([Time - Medication Order - Start]),
+		Root([Time - Medication Order]),
+		Root([User - Medication Order - Ordered By])
+	)
+	,[Measures].[Medication Order - Encounter - Unique Count]
+)
+,VISIBLE=0, FORMAT_STRING='#,##0', ASSOCIATED_MEASURE_GROUP='Medication Order';
+
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order - Encounter - Unique Count - Per Completed Encounter] AS 
+iif([Measures].[Medication Order - Completed Encounter - Unique Count - Not Sliceable] = 0,
+	null,
+	[Measures].[Medication Order Quantity - Total] / [Measures].[Medication Order - Completed Encounter - Unique Count - Not Sliceable]
+)
+,VISIBLE=0, FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Order';
