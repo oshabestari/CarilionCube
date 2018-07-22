@@ -1,0 +1,24 @@
+
+with
+member [Measures].[test] as
+IIF(Axis([Measures].[AxisNo]).Item(0).Item(0).Hierarchy.CurrentMember.level.ordinal=0,
+	sum(Descendants(Axis([Measures].[AxisNo]).Item(0).Item(0).Hierarchy.CurrentMember,, leaves), [Measures].[Diagnosis - Encounter - Unique Count]),
+	[Measures].[Diagnosis - Encounter - Unique Count]
+)
+select
+{
+[Measures].[test]
+,[Measures].[Diagnosis - Encounter - Unique Count]
+,[Measures].[Diagnosis Encounter Unique Count As Sum]
+} on 0
+,{
+(
+[Department].[Department - City].allmembers
+,[Department].[Department - FCM Region].allmembers
+//[Department].[State - City - Department Hierarchy].[State-Province].MEMBERS
+//,[Department].[State - City - Department Hierarchy].[City].MEMBERS
+//,[Department].[State - City - Department Hierarchy].[Department].MEMBERS
+)
+} on 1
+from
+	Analytics

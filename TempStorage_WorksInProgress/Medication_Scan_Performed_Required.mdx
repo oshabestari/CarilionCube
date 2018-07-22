@@ -1,0 +1,74 @@
+
+
+
+with 
+
+MEMBER [Measures].[Medication Administration - Count - Medication Scan Performed] AS 
+([Medication - Administration - Medication Scan Performed].[Indicator].&[1], /* Yes */ [Measures].[Medication Administration - Count])
+,FORMAT_STRING='#,##0'
+
+
+MEMBER [Measures].[Medication Administration - Count - Medication Scan Required] AS 
+([Medication - Administration - Medication Scan Required].[Indicator].&[1], /* Yes */ [Measures].[Medication Administration - Count])
+,FORMAT_STRING='#,##0'
+
+
+MEMBER [Measures].[Medication Administration - Count - Ratio - Medication Scan Performed - Medication Scan Required] AS 
+iif([Measures].[Medication Administration - Count - Medication Scan Required] = 0,
+null,
+[Measures].[Medication Administration - Count - Medication Scan Performed] / [Measures].[Medication Administration - Count - Medication Scan Required]
+)
+,FORMAT_STRING='Percent'
+
+
+
+member [Measures].[Medication Administration - Count - Percentage Increase from Same Period Previous Year - Date - Medication Order - Ratio - Medication Scan Performed - Medication Scan Required]
+ AS IIF ((PARALLELPERIOD([Date - Medication Order].[Year - Quarter - Month - Date].[Year], 1, [Date - Medication Order].[Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Medication Administration - Count - Ratio - Medication Scan Performed - Medication Scan Required])) = 0  , NULL,
+    IIF ([Measures].[Medication Administration - Count - Ratio - Medication Scan Performed - Medication Scan Required] = 0, NULL,
+            (
+            [Measures].[Medication Administration - Count - Ratio - Medication Scan Performed - Medication Scan Required] - 
+            (PARALLELPERIOD([Date - Medication Order].[Year - Quarter - Month - Date].[Year], 1, [Date - Medication Order].[Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Medication Administration - Count - Ratio - Medication Scan Performed - Medication Scan Required])
+                            )
+            )
+            / (PARALLELPERIOD([Date - Medication Order].[Year - Quarter - Month - Date].[Year], 1, [Date - Medication Order].[Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Medication Administration - Count - Ratio - Medication Scan Performed - Medication Scan Required])
+            )
+        )
+) 
+,FORMAT_STRING='Percent'
+
+
+MEMBER [Measures].[Medication Administration - Count - Ratio - Medication Scan Performed - Medication Scan Required - Percentage Of Total]
+ AS 
+IIF(([Measures].[Medication Administration - Count - Ratio - Medication Scan Performed - Medication Scan Required], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Medication Administration - Count - Ratio - Medication Scan Performed - Medication Scan Required]/([Measures].[Diagnosis - Patient - Unique Count], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING='Percent'
+
+SELECT 
+{
+//[Measures].[Medication Administration - Count]
+[Measures].[Medication Administration - Count - Medication Scan Performed]  
+,[Measures].[Medication Administration - Count - Medication Scan Required]  
+,[Measures].[Medication Administration - Count - Ratio - Medication Scan Performed - Medication Scan Required]  
+,[Measures].[Medication Administration - Count - Percentage Increase from Same Period Previous Year - Date - Medication Order - Ratio - Medication Scan Performed - Medication Scan Required]
+,[Measures].[Medication Administration - Count - Ratio - Medication Scan Performed - Medication Scan Required - Percentage Of Total]
+} on 0
+, non empty 
+{
+(
+[User - Medication Administration - Administered By].[User - UserID].children,
+//[User - Medication Administration - Administered By].[User - UserID].&[carlos],
+[Date - Medication Order].[Date - Month].children
+)
+} ON 1
+FROM 
+	[Analytics] 
+WHERE 
+(
+StrToMember("[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].[Fiscal Year].&["+Format(year(now()) + iif(month(now()) >= 10, 1, 0), "####")+"]")
+)
+
+
+
+
