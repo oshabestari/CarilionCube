@@ -28762,20 +28762,111 @@ CREATE MEMBER CURRENTCUBE.[Measures].[Medication Administration - Count - Medica
 ([Medication - Administration - Medication Scan Required].[Indicator].&amp;[1], /* Yes */ [Measures].[Medication Administration - Count])
 ,VISIBLE=0, FORMAT_STRING='#,##0.00', ASSOCIATED_MEASURE_GROUP='Medication Order';
 
+                                                    
+CREATE MEMBER CURRENTCUBE.[Measures].[Test] as
+IIF(Axis([Measures].[AxisNo]).Item(0).Item(0).Hierarchy.CurrentMember.level.ordinal=0,
+	sum(existing Descendants(Axis([Measures].[AxisNo]).Item(0).Item(0).Hierarchy.CurrentMember,, leaves), [Measures].[Diagnosis - Encounter - Unique Count]),
+	[Measures].[Diagnosis - Encounter - Unique Count]
+)
+,FORMAT_STRING = "#,##0;-#,##0", VISIBLE = 1, ASSOCIATED_MEASURE_GROUP = 'Diagnosis';  
 
-scope([Measures].[Diagnosis Encounter Unique Count As Sum], DESCENDANTS([Department].[State - City - Department Hierarchy],,LEAVES));
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Date - Birth]));
 this = [Measures].[Diagnosis - Encounter - Unique Count];
 end scope;
 
-
-scope([Measures].[Diagnosis Encounter Unique Count As Sum], DESCENDANTS([Department].[Department - City],,LEAVES));
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Date - Death]));
 this = [Measures].[Diagnosis - Encounter - Unique Count];
 end scope;
 
-
-scope([Measures].[Diagnosis Encounter Unique Count As Sum], DESCENDANTS([Department].[Department - FCM Region],,LEAVES));
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Date - Diagnosis - End]));
 this = [Measures].[Diagnosis - Encounter - Unique Count];
 end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Date - Diagnosis - Start]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Date - Encounter]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Date - Registration]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Department]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Diagnosis - Bridge]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Diagnosis - Chronic]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Diagnosis - ED]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Diagnosis - Hierarchy]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Diagnosis - Present On Admit]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Diagnosis - Primary]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Diagnosis - Secondary]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Diagnosis - Source]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([ED Visit]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Encounter]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Inpatient]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Outpatient]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Patient]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Procedure]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Provider - Patient - PCP]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Time - Diagnosis - End]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Dummy - as Sum], LEAVES([Time - Diagnosis - Start]));
+this = [Measures].[Diagnosis - Encounter - Unique Count];
+end scope;
+
 </Text>
         </Command>
       </Commands>
