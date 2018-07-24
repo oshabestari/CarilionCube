@@ -57,7 +57,7 @@ iif([Measures].[Medication Order - Completed Encounter - Unique Count - Not Slic
 
 
 CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order Quantity - Opiod - Sum] AS 
-([Medication].[Medication - Opioid Indicator].&[YES], [Measures].[Medication Order Quantity - Total])
+([Medication].[Medication - Opioid Indicator].&[1] /* Yes */, [Measures].[Medication Order Quantity - Sum])
 ,VISIBLE=0, FORMAT_STRING='#,##0', ASSOCIATED_MEASURE_GROUP='Lab Order';
 
 
