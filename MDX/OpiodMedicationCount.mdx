@@ -1,0 +1,51 @@
+
+
+
+with 
+member [Measures].[Medication Order Quantity - Opioid - Sum - Per Completed Encounter - Growth from Same Period Previous Year - By - Fiscal Date - Encounter]
+ AS IIF ((PARALLELPERIOD([Date - Medication Order].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Medication Order].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Medication Order Quantity - Opioid - Sum - Per Completed Encounter])) = 0  , NULL,
+    IIF ([Measures].[Medication Order Quantity - Opioid - Sum - Per Completed Encounter] = 0, NULL,
+            (
+            [Measures].[Medication Order Quantity - Opioid - Sum - Per Completed Encounter] - 
+            (PARALLELPERIOD([Date - Medication Order].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Medication Order].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Medication Order Quantity - Opioid - Sum - Per Completed Encounter])
+                            )
+            )
+            / (PARALLELPERIOD([Date - Medication Order].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Medication Order].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Medication Order Quantity - Opioid - Sum - Per Completed Encounter])
+            )
+        )
+) 
+,FORMAT_STRING='Percent'
+
+member [Measures].[Medication Order Quantity - Opioid - Sum - Per Completed Encounter - Percentage Of Total]
+ AS 
+IIF(([Measures].[Medication Order Quantity - Opioid - Sum - Per Completed Encounter], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent) = 0, 
+     null,
+     [Measures].[Medication Order Quantity - Opioid - Sum - Per Completed Encounter]/([Measures].[Medication Order Quantity - Opioid - Sum - Per Completed Encounter], Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Parent)
+    )
+,FORMAT_STRING='Percent'
+
+
+SELECT 
+{
+[Measures].[Medication Order Quantity - Opioid - Sum - Per Completed Encounter]
+,[Measures].[Medication Order Quantity - Opioid - Sum - Per Completed Encounter - Growth from Same Period Previous Year - By - Fiscal Date - Encounter]
+,[Measures].[Medication Order Quantity - Opioid - Sum - Per Completed Encounter - Percentage Of Total]
+
+,[Measures].[Medication Order Quantity - Opioid - Sum] -- debugging
+,[Measures].[Medication Order - Completed Encounter - Unique Count - Not Sliceable] -- debugging
+} on 0
+, non empty 
+{
+(
+[Provider - Medication Order - Authorized By].[Provider - UserID].children
+,[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].children
+)
+} ON 1
+FROM 
+	[Analytics] 
+WHERE 
+(
+StrToMember("[Date - Medication Order].[Date - Fiscal Year].&["+Format(year(now()) + iif(month(now()) >= 10, 1, 0), "####")+"]")
+)
+
+
