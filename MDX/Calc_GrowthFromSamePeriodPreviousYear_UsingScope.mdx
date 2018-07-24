@@ -1,1 +1,97 @@
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Diagnosis - Count - Growth from Same Period Previous Year]
+ AS NULL
+,VISIBLE=1, DISPLAY_FOLDER='Growth', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Diagnosis';
+
+scope([Measures].[Diagnosis - Count - Growth from Same Period Previous Year], DESCENDANTS([Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date],,AFTER));
+this = IIF ((PARALLELPERIOD([Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].CurrentMember), ([Measures].[Diagnosis - Count])) = 0, NULL,
+    IIF ([Measures].[Diagnosis - Count] = 0, NULL,
+            (
+            [Measures].[Diagnosis - Count] - 
+            (PARALLELPERIOD([Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Diagnosis - Count])
+                            )
+            )
+            / (PARALLELPERIOD([Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Diagnosis - Count])
+            )
+        )
+);
+end scope;
+
+scope([Measures].[Diagnosis - Count - Growth from Same Period Previous Year], DESCENDANTS([Date - Diagnosis - Start].[Year - Quarter - Month - Date],,AFTER));
+this = IIF ((PARALLELPERIOD([Date - Diagnosis - Start].[Year - Quarter - Month - Date].[Year], 1, [Date - Diagnosis - Start].[Year - Quarter - Month - Date].CurrentMember), ([Measures].[Diagnosis - Count])) = 0, NULL,
+    IIF ([Measures].[Diagnosis - Count] = 0, NULL,
+            (
+            [Measures].[Diagnosis - Count] - 
+            (PARALLELPERIOD([Date - Diagnosis - Start].[Year - Quarter - Month - Date].[Year], 1, [Date - Diagnosis - Start].[Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Diagnosis - Count])
+                            )
+            )
+            / (PARALLELPERIOD([Date - Diagnosis - Start].[Year - Quarter - Month - Date].[Year], 1, [Date - Diagnosis - Start].[Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Diagnosis - Count])
+            )
+        )
+);
+end scope;
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Diagnosis - Encounter - Unique Count - Growth from Same Period Previous Year]
+ AS NULL
+,VISIBLE=1, DISPLAY_FOLDER='Growth', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Diagnosis - Encounter';
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Growth from Same Period Previous Year], DESCENDANTS([Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date],,AFTER));
+this = IIF ((PARALLELPERIOD([Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].CurrentMember), ([Measures].[Diagnosis - Encounter - Unique Count])) = 0, NULL,
+    IIF ([Measures].[Diagnosis - Encounter - Unique Count] = 0, NULL,
+            (
+            [Measures].[Diagnosis - Encounter - Unique Count] - 
+            (PARALLELPERIOD([Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Diagnosis - Encounter - Unique Count])
+                            )
+            )
+            / (PARALLELPERIOD([Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Diagnosis - Encounter - Unique Count])
+            )
+        )
+);
+end scope;
+
+scope([Measures].[Diagnosis - Encounter - Unique Count - Growth from Same Period Previous Year], DESCENDANTS([Date - Diagnosis - Start].[Year - Quarter - Month - Date],,AFTER));
+this = IIF ((PARALLELPERIOD([Date - Diagnosis - Start].[Year - Quarter - Month - Date].[Year], 1, [Date - Diagnosis - Start].[Year - Quarter - Month - Date].CurrentMember), ([Measures].[Diagnosis - Encounter - Unique Count])) = 0, NULL,
+    IIF ([Measures].[Diagnosis - Encounter - Unique Count] = 0, NULL,
+            (
+            [Measures].[Diagnosis - Encounter - Unique Count] - 
+            (PARALLELPERIOD([Date - Diagnosis - Start].[Year - Quarter - Month - Date].[Year], 1, [Date - Diagnosis - Start].[Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Diagnosis - Encounter - Unique Count])
+                            )
+            )
+            / (PARALLELPERIOD([Date - Diagnosis - Start].[Year - Quarter - Month - Date].[Year], 1, [Date - Diagnosis - Start].[Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Diagnosis - Encounter - Unique Count])
+            )
+        )
+);
+end scope;
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Diagnosis - Patient - Unique Count - Growth from Same Period Previous Year]
+ AS NULL
+,VISIBLE=1, DISPLAY_FOLDER='Growth', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Diagnosis - Patient';
+
+scope([Measures].[Diagnosis - Patient - Unique Count - Growth from Same Period Previous Year], DESCENDANTS([Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date],,AFTER));
+this = IIF ((PARALLELPERIOD([Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].CurrentMember), ([Measures].[Diagnosis - Patient - Unique Count])) = 0, NULL,
+    IIF ([Measures].[Diagnosis - Patient - Unique Count] = 0, NULL,
+            (
+            [Measures].[Diagnosis - Patient - Unique Count] - 
+            (PARALLELPERIOD([Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Diagnosis - Patient - Unique Count])
+                            )
+            )
+            / (PARALLELPERIOD([Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Diagnosis - Patient - Unique Count])
+            )
+        )
+);
+end scope;
+
+scope([Measures].[Diagnosis - Patient - Unique Count - Growth from Same Period Previous Year], DESCENDANTS([Date - Diagnosis - Start].[Year - Quarter - Month - Date],,AFTER));
+this = IIF ((PARALLELPERIOD([Date - Diagnosis - Start].[Year - Quarter - Month - Date].[Year], 1, [Date - Diagnosis - Start].[Year - Quarter - Month - Date].CurrentMember), ([Measures].[Diagnosis - Patient - Unique Count])) = 0, NULL,
+    IIF ([Measures].[Diagnosis - Patient - Unique Count] = 0, NULL,
+            (
+            [Measures].[Diagnosis - Patient - Unique Count] - 
+            (PARALLELPERIOD([Date - Diagnosis - Start].[Year - Quarter - Month - Date].[Year], 1, [Date - Diagnosis - Start].[Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Diagnosis - Patient - Unique Count])
+                            )
+            )
+            / (PARALLELPERIOD([Date - Diagnosis - Start].[Year - Quarter - Month - Date].[Year], 1, [Date - Diagnosis - Start].[Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Diagnosis - Patient - Unique Count])
+            )
+        )
+);
+end scope;
 

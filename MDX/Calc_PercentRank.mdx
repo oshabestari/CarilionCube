@@ -1,41 +1,6 @@
 
-create member CURRENTCUBE.[Measures].[Diagnosis - Count - Growth from Same Period Previous Year - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Diagnosis - Count - Growth from Same Period Previous Year]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Diagnosis - Count - Growth from Same Period Previous Year])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Diagnosis - Count - Growth from Same Period Previous Year]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Diagnosis - Count - Growth from Same Period Previous Year]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Diagnosis';
-
-create member CURRENTCUBE.[Measures].[Diagnosis - Count - Growth from Same Period Previous Year - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Diagnosis - Count - Growth from Same Period Previous Year])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Diagnosis - Count - Growth from Same Period Previous Year]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Diagnosis - Count - Growth from Same Period Previous Year])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Diagnosis';
-
 create member CURRENTCUBE.[Measures].[Diagnosis - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Diagnosis - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Diagnosis - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -69,8 +34,43 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Diagnosis';
 
+create member CURRENTCUBE.[Measures].[Diagnosis - Count - Percent Rank Excluding Null All - Percent Rank Excluding Null All] as
+IIF(isempty([Measures].[Diagnosis - Count])
+    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Diagnosis - Count - Percent Rank Excluding Null All])) <= 1
+	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
+	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
+	NULL,
+	1.0 - (
+		RANK(
+			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
+			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
+			[Measures].[Diagnosis - Count - Percent Rank Excluding Null All]
+		) - 1.0
+	) / (
+		count(
+			(
+				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
+				[Measures].[Diagnosis - Count - Percent Rank Excluding Null All]
+			)
+		) - 1.0
+	)
+)
+,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Diagnosis';
+
+create member CURRENTCUBE.[Measures].[Diagnosis - Count - Percent Rank Excluding Null All - Percent Rank Including Null All] as
+IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Diagnosis - Count - Percent Rank Excluding Null All])) - 1.0) <= 1,
+	NULL,
+	1.0 - (
+		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
+			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
+			[Measures].[Diagnosis - Count - Percent Rank Excluding Null All]
+		) -1.0
+	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Diagnosis - Count - Percent Rank Excluding Null All])) - 1.0)
+)
+,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Diagnosis';
+
 create member CURRENTCUBE.[Measures].[Diagnosis - Encounter - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Diagnosis - Encounter - Unique Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Diagnosis - Encounter - Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -105,7 +105,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Diagnosis - Encounter';
 
 create member CURRENTCUBE.[Measures].[Diagnosis - Patient - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Diagnosis - Patient - Unique Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Diagnosis - Patient - Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -139,43 +139,8 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Diagnosis - Patient';
 
-create member CURRENTCUBE.[Measures].[DRG - Count - Growth from Same Period Previous Year - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[DRG - Count - Growth from Same Period Previous Year]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[DRG - Count - Growth from Same Period Previous Year])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[DRG - Count - Growth from Same Period Previous Year]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[DRG - Count - Growth from Same Period Previous Year]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='DRG';
-
-create member CURRENTCUBE.[Measures].[DRG - Count - Growth from Same Period Previous Year - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[DRG - Count - Growth from Same Period Previous Year])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[DRG - Count - Growth from Same Period Previous Year]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[DRG - Count - Growth from Same Period Previous Year])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='DRG';
-
 create member CURRENTCUBE.[Measures].[DRG - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[DRG - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[DRG - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -210,7 +175,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='DRG';
 
 create member CURRENTCUBE.[Measures].[DRG - Encounter - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[DRG - Encounter - Unique Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[DRG - Encounter - Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -245,7 +210,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='DRG - Encounter';
 
 create member CURRENTCUBE.[Measures].[DRG - Patient - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[DRG - Patient - Unique Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[DRG - Patient - Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -280,7 +245,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='DRG - Patient';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -315,7 +280,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -350,7 +315,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Advance Directive Printed to ED Discharge in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -385,7 +350,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -420,7 +385,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -454,9 +419,9 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
-create member CURRENTCUBE.[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geometric Average]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geometric Average])) <= 1
+create member CURRENTCUBE.[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geomotric Average - Percent Rank Excluding Null All] as
+IIF(isempty([Measures].[Diagnosis - Count])
+    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geomotric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
 	NULL,
@@ -464,33 +429,33 @@ IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 		RANK(
 			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
 			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geometric Average]
+			[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geomotric Average]
 		) - 1.0
 	) / (
 		count(
 			(
 				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geometric Average]
+				[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geomotric Average]
 			)
 		) - 1.0
 	)
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
-create member CURRENTCUBE.[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geometric Average - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geometric Average])) - 1.0) <= 1,
+create member CURRENTCUBE.[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geomotric Average - Percent Rank Including Null All] as
+IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geomotric Average])) - 1.0) <= 1,
 	NULL,
 	1.0 - (
 		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
 			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geometric Average]
+			[Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geomotric Average]
 		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geometric Average])) - 1.0)
+	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Attending Provider Assigned to Disposition in Minutes - Geomotric Average])) - 1.0)
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -525,7 +490,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -560,7 +525,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Bed Request to Patient Roomed in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -594,43 +559,8 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
-create member CURRENTCUBE.[Measures].[ED Visit - Count - Growth from Same Period Previous Year - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Count - Growth from Same Period Previous Year]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Count - Growth from Same Period Previous Year])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[ED Visit - Count - Growth from Same Period Previous Year]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[ED Visit - Count - Growth from Same Period Previous Year]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
-
-create member CURRENTCUBE.[Measures].[ED Visit - Count - Growth from Same Period Previous Year - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Count - Growth from Same Period Previous Year])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[ED Visit - Count - Growth from Same Period Previous Year]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Count - Growth from Same Period Previous Year])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
-
 create member CURRENTCUBE.[Measures].[ED Visit - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -665,7 +595,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Disposition to ED Discharge in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Disposition to ED Discharge in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Disposition to ED Discharge in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -700,7 +630,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Disposition to ED Discharge in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Disposition to ED Discharge in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Disposition to ED Discharge in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -735,7 +665,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Disposition to ED Discharge in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Disposition to ED Discharge in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Disposition to ED Discharge in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -770,7 +700,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Glasgow Coma Scale - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Glasgow Coma Scale - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Glasgow Coma Scale - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -805,7 +735,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Glasgow Coma Scale - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Glasgow Coma Scale - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Glasgow Coma Scale - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -840,7 +770,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Glasgow Coma Scale - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Glasgow Coma Scale - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Glasgow Coma Scale - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -875,7 +805,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -910,7 +840,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -945,7 +875,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Image Completed to Provider Reviewed in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -980,7 +910,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1015,7 +945,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1050,7 +980,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Image Ordered to Image Completed in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1085,7 +1015,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1120,7 +1050,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1155,7 +1085,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Lab Completed to Provider Reviewed in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1190,7 +1120,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1225,7 +1155,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Lab Ordered to Lab Completed in Miinutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1260,7 +1190,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Lab Ordered to Lab Completed in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1294,43 +1224,8 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
-create member CURRENTCUBE.[Measures].[ED Visit - Patient - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient - Unique Count]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient - Unique Count])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[ED Visit - Patient - Unique Count]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[ED Visit - Patient - Unique Count]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit - Patient';
-
-create member CURRENTCUBE.[Measures].[ED Visit - Patient - Unique Count - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient - Unique Count])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[ED Visit - Patient - Unique Count]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient - Unique Count])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit - Patient';
-
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1365,7 +1260,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1400,7 +1295,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Discharge in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1435,7 +1330,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1470,7 +1365,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1505,7 +1400,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Image Ordered in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1540,7 +1435,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1575,7 +1470,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1610,7 +1505,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Lab Ordered in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1645,7 +1540,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1680,7 +1575,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1715,7 +1610,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Registration Completed in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1750,7 +1645,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1785,7 +1680,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1820,7 +1715,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Arrival to Triage Start in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1855,7 +1750,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1890,7 +1785,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1925,7 +1820,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Roomed to Attending Provider Assigned in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1959,8 +1854,43 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
+create member CURRENTCUBE.[Measures].[ED Visit - Patient Unique Count - Percent Rank Excluding Null All] as
+IIF(isempty([Measures].[Diagnosis - Count])
+    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Unique Count])) <= 1
+	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
+	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
+	NULL,
+	1.0 - (
+		RANK(
+			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
+			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
+			[Measures].[ED Visit - Patient Unique Count]
+		) - 1.0
+	) / (
+		count(
+			(
+				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
+				[Measures].[ED Visit - Patient Unique Count]
+			)
+		) - 1.0
+	)
+)
+,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit - Patient';
+
+create member CURRENTCUBE.[Measures].[ED Visit - Patient Unique Count - Percent Rank Including Null All] as
+IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Unique Count])) - 1.0) <= 1,
+	NULL,
+	1.0 - (
+		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
+			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
+			[Measures].[ED Visit - Patient Unique Count]
+		) -1.0
+	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Patient Unique Count])) - 1.0)
+)
+,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit - Patient';
+
 create member CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -1995,7 +1925,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2030,7 +1960,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Complete to Attending Provider Assigned in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2065,7 +1995,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2100,7 +2030,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2135,7 +2065,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Complete to Patient Roomed in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2170,7 +2100,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2205,7 +2135,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2240,7 +2170,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Start to Patient Roomed in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2275,7 +2205,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2310,7 +2240,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2345,7 +2275,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
 create member CURRENTCUBE.[Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[ED Visit - Triage Start to Triage Complete in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2379,43 +2309,8 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='ED Visit';
 
-create member CURRENTCUBE.[Measures].[Encounter - Count - Growth from Same Period Previous Year - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Encounter - Count - Growth from Same Period Previous Year]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Encounter - Count - Growth from Same Period Previous Year])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Encounter - Count - Growth from Same Period Previous Year]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Encounter - Count - Growth from Same Period Previous Year]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Encounter';
-
-create member CURRENTCUBE.[Measures].[Encounter - Count - Growth from Same Period Previous Year - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Encounter - Count - Growth from Same Period Previous Year])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Encounter - Count - Growth from Same Period Previous Year]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Encounter - Count - Growth from Same Period Previous Year])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Encounter';
-
 create member CURRENTCUBE.[Measures].[Encounter - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Encounter - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Encounter - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2449,9 +2344,9 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Encounter';
 
-create member CURRENTCUBE.[Measures].[Encounter - Patient - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Encounter - Patient - Unique Count]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Encounter - Patient - Unique Count])) <= 1
+create member CURRENTCUBE.[Measures].[Encounter - Patient Unique Count - Percent Rank Excluding Null All] as
+IIF(isempty([Measures].[Diagnosis - Count])
+    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Encounter - Patient Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
 	NULL,
@@ -2459,33 +2354,33 @@ IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 		RANK(
 			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
 			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Encounter - Patient - Unique Count]
+			[Measures].[Encounter - Patient Unique Count]
 		) - 1.0
 	) / (
 		count(
 			(
 				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Encounter - Patient - Unique Count]
+				[Measures].[Encounter - Patient Unique Count]
 			)
 		) - 1.0
 	)
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Encounter - Patient';
 
-create member CURRENTCUBE.[Measures].[Encounter - Patient - Unique Count - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Encounter - Patient - Unique Count])) - 1.0) <= 1,
+create member CURRENTCUBE.[Measures].[Encounter - Patient Unique Count - Percent Rank Including Null All] as
+IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Encounter - Patient Unique Count])) - 1.0) <= 1,
 	NULL,
 	1.0 - (
 		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
 			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Encounter - Patient - Unique Count]
+			[Measures].[Encounter - Patient Unique Count]
 		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Encounter - Patient - Unique Count])) - 1.0)
+	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Encounter - Patient Unique Count])) - 1.0)
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Encounter - Patient';
 
 create member CURRENTCUBE.[Measures].[Inpatient - Age on Admission in Years - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Age on Admission in Years - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Age on Admission in Years - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2520,7 +2415,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
 
 create member CURRENTCUBE.[Measures].[Inpatient - Age on Admission in Years - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Age on Admission in Years - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Age on Admission in Years - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2554,43 +2449,8 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
 
-create member CURRENTCUBE.[Measures].[Inpatient - Count - Growth from Same Period Previous Year - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Count - Growth from Same Period Previous Year]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Count - Growth from Same Period Previous Year])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Inpatient - Count - Growth from Same Period Previous Year]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Inpatient - Count - Growth from Same Period Previous Year]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
-
-create member CURRENTCUBE.[Measures].[Inpatient - Count - Growth from Same Period Previous Year - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Count - Growth from Same Period Previous Year])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Inpatient - Count - Growth from Same Period Previous Year]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Count - Growth from Same Period Previous Year])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
-
 create member CURRENTCUBE.[Measures].[Inpatient - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2625,7 +2485,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
 
 create member CURRENTCUBE.[Measures].[Inpatient - Fractional LOS in Hours - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Fractional LOS in Hours - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Fractional LOS in Hours - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2660,7 +2520,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
 
 create member CURRENTCUBE.[Measures].[Inpatient - Fractional LOS in Hours - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Fractional LOS in Hours - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Fractional LOS in Hours - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2695,7 +2555,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
 
 create member CURRENTCUBE.[Measures].[Inpatient - LOS in Days - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - LOS in Days - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - LOS in Days - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2730,7 +2590,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
 
 create member CURRENTCUBE.[Measures].[Inpatient - LOS in Days - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - LOS in Days - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - LOS in Days - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2765,7 +2625,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
 
 create member CURRENTCUBE.[Measures].[Inpatient - LOS in Days - Sum - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - LOS in Days - Sum]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - LOS in Days - Sum])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2799,9 +2659,9 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient';
 
-create member CURRENTCUBE.[Measures].[Inpatient - Patient - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Patient - Unique Count]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Patient - Unique Count])) <= 1
+create member CURRENTCUBE.[Measures].[Inpatient - Patient Unique Count - Percent Rank Excluding Null All] as
+IIF(isempty([Measures].[Diagnosis - Count])
+    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Patient Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
 	NULL,
@@ -2809,68 +2669,33 @@ IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 		RANK(
 			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
 			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Inpatient - Patient - Unique Count]
+			[Measures].[Inpatient - Patient Unique Count]
 		) - 1.0
 	) / (
 		count(
 			(
 				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Inpatient - Patient - Unique Count]
+				[Measures].[Inpatient - Patient Unique Count]
 			)
 		) - 1.0
 	)
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient - Patient';
 
-create member CURRENTCUBE.[Measures].[Inpatient - Patient - Unique Count - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Patient - Unique Count])) - 1.0) <= 1,
+create member CURRENTCUBE.[Measures].[Inpatient - Patient Unique Count - Percent Rank Including Null All] as
+IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Patient Unique Count])) - 1.0) <= 1,
 	NULL,
 	1.0 - (
 		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
 			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Inpatient - Patient - Unique Count]
+			[Measures].[Inpatient - Patient Unique Count]
 		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Patient - Unique Count])) - 1.0)
+	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Inpatient - Patient Unique Count])) - 1.0)
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Inpatient - Patient';
 
-create member CURRENTCUBE.[Measures].[Lab Component Result - Count - Growth from Same Period Previous Year - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Component Result - Count - Growth from Same Period Previous Year]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Component Result - Count - Growth from Same Period Previous Year])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Lab Component Result - Count - Growth from Same Period Previous Year]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Lab Component Result - Count - Growth from Same Period Previous Year]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Lab Component Result';
-
-create member CURRENTCUBE.[Measures].[Lab Component Result - Count - Growth from Same Period Previous Year - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Component Result - Count - Growth from Same Period Previous Year])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Lab Component Result - Count - Growth from Same Period Previous Year]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Component Result - Count - Growth from Same Period Previous Year])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Lab Component Result';
-
 create member CURRENTCUBE.[Measures].[Lab Component Result - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Component Result - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Component Result - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2905,7 +2730,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Lab Component Result';
 
 create member CURRENTCUBE.[Measures].[Lab Component Result - Encounter - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Component Result - Encounter - Unique Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Component Result - Encounter - Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2940,7 +2765,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Lab Component Result - Encounter';
 
 create member CURRENTCUBE.[Measures].[Lab Component Result - Patient - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Component Result - Patient - Unique Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Component Result - Patient - Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -2974,78 +2799,8 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Lab Component Result - Patient';
 
-create member CURRENTCUBE.[Measures].[Lab Order - Count - Growth from Same Period Previous Year - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order - Count - Growth from Same Period Previous Year]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order - Count - Growth from Same Period Previous Year])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Lab Order - Count - Growth from Same Period Previous Year]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Lab Order - Count - Growth from Same Period Previous Year]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Lab Order';
-
-create member CURRENTCUBE.[Measures].[Lab Order - Count - Growth from Same Period Previous Year - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order - Count - Growth from Same Period Previous Year])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Lab Order - Count - Growth from Same Period Previous Year]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order - Count - Growth from Same Period Previous Year])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Lab Order';
-
-create member CURRENTCUBE.[Measures].[Lab Order - Count - Percent of Total - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order - Count - Percent of Total]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order - Count - Percent of Total])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Lab Order - Count - Percent of Total]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Lab Order - Count - Percent of Total]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Lab Order';
-
-create member CURRENTCUBE.[Measures].[Lab Order - Count - Percent of Total - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order - Count - Percent of Total])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Lab Order - Count - Percent of Total]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order - Count - Percent of Total])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Lab Order';
-
 create member CURRENTCUBE.[Measures].[Lab Order - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3080,7 +2835,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Lab Order';
 
 create member CURRENTCUBE.[Measures].[Lab Order - Encounter - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order - Encounter - Unique Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order - Encounter - Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3115,7 +2870,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Lab Order - Encounter';
 
 create member CURRENTCUBE.[Measures].[Lab Order - Patient - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order - Patient - Unique Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order - Patient - Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3149,43 +2904,8 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Lab Order - Patient';
 
-create member CURRENTCUBE.[Measures].[Lab Order to Encounter Ratio - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order to Encounter Ratio]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order to Encounter Ratio])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Lab Order to Encounter Ratio]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Lab Order to Encounter Ratio]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Lab Order';
-
-create member CURRENTCUBE.[Measures].[Lab Order to Encounter Ratio - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order to Encounter Ratio])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Lab Order to Encounter Ratio]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Lab Order to Encounter Ratio])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Lab Order';
-
 create member CURRENTCUBE.[Measures].[Measure Value - Department - Monthly - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Measure Value - Department - Monthly]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Measure Value - Department - Monthly])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3220,7 +2940,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Aggregated Measure - Department - Monthly';
 
 create member CURRENTCUBE.[Measures].[Measure Value - Department - Quarterly - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Measure Value - Department - Quarterly]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Measure Value - Department - Quarterly])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3255,7 +2975,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Aggregated Measure - Department - Quarterly';
 
 create member CURRENTCUBE.[Measures].[Measure Value - Location - Monthly - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Measure Value - Location - Monthly]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Measure Value - Location - Monthly])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3290,7 +3010,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Aggregated Measure - Location - Monthly';
 
 create member CURRENTCUBE.[Measures].[Measure Value - Location - Quarterly - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Measure Value - Location - Quarterly]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Measure Value - Location - Quarterly])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3324,43 +3044,8 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Aggregated Measure - Location - Quarterly';
 
-create member CURRENTCUBE.[Measures].[Medication Administration - Count - Growth from Same Period Previous Year - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Administration - Count - Growth from Same Period Previous Year]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Administration - Count - Growth from Same Period Previous Year])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Medication Administration - Count - Growth from Same Period Previous Year]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Medication Administration - Count - Growth from Same Period Previous Year]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Administration';
-
-create member CURRENTCUBE.[Measures].[Medication Administration - Count - Growth from Same Period Previous Year - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Administration - Count - Growth from Same Period Previous Year])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Medication Administration - Count - Growth from Same Period Previous Year]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Administration - Count - Growth from Same Period Previous Year])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Administration';
-
 create member CURRENTCUBE.[Measures].[Medication Administration - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Administration - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Administration - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3395,7 +3080,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Administration';
 
 create member CURRENTCUBE.[Measures].[Medication Administration - Encounter - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Administration - Encounter - Unique Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Administration - Encounter - Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3430,7 +3115,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Administration - Encounter';
 
 create member CURRENTCUBE.[Measures].[Medication Administration - Patient - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Administration - Patient - Unique Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Administration - Patient - Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3464,43 +3149,8 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Administration - Patient';
 
-create member CURRENTCUBE.[Measures].[Medication Order - Count - Growth from Same Period Previous Year - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order - Count - Growth from Same Period Previous Year]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order - Count - Growth from Same Period Previous Year])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Medication Order - Count - Growth from Same Period Previous Year]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Medication Order - Count - Growth from Same Period Previous Year]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Order';
-
-create member CURRENTCUBE.[Measures].[Medication Order - Count - Growth from Same Period Previous Year - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order - Count - Growth from Same Period Previous Year])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Medication Order - Count - Growth from Same Period Previous Year]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order - Count - Growth from Same Period Previous Year])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Order';
-
 create member CURRENTCUBE.[Measures].[Medication Order - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3535,7 +3185,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Order';
 
 create member CURRENTCUBE.[Measures].[Medication Order - Encounter - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order - Encounter - Unique Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order - Encounter - Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3570,7 +3220,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Order - Encounter';
 
 create member CURRENTCUBE.[Measures].[Medication Order - Patient - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order - Patient - Unique Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order - Patient - Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3605,7 +3255,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Order - Patient';
 
 create member CURRENTCUBE.[Measures].[Medication Order Quantity - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order Quantity - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order Quantity - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3640,7 +3290,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Order';
 
 create member CURRENTCUBE.[Measures].[Medication Order Quantity - Sum - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order Quantity - Sum]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order Quantity - Sum])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3674,9 +3324,9 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Order';
 
-create member CURRENTCUBE.[Measures].[Medication to Encounter Ratio - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication to Encounter Ratio]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication to Encounter Ratio])) <= 1
+create member CURRENTCUBE.[Measures].[Medication Order Quantity - Total - Percent Rank Excluding Null All] as
+IIF(isempty([Measures].[Diagnosis - Count])
+    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order Quantity - Total])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
 	NULL,
@@ -3684,33 +3334,33 @@ IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 		RANK(
 			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
 			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Medication to Encounter Ratio]
+			[Measures].[Medication Order Quantity - Total]
 		) - 1.0
 	) / (
 		count(
 			(
 				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Medication to Encounter Ratio]
+				[Measures].[Medication Order Quantity - Total]
 			)
 		) - 1.0
 	)
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Order';
 
-create member CURRENTCUBE.[Measures].[Medication to Encounter Ratio - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication to Encounter Ratio])) - 1.0) <= 1,
+create member CURRENTCUBE.[Measures].[Medication Order Quantity - Total - Percent Rank Including Null All] as
+IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order Quantity - Total])) - 1.0) <= 1,
 	NULL,
 	1.0 - (
 		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
 			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Medication to Encounter Ratio]
+			[Measures].[Medication Order Quantity - Total]
 		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication to Encounter Ratio])) - 1.0)
+	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Medication Order Quantity - Total])) - 1.0)
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Order';
 
 create member CURRENTCUBE.[Measures].[Outpatient - Appointment Length in Minutes - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outpatient - Appointment Length in Minutes - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outpatient - Appointment Length in Minutes - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3745,7 +3395,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Outpatient';
 
 create member CURRENTCUBE.[Measures].[Outpatient - Appointment Length in Minutes - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outpatient - Appointment Length in Minutes - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outpatient - Appointment Length in Minutes - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3780,7 +3430,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Outpatient';
 
 create member CURRENTCUBE.[Measures].[Outpatient - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outpatient - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outpatient - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3814,9 +3464,9 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Outpatient';
 
-create member CURRENTCUBE.[Measures].[Outpatient - Patient - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outpatient - Patient - Unique Count]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outpatient - Patient - Unique Count])) <= 1
+create member CURRENTCUBE.[Measures].[Outpatient - Patient Unique Count - Percent Rank Excluding Null All] as
+IIF(isempty([Measures].[Diagnosis - Count])
+    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outpatient - Patient Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
 	NULL,
@@ -3824,68 +3474,33 @@ IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 		RANK(
 			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
 			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Outpatient - Patient - Unique Count]
+			[Measures].[Outpatient - Patient Unique Count]
 		) - 1.0
 	) / (
 		count(
 			(
 				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Outpatient - Patient - Unique Count]
+				[Measures].[Outpatient - Patient Unique Count]
 			)
 		) - 1.0
 	)
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Outpatient - Patient';
 
-create member CURRENTCUBE.[Measures].[Outpatient - Patient - Unique Count - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outpatient - Patient - Unique Count])) - 1.0) <= 1,
+create member CURRENTCUBE.[Measures].[Outpatient - Patient Unique Count - Percent Rank Including Null All] as
+IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outpatient - Patient Unique Count])) - 1.0) <= 1,
 	NULL,
 	1.0 - (
 		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
 			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Outpatient - Patient - Unique Count]
+			[Measures].[Outpatient - Patient Unique Count]
 		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outpatient - Patient - Unique Count])) - 1.0)
+	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outpatient - Patient Unique Count])) - 1.0)
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Outpatient - Patient';
 
-create member CURRENTCUBE.[Measures].[Outptient - Count - Growth from Same Period Previous Fiscal Year - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outptient - Count - Growth from Same Period Previous Fiscal Year]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outptient - Count - Growth from Same Period Previous Fiscal Year])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Outptient - Count - Growth from Same Period Previous Fiscal Year]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Outptient - Count - Growth from Same Period Previous Fiscal Year]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Outpatient';
-
-create member CURRENTCUBE.[Measures].[Outptient - Count - Growth from Same Period Previous Fiscal Year - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outptient - Count - Growth from Same Period Previous Fiscal Year])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Outptient - Count - Growth from Same Period Previous Fiscal Year]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Outptient - Count - Growth from Same Period Previous Fiscal Year])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Outpatient';
-
 create member CURRENTCUBE.[Measures].[Patient - Age in Years - Arithmetic Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Patient - Age in Years - Arithmetic Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Patient - Age in Years - Arithmetic Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3920,7 +3535,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Patient';
 
 create member CURRENTCUBE.[Measures].[Patient - Age in Years - Geometric Average - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Patient - Age in Years - Geometric Average]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Patient - Age in Years - Geometric Average])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3955,7 +3570,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Patient';
 
 create member CURRENTCUBE.[Measures].[Patient - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Patient - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Patient - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -3989,43 +3604,8 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Patient';
 
-create member CURRENTCUBE.[Measures].[Procedure Order - Count - Growth from Same Period Previous Year - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Procedure Order - Count - Growth from Same Period Previous Year]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Procedure Order - Count - Growth from Same Period Previous Year])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Procedure Order - Count - Growth from Same Period Previous Year]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Procedure Order - Count - Growth from Same Period Previous Year]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Procedure Order';
-
-create member CURRENTCUBE.[Measures].[Procedure Order - Count - Growth from Same Period Previous Year - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Procedure Order - Count - Growth from Same Period Previous Year])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Procedure Order - Count - Growth from Same Period Previous Year]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Procedure Order - Count - Growth from Same Period Previous Year])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Procedure Order';
-
 create member CURRENTCUBE.[Measures].[Procedure Order - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Procedure Order - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Procedure Order - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -4060,7 +3640,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Procedure Order';
 
 create member CURRENTCUBE.[Measures].[Procedure Order - Encounter - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Procedure Order - Encounter - Unique Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Procedure Order - Encounter - Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -4095,7 +3675,7 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Procedure Order - Encounter';
 
 create member CURRENTCUBE.[Measures].[Procedure Order - Patient - Unique Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Procedure Order - Patient - Unique Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Procedure Order - Patient - Unique Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -4129,43 +3709,8 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Procedure Order - Patient';
 
-create member CURRENTCUBE.[Measures].[Surgical Case - Count - Growth from Same Period Previous Year - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Case - Count - Growth from Same Period Previous Year]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Case - Count - Growth from Same Period Previous Year])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Surgical Case - Count - Growth from Same Period Previous Year]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Surgical Case - Count - Growth from Same Period Previous Year]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Surgical Case';
-
-create member CURRENTCUBE.[Measures].[Surgical Case - Count - Growth from Same Period Previous Year - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Case - Count - Growth from Same Period Previous Year])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Surgical Case - Count - Growth from Same Period Previous Year]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Case - Count - Growth from Same Period Previous Year])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Surgical Case';
-
 create member CURRENTCUBE.[Measures].[Surgical Case - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Case - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Case - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -4199,43 +3744,8 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Surgical Case';
 
-create member CURRENTCUBE.[Measures].[Surgical Procedure Event - Count - Growth from Same Period Previous Year - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Procedure Event - Count - Growth from Same Period Previous Year]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Procedure Event - Count - Growth from Same Period Previous Year])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Surgical Procedure Event - Count - Growth from Same Period Previous Year]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Surgical Procedure Event - Count - Growth from Same Period Previous Year]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Surgical Procedure Event';
-
-create member CURRENTCUBE.[Measures].[Surgical Procedure Event - Count - Growth from Same Period Previous Year - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Procedure Event - Count - Growth from Same Period Previous Year])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Surgical Procedure Event - Count - Growth from Same Period Previous Year]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Procedure Event - Count - Growth from Same Period Previous Year])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Surgical Procedure Event';
-
 create member CURRENTCUBE.[Measures].[Surgical Procedure Event - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Procedure Event - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Procedure Event - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
@@ -4269,43 +3779,8 @@ IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [
 )
 ,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Surgical Procedure Event';
 
-create member CURRENTCUBE.[Measures].[Surgical Supply Use - Count - Growth from Same Period Previous Year - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Supply Use - Count - Growth from Same Period Previous Year]))
-    or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Supply Use - Count - Growth from Same Period Previous Year])) <= 1
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-	NULL,
-	1.0 - (
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			[Measures].[Surgical Supply Use - Count - Growth from Same Period Previous Year]
-		) - 1.0
-	) / (
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				[Measures].[Surgical Supply Use - Count - Growth from Same Period Previous Year]
-			)
-		) - 1.0
-	)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Excluding Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Surgical Supply Use';
-
-create member CURRENTCUBE.[Measures].[Surgical Supply Use - Count - Growth from Same Period Previous Year - Percent Rank Including Null All] as
-IIF((count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Supply Use - Count - Growth from Same Period Previous Year])) - 1.0) <= 1,
-	NULL,
-	1.0 - (
-		RANK(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, 
-			[Measures].[Surgical Supply Use - Count - Growth from Same Period Previous Year]
-		) -1.0
-	) / (count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Supply Use - Count - Growth from Same Period Previous Year])) - 1.0)
-)
-,VISIBLE=1, DISPLAY_FOLDER='Rank\Percent Rank Including Null All', FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Surgical Supply Use';
-
 create member CURRENTCUBE.[Measures].[Surgical Supply Use - Count - Percent Rank Excluding Null All] as
-IIF(isnull((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Supply Use - Count]))
+IIF(isempty([Measures].[Diagnosis - Count])
     or count((Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, [Measures].[Surgical Supply Use - Count])) <= 1
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,

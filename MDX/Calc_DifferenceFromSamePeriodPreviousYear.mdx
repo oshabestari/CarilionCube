@@ -1,1 +1,25 @@
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Diagnosis - Count - Difference from Same Period Previous Year - By - Calendar Date - Diagnosis - Start]
+AS [Measures].[Diagnosis - Count] - (PARALLELPERIOD([Date - Diagnosis - Start].[Year - Quarter - Month - Date].[Year], 1, [Date - Diagnosis - Start].[Year].CurrentMember) , ([Measures].[Diagnosis - Count]))
+,VISIBLE=1, DISPLAY_FOLDER='Difference\Difference by Calendar Year', FORMAT_STRING='#,##0;-#,##0', ASSOCIATED_MEASURE_GROUP='Diagnosis';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Diagnosis - Count - Difference from Same Period Previous Year - By - Fiscal Date - Diagnosis - Start]
+AS [Measures].[Diagnosis - Count] - (PARALLELPERIOD([Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Diagnosis - Start].[Fiscal Year].CurrentMember) , ([Measures].[Diagnosis - Count]))
+,VISIBLE=1, DISPLAY_FOLDER='Difference\Difference by Fiscal Year', FORMAT_STRING='#,##0;-#,##0', ASSOCIATED_MEASURE_GROUP='Diagnosis';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Diagnosis - Encounter - Unique Count - Difference from Same Period Previous Year - By - Calendar Date - Diagnosis - Start]
+AS [Measures].[Diagnosis - Encounter - Unique Count] - (PARALLELPERIOD([Date - Diagnosis - Start].[Year - Quarter - Month - Date].[Year], 1, [Date - Diagnosis - Start].[Year].CurrentMember) , ([Measures].[Diagnosis - Encounter - Unique Count]))
+,VISIBLE=1, DISPLAY_FOLDER='Difference\Difference by Calendar Year', FORMAT_STRING='#,##0;-#,##0', ASSOCIATED_MEASURE_GROUP='Diagnosis - Encounter';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Diagnosis - Encounter - Unique Count - Difference from Same Period Previous Year - By - Fiscal Date - Diagnosis - Start]
+AS [Measures].[Diagnosis - Encounter - Unique Count] - (PARALLELPERIOD([Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Diagnosis - Start].[Fiscal Year].CurrentMember) , ([Measures].[Diagnosis - Encounter - Unique Count]))
+,VISIBLE=1, DISPLAY_FOLDER='Difference\Difference by Fiscal Year', FORMAT_STRING='#,##0;-#,##0', ASSOCIATED_MEASURE_GROUP='Diagnosis - Encounter';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Diagnosis - Patient - Unique Count - Difference from Same Period Previous Year - By - Calendar Date - Diagnosis - Start]
+AS [Measures].[Diagnosis - Patient - Unique Count] - (PARALLELPERIOD([Date - Diagnosis - Start].[Year - Quarter - Month - Date].[Year], 1, [Date - Diagnosis - Start].[Year].CurrentMember) , ([Measures].[Diagnosis - Patient - Unique Count]))
+,VISIBLE=1, DISPLAY_FOLDER='Difference\Difference by Calendar Year', FORMAT_STRING='#,##0;-#,##0', ASSOCIATED_MEASURE_GROUP='Diagnosis - Patient';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Diagnosis - Patient - Unique Count - Difference from Same Period Previous Year - By - Fiscal Date - Diagnosis - Start]
+AS [Measures].[Diagnosis - Patient - Unique Count] - (PARALLELPERIOD([Date - Diagnosis - Start].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Diagnosis - Start].[Fiscal Year].CurrentMember) , ([Measures].[Diagnosis - Patient - Unique Count]))
+,VISIBLE=1, DISPLAY_FOLDER='Difference\Difference by Fiscal Year', FORMAT_STRING='#,##0;-#,##0', ASSOCIATED_MEASURE_GROUP='Diagnosis - Patient';
 
