@@ -1,20 +1,30 @@
 
 with
+MEMBER [Measures].[AxisNo] as
+ case
+    when  IsError(Extract( Axis(0), Measures).Count) then 0
+    when  IsError(Extract( Axis(1), Measures).Count) then 1
+    else -1
+end
+
 member [Measures].[test] as
 IIF(Axis([Measures].[AxisNo]).Item(0).Item(0).Hierarchy.CurrentMember.level.ordinal=0,
-	sum(Descendants(Axis([Measures].[AxisNo]).Item(0).Item(0).Hierarchy.CurrentMember,, leaves), [Measures].[Diagnosis - Encounter - Unique Count]),
+	//sum(except(VisualTotals(axis(1)),[Department].[Department - FCM Region].[All]), [Measures].[Diagnosis - Encounter - Unique Count]),
+	sum(Descendants(Axis([Measures].[AxisNo]).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember,, leaves), [Measures].[Diagnosis - Encounter - Unique Count]),
 	[Measures].[Diagnosis - Encounter - Unique Count]
 )
 select
 {
 [Measures].[test]
 ,[Measures].[Diagnosis - Encounter - Unique Count]
-,[Measures].[Diagnosis Encounter Unique Count As Sum]
+,[Measures].[Diagnosis - Encounter - Unique Count - Dummy - Row Total]
 } on 0
 ,{
 (
 [Department].[Department - City].allmembers
-,[Department].[Department - FCM Region].allmembers
+//,[Department].[Department - FCM Region].allmembers,
+//,except([Department].[Department - FCM Region].allmembers, [Department].[Department - FCM Region].&[5]))
+//,visualtotals(except([Department].[Department - FCM Region].allmembers, [Department].[Department - FCM Region].&[5]))
 //[Department].[State - City - Department Hierarchy].[State-Province].MEMBERS
 //,[Department].[State - City - Department Hierarchy].[City].MEMBERS
 //,[Department].[State - City - Department Hierarchy].[Department].MEMBERS
