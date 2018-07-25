@@ -31,7 +31,7 @@ CREATE MEMBER CURRENTCUBE.[Measures].[Medication Order - Completed Encounter - U
 	)
 	,[Measures].[Medication Order - Encounter - Unique Count]
 )
-,VISIBLE=0, FORMAT_STRING='#,##0', ASSOCIATED_MEASURE_GROUP='Medication Order';
+,VISIBLE=1, FORMAT_STRING='#,##0', ASSOCIATED_MEASURE_GROUP='Medication Order';
 
 
 
@@ -40,4 +40,4 @@ iif([Measures].[Medication Order - Completed Encounter - Unique Count - Not Slic
 	null,
 	[Measures].[Medication Order Quantity - Total] / [Measures].[Medication Order - Completed Encounter - Unique Count - Not Sliceable]
 )
-,VISIBLE=0, FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Order';
+,VISIBLE=1, FORMAT_STRING='Percent', ASSOCIATED_MEASURE_GROUP='Medication Order';
