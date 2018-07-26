@@ -264,3 +264,4 @@ QuerySchemas/QuerySchemas.code-workspace
 DW_backup_via_scripts/_output.txt
 DW_backup/carilion_dw.bak
 DW_backup/CubeMetaData.bak
+QuerySchemas/output/_output.txt
