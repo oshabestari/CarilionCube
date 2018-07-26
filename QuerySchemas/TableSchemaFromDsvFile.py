@@ -6,6 +6,10 @@ import os
 import csv
 import io
 
+
+cube_visualstudio_path = os.path.join('..', '..', 'Contract_r')
+output_folder = os.path.join('.', 'output')
+
 def enumerable_diffs(ea, eb):
     return [a for a in ea if a not in eb]
 
@@ -18,9 +22,6 @@ stats_num_primary_keys = 0
 stats_sql_lines_drop_tables = None
 stats_sql_lines_create_tables = None
 stats_sql_lines_add_foreign_keys = None
-
-cube_visualstudio_path = os.path.join('..', '..', 'Contract_r')
-output_folder = os.path.join('.', 'output')
 
 SSAS_DSV_TableDef = collections.namedtuple('SSAS_DSV_TableDef', ['dsv_table_id', 'Name', 'FriendlyName', 'DbTableName', 'QueryDefinition', 'Columns'])
 SSAS_DSV_ColumnDef = collections.namedtuple('SSAS_DSV_ColumnDef', ['dsv_column_id', 'dsv_table_id', 'Name', 'FriendlyName', 'DataType', 'Description', 'AllowNull', 'Length', 'DbColumnName'])

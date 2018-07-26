@@ -1,28 +1,17 @@
 
 
 
-with member
-[Measures].[Medication Order Quantity Per Encounter] AS 
-iif(
-	(
-		[Measures].[Medication Administration - Count], 
-		(
-			[User - Medication Administration - Administered By].[Provider - UserID].CurrentMember
-			,[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].CurrentMember 
-			,[Medication Administration - Medication Scan Performed].[Indicator].&[1] -- Yes
-		)
-	) = 0,
-	null,
-	[Measures].[Medication Administration - Count] / 
-	( 
-		[Measures].[Medication Administration - Count], 
-		(
-			[User - Medication Administration - Administered By].[Provider - UserID].CurrentMember
-			,[Date - Medication Order].[Fiscal Year - Quarter - Month - Date].CurrentMember 
-			,[Medication Administration - Medication Scan Required].[Indicator].&[1] -- Yes
-		)
-	)
-)
+with 
+
+MEMBER CURRENTCUBE.[Measures].[Medication Administration - Count - Medication Scan Performed] AS 
+([Medication - Administration - Medication Scan Performed].[Indicator].&[1], /* Yes */ [Measures].[Medication Administration - Count])
+,VISIBLE=1, FORMAT_STRING='#,##0.00', ASSOCIATED_MEASURE_GROUP='Medication Order';
+
+
+CREATE MEMBER CURRENTCUBE.[Measures].[Medication Administration - Count - Medication Scan Required] AS 
+([Medication - Administration - Medication Scan Required].[Indicator].&[1], /* Yes */ [Measures].[Medication Administration - Count])
+,VISIBLE=1, FORMAT_STRING='#,##0.00', ASSOCIATED_MEASURE_GROUP='Medication Order';
+
 
 member [Measures].[Growth Medication Order Quantity Per Encounter from Same Period Previous Year] AS 
 IIF ((PARALLELPERIOD([Date - Medication Order].[Fiscal Year - Quarter - Month - Date].[Fiscal Year], 1, [Date - Medication Order].[Fiscal Year - Quarter - Month - Date].CurrentMember) , ([Measures].[Medication Order Quantity Per Encounter])) = 0  , NULL,

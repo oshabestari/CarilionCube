@@ -195,7 +195,7 @@ Scanned administered medication?
 total administered medications that should be scanned?
 	[Medication Administration - Medication Scan Required].[Indicator] = "Yes"
 
-Opioid filer? use [Medication - Opioid Substance Indicator]
+Opioid filer? use [Medication - Opioid Indicator]
 	[Medication].[Medication - Drug Enforcement Agency Class] = 
 		C-II HIGH ABUSE POTENTIAL
 		C-III MODERATE DEPENDENCE
@@ -239,12 +239,20 @@ Percent Rank
 	exclude: “Log – Sum”, Min, Max, Avg
 
 
+	Encounter - Completed Indicator
 
 Rank - exclude measure == null
-percent 4 decimal places
+
 measures
 vs load 
 write other measures to programatically 
+
+Encounter - Completed Indicator
+Medication - Opioid Indicator 
+
+
+Redadmissions - who, how often,
+customer satisfaction - kpi
 
 
 

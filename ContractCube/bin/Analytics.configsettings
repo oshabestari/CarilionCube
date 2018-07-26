@@ -3,7 +3,7 @@
     <DataSources>
       <DataSource>
         <ID>EDW</ID>
-        <ConnectionString>Provider=SQLNCLI11.1;Data Source=localhost;Integrated Security=SSPI;Initial Catalog=carilion_dw</ConnectionString>
+        <ConnectionString>Provider=SQLNCLI11.1;Data Source=localhost\sql2016;Integrated Security=SSPI;Initial Catalog=carilion_dw</ConnectionString>
         <ImpersonationInfo>
           <ImpersonationMode xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Default</ImpersonationMode>
           <ImpersonationInfoSecurity xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">Unchanged</ImpersonationInfoSecurity>
@@ -84,6 +84,9 @@
         <ID>MedicationOrder</ID>
       </Dimension>
       <Dimension>
+        <ID>Medication</ID>
+      </Dimension>
+      <Dimension>
         <ID>Outpatient</ID>
       </Dimension>
       <Dimension>
@@ -157,9 +160,6 @@
       </Dimension>
       <Dimension>
         <ID>User Dim</ID>
-      </Dimension>
-      <Dimension>
-        <ID>Medication</ID>
       </Dimension>
     </Dimensions>
     <Cubes>
