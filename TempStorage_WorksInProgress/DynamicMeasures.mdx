@@ -1,0 +1,69 @@
+
+
+
+MEMBER [Measures].[DSRowNumber] AS
+Rank(
+	StrToTuple(
+		"( " +
+		Generate(
+			Head(Axis(1), Axis(1).Item(0).Count ) AS RN,
+			"Axis(1).Item(0).Item(" + CStr( RN.CurrentOrdinal - 1 ) + ").Hierarchy.CurrentMember",
+			", "
+		) +
+		" )"
+	),
+	Axis(1)
+)
+, Format_String = "#,###" 
+
+
+Create Member CurrentCube.[Measures].[DStat_FP_Add_XY] As 
+Axis(0).Item(0) + Axis(0).Item(1)
+,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
+
+
+Create Member CurrentCube.[Measures].[DStat_FP_Subtract_XY] As 
+Axis(0).Item(0) - Axis(0).Item(1)
+,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
+
+
+Create Member CurrentCube.[Measures].[DStat_FP_Multiply_XY] As 
+Axis(0).Item(0) * Axis(0).Item(1)
+,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
+
+
+Create Member CurrentCube.[Measures].[DStat_FP_Divide_XY] As 
+divide(Axis(0).Item(0), Axis(0).Item(1))
+,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
+
+
+Create Member CurrentCube.[Measures].[DStat_FP_Percentage_XY] As 
+divide(Axis(0).Item(0), Axis(0).Item(1))
+,Format_String = "Percent", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
+
+
+Create Member CurrentCube.[Measures].[DStat_FP_Divide_XY_Def_NegOne] As 
+divide(Axis(0).Item(0), Axis(0).Item(1), -1)
+,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
+
+
+Create Member CurrentCube.[Measures].[DStat_FP_Divide_XY_Def_Zero] As 
+divide(Axis(0).Item(0), Axis(0).Item(1), 0)
+,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
+
+
+Create Member CurrentCube.[Measures].[DStat_FP_Divide_XY_Def_One] As 
+divide(Axis(0).Item(0), Axis(0).Item(1), 1)
+,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
+
+
+Create Member CurrentCube.[Measures].[DStat_FP_StdDev_X] As 
+StdDev(Axis(1), Axis(0).Item(0))
+,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
+
+
+Create Member CurrentCube.[Measures].[DStat_FP_Covariance_XY] As 
+Covariance(Axis(1), Axis(0).Item(0), Axis(0).Item(1))
+,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
+
+

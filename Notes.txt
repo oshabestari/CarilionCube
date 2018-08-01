@@ -255,6 +255,78 @@ Redadmissions - who, how often,
 customer satisfaction - kpi
 
 
+https://community.pyramidanalytics.com/t/k9zz2w/axis-of-awesome
+
+running total
+SUM({AXIS(1).ITEM(0):AXIS(1).ITEM(0).HIERARCHY.CURRENTMEMBER}, [Measures].[Sales])
+
+SUM({AXIS(1).ITEM(0):AXIS(1).ITEM(0).HIERARCHY.CURRENTMEMBER},
+
+[Measures].[Sales]) / SUM({AXIS(1)}, [Measures].[Sales])
+
+
+https://community.pyramidanalytics.com/t/k96nqs/making-the-generate-statement-easy-using-n-of-n
+
+http://www.sqlservercentral.com/articles/MDX/72256/
+
+
+https://dataself.com/wiki/MDX_Calculated_Measure_Expressions
+
+http://mdxdax.blogspot.com/2011/04/performance-considerations-for.html
+
+https://blog.crossjoin.co.uk/2011/05/01/recursive-calculation-problems/
+
+https://blog.crossjoin.co.uk/2011/03/24/last-ever-non-empty-a-new-fast-mdx-approach/
+
+https://activeviam.com/en/resource-center/advanced-mdx-queries
+
+https://hub.packtpub.com/how-perform-iteration-sets-mdx/
+
+https://blog.crossjoin.co.uk/category/data-mining/
+
+https://www.databasejournal.com/features/mssql/article.php/3662721/MDX-Clauses-and-Keywords-Use-HAVING-to-Filter-an-Axis.htm
+
+https://blog.gbrueckl.at/languages/mdx/
+
+https://community.pyramidanalytics.com/t/k96nqs/making-the-generate-statement-easy-using-n-of-n
+
+https://community.pyramidanalytics.com/t/18629c/choosing-a-forecasting-algorithm
+
+https://community.pyramidanalytics.com/t/806mtq/applying-r-to-text-analytics
+
+https://community.pyramidanalytics.com/t/x16xkb/cluster-charts
+
+LinRegPoint
+http://archive.oreilly.com/oreillyschool/courses/dba4/dba409.html
+https://stackoverflow.com/questions/19608930/using-linregpoint-mdx-function-in-ssas
+http://blog.gnetgroup.com/bi/2013/03/26/create-regression-line-olap-cube-mdx-linregpoint/
+http://blog.gnetgroup.com/bi/tag/linregpoint/
+http://paulganalysis.blogspot.com/2007/05/linregpoint-mdx-function-sample-in.html
+
+dynamic sets
+https://blog.gbrueckl.at/2014/12/ssas-dynamic-named-sets-in-calculated-members/
+https://blog.crossjoin.co.uk/2007/06/25/advanced-ranking-and-dynamically-generated-named-sets-in-mdx/
+https://social.msdn.microsoft.com/Forums/sqlserver/en-US/0045f292-918b-4b49-92d4-cbe77907a8d4/topcount-named-set-mdx-expression-to-accommodate-filter-condition?forum=sqlanalysisservices
+https://sqldusty.com/tag/dynamic-named-set/
+https://stackoverflow.com/questions/39614061/ssas-dynamic-set-with-wrong-values-when-filtered-by-year
+
+
+MDX perf debugging
+https://sqljason.com/category/mdx
+
+
+Generate
+https://www.codemag.com/article/0801051/The-Baker%E2%80%99s-Dozen--13-Tips-for-Querying-OLAP-Databases-with-MDX
+
+
+
+
+Sets
+Bottom/top/etc
+
+
+KPI
+encounter count growth 10% growth from previous fiscal year
 
 
 
