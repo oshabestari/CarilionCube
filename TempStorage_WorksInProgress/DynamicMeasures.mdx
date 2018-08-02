@@ -1,7 +1,7 @@
 
 
 
-MEMBER [Measures].[DSRowNumber] AS
+MEMBER [Measures].[DStat_RowNumber] AS
 Rank(
 	StrToTuple(
 		"( " +
@@ -14,56 +14,2355 @@ Rank(
 	),
 	Axis(1)
 )
-, Format_String = "#,###" 
+,Format_String = "#,###";
+
+--dynamic measure definitions
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Add_FP_0_XY] AS 
+axis(0).item(0) + axis(0).item(1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Add_FP_N_XY] AS 
+axis(0).item(0) + axis(0).item(1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Add_LO_0_XY] AS 
+axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2) + axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Add_LO_N_XY] AS 
+axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2) + axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Add_LP_0_XY] AS 
+axis(0).item(count(axis(0)) -2) + axis(0).item(count(axis(0)) -1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Add_LP_N_XY] AS 
+axis(0).item(count(axis(0)) -2) + axis(0).item(count(axis(0)) -1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Add_RO_0_XY] AS 
+axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1) + axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Add_RO_N_XY] AS 
+axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1) + axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Average_FP_0_X] AS 
+Avg(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Average_FP_N_X] AS 
+Avg(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Average_LO_0_X] AS 
+Avg(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Average_LO_N_X] AS 
+Avg(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Average_LP_0_X] AS 
+Avg(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Average_LP_N_X] AS 
+Avg(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Average_RO_0_X] AS 
+Avg(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Average_RO_N_X] AS 
+Avg(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Correlation_FP_0_XY] AS 
+Correlation(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Correlation_FP_N_XY] AS 
+Correlation(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Correlation_LO_0_XY] AS 
+Correlation(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Correlation_LO_N_XY] AS 
+Correlation(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Correlation_LP_0_XY] AS 
+Correlation(Axis(1),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Correlation_LP_N_XY] AS 
+Correlation(Axis(1),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Correlation_RO_0_XY] AS 
+Correlation(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Correlation_RO_N_XY] AS 
+Correlation(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Covariance_FP_0_XY] AS 
+Covariance(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Covariance_FP_N_XY] AS 
+Covariance(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Covariance_LO_0_XY] AS 
+Covariance(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Covariance_LO_N_XY] AS 
+Covariance(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Covariance_LP_0_XY] AS 
+Covariance(Axis(1),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Covariance_LP_N_XY] AS 
+Covariance(Axis(1),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Covariance_RO_0_XY] AS 
+Covariance(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Covariance_RO_N_XY] AS 
+Covariance(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_CovarianceN_FP_0_XY] AS 
+CovarianceN(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_CovarianceN_FP_N_XY] AS 
+CovarianceN(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_CovarianceN_LO_0_XY] AS 
+CovarianceN(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_CovarianceN_LO_N_XY] AS 
+CovarianceN(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_CovarianceN_LP_0_XY] AS 
+CovarianceN(Axis(1),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_CovarianceN_LP_N_XY] AS 
+CovarianceN(Axis(1),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_CovarianceN_RO_0_XY] AS 
+CovarianceN(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_CovarianceN_RO_N_XY] AS 
+CovarianceN(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_FP_0_XY] AS 
+Divide(
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_FP_0_XY_Def_NegOne] AS 
+Divide(
+    axis(0).item(0),
+    axis(0).item(1),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_FP_0_XY_Def_One] AS 
+Divide(
+    axis(0).item(0),
+    axis(0).item(1),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_FP_0_XY_Def_Zero] AS 
+Divide(
+    axis(0).item(0),
+    axis(0).item(1),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_FP_0_YX] AS 
+Divide(
+    axis(0).item(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_FP_0_YX_Def_NegOne] AS 
+Divide(
+    axis(0).item(1),
+    axis(0).item(0),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_FP_0_YX_Def_One] AS 
+Divide(
+    axis(0).item(1),
+    axis(0).item(0),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_FP_0_YX_Def_Zero] AS 
+Divide(
+    axis(0).item(1),
+    axis(0).item(0),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_FP_N_XY] AS 
+Divide(
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_FP_N_XY_Def_NegOne] AS 
+Divide(
+    axis(0).item(0),
+    axis(0).item(1),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_FP_N_XY_Def_One] AS 
+Divide(
+    axis(0).item(0),
+    axis(0).item(1),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_FP_N_XY_Def_Zero] AS 
+Divide(
+    axis(0).item(0),
+    axis(0).item(1),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_FP_N_YX] AS 
+Divide(
+    axis(0).item(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_FP_N_YX_Def_NegOne] AS 
+Divide(
+    axis(0).item(1),
+    axis(0).item(0),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_FP_N_YX_Def_One] AS 
+Divide(
+    axis(0).item(1),
+    axis(0).item(0),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_FP_N_YX_Def_Zero] AS 
+Divide(
+    axis(0).item(1),
+    axis(0).item(0),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LO_0_XY] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LO_0_XY_Def_NegOne] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LO_0_XY_Def_One] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LO_0_XY_Def_Zero] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LO_0_YX] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LO_0_YX_Def_NegOne] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LO_0_YX_Def_One] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LO_0_YX_Def_Zero] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LO_N_XY] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LO_N_XY_Def_NegOne] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LO_N_XY_Def_One] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LO_N_XY_Def_Zero] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LO_N_YX] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LO_N_YX_Def_NegOne] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LO_N_YX_Def_One] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LO_N_YX_Def_Zero] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LP_0_XY] AS 
+Divide(
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LP_0_XY_Def_NegOne] AS 
+Divide(
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LP_0_XY_Def_One] AS 
+Divide(
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LP_0_XY_Def_Zero] AS 
+Divide(
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LP_0_YX] AS 
+Divide(
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LP_0_YX_Def_NegOne] AS 
+Divide(
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LP_0_YX_Def_One] AS 
+Divide(
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LP_0_YX_Def_Zero] AS 
+Divide(
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LP_N_XY] AS 
+Divide(
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LP_N_XY_Def_NegOne] AS 
+Divide(
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LP_N_XY_Def_One] AS 
+Divide(
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LP_N_XY_Def_Zero] AS 
+Divide(
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LP_N_YX] AS 
+Divide(
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LP_N_YX_Def_NegOne] AS 
+Divide(
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LP_N_YX_Def_One] AS 
+Divide(
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_LP_N_YX_Def_Zero] AS 
+Divide(
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_RO_0_XY] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_RO_0_XY_Def_NegOne] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_RO_0_XY_Def_One] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_RO_0_XY_Def_Zero] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_RO_0_YX] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_RO_0_YX_Def_NegOne] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_RO_0_YX_Def_One] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_RO_0_YX_Def_Zero] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_RO_N_XY] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_RO_N_XY_Def_NegOne] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_RO_N_XY_Def_One] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_RO_N_XY_Def_Zero] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_RO_N_YX] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_RO_N_YX_Def_NegOne] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_RO_N_YX_Def_One] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Divide_RO_N_YX_Def_Zero] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegIntercept_FP_0_XY] AS 
+LinRegIntercept(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegIntercept_FP_0_YX] AS 
+LinRegIntercept(Axis(1),
+    axis(0).item(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegIntercept_FP_N_XY] AS 
+LinRegIntercept(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegIntercept_FP_N_YX] AS 
+LinRegIntercept(Axis(1),
+    axis(0).item(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegIntercept_LO_0_XY] AS 
+LinRegIntercept(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegIntercept_LO_0_YX] AS 
+LinRegIntercept(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegIntercept_LO_N_XY] AS 
+LinRegIntercept(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegIntercept_LO_N_YX] AS 
+LinRegIntercept(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegIntercept_LP_0_XY] AS 
+LinRegIntercept(Axis(1),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegIntercept_LP_0_YX] AS 
+LinRegIntercept(Axis(1),
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegIntercept_LP_N_XY] AS 
+LinRegIntercept(Axis(1),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegIntercept_LP_N_YX] AS 
+LinRegIntercept(Axis(1),
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegIntercept_RO_0_XY] AS 
+LinRegIntercept(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegIntercept_RO_0_YX] AS 
+LinRegIntercept(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegIntercept_RO_N_XY] AS 
+LinRegIntercept(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegIntercept_RO_N_YX] AS 
+LinRegIntercept(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegPoint_FP_0_XYZ] AS 
+LinRegPoint(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1),
+    axis(0).item(2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegPoint_FP_N_XYZ] AS 
+LinRegPoint(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1),
+    axis(0).item(2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegPoint_LO_0_XYZ] AS 
+LinRegPoint(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -3),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegPoint_LO_N_XYZ] AS 
+LinRegPoint(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -3),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegPoint_LP_0_XYZ] AS 
+LinRegPoint(Axis(1),
+    axis(0).item(count(axis(0)) -3),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegPoint_LP_N_XYZ] AS 
+LinRegPoint(Axis(1),
+    axis(0).item(count(axis(0)) -3),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegPoint_RO_0_XYZ] AS 
+LinRegPoint(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 3)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegPoint_RO_N_XYZ] AS 
+LinRegPoint(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 3)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegR2_FP_0_XY] AS 
+LinRegR2(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegR2_FP_0_YX] AS 
+LinRegR2(Axis(1),
+    axis(0).item(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegR2_FP_N_XY] AS 
+LinRegR2(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegR2_FP_N_YX] AS 
+LinRegR2(Axis(1),
+    axis(0).item(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegR2_LO_0_XY] AS 
+LinRegR2(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegR2_LO_0_YX] AS 
+LinRegR2(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegR2_LO_N_XY] AS 
+LinRegR2(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegR2_LO_N_YX] AS 
+LinRegR2(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegR2_LP_0_XY] AS 
+LinRegR2(Axis(1),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegR2_LP_0_YX] AS 
+LinRegR2(Axis(1),
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegR2_LP_N_XY] AS 
+LinRegR2(Axis(1),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegR2_LP_N_YX] AS 
+LinRegR2(Axis(1),
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegR2_RO_0_XY] AS 
+LinRegR2(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegR2_RO_0_YX] AS 
+LinRegR2(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegR2_RO_N_XY] AS 
+LinRegR2(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegR2_RO_N_YX] AS 
+LinRegR2(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegSlope_FP_0_XY] AS 
+LinRegSlope(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegSlope_FP_0_YX] AS 
+LinRegSlope(Axis(1),
+    axis(0).item(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegSlope_FP_N_XY] AS 
+LinRegSlope(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegSlope_FP_N_YX] AS 
+LinRegSlope(Axis(1),
+    axis(0).item(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegSlope_LO_0_XY] AS 
+LinRegSlope(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegSlope_LO_0_YX] AS 
+LinRegSlope(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegSlope_LO_N_XY] AS 
+LinRegSlope(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegSlope_LO_N_YX] AS 
+LinRegSlope(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegSlope_LP_0_XY] AS 
+LinRegSlope(Axis(1),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegSlope_LP_0_YX] AS 
+LinRegSlope(Axis(1),
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegSlope_LP_N_XY] AS 
+LinRegSlope(Axis(1),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegSlope_LP_N_YX] AS 
+LinRegSlope(Axis(1),
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegSlope_RO_0_XY] AS 
+LinRegSlope(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegSlope_RO_0_YX] AS 
+LinRegSlope(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegSlope_RO_N_XY] AS 
+LinRegSlope(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegSlope_RO_N_YX] AS 
+LinRegSlope(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegVariance_FP_0_XY] AS 
+LinRegVariance(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegVariance_FP_0_YX] AS 
+LinRegVariance(Axis(1),
+    axis(0).item(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegVariance_FP_N_XY] AS 
+LinRegVariance(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegVariance_FP_N_YX] AS 
+LinRegVariance(Axis(1),
+    axis(0).item(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegVariance_LO_0_XY] AS 
+LinRegVariance(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegVariance_LO_0_YX] AS 
+LinRegVariance(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegVariance_LO_N_XY] AS 
+LinRegVariance(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegVariance_LO_N_YX] AS 
+LinRegVariance(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegVariance_LP_0_XY] AS 
+LinRegVariance(Axis(1),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegVariance_LP_0_YX] AS 
+LinRegVariance(Axis(1),
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegVariance_LP_N_XY] AS 
+LinRegVariance(Axis(1),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegVariance_LP_N_YX] AS 
+LinRegVariance(Axis(1),
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegVariance_RO_0_XY] AS 
+LinRegVariance(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegVariance_RO_0_YX] AS 
+LinRegVariance(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegVariance_RO_N_XY] AS 
+LinRegVariance(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_LinRegVariance_RO_N_YX] AS 
+LinRegVariance(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Max_FP_0_X] AS 
+Max(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Max_FP_N_X] AS 
+Max(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Max_LO_0_X] AS 
+Max(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Max_LO_N_X] AS 
+Max(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Max_LP_0_X] AS 
+Max(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Max_LP_N_X] AS 
+Max(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Max_RO_0_X] AS 
+Max(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Max_RO_N_X] AS 
+Max(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Median_FP_0_X] AS 
+Median(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Median_FP_N_X] AS 
+Median(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Median_LO_0_X] AS 
+Median(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Median_LO_N_X] AS 
+Median(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Median_LP_0_X] AS 
+Median(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Median_LP_N_X] AS 
+Median(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Median_RO_0_X] AS 
+Median(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Median_RO_N_X] AS 
+Median(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Min_FP_0_X] AS 
+Min(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Min_FP_N_X] AS 
+Min(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Min_LO_0_X] AS 
+Min(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Min_LO_N_X] AS 
+Min(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Min_LP_0_X] AS 
+Min(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Min_LP_N_X] AS 
+Min(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Min_RO_0_X] AS 
+Min(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Min_RO_N_X] AS 
+Min(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Multiply_FP_0_XY] AS 
+axis(0).item(0) * axis(0).item(1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Multiply_FP_N_XY] AS 
+axis(0).item(0) * axis(0).item(1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Multiply_LO_0_XY] AS 
+axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2) * axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Multiply_LO_N_XY] AS 
+axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2) * axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Multiply_LP_0_XY] AS 
+axis(0).item(count(axis(0)) -2) * axis(0).item(count(axis(0)) -1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Multiply_LP_N_XY] AS 
+axis(0).item(count(axis(0)) -2) * axis(0).item(count(axis(0)) -1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Multiply_RO_0_XY] AS 
+axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1) * axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Multiply_RO_N_XY] AS 
+axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1) * axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_FP_0_XY] AS 
+Divide(
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_FP_0_XY_Def_NegOne] AS 
+Divide(
+    axis(0).item(0),
+    axis(0).item(1),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_FP_0_XY_Def_One] AS 
+Divide(
+    axis(0).item(0),
+    axis(0).item(1),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_FP_0_XY_Def_Zero] AS 
+Divide(
+    axis(0).item(0),
+    axis(0).item(1),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_FP_0_YX] AS 
+Divide(
+    axis(0).item(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_FP_0_YX_Def_NegOne] AS 
+Divide(
+    axis(0).item(1),
+    axis(0).item(0),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_FP_0_YX_Def_One] AS 
+Divide(
+    axis(0).item(1),
+    axis(0).item(0),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_FP_0_YX_Def_Zero] AS 
+Divide(
+    axis(0).item(1),
+    axis(0).item(0),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_FP_N_XY] AS 
+Divide(
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_FP_N_XY_Def_NegOne] AS 
+Divide(
+    axis(0).item(0),
+    axis(0).item(1),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_FP_N_XY_Def_One] AS 
+Divide(
+    axis(0).item(0),
+    axis(0).item(1),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_FP_N_XY_Def_Zero] AS 
+Divide(
+    axis(0).item(0),
+    axis(0).item(1),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_FP_N_YX] AS 
+Divide(
+    axis(0).item(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_FP_N_YX_Def_NegOne] AS 
+Divide(
+    axis(0).item(1),
+    axis(0).item(0),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_FP_N_YX_Def_One] AS 
+Divide(
+    axis(0).item(1),
+    axis(0).item(0),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_FP_N_YX_Def_Zero] AS 
+Divide(
+    axis(0).item(1),
+    axis(0).item(0),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LO_0_XY] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LO_0_XY_Def_NegOne] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LO_0_XY_Def_One] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LO_0_XY_Def_Zero] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LO_0_YX] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LO_0_YX_Def_NegOne] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LO_0_YX_Def_One] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LO_0_YX_Def_Zero] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LO_N_XY] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LO_N_XY_Def_NegOne] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LO_N_XY_Def_One] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LO_N_XY_Def_Zero] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LO_N_YX] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LO_N_YX_Def_NegOne] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LO_N_YX_Def_One] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LO_N_YX_Def_Zero] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LP_0_XY] AS 
+Divide(
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LP_0_XY_Def_NegOne] AS 
+Divide(
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LP_0_XY_Def_One] AS 
+Divide(
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LP_0_XY_Def_Zero] AS 
+Divide(
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LP_0_YX] AS 
+Divide(
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LP_0_YX_Def_NegOne] AS 
+Divide(
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LP_0_YX_Def_One] AS 
+Divide(
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LP_0_YX_Def_Zero] AS 
+Divide(
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LP_N_XY] AS 
+Divide(
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LP_N_XY_Def_NegOne] AS 
+Divide(
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LP_N_XY_Def_One] AS 
+Divide(
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LP_N_XY_Def_Zero] AS 
+Divide(
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LP_N_YX] AS 
+Divide(
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LP_N_YX_Def_NegOne] AS 
+Divide(
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LP_N_YX_Def_One] AS 
+Divide(
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_LP_N_YX_Def_Zero] AS 
+Divide(
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_RO_0_XY] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_RO_0_XY_Def_NegOne] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_RO_0_XY_Def_One] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_RO_0_XY_Def_Zero] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_RO_0_YX] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_RO_0_YX_Def_NegOne] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_RO_0_YX_Def_One] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_RO_0_YX_Def_Zero] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_RO_N_XY] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_RO_N_XY_Def_NegOne] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_RO_N_XY_Def_One] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_RO_N_XY_Def_Zero] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_RO_N_YX] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_RO_N_YX_Def_NegOne] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    -1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_RO_N_YX_Def_One] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    1
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Percent_RO_N_YX_Def_Zero] AS 
+Divide(
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    0
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='Percent';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Rank_FP_0_XY] AS 
+Rank(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Rank_FP_0_YX] AS 
+Rank(Axis(1),
+    axis(0).item(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Rank_FP_N_XY] AS 
+Rank(Axis(1),
+    axis(0).item(0),
+    axis(0).item(1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Rank_FP_N_YX] AS 
+Rank(Axis(1),
+    axis(0).item(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Rank_LO_0_XY] AS 
+Rank(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Rank_LO_0_YX] AS 
+Rank(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Rank_LO_N_XY] AS 
+Rank(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Rank_LO_N_YX] AS 
+Rank(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Rank_LP_0_XY] AS 
+Rank(Axis(1),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Rank_LP_0_YX] AS 
+Rank(Axis(1),
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Rank_LP_N_XY] AS 
+Rank(Axis(1),
+    axis(0).item(count(axis(0)) -2),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Rank_LP_N_YX] AS 
+Rank(Axis(1),
+    axis(0).item(count(axis(0)) -1),
+    axis(0).item(count(axis(0)) -2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Rank_RO_0_XY] AS 
+Rank(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Rank_RO_0_YX] AS 
+Rank(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Rank_RO_N_XY] AS 
+Rank(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Rank_RO_N_YX] AS 
+Rank(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_StdDev_FP_0_X] AS 
+StdDev(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_StdDev_FP_N_X] AS 
+StdDev(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_StdDev_LO_0_X] AS 
+StdDev(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_StdDev_LO_N_X] AS 
+StdDev(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_StdDev_LP_0_X] AS 
+StdDev(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_StdDev_LP_N_X] AS 
+StdDev(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_StdDev_RO_0_X] AS 
+StdDev(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_StdDev_RO_N_X] AS 
+StdDev(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_StdDevP_FP_0_X] AS 
+StdDevp(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_StdDevP_FP_N_X] AS 
+StdDevp(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_StdDevP_LO_0_X] AS 
+StdDevp(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_StdDevP_LO_N_X] AS 
+StdDevp(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_StdDevP_LP_0_X] AS 
+StdDevp(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_StdDevP_LP_N_X] AS 
+StdDevp(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_StdDevP_RO_0_X] AS 
+StdDevp(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_StdDevP_RO_N_X] AS 
+StdDevp(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Subtract_FP_0_XY] AS 
+axis(0).item(0) - axis(0).item(1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Subtract_FP_0_YX] AS 
+axis(0).item(1) - axis(0).item(0)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Subtract_FP_N_XY] AS 
+axis(0).item(0) - axis(0).item(1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Subtract_FP_N_YX] AS 
+axis(0).item(1) - axis(0).item(0)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Subtract_LO_0_XY] AS 
+axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2) - axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Subtract_LO_0_YX] AS 
+axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1) - axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Subtract_LO_N_XY] AS 
+axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2) - axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Subtract_LO_N_YX] AS 
+axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1) - axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -2)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Subtract_LP_0_XY] AS 
+axis(0).item(count(axis(0)) -2) - axis(0).item(count(axis(0)) -1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Subtract_LP_0_YX] AS 
+axis(0).item(count(axis(0)) -1) - axis(0).item(count(axis(0)) -2)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Subtract_LP_N_XY] AS 
+axis(0).item(count(axis(0)) -2) - axis(0).item(count(axis(0)) -1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Subtract_LP_N_YX] AS 
+axis(0).item(count(axis(0)) -1) - axis(0).item(count(axis(0)) -2)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Subtract_RO_0_XY] AS 
+axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1) - axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Subtract_RO_0_YX] AS 
+axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2) - axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Subtract_RO_N_XY] AS 
+axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1) - axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Subtract_RO_N_YX] AS 
+axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 2) - axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Sum_FP_0_X] AS 
+Sum(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Sum_FP_N_X] AS 
+Sum(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Sum_LO_0_X] AS 
+Sum(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Sum_LO_N_X] AS 
+Sum(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Sum_LP_0_X] AS 
+Sum(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Sum_LP_N_X] AS 
+Sum(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Sum_RO_0_X] AS 
+Sum(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Sum_RO_N_X] AS 
+Sum(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Variance_FP_0_X] AS 
+Var(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Variance_FP_N_X] AS 
+Var(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Variance_LO_0_X] AS 
+Var(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Variance_LO_N_X] AS 
+Var(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Variance_LP_0_X] AS 
+Var(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Variance_LP_N_X] AS 
+Var(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Variance_RO_0_X] AS 
+Var(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_Variance_RO_N_X] AS 
+Var(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_VarianceP_FP_0_X] AS 
+VarP(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_VarianceP_FP_N_X] AS 
+VarP(Axis(1),
+    axis(0).item(0)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_VarianceP_LO_0_X] AS 
+VarP(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_VarianceP_LO_N_X] AS 
+VarP(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_VarianceP_LP_0_X] AS 
+VarP(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_VarianceP_LP_N_X] AS 
+VarP(Axis(1),
+    axis(0).item(count(axis(0)) -1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_VarianceP_RO_0_X] AS 
+VarP(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
+
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_VarianceP_RO_N_X] AS 
+VarP(Axis(1),
+    axis(0).item(Rank(StrToTuple("( "+Generate(Head(Axis(0), Axis(0).Item(0).Count ) AS RN,"Axis(0).Item(0).Item("+CStr(RN.CurrentOrdinal-1)+").Hierarchy.CurrentMember",", ")+" )"),Axis(0)) + 1)
+    )
+,VISIBLE=1, DISPLAY_FOLDER='Statistical', FORMAT_STRING='#,##0.0000';
 
 
-Create Member CurrentCube.[Measures].[DStat_FP_Add_XY] As 
-Axis(0).Item(0) + Axis(0).Item(1)
-,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
-
-
-Create Member CurrentCube.[Measures].[DStat_FP_Subtract_XY] As 
-Axis(0).Item(0) - Axis(0).Item(1)
-,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
-
-
-Create Member CurrentCube.[Measures].[DStat_FP_Multiply_XY] As 
-Axis(0).Item(0) * Axis(0).Item(1)
-,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
-
-
-Create Member CurrentCube.[Measures].[DStat_FP_Divide_XY] As 
-divide(Axis(0).Item(0), Axis(0).Item(1))
-,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
-
-
-Create Member CurrentCube.[Measures].[DStat_FP_Percentage_XY] As 
-divide(Axis(0).Item(0), Axis(0).Item(1))
-,Format_String = "Percent", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
-
-
-Create Member CurrentCube.[Measures].[DStat_FP_Divide_XY_Def_NegOne] As 
-divide(Axis(0).Item(0), Axis(0).Item(1), -1)
-,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
-
-
-Create Member CurrentCube.[Measures].[DStat_FP_Divide_XY_Def_Zero] As 
-divide(Axis(0).Item(0), Axis(0).Item(1), 0)
-,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
-
-
-Create Member CurrentCube.[Measures].[DStat_FP_Divide_XY_Def_One] As 
-divide(Axis(0).Item(0), Axis(0).Item(1), 1)
-,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
-
-
-Create Member CurrentCube.[Measures].[DStat_FP_StdDev_X] As 
-StdDev(Axis(1), Axis(0).Item(0))
-,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
-
-
-Create Member CurrentCube.[Measures].[DStat_FP_Covariance_XY] As 
-Covariance(Axis(1), Axis(0).Item(0), Axis(0).Item(1))
-,Format_String = "#,##0.0000", DISPLAY_FOLDER = 'Dynamic Statistics\Fixed Position';
 
 
