@@ -1,0 +1,83 @@
+//from https://bipassion.wordpress.com/category/mdx/
+WITH
+// STEP 1: Current Member Children Count
+// Reusable code to any Row members
+MEMBER [Measures].[Child Count] AS
+SUM( 
+    Axis(1).Item(0).Item(0).Hierarchy.CurrentMember.Children,
+        IIf(
+            Axis(0).Item(0) = 0,
+            NULL,
+            1
+           )   
+    )
+// STEP 2: Average of CurrentMember
+// Reusable code to any Row members and Column Measure
+MEMBER [Measures].[Average Measure (Using Children)] AS
+    iif( IsEmpty(Axis(0).Item(0)),
+         null,
+            iif( Axis(1).Item(0).Item(0).Hierarchy.CurrentMember.Level.Ordinal = 0,
+                   Axis(0).Item(0),        
+                   Sum(Axis(1).Item(0).Item(0).Hierarchy.CurrentMember.Children,
+                       Axis(0).Item(0)
+                       )
+                       /
+                        Count(NonEmpty(Axis(1).Item(0).Item(0).Hierarchy.CurrentMember.Children,
+                                       Axis(0).Item(0)
+                                       )
+                             )                                
+               )
+        )       
+, FORMAT_STRING = 'Currency'
+ 
+// STEP 3: Average of CurrentMember Recursive
+// Used Child Count from STEP 1
+// Reusable code to any Row members and Column Measure
+MEMBER [Measures].[Average Measure (ExplicitRecursive)] AS
+    IIF(
+        [Measures].[Child Count] <= 1
+        ,Axis(0).Item(0)
+        ,SUM(
+                { Axis(1).Item(0).Item(0).Hierarchy.CurrentMember.Children },
+                ( [Measures].[Average Measure (ExplicitRecursive)] )
+            ) 
+            /
+            [Measures].[Child Count]
+       ),
+    FORMAT_STRING="Currency"
+// STEP 4: Child Count using DESCENDANTS
+// This requires Row Members so no more dynamic
+MEMBER [Measures].[Child Count (Using DESCENDANTS)] AS
+ SUM( 
+        DESCENDANTS(
+         [Date].[Calendar].CurrentMember,   
+         [Date].[Calendar].[Month]              
+        )
+        ,IIF( Axis(0).Item(0) = 0 OR IsEmpty(Axis(0).Item(0))
+        , NULL
+        , 1
+     )
+    )
+// STEP 5: Average of CurrentMember using Child Count FROM STEP 4
+// Reusable code to any Row members and Column Measure
+MEMBER [Measures].[Average Measure (Using ChildCountDESCENDANTS)] AS
+ DIVIDE(Axis(0).Item(0),[Measures].[Child Count (Using DESCENDANTS)] )
+, FORMAT_STRING = 'Currency'
+ 
+    SELECT  {
+        [Measures].[Reseller Sales Amount],
+        [Measures].[Child Count],
+        [Measures].[Average Measure (Using Children)],      
+        [Measures].[Average Measure (ExplicitRecursive)],       
+        [Measures].[Child Count (Using DESCENDANTS)],
+        [Measures].[Average Measure (Using ChildCountDESCENDANTS)]  
+    } ON COLUMNS,
+     
+    {
+        DESCENDANTS(
+            [Date].[Calendar].[Calendar Year].&[2012],
+            [Date].[Calendar].[Month],
+            SELF_AND_BEFORE
+        )
+    } ON ROWS
+FROM    [Adventure Works]
