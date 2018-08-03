@@ -319,6 +319,8 @@ Generate
 https://www.codemag.com/article/0801051/The-Baker%E2%80%99s-Dozen--13-Tips-for-Querying-OLAP-Databases-with-MDX
 
 
+VBA function list
+https://docs.microsoft.com/en-us/sql/mdx/vba-functions-in-mdx-and-dax?view=sql-server-2017
 
 
 Sets
@@ -328,6 +330,8 @@ Bottom/top/etc
 KPI
 encounter count growth 10% growth from previous fiscal year
 
+
+<<_func_name>>(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.Children,
 
 
 
