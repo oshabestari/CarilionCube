@@ -321,6 +321,8 @@ https://www.codemag.com/article/0801051/The-Baker%E2%80%99s-Dozen--13-Tips-for-Q
 
 VBA function list
 https://docs.microsoft.com/en-us/sql/mdx/vba-functions-in-mdx-and-dax?view=sql-server-2017
+https://msdn.microsoft.com/en-us/vba/language-reference-vba/articles/functions-visual-basic-for-applications
+
 
 
 Sets
