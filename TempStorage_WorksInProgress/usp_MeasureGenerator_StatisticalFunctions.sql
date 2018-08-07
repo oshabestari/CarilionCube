@@ -326,7 +326,7 @@ CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] as
 			<<NullToZero_Start>>axis(0).item(<<P0>>)<<NullToZero_End>>
 		) - 1.0
 	    ,
-		count(
+		iif(
 			(
 				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
 				<<NullToZero_Start>>axis(0).item(<<P0>>)<<NullToZero_End>>
