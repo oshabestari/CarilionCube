@@ -25,7 +25,7 @@ SET NOCOUNT ON
 
 if not exists(select top 1 1 from util.Tally)
 begin
-    raiserror('util.Tally is empty. Execute sproc usp_PopulateTally to populate.', 18, 0)
+    raiserror('util.Tally is empty. Execute sproc dbo.usp_PopulateTally to populate.', 18, 0)
 end
 
 -- debug
@@ -186,32 +186,34 @@ create table #functions(
 )
 
 insert into #functions(
- _func_name,            _GroupingGuid,                          _FriendlyName,      _DISPLAY_FOLDER, _FORMAT_STRING, _SupportsPermutations, _NumParams, _FunctNeedsSet, _Formula) values
- ('Avg',                '1BCC4F42-C700-44D2-A477-44C8D4F55017', 'Average',          'Statistical',  '#,##0.0000',      0,                    1,         1,              null)
-,('Sum',                'D376D55D-B5F1-4115-880B-ED4FAB63C693', 'Sum',              'Statistical',  '#,##0.0000',      0,                    1,         1,              null)
-,('Median',             '7FFF3EA8-5E77-4EDC-A1C9-E6A211C9C9E1', 'Median',           'Statistical',  '#,##0.0000',      0,                    1,         1,              null)
-,('StdDev',             '94AB6DA6-BE54-460F-BD5E-8627E1C22790', 'StdDev',           'Statistical',  '#,##0.0000',      0,                    1,         1,              null)
-,('StdDevp',            'A874F391-DFF0-4639-BE37-D937BD99A91F', 'StdDevP',          'Statistical',  '#,##0.0000',      0,                    1,         1,              null)
-,('Var',                'E78C7908-6146-4043-AE47-C24DF94E5A80', 'Variance',         'Statistical',  '#,##0.0000',      0,                    1,         1,              null)
-,('VarP',               '183772C8-FE98-4E88-A4BE-9E5ABF11C1BC', 'VarianceP',        'Statistical',  '#,##0.0000',      0,                    1,         1,              null)
-,('Correlation',        '3806B6B3-0F97-4D48-A292-A597FA242E68', 'Correlation',      'Statistical',  '#,##0.0000',      0,                    2,         1,              null)
-,('Covariance',         'ECDEFB36-39D9-45EB-B411-B9DA532497FF', 'Covariance',       'Statistical',  '#,##0.0000',      0,                    2,         1,              null)
-,('CovarianceN',        'C18AE0A9-A76C-4AD8-ABF9-4C4DF6B9C7B8', 'CovarianceN',      'Statistical',  '#,##0.0000',      0,                    2,         1,              null)
-,('LinRegIntercept',    '8EE62D62-1B4C-49BA-BFDD-473FE16B2D7A', 'LinRegIntercept',  'Statistical',  '#,##0.0000',      1,                    2,         1,              null)
-,('LinRegPoint',        '32AFBFA0-5F0B-4882-BC27-0C947D07B67A', 'LinRegPoint',      'Statistical',  '#,##0.0000',      1,                    3,         1,              null)
-,('LinRegR2',           '965E0970-7B1E-4C3B-A84C-95C1C6E7A331', 'LinRegR2',         'Statistical',  '#,##0.0000',      1,                    2,         1,              null)
-,('LinRegSlope',        'A49B1157-FD9A-442D-BAB7-62D3AB4C0375', 'LinRegSlope',      'Statistical',  '#,##0.0000',      1,                    2,         1,              null)
-,('LinRegVariance',     '7D4176DD-D96A-4D54-A093-842FFA380AAB', 'LinRegVariance',   'Statistical',  '#,##0.0000',      1,                    2,         1,              null)
-,('Min',                'B1173155-13BC-4B81-A9DC-511173F132E7', 'Min',              'Statistical',  '#,##0.0000',      1,                    1,         1,              null)
-,('Max',                '41523CA5-D1B4-4C3B-B19E-C929EDC97AC2', 'Max',              'Statistical',  '#,##0.0000',      1,                    1,         1,              null)
-,('PercentileLo2Hi',    '4DFE6181-2F8E-4CDC-B1E5-8E2FB68CB90E', 'PercentileLo2Hi',  'Statistical',  'Percent',         0,                    1,         1,              null)
-,('PercentileHi2Lo',    '14255EE3-CF30-4AD0-B555-6477A2942751', 'PercentileHi2Lo',  'Statistical',  'Percent',         0,                    1,         1,              null)
---,('RowNum',             '1324F644-2689-4045-8C02-8C7EB6A90789', 'RowNum',           'Statistical',  '#,##0.0000',      1,                    2,         1,              null)
-,('+',                  '0E30A859-54D4-4811-9485-F42E7E8DA5F7', 'Add',              'Statistical',  '#,##0.0000',      0,                    2,         0,              @formula_add)
-,('-',                  'B5347DE3-732D-41F4-A1B5-D71DE4F1B6CD', 'Subtract',         'Statistical',  '#,##0.0000',      1,                    2,         0,              @formula_subtract)
-,('Divide',             'EE4CD7C4-C00C-4415-979E-CC1E2D6FA033', 'Divide',           'Statistical',  '#,##0.0000',      1,                    2,         0,              null)
-,('Divide',             '32BC3EF0-165A-41AC-977A-780FE7895B54', 'Percent',          'Statistical',  'Percent',         1,                    2,         0,              null)
-,('*',                  '1D560B67-3B9C-4D72-A036-7A693065057E', 'Multiply',         'Statistical',  '#,##0.0000',      0,                    2,         0,              @formula_multiplay)
+ _func_name,            _GroupingGuid,                          _FriendlyName,      _DISPLAY_FOLDER,                _FORMAT_STRING, _SupportsPermutations, _NumParams, _FunctNeedsSet, _Formula) values
+ ('Avg',                '1BCC4F42-C700-44D2-A477-44C8D4F55017', 'Average',          'Statistical\Average',          '#,##0.0000',      0,                    1,         1,              null)
+,('Sum',                'D376D55D-B5F1-4115-880B-ED4FAB63C693', 'Sum',              'Statistical\Sum',              '#,##0.0000',      0,                    1,         1,              null)
+,('Median',             '7FFF3EA8-5E77-4EDC-A1C9-E6A211C9C9E1', 'Median',           'Statistical\Median',           '#,##0.0000',      0,                    1,         1,              null)
+,('StdDev',             '94AB6DA6-BE54-460F-BD5E-8627E1C22790', 'StdDev',           'Statistical\StdDev',           '#,##0.0000',      0,                    1,         1,              null)
+,('StdDevp',            'A874F391-DFF0-4639-BE37-D937BD99A91F', 'StdDevP',          'Statistical\StdDevP',          '#,##0.0000',      0,                    1,         1,              null)
+,('Var',                'E78C7908-6146-4043-AE47-C24DF94E5A80', 'Variance',         'Statistical\Variance',         '#,##0.0000',      0,                    1,         1,              null)
+,('VarP',               '183772C8-FE98-4E88-A4BE-9E5ABF11C1BC', 'VarianceP',        'Statistical\VarianceP',        '#,##0.0000',      0,                    1,         1,              null)
+,('Correlation',        '3806B6B3-0F97-4D48-A292-A597FA242E68', 'Correlation',      'Statistical\Correlation',      '#,##0.0000',      0,                    2,         1,              null)
+,('Covariance',         'ECDEFB36-39D9-45EB-B411-B9DA532497FF', 'Covariance',       'Statistical\Covariance',       '#,##0.0000',      0,                    2,         1,              null)
+,('CovarianceN',        'C18AE0A9-A76C-4AD8-ABF9-4C4DF6B9C7B8', 'CovarianceN',      'Statistical\CovarianceN',      '#,##0.0000',      0,                    2,         1,              null)
+,('LinRegIntercept',    '8EE62D62-1B4C-49BA-BFDD-473FE16B2D7A', 'LinRegIntercept',  'Statistical\LinRegIntercept',  '#,##0.0000',      1,                    2,         1,              null)
+,('LinRegPoint',        '32AFBFA0-5F0B-4882-BC27-0C947D07B67A', 'LinRegPoint',      'Statistical\LinRegPoint',      '#,##0.0000',      1,                    3,         1,              null)
+,('LinRegR2',           '965E0970-7B1E-4C3B-A84C-95C1C6E7A331', 'LinRegR2',         'Statistical\LinRegR2',         '#,##0.0000',      1,                    2,         1,              null)
+,('LinRegSlope',        'A49B1157-FD9A-442D-BAB7-62D3AB4C0375', 'LinRegSlope',      'Statistical\LinRegSlope',      '#,##0.0000',      1,                    2,         1,              null)
+,('LinRegVariance',     '7D4176DD-D96A-4D54-A093-842FFA380AAB', 'LinRegVariance',   'Statistical\LinRegVariance',   '#,##0.0000',      1,                    2,         1,              null)
+,('Min',                'B1173155-13BC-4B81-A9DC-511173F132E7', 'Min',              'Statistical\Min',              '#,##0.0000',      1,                    1,         1,              null)
+,('Max',                '41523CA5-D1B4-4C3B-B19E-C929EDC97AC2', 'Max',              'Statistical\Max',              '#,##0.0000',      1,                    1,         1,              null)
+,('PercentileLo2Hi',    '4DFE6181-2F8E-4CDC-B1E5-8E2FB68CB90E', 'PercentileLo2Hi',  'Statistical\PercentileLo2Hi',  'Percent',         0,                    1,         1,              null)
+,('PercentileHi2Lo',    '14255EE3-CF30-4AD0-B555-6477A2942751', 'PercentileHi2Lo',  'Statistical\PercentileHi2Lo',  'Percent',         0,                    1,         1,              null)
+--,('RowNum',           '1324F644-2689-4045-8C02-8C7EB6A90789', 'RowNum',           'Statistical\RowNum',           '#,##0.0000',      1,                    2,         1,              null)
+,('+',                  '0E30A859-54D4-4811-9485-F42E7E8DA5F7', 'Add',              'Statistical\Add',              '#,##0.0000',      0,                    2,         0,              @formula_add)
+,('-',                  'B5347DE3-732D-41F4-A1B5-D71DE4F1B6CD', 'Subtract',         'Statistical\Subtract',         '#,##0.0000',      1,                    2,         0,              @formula_subtract)
+,('Divide',             'EE4CD7C4-C00C-4415-979E-CC1E2D6FA033', 'Divide',           'Statistical\Divide',           '#,##0.0000',      1,                    2,         0,              null)
+,('Divide',             '32BC3EF0-165A-41AC-977A-780FE7895B54', 'Percent',          'Statistical\Percent',          'Percent',         1,                    2,         0,              null)
+,('*',                  '1D560B67-3B9C-4D72-A036-7A693065057E', 'Multiply',         'Statistical\Multiply',         '#,##0.0000',      0,                    2,         0,              @formula_multiplay)
+,('Quartile1st',        '2A151C3C-D549-4E64-83B0-D838EC7D5659', '1st Quartile',     'Statistical\Quartile',         '#,##0.0000',      0,                    2,         0,              @formula_multiplay)
+,('Quartile3rd',        '945FAF99-0180-4AB2-B68F-E8801FD086B8', '3rd Quartile',     'Statistical\Quartile',         '#,##0.0000',      0,                    2,         0,              @formula_multiplay)
 
 
 -- select newid()
@@ -312,57 +314,73 @@ CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] AS
 '
 
 
-DECLARE @template_percentile NVARCHAR(MAX) = 
-N'
-CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] as
-//IIF(isempty(axis(0).item(<<P0>>))
-//	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
-//	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
-//	NULL,
-	<<FlipPercentile>>Divide(
-		RANK(
-			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			<<NullToZero_Start>>axis(0).item(<<P0>>)<<NullToZero_End>>
-		) - 1.0
-	    ,
-		iif(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				<<NullToZero_Start>>axis(0).item(<<P0>>)<<NullToZero_End>>
-			)
-		) - 1.0
-	)
-//)
-,<<MEASURE_PROPERTIES>>;
-'
-
-/*
-DECLARE @template_percentile NVARCHAR(MAX) = 
+DECLARE @template_percentile_exclude_nulls_unknown NVARCHAR(MAX) = 
 N'
 CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] as
 IIF(isempty(axis(0).item(<<P0>>))
-	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER
+	or (
+		Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.levels(0).name = "(All)"
+		and Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER.level.ordinal = 0
+	)
 	or Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER is Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER,
 	NULL,
-	1.0 - Divide(
+	<<FlipPercentile>>Divide(
 		RANK(
 			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
-			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }), 
-			<<NullToZero_Start>>axis(0).item(<<P0>>)<<NullToZero_End>>
+			except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.currentmember.siblings, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER), 
+			axis(0).item(<<P0>>)
 		) - 1.0
 	    ,
-		count(
-			(
-				except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.members, { Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.DEFAULTMEMBER, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER }),
-				<<NullToZero_Start>>axis(0).item(<<P0>>)<<NullToZero_End>>
-			)
-		) - 1.0
-	) //<<FlipPercentile>>
+		filter(
+            except(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.currentmember.siblings, Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.UNKNOWNMEMBER), 
+            not isempty(axis(0).item(<<P0>>))
+        ).count - 1.0
+	)
 )
 ,<<MEASURE_PROPERTIES>>;
 '
-*/
+
+
+DECLARE @template_percentile_include_nulls_unknown NVARCHAR(MAX) = 
+N'
+CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] as
+IIF((
+		Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.levels(0).name = "(All)"
+		and Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER.level.ordinal = 0
+	),
+	NULL,
+	<<FlipPercentile>>Divide(
+		RANK(
+			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER, 
+			Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.currentmember.siblings, 
+			axis(0).item(<<P0>>)
+		) - 1.0
+	    ,
+		(
+            Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.currentmember.siblings,
+            axis(0).item(<<P0>>)
+        ).count - 1.0
+	)
+)
+,<<MEASURE_PROPERTIES>>;
+'
+
+DECLARE @template_row_number NVARCHAR(MAX) = 
+N'CREATE MEMBER CURRENTCUBE.[Measures].[DStat_RowNumber] AS
+Rank(
+	StrToTuple(
+		"( " +
+		Generate(
+			Head(Axis(1), Axis(1).Item(0).Count ) AS RN,
+			"Axis(1).Item(0).Item(" + CStr( RN.CurrentOrdinal - 1 ) + ").Hierarchy.CurrentMember",
+			", "
+		) +
+		" )"
+	),
+	Axis(1)
+)
+,VISIBLE=1, DISPLAY_FOLDER=''Statistical\Row Number'', FORMAT_STRING=''#,##0'';
+'
 
 
 --********************************************************************
@@ -401,8 +419,14 @@ select distinct
 
     ,template = replace(
         case    
-            when f._func_name = 'PercentileHi2Lo' then replace(@template_percentile, '<<FlipPercentile>>', '')
-            when f._func_name = 'PercentileLo2Hi' then replace(@template_percentile, '<<FlipPercentile>>', '1.0 - ')
+            when f._func_name = 'PercentileHi2Lo' and nt.code = 'N' then 
+                replace(@template_percentile_exclude_nulls_unknown, '<<FlipPercentile>>', '')
+            when f._func_name = 'PercentileHi2Lo' and nt.code = '0' then 
+                replace(@template_percentile_include_nulls_unknown, '<<FlipPercentile>>', '')
+            when f._func_name = 'PercentileLo2Hi' and nt.code = 'N' then 
+                replace(@template_percentile_exclude_nulls_unknown, '<<FlipPercentile>>', '1.0 - ')
+            when f._func_name = 'PercentileLo2Hi' and nt.code = '0' then 
+                replace(@template_percentile_include_nulls_unknown, '<<FlipPercentile>>', '1.0 - ')
             when f._Formula is not null then replace(@template_formula, '<<formula>>', f._Formula)
             when f._FunctNeedsSet = 1 then replace(@template_def_with_set, '<<_func_name>>', f._func_name)
             when f._FunctNeedsSet = 0 then replace(@template_def, '<<_func_name>>', f._func_name)
@@ -489,12 +513,18 @@ end
 --*************************************************************************************************
 --*************************************************************************************************
 --*************************************************************************************************
-select 
-    template as [--dynamic measure definitions]
-from 
-    #t
-order by
-    MeasureDefinitionName
+select
+    q.*
+from
+    (
+    select 
+        template as [--dynamic measure definitions]
+    from 
+        #t
+    union all
+    select @template_row_number
+    ) q
+order by 1
 
 
     -- MeasureName                = CONCAT(f.measure_name, ' - <<lag>> Day <<_FriendlyName>> - By - ', f.dimension_name)
