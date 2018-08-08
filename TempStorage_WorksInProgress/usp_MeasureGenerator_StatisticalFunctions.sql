@@ -1,6 +1,6 @@
 USE [CubeMetaData]
 GO
-/****** Object:  StoredProcedure [dbo].[usp_MeasureGenerator_FunctionOverDays]    Script Date: 7/30/2018 20:11:16 ******/
+/****** Object:  StoredProcedure [dbo].[usp_MeasureGenerator_StatisticalFunctions]    Script Date: 8/7/2018 19:07:43 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8,7 +8,7 @@ GO
 
 
 
-alter PROCEDURE [dbo].[usp_MeasureGenerator_StatisticalFunctions](
+ALTER PROCEDURE [dbo].[usp_MeasureGenerator_StatisticalFunctions](
 	@func_name varchar(50) = null
     -- NULL = generate all
     -- NOT NULL =  must be the name of a function 
@@ -212,8 +212,8 @@ insert into #functions(
 ,('Divide',             'EE4CD7C4-C00C-4415-979E-CC1E2D6FA033', 'Divide',           'Statistical\Divide',           '#,##0.0000',      1,                    2,         0,              null)
 ,('Divide',             '32BC3EF0-165A-41AC-977A-780FE7895B54', 'Percent',          'Statistical\Percent',          'Percent',         1,                    2,         0,              null)
 ,('*',                  '1D560B67-3B9C-4D72-A036-7A693065057E', 'Multiply',         'Statistical\Multiply',         '#,##0.0000',      0,                    2,         0,              @formula_multiplay)
-,('Quartile1st',        '2A151C3C-D549-4E64-83B0-D838EC7D5659', '1st Quartile',     'Statistical\Quartile',         '#,##0.0000',      0,                    2,         0,              @formula_multiplay)
-,('Quartile3rd',        '945FAF99-0180-4AB2-B68F-E8801FD086B8', '3rd Quartile',     'Statistical\Quartile',         '#,##0.0000',      0,                    2,         0,              @formula_multiplay)
+,('Quartile1st',        '2A151C3C-D549-4E64-83B0-D838EC7D5659', '1stQuartile',      'Statistical\Quartile',         '#,##0.0000',      0,                    2,         0,              @formula_multiplay)
+,('Quartile3rd',        '945FAF99-0180-4AB2-B68F-E8801FD086B8', '3rdQuartile',      'Statistical\Quartile',         '#,##0.0000',      0,                    2,         0,              @formula_multiplay)
 
 
 -- select newid()
@@ -288,17 +288,17 @@ null,
 DECLARE @template_def_with_set NVARCHAR(MAX) = N'
 CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] AS 
 iif(iserror(
-<<_func_name>>(Axis(1).Item(0).Item(0).Hierarchy.CurrentMember.siblings,
+<<_func_name>>(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.siblings,
 <<FunctionParams>>
     )
 )
 or cstr(
-<<_func_name>>(Axis(1).Item(0).Item(0).Hierarchy.CurrentMember.siblings,
+<<_func_name>>(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.siblings,
 <<FunctionParams>>
     )
 ) = "-nan(ind)",
 null,
-<<_func_name>>(Axis(1).Item(0).Item(0).Hierarchy.CurrentMember.siblings,
+<<_func_name>>(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.siblings,
 <<FunctionParams>>
     )
 )
@@ -306,16 +306,14 @@ null,
 '
 
 
-DECLARE @template_formula NVARCHAR(MAX) = 
-N'
+DECLARE @template_formula NVARCHAR(MAX) = N'
 CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] AS 
 <<formula>>
 ,<<MEASURE_PROPERTIES>>;
 '
 
 
-DECLARE @template_percentile_exclude_nulls_unknown NVARCHAR(MAX) = 
-N'
+DECLARE @template_percentile_exclude_nulls_unknown NVARCHAR(MAX) = N'
 CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] as
 IIF(isempty(axis(0).item(<<P0>>))
 	or (
@@ -341,8 +339,7 @@ IIF(isempty(axis(0).item(<<P0>>))
 '
 
 
-DECLARE @template_percentile_include_nulls_unknown NVARCHAR(MAX) = 
-N'
+DECLARE @template_percentile_include_nulls_unknown NVARCHAR(MAX) = N'
 CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] as
 IIF((
 		Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.levels(0).name = "(All)"
@@ -365,8 +362,8 @@ IIF((
 ,<<MEASURE_PROPERTIES>>;
 '
 
-DECLARE @template_row_number NVARCHAR(MAX) = 
-N'CREATE MEMBER CURRENTCUBE.[Measures].[DStat_RowNumber] AS
+DECLARE @template_row_number NVARCHAR(MAX) = N'
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_RowNumber] AS
 Rank(
 	StrToTuple(
 		"( " +
@@ -382,7 +379,24 @@ Rank(
 ,VISIBLE=1, DISPLAY_FOLDER=''Statistical\Row Number'', FORMAT_STRING=''#,##0'';
 '
 
-
+DECLARE @template_quartile NVARCHAR(MAX) = N'
+CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] AS
+IIF(<<TestForMeasureIsEmpty>>
+    (
+		Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.levels(0).name = "(All)"
+		and Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CURRENTMEMBER.level.ordinal = 0
+	),
+	NULL,
+	median(
+		filter( 
+			{ Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.siblings } as NS,
+			<<NullToZero_Start>>axis(0).item(<<P0>>)<<NullToZero_End>> <<Less_Greater_Than>> median(NS, <<NullToZero_Start>>axis(0).item(<<P0>>)<<NullToZero_End>>)
+		), 
+		<<NullToZero_Start>>axis(0).item(<<P0>>)<<NullToZero_End>>
+	)
+)
+,<<MEASURE_PROPERTIES>>;
+'
 --********************************************************************
 --********************************************************************
 --********************************************************************
@@ -427,6 +441,8 @@ select distinct
                 replace(@template_percentile_exclude_nulls_unknown, '<<FlipPercentile>>', '1.0 - ')
             when f._func_name = 'PercentileLo2Hi' and nt.code = '0' then 
                 replace(@template_percentile_include_nulls_unknown, '<<FlipPercentile>>', '1.0 - ')
+            when f._func_name = 'Quartile1st' then REPLACE(@template_quartile, '<<Less_Greater_Than>>', '<')
+            when f._func_name = 'Quartile3rd' then REPLACE(@template_quartile, '<<Less_Greater_Than>>', '>')
             when f._Formula is not null then replace(@template_formula, '<<formula>>', f._Formula)
             when f._FunctNeedsSet = 1 then replace(@template_def_with_set, '<<_func_name>>', f._func_name)
             when f._FunctNeedsSet = 0 then replace(@template_def, '<<_func_name>>', f._func_name)
@@ -459,12 +475,13 @@ from
 --*************************************************************************************************
 update t
 set
-    t.template = replace(replace(replace(replace(replace(t.template, 
+    t.template = replace(replace(replace(replace(replace(replace(t.template, 
         '<<MeasureDefinitionName>>', t.MeasureDefinitionName),
         '<<FunctionParams>>', t.FunctionParams),
         '<<ExtBehavior>>', isnull(extb.OptionalParam, '')),
         '<<NullToZero_Start>>', iif(nt.convert_null_to_zero = 1, 'CoalesceEmpty(', '')),
-        '<<NullToZero_End>>', iif(nt.convert_null_to_zero = 1, ', 0)', ''))
+        '<<NullToZero_End>>', iif(nt.convert_null_to_zero = 1, ', 0)', '')),
+        '<<TestForMeasureIsEmpty>>',  iif(nt.convert_null_to_zero = 0, 'isempty(axis(0).item(<<P0>>)) or ', ''))
 from
     #t t
     join #null_treatment nt
