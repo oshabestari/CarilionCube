@@ -197,11 +197,11 @@ insert into #functions(
 ,('Correlation',        '3806B6B3-0F97-4D48-A292-A597FA242E68', 'Correlation',      'Statistical\Correlation',      '#,##0.0000',      0,                    2,         1,              null)
 ,('Covariance',         'ECDEFB36-39D9-45EB-B411-B9DA532497FF', 'Covariance',       'Statistical\Covariance',       '#,##0.0000',      0,                    2,         1,              null)
 ,('CovarianceN',        'C18AE0A9-A76C-4AD8-ABF9-4C4DF6B9C7B8', 'CovarianceN',      'Statistical\CovarianceN',      '#,##0.0000',      0,                    2,         1,              null)
-,('LinRegIntercept',    '8EE62D62-1B4C-49BA-BFDD-473FE16B2D7A', 'LinRegIntercept',  'Statistical\LinRegIntercept',  '#,##0.0000',      1,                    2,         1,              null)
-,('LinRegPoint',        '32AFBFA0-5F0B-4882-BC27-0C947D07B67A', 'LinRegPoint',      'Statistical\LinRegPoint',      '#,##0.0000',      1,                    3,         1,              null)
-,('LinRegR2',           '965E0970-7B1E-4C3B-A84C-95C1C6E7A331', 'LinRegR2',         'Statistical\LinRegR2',         '#,##0.0000',      1,                    2,         1,              null)
-,('LinRegSlope',        'A49B1157-FD9A-442D-BAB7-62D3AB4C0375', 'LinRegSlope',      'Statistical\LinRegSlope',      '#,##0.0000',      1,                    2,         1,              null)
-,('LinRegVariance',     '7D4176DD-D96A-4D54-A093-842FFA380AAB', 'LinRegVariance',   'Statistical\LinRegVariance',   '#,##0.0000',      1,                    2,         1,              null)
+,('LinRegIntercept',    '8EE62D62-1B4C-49BA-BFDD-473FE16B2D7A', 'LinRegIntercept',  'Statistical\LinRegIntercept',  '#,##0.0000',      1,                    1,         1,              null)
+,('LinRegPoint',        '32AFBFA0-5F0B-4882-BC27-0C947D07B67A', 'LinRegPoint',      'Statistical\LinRegPoint',      '#,##0.0000',      1,                    1,         1,              null)
+,('LinRegR2',           '965E0970-7B1E-4C3B-A84C-95C1C6E7A331', 'LinRegR2',         'Statistical\LinRegR2',         '#,##0.0000',      1,                    1,         1,              null)
+,('LinRegSlope',        'A49B1157-FD9A-442D-BAB7-62D3AB4C0375', 'LinRegSlope',      'Statistical\LinRegSlope',      '#,##0.0000',      1,                    1,         1,              null)
+,('LinRegVariance',     '7D4176DD-D96A-4D54-A093-842FFA380AAB', 'LinRegVariance',   'Statistical\LinRegVariance',   '#,##0.0000',      1,                    1,         1,              null)
 ,('Min',                'B1173155-13BC-4B81-A9DC-511173F132E7', 'Min',              'Statistical\Min',              '#,##0.0000',      1,                    1,         1,              null)
 ,('Max',                '41523CA5-D1B4-4C3B-B19E-C929EDC97AC2', 'Max',              'Statistical\Max',              '#,##0.0000',      1,                    1,         1,              null)
 ,('PercentileLo2Hi',    '4DFE6181-2F8E-4CDC-B1E5-8E2FB68CB90E', 'PercentileLo2Hi',  'Statistical\PercentileLo2Hi',  'Percent',         0,                    1,         1,              null)
@@ -248,26 +248,33 @@ where
 --********************************************************************
 declare @MeasureDefinitionName nvarchar(max) = N'DStat_<<_FriendlyName>>_<<MeasurePosition>>_<<NullTreatment>>_<<ParamOrder>><<ExtBehavior>>'
 
+
 declare @FuncParams_X NVARCHAR(MAX) = N'    <<NullToZero_Start>>axis(0).item(<<P0>>)<<NullToZero_End>>'
+
 
 declare @FuncParams_X_ExtB NVARCHAR(MAX) = N'    <<NullToZero_Start>>axis(0).item(<<P0>>)<<NullToZero_End>>,
     <<ExtBehavior>>'
 
+
 declare @FuncParams_XY NVARCHAR(MAX) = N'    <<NullToZero_Start>>axis(0).item(<<P0>>)<<NullToZero_End>>,
     <<NullToZero_Start>>axis(0).item(<<P1>>)<<NullToZero_End>>'
+
 
 declare @FuncParams_XY_ExtB NVARCHAR(MAX) = N'    <<NullToZero_Start>>axis(0).item(<<P0>>)<<NullToZero_End>>,
     <<NullToZero_Start>>axis(0).item(<<P1>>)<<NullToZero_End>>,
     <<ExtBehavior>>'
 
+
 declare @FuncParams_XYZ NVARCHAR(MAX) = N'    <<NullToZero_Start>>axis(0).item(<<P0>>)<<NullToZero_End>>,
     <<NullToZero_Start>>axis(0).item(<<P1>>)<<NullToZero_End>>,
     <<NullToZero_Start>>axis(0).item(<<P2>>)<<NullToZero_End>>'
+
 
 declare @FuncParams_XYZ_ExtB NVARCHAR(MAX) = N'    <<NullToZero_Start>>axis(0).item(<<P0>>)<<NullToZero_End>>,
     <<NullToZero_Start>>axis(0).item(<<P1>>)<<NullToZero_End>>,
     <<NullToZero_Start>>axis(0).item(<<P2>>)<<NullToZero_End>>,
     <<ExtBehavior>>'
+
 
 DECLARE @template_def NVARCHAR(MAX) = N'
 CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] AS 
@@ -285,12 +292,34 @@ null,
 ,<<MEASURE_PROPERTIES>>;
 '
 
+
 DECLARE @template_def_with_set NVARCHAR(MAX) = N'
 CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] AS 
 iif(iserror(
 <<_func_name>>(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.siblings,
 <<FunctionParams>>
     )
+)
+or cstr(
+<<_func_name>>(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.siblings,
+<<FunctionParams>>
+    )
+) = "-nan(ind)",
+null,
+<<_func_name>>(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.siblings,
+<<FunctionParams>>
+    )
+)
+,<<MEASURE_PROPERTIES>>;
+'
+
+
+DECLARE @template_def_with_set_ NVARCHAR(MAX) = N'
+CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] AS 
+iif(iserror(
+<<_func_name>>(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.siblings,
+<<FunctionParams>>
+    ) AS
 )
 or cstr(
 <<_func_name>>(Axis(1).Item(0).Item(Axis(1).Item(0).Count - 1).Hierarchy.CurrentMember.siblings,
@@ -362,8 +391,49 @@ IIF((
 ,<<MEASURE_PROPERTIES>>;
 '
 
-DECLARE @template_row_number NVARCHAR(MAX) = N'
-CREATE MEMBER CURRENTCUBE.[Measures].[DStat_RowNumber] AS
+DECLARE @template_row_number_N NVARCHAR(MAX) = N'
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_RowNumber_N] AS
+iif(    
+    ISEMPTY(
+        COALESCEEMPTY(
+            STRTOTUPLE(
+			    "(" + 
+	            Mid(
+		            Generate(
+			            Head(Axis(0), Axis(0).Count ) AS RN,
+			            iif(
+				            Instr(Axis(0).Item(RN.CurrentOrdinal - 1).Hierarchy.CurrentMember.name, "DStat_", 1) = 1,
+				            "",
+				            "," + "Axis(0).Item(" + CStr( RN.CurrentOrdinal - 1 ) + ").Hierarchy.CurrentMember"
+			            ),
+			            ""
+		            ), 
+		            2
+	            ) +
+	            ")"
+		    )
+        )
+    ), 
+    null,
+    Rank(
+	    StrToTuple(
+		    "( " +
+		    Generate(
+			    Head(Axis(1), Axis(1).Item(0).Count ) AS RN,
+			    "Axis(1).Item(0).Item(" + CStr( RN.CurrentOrdinal - 1 ) + ").Hierarchy.CurrentMember",
+			    ", "
+		    ) +
+		    " )"
+	    ),
+	    Axis(1)
+    )
+)
+,VISIBLE=1, DISPLAY_FOLDER=''Statistical\Row Number'', FORMAT_STRING=''#,##0'';
+'
+
+
+DECLARE @template_row_number_0 NVARCHAR(MAX) = N'
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_RowNumber_0] AS
 Rank(
 	StrToTuple(
 		"( " +
@@ -378,6 +448,83 @@ Rank(
 )
 ,VISIBLE=1, DISPLAY_FOLDER=''Statistical\Row Number'', FORMAT_STRING=''#,##0'';
 '
+
+
+DECLARE @template_row_number_grouped_0 NVARCHAR(MAX) = N'
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_RowNumberGrouped_0] AS
+Rank(
+	StrToTuple(
+		"( " +
+		Generate(
+			Head(Axis(1), Axis(1).Item(0).Count ) AS RN,
+			"Axis(1).Item(0).Item(" + CStr( RN.CurrentOrdinal - 1 ) + ").Hierarchy.CurrentMember",
+			", "
+		) +
+		" )"
+	),
+	StrToSet(
+		"( " +
+		Generate(
+			Head(Axis(1), Axis(1).Item(0).Count ) AS RN,
+			"Axis(1).Item(0).Item(" + CStr( RN.CurrentOrdinal - 1 ) + ").Hierarchy.CurrentMember" 
+				+ iif(RN.CurrentOrdinal = RN.count, ".Siblings", ""),
+			", "
+		) +
+		" )"
+	)
+)
+,VISIBLE=1, DISPLAY_FOLDER=''Statistical\Row Number'', FORMAT_STRING=''#,##0'';
+'
+
+DECLARE @template_row_number_grouped_N NVARCHAR(MAX) = N'
+CREATE MEMBER CURRENTCUBE.[Measures].[DStat_RowNumberGrouped_N] AS
+iif(
+    ISEMPTY(
+        COALESCEEMPTY(
+            STRTOTUPLE(
+			    "(" + 
+	            Mid(
+		            Generate(
+			            Head(Axis(0), Axis(0).Count ) AS RN,
+			            iif(
+				            Instr(Axis(0).Item(RN.CurrentOrdinal - 1).Hierarchy.CurrentMember.name, "DStat_", 1) = 1,
+				            "",
+				            "," + "Axis(0).Item(" + CStr( RN.CurrentOrdinal - 1 ) + ").Hierarchy.CurrentMember"
+			            ),
+			            ""
+		            ), 
+		            2
+	            ) +
+	            ")"
+		    )
+        )
+    ), 
+    null,
+	Rank(
+		StrToTuple(
+			"( " +
+			Generate(
+				Head(Axis(1), Axis(1).Item(0).Count ) AS RN,
+				"Axis(1).Item(0).Item(" + CStr( RN.CurrentOrdinal - 1 ) + ").Hierarchy.CurrentMember",
+				", "
+			) +
+			" )"
+		),
+		StrToSet(
+			"( " +
+			Generate(
+				Head(Axis(1), Axis(1).Item(0).Count ) AS RN,
+				"Axis(1).Item(0).Item(" + CStr( RN.CurrentOrdinal - 1 ) + ").Hierarchy.CurrentMember" 
+					+ iif(RN.CurrentOrdinal = RN.count, ".Siblings", ""),
+				", "
+			) +
+			" )"
+		)
+	)
+)
+,VISIBLE=1, DISPLAY_FOLDER=''Statistical\Row Number'', FORMAT_STRING=''#,##0'';
+'
+
 
 DECLARE @template_quartile NVARCHAR(MAX) = N'
 CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] AS
@@ -397,6 +544,61 @@ IIF(<<TestForMeasureIsEmpty>>
 )
 ,<<MEASURE_PROPERTIES>>;
 '
+
+
+DECLARE @template_linear_regression_point_0 NVARCHAR(MAX) = N'
+CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] AS
+LinRegPoint(
+    [Measures].[DStat_RowNumberGrouped_<<NullTreatment>>],
+	axis(1),
+	CoalesceEmpty(axis(0).item(<<P0>>), 0),
+	[Measures].[DStat_RowNumberGrouped_<<NullTreatment>>]
+)
+,<<MEASURE_PROPERTIES>>;
+'
+
+
+DECLARE @template_linear_regression_point_N NVARCHAR(MAX) = N'
+CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] AS
+iif(ISEMPTY(axis(0).item(<<P0>>)),
+    null,
+    LinRegPoint(
+        [Measures].[DStat_RowNumberGrouped_<<NullTreatment>>],
+		axis(1),
+		axis(0).item(<<P0>>),
+		[Measures].[DStat_RowNumberGrouped_<<NullTreatment>>]
+	)
+)
+,<<MEASURE_PROPERTIES>>;
+'
+
+
+DECLARE @template_linear_regression_generic_0 NVARCHAR(MAX) = N'
+CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] AS
+<<_func_name>>(
+	axis(1),
+	CoalesceEmpty(axis(0).item(<<P0>>), 0),
+	[Measures].[DStat_RowNumberGrouped_<<NullTreatment>>]
+)
+,<<MEASURE_PROPERTIES>>;
+'
+
+
+DECLARE @template_linear_regression_generic_N NVARCHAR(MAX) = N'
+CREATE MEMBER CURRENTCUBE.[Measures].[<<MeasureDefinitionName>>] AS
+iif(ISEMPTY(axis(0).item(<<P0>>)),
+    null,
+    <<_func_name>>(
+		axis(1),
+		axis(0).item(<<P0>>),
+		[Measures].[DStat_RowNumberGrouped_<<NullTreatment>>]
+	)
+)
+,<<MEASURE_PROPERTIES>>;
+'
+
+
+
 --********************************************************************
 --********************************************************************
 --********************************************************************
@@ -433,18 +635,38 @@ select distinct
 
     ,template = replace(
         case    
+            when f._func_name = 'LinRegPoint' and nt.code = 'N' then 
+                replace(replace(@template_linear_regression_point_N, '<<NullTreatment>>', nt.code), '<<_func_name>>', f._func_name)
+
+            when f._func_name = 'LinRegPoint' and nt.code = '0' then         
+                replace(replace(@template_linear_regression_point_0, '<<NullTreatment>>', nt.code), '<<_func_name>>', f._func_name)
+
+            when f._func_name like 'LinReg%' and nt.code = 'N' then 
+                replace(replace(@template_linear_regression_generic_N, '<<NullTreatment>>', nt.code), '<<_func_name>>', f._func_name)
+
+            when f._func_name like 'LinReg%' and nt.code = '0' then         
+                replace(replace(@template_linear_regression_generic_0, '<<NullTreatment>>', nt.code), '<<_func_name>>', f._func_name)
+
             when f._func_name = 'PercentileHi2Lo' and nt.code = 'N' then 
                 replace(@template_percentile_exclude_nulls_unknown, '<<FlipPercentile>>', '')
+
             when f._func_name = 'PercentileHi2Lo' and nt.code = '0' then 
                 replace(@template_percentile_include_nulls_unknown, '<<FlipPercentile>>', '')
+
             when f._func_name = 'PercentileLo2Hi' and nt.code = 'N' then 
                 replace(@template_percentile_exclude_nulls_unknown, '<<FlipPercentile>>', '1.0 - ')
+
             when f._func_name = 'PercentileLo2Hi' and nt.code = '0' then 
                 replace(@template_percentile_include_nulls_unknown, '<<FlipPercentile>>', '1.0 - ')
+
             when f._func_name = 'Quartile1st' then REPLACE(@template_quartile, '<<Less_Greater_Than>>', '<')
+
             when f._func_name = 'Quartile3rd' then REPLACE(@template_quartile, '<<Less_Greater_Than>>', '>')
+
             when f._Formula is not null then replace(@template_formula, '<<formula>>', f._Formula)
+
             when f._FunctNeedsSet = 1 then replace(@template_def_with_set, '<<_func_name>>', f._func_name)
+
             when f._FunctNeedsSet = 0 then replace(@template_def, '<<_func_name>>', f._func_name)
         end,
         '<<MEASURE_PROPERTIES>>', [dbo].[ufn_CreateMeasureProperties](1, f._DISPLAY_FOLDER, f._FORMAT_STRING, NULL, NULL, NULL)
@@ -530,18 +752,18 @@ end
 --*************************************************************************************************
 --*************************************************************************************************
 --*************************************************************************************************
-select
-    q.*
-from
-    (
-    select 
-        template as [--dynamic measure definitions]
-    from 
-        #t
-    union all
-    select @template_row_number
-    ) q
-order by 1
+select 
+    template
+into #t2
+from 
+    #t
+
+-- They row number functions need to come first. They are used by the other functions.
+select @template_row_number_0 as [--Dynamic measures]
+union all select @template_row_number_N
+union all select @template_row_number_grouped_0
+union all select @template_row_number_grouped_N
+union all select template as [--dynamic measure definitions] from  #t
 
 
     -- MeasureName                = CONCAT(f.measure_name, ' - <<lag>> Day <<_FriendlyName>> - By - ', f.dimension_name)
