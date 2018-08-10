@@ -8,9 +8,9 @@
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="490" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="112213" scrolltop="67156" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="11430" y="20489" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="490" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="112213" scrolltop="67156" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="21802" y="15558" backcolor="16777215" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="1" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
-              <ddsxmlobjectstreamwrapper binary="01010000900180380100065461686f6d61" />
+              <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
             </font>
             <mouseicon>
               <ddsxmlobjectstreamwrapper binary="6c74000000000000" />
@@ -7284,7 +7284,7 @@
     </Dimension>
     <Dimension dwd:design-time-name="6f2607da-1273-4d2a-879c-82db29b9afcb">
       <ID>Department</ID>
-      <Name>Department</Name>
+      <Name>Department - Medication Order</Name>
       <DimensionID>Department</DimensionID>
       <Attributes>
         <Attribute dwd:design-time-name="5e79a7f8-56ea-4fef-9e12-2123c435f7a2">
@@ -22890,25 +22890,6 @@
             </Attribute>
           </Attributes>
         </Dimension>
-        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="35147c50-9aea-405c-97e9-c353aa403d38">
-          <CubeDimensionID>Department</CubeDimensionID>
-          <Attributes>
-            <Attribute dwd:design-time-name="96f77a7f-6ae5-40ec-8b36-ddca34843ee9">
-              <AttributeID>DEPT SK</AttributeID>
-              <KeyColumns>
-                <KeyColumn dwd:design-time-name="82491abe-c81c-4f93-b7aa-c04b89df977c">
-                  <DataType>BigInt</DataType>
-                  <NullProcessing>UnknownMember</NullProcessing>
-                  <Source xsi:type="ColumnBinding" dwd:design-time-name="65fb352c-09cb-4bf9-be67-835aefa61f3b">
-                    <TableID>MedicationOrderFact</TableID>
-                    <ColumnID>DEPT_SK</ColumnID>
-                  </Source>
-                </KeyColumn>
-              </KeyColumns>
-              <Type>Granularity</Type>
-            </Attribute>
-          </Attributes>
-        </Dimension>
         <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="32742dc9-20f2-486c-bb94-b2e721488b40">
           <CubeDimensionID>ORDRD DT</CubeDimensionID>
           <Attributes>
@@ -23210,6 +23191,25 @@
         <Dimension xsi:type="ManyToManyMeasureGroupDimension" dwd:design-time-name="3231cea4-0359-45d1-b7ef-496876d41136">
           <CubeDimensionID>DRG</CubeDimensionID>
           <MeasureGroupID>DRG Fact</MeasureGroupID>
+        </Dimension>
+        <Dimension xsi:type="RegularMeasureGroupDimension" dwd:design-time-name="0836a0ec-53ae-4ec3-82ca-3ebdeea94183">
+          <CubeDimensionID>Department</CubeDimensionID>
+          <Attributes>
+            <Attribute dwd:design-time-name="c66f3750-9310-4837-a22f-9413f1a84436">
+              <AttributeID>DEPT SK</AttributeID>
+              <KeyColumns>
+                <KeyColumn dwd:design-time-name="b93ca3d1-d198-458d-863d-679e0e7f937e">
+                  <DataType>BigInt</DataType>
+                  <NullProcessing>UnknownMember</NullProcessing>
+                  <Source xsi:type="ColumnBinding" dwd:design-time-name="4979e302-fc15-493a-b679-1cdf38ba6551">
+                    <TableID>MedicationOrderFact</TableID>
+                    <ColumnID>DEPT_SK</ColumnID>
+                  </Source>
+                </KeyColumn>
+              </KeyColumns>
+              <Type>Granularity</Type>
+            </Attribute>
+          </Attributes>
         </Dimension>
       </Dimensions>
       <Partitions />
