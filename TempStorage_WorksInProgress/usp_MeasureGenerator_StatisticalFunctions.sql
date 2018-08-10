@@ -395,23 +395,21 @@ DECLARE @template_row_number_N NVARCHAR(MAX) = N'
 CREATE MEMBER CURRENTCUBE.[Measures].[DStat_RowNumber_N] AS
 iif(    
     ISEMPTY(
-        COALESCEEMPTY(
-            STRTOTUPLE(
-			    "(" + 
+		STRTOVALUE(
+			"COALESCEEMPTY(" + 
 	            Mid(
 		            Generate(
 			            Head(Axis(0), Axis(0).Count ) AS RN,
 			            iif(
 				            Instr(Axis(0).Item(RN.CurrentOrdinal - 1).Hierarchy.CurrentMember.name, "DStat_", 1) = 1,
 				            "",
-				            "," + "Axis(0).Item(" + CStr( RN.CurrentOrdinal - 1 ) + ").Hierarchy.CurrentMember"
+				            ",Axis(0).Item(" + CStr( RN.CurrentOrdinal - 1 ) + ")"
 			            ),
 			            ""
 		            ), 
 		            2
-	            ) +
-	            ")"
-		    )
+	            ) 
+			+ ")"
         )
     ), 
     null,
@@ -480,23 +478,21 @@ DECLARE @template_row_number_grouped_N NVARCHAR(MAX) = N'
 CREATE MEMBER CURRENTCUBE.[Measures].[DStat_RowNumberGrouped_N] AS
 iif(
     ISEMPTY(
-        COALESCEEMPTY(
-            STRTOTUPLE(
-			    "(" + 
+		STRTOVALUE(
+			"COALESCEEMPTY(" + 
 	            Mid(
 		            Generate(
 			            Head(Axis(0), Axis(0).Count ) AS RN,
 			            iif(
 				            Instr(Axis(0).Item(RN.CurrentOrdinal - 1).Hierarchy.CurrentMember.name, "DStat_", 1) = 1,
 				            "",
-				            "," + "Axis(0).Item(" + CStr( RN.CurrentOrdinal - 1 ) + ").Hierarchy.CurrentMember"
+				            ",Axis(0).Item(" + CStr( RN.CurrentOrdinal - 1 ) + ")"
 			            ),
 			            ""
 		            ), 
 		            2
-	            ) +
-	            ")"
-		    )
+	            ) 
+			+ ")"
         )
     ), 
     null,
